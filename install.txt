@@ -1,3 +1,9 @@
 [] - yarn add -D prettier @trivago/prettier-plugin-sort-imports prettier-plugin-tailwindcss
 [] - yarn add -D tailwindcss postcss autoprefixer
 [] - npx tailwindcss init -p
+[] - 
+[] - yarn add axios clsx
+[] - yarn add react-icons
+[] - yarn add js-cookie
+[] - yarn add -D @types/js-cookie
+[] - 

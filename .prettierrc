@@ -23,7 +23,7 @@
         "^../(.*)$",
         "^./(.*)$"
     ],
-    "importOrderSeparation": "true",
-    "importOrderSortSpecifiers": "true"
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
 
   }
