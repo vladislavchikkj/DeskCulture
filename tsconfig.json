@@ -14,12 +14,22 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": "app",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
+      "@/layout/*": [
+        "components/layout/*"
+      ],
+      "@/ui/*": [
+        "components/ui/*"
+      ],
+      "@/screens/*": [
+        "components/screens/*"
+      ],
       "@/*": ["./*"]
     }
   },
