@@ -6,4 +6,6 @@
 [] - yarn add react-icons
 [] - yarn add js-cookie
 [] - yarn add -D @types/js-cookie
+[] - yarn add redux-persist @reduxjs/toolkit @tanstack/react-query react-simple-star-rating sass
+[] - yarn add react-redux
 [] - 

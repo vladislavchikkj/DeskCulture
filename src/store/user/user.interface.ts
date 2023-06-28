@@ -1,26 +1,24 @@
-import { IProduct } from "@/types/product.interface";
-
+import { IUser } from '@/types/user.interface'
 
 export interface IUserState {
-    email: string;
+	email: string
 }
 
 export interface ITokens {
-    accessToken: string;
-    refreshToken: string;
+	accessToken: string
+	refreshToken: string
 }
 
 export interface IInitialState {
-    user: IUserState | null
-    isLoading: boolean
+	user: IUserState | null
+	isLoading: boolean
 }
 
 export interface IEmailPassword {
-    email: string
-    password: string
+	email: string
+	password: string
 }
 
 export interface IAuthResponse extends ITokens {
-    user(user: any): string;
-    product: IProduct
+	user: IUser
 }
