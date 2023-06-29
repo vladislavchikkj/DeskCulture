@@ -6,7 +6,7 @@ const colors = {
 	transparent: twColors.transparent,
 	black: '#191B1D',
 	white: '#fff',
-	primary: '#CDCECF',
+	primary: '#0000004D',
 	secondary: '#BDA05F'
 }
 
@@ -16,6 +16,7 @@ module.exports = {
 		'./pages/**/*.{js,ts,jsx,tsx,mdx}'
 	],
 	theme: {
+		colors,
 		extend: {}
 	},
 	plugins: []
