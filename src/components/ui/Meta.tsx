@@ -1,4 +1,4 @@
-import { Head } from 'next/document'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC, PropsWithChildren } from 'react'
 
@@ -6,7 +6,7 @@ interface ISeo {
 	title: string
 	description?: string
 	image?: string
-	siteName?: string
+	// siteName?: string
 }
 
 export const titleMerge = (title: string) => `${title} | DescCulture`
@@ -14,7 +14,7 @@ export const titleMerge = (title: string) => `${title} | DescCulture`
 const Meta: FC<PropsWithChildren<ISeo>> = ({
 	title,
 	description,
-	siteName,
+	// siteName,
 	image,
 	children
 }) => {
@@ -37,7 +37,7 @@ const Meta: FC<PropsWithChildren<ISeo>> = ({
 						<meta property='og:title' content={titleMerge(title)} />
 						<meta property='og:url' content={currentUrl} />
 						<meta property='og:image' content={image || '/favicon.svg'} />
-						<meta property='og:site_name' content={siteName} />
+						{/* <meta property='og:site_name' content={siteName} /> */}
 						<meta property='og:description' content={description} />
 					</>
 				) : (
