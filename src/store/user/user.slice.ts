@@ -1,20 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
-import { getStoreLocal } from '@/utils/local-storage'
+import {getStoreLocal} from '@/utils/local-storage'
 
-import { checkAuth, login, register } from './user.actions'
+import { checkAuth, login, logout, register } from './user.actions'
 import { IInitialState } from './user.interface'
 
 const initialState: IInitialState = {
-	user: getStoreLocal('user'),
-	isLoading: false
+  user: getStoreLocal('user'),
+  isLoading: false
 }
 
-export const userSlice = createSlice({
+
+export const userSlice = createSlice<any>({
 	name: 'user',
 	initialState,
 	reducers: {},
-	extraReducers: builder => {
+	extraReducers: (builder) => {
 		builder
 			.addCase(register.pending, state => {
 				state.isLoading = true
@@ -37,7 +38,7 @@ export const userSlice = createSlice({
 				state.isLoading = false
 				state.user = null
 			})
-			.addCase(login.fulfilled, state => {
+			.addCase(logout.fulfilled, state => {
 				state.isLoading = false
 				state.user = null
 			})
