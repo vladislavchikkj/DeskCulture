@@ -3,6 +3,9 @@ import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import AuthProvider from '@/providers/auth-provider/AuthProvider'
+import { TypeComponentAuthFields } from '@/providers/auth-provider/auth-page.types'
+
 import '@/assets/styles/global.css'
 
 import { persistor, store } from '@/store/store'
@@ -15,12 +18,17 @@ const queryClient = new QueryClient({
 	}
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+	Component,
+	pageProps
+}: AppProps & TypeComponentAuthFields) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
-					<Component {...pageProps}></Component>
+					<AuthProvider Component={{ isOnlyUser: Component.isOnlyUser }}>
+						<Component {...pageProps}></Component>
+					</AuthProvider>
 				</PersistGate>
 			</Provider>
 		</QueryClientProvider>
