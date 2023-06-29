@@ -1,19 +1,22 @@
 /** @type {import('tailwindcss').Config} */
-import { transparent as _transparent } from 'tailwindcss/colors'
+
+const twColors = require('tailwindcss/colors')
 
 const colors = {
-	transparent: _transparent,
+	transparent: twColors.transparent,
 	black: '#191B1D',
 	white: '#fff',
 	primary: '#CDCECF',
 	secondary: '#BDA05F'
 }
 
-export const content = [
-	'./src/**/*.{js,ts,jsx,tsx,mdx}',
-	'./pages/**/*.{js,ts,jsx,tsx,mdx}'
-]
-export const theme = {
-	extend: {}
+module.exports = {
+	content: [
+		'./src/**/*.{js,ts,jsx,tsx,mdx}',
+		'./pages/**/*.{js,ts,jsx,tsx,mdx}'
+	],
+	theme: {
+		extend: {}
+	},
+	plugins: []
 }
-export const plugins = []
