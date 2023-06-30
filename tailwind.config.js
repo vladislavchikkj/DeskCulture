@@ -6,8 +6,11 @@ const colors = {
 	transparent: twColors.transparent,
 	black: '#191B1D',
 	white: '#fff',
+	grey: '#CDCECF',
+	greySub: '#00000080',
 	primary: '#0000004D',
-	secondary: '#BDA05F'
+	secondary: '#A08750',
+	red: twColors.red[400]
 }
 
 module.exports = {
@@ -17,7 +20,12 @@ module.exports = {
 	],
 	theme: {
 		colors,
-		extend: {}
+		extend: {
+			fontSize: {
+				10: '10px',
+				25: '25px'
+			}
+		}
 	},
 	plugins: []
 }

@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 import style from '@/ui/button/button.module.scss'
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant: 'grey' | 'black'
+	variant: 'grey' | 'black' | 'changer'
 }
 const Button: FC<PropsWithChildren<IButton>> = ({
 	children,
@@ -19,7 +19,8 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 				`font-semibold px-20 py-4 ${style.button}`,
 				{
 					'text-white bg-primary': variant === 'grey',
-					'text-white bg-black': variant === 'black'
+					'text-white bg-black': variant === 'black',
+					'text-black ': variant === 'changer'
 				},
 				className
 			)}
