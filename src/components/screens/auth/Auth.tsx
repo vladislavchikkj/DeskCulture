@@ -1,11 +1,15 @@
+import {
+	welcomeLogin,
+	welcomeMessage,
+	welcomeRegister
+} from '@components/common'
+import Loader from '@ui/Loader'
+import Meta from '@ui/Meta'
+import Button from '@ui/button/button'
+import Heading from '@ui/heading'
+import Field from '@ui/input/Field'
 import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-
-import Loader from '@/ui/Loader'
-import Meta from '@/ui/Meta'
-import Button from '@/ui/button/button'
-import Heading from '@/ui/heading'
-import Field from '@/ui/input/Field'
 
 import { IEmailPassword } from '@/store/user/user.interface'
 
@@ -18,9 +22,7 @@ const Auth: FC = () => {
 	const { isLoading } = useAuth()
 	const { login, register } = useActions()
 
-	const [type, setType] = useState<
-		'welcome, Sign in' | 'Welcome,	create an account'
-	>('welcome, Sign in')
+	const [type, setType] = useState<welcomeMessage>(welcomeLogin)
 	const {
 		register: formRegister,
 		handleSubmit,
@@ -30,11 +32,14 @@ const Auth: FC = () => {
 		mode: 'onChange'
 	})
 	const onSubmit: SubmitHandler<IEmailPassword> = data => {
-		if (type === 'welcome, Sign in') login(data)
+		if (type === welcomeLogin) login(data)
 		else register(data)
 
 		reset()
 	}
+	const swithRegisterLogin = () =>
+		setType(type === welcomeLogin ? welcomeRegister : welcomeLogin)
+
 	return (
 		<Meta title='Auth'>
 			<section className='flex h-screen'>
@@ -76,15 +81,9 @@ const Auth: FC = () => {
 								type='button'
 								variant='changer'
 								className='block mt-3 text-center mx-auto'
-								onClick={() =>
-									setType(
-										type === 'welcome, Sign in'
-											? 'Welcome,	create an account'
-											: 'welcome, Sign in'
-									)
-								}
+								onClick={swithRegisterLogin}
 							>
-								{type === 'welcome, Sign in'
+								{type === welcomeLogin
 									? 'Create an account'
 									: 'Already have an account? Sign In'}
 							</Button>
