@@ -7,10 +7,10 @@ import {
 	welcomeRegister
 } from '@/components/common'
 
+import Heading from '@/ui/Heading'
 import Loader from '@/ui/Loader'
 import Meta from '@/ui/Meta'
 import Button from '@/ui/button/button'
-import Heading from '@/ui/heading'
 import Field from '@/ui/input/Field'
 
 import { IEmailPassword } from '@/store/user/user.interface'
@@ -51,7 +51,7 @@ const Auth: FC = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className='rounded-lg bg-white p-10 m-auto'
 				>
-					<Heading>{type}</Heading>
+					<Heading variant='auth'>{type}</Heading>
 
 					{isLoading ? (
 						<Loader />
