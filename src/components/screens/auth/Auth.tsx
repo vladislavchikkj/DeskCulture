@@ -1,24 +1,28 @@
+import { FC, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
 import {
 	welcomeLogin,
 	welcomeMessage,
 	welcomeRegister
-} from '@components/common'
-import Loader from '@ui/Loader'
-import Meta from '@ui/Meta'
-import Button from '@ui/button/button'
-import Heading from '@ui/heading'
-import Field from '@ui/input/Field'
-import { FC, useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+} from '@/components/common'
+
+import Loader from '@/ui/Loader'
+import Meta from '@/ui/Meta'
+import Button from '@/ui/button/button'
+import Heading from '@/ui/heading'
+import Field from '@/ui/input/Field'
 
 import { IEmailPassword } from '@/store/user/user.interface'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
+import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
 
 const Auth: FC = () => {
+	useAuthRedirect()
 	const { isLoading } = useAuth()
 	const { login, register } = useActions()
 

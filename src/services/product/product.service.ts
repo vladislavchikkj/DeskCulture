@@ -28,7 +28,7 @@ export const Productservice = {
 			method: 'GET'
 		})
 	},
-	async getBCategory(categorySlug: string) {
+	async getByCategory(categorySlug: string) {
 		return instance<IProduct[]>({
 			url: `${PRODUCTS}/by-category/${categorySlug}`,
 			method: 'GET'

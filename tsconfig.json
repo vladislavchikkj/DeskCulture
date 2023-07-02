@@ -21,10 +21,10 @@
 			}
 		],
 		"paths": {
-			"@layout/*": ["components/layout/*"],
-			"@ui/*": ["components/ui/*"],
-			"@screens/*": ["components/screens/*"],
-			"@*": ["./*"]
+			"@/layout/*": ["components/layout/*"],
+			"@/ui/*": ["components/ui/*"],
+			"@/screens/*": ["components/screens/*"],
+			"@/*": ["./*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
