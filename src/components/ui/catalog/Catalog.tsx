@@ -5,6 +5,7 @@ import { IProduct } from '@/types/product.interface'
 import Heading from '../Heading'
 import Loader from '../Loader'
 
+import catalogStyle from './catalog.module.scss'
 import ProductItem from './product-item/ProductItem'
 
 interface ICatalog {
@@ -16,12 +17,14 @@ interface ICatalog {
 const Catalog: FC<ICatalog> = ({ products, isLoading, title }) => {
 	if (isLoading) return <Loader />
 	return (
-		<section>
+		<section className={catalogStyle.catalog}>
 			{title && <Heading variant='catalog'>{title}</Heading>}
 			{products.length ? (
-				products.map(product => (
-					<ProductItem key={product.id} product={product} />
-				))
+				<div className={catalogStyle.items}>
+					{products.map(product => (
+						<ProductItem key={product.id} product={product} />
+					))}
+				</div>
 			) : (
 				<div>There are no products</div>
 			)}

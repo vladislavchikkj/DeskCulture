@@ -16,6 +16,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div>
 			<button
+				className='flex gap-2'
 				onClick={() =>
 					currentElement
 						? removeFromCart({
@@ -29,6 +30,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 				}
 			>
 				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
+				Buy now
 			</button>
 		</div>
 	)
