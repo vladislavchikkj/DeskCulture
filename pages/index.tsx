@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps<
 		page: 1,
 		perPage: 4
 	})
+	console.log(data)
 	return {
 		props: data
 	}

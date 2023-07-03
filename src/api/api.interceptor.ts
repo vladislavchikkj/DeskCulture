@@ -15,7 +15,7 @@ export const instance = axios.create(axiosOptions)
 instance.interceptors.request.use(async config => {
 	const accessToken = getAccessToken()
 	if (config && config.headers && accessToken)
-		config.headers.Authorization = `Bear ${accessToken}`
+		config.headers.Authorization = `Bearer ${accessToken}`
 
 	return config
 })
