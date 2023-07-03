@@ -7,11 +7,10 @@
 }
 
 .items {
-	display: grid;
-	grid-template-columns: repeat(
-		auto-fit,
-		minmax(300px, 1fr)
-	); /* Автоматическое распределение столбцов, каждый размером не менее 300 пикселей */
-	gap: 20px; /* Расстояние между карточками */
-	max-width: 1400px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 50px;
+	padding-top: 50px;
+	gap: 40px;
+	border-top: 1px solid rgba(25, 27, 29, 0.1);
 }
