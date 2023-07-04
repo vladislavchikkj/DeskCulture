@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 
 import { IProduct } from '@/types/product.interface'
 
-import ratingStyle from './productRating.module.scss'
+import style from './productRating.module.scss'
 
 const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 	const [rating, setRating] = useState<number>(
@@ -13,23 +13,25 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 		) || 0
 	)
 	return (
-		<div>
-			<div>
-				<span className={ratingStyle.rating}>Review:</span>
-				<span>
-					<Rating
-						readonly
-						initialValue={rating}
-						SVGstyle={{
-							display: 'inline-block'
-						}}
-						size={15}
-						allowFraction
-						transition
-					/>
-				</span>
+		<div className={style.ratingWrapper}>
+			<div className={style.starPos}>
+				<span className={style.rating}>Rating:</span>
+				{!!product.reviews.length && (
+					<span className={style.star}>
+						<Rating
+							readonly
+							initialValue={rating}
+							SVGstyle={{
+								display: 'inline-block'
+							}}
+							size={15}
+							allowFraction
+							transition
+						/>
+					</span>
+				)}
 			</div>
-			<span className={ratingStyle.grade}>
+			<span className={style.grade}>
 				{rating}({product.reviews.length} reviews)
 			</span>
 		</div>

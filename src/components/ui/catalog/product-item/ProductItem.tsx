@@ -6,37 +6,45 @@ import { IProduct } from '@/types/product.interface'
 
 import { convertPrice } from '@/utils/convertPrice'
 
-import AddToCartButton from './AddToCartButton'
+import AddToCartButton from './addToCardButton/AddToCartButton'
 import itemStyle from './product-item.module.scss'
 import ProductRating from './productRating/ProductRating'
 
-const DynamicFavoriteButton = dynamic(() => import('./FavoriteButton'), {
-	ssr: false
-})
+const DynamicFavoriteButton = dynamic(
+	() => import('./favoriteButton/FavoriteButton'),
+	{
+		ssr: false
+	}
+)
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div className={itemStyle.item}>
 			<div>
 				<div className={itemStyle.imageBox}>
-					<div className={itemStyle.favoriteButton}>
-						<DynamicFavoriteButton productId={product.id} />
-					</div>
 					<Link href={`/product/${product.slug}`}>
-						<img
-							className={itemStyle.image}
-							src={product.images[0]}
-							alt={product.name}
-						/>
+						<div className={itemStyle.favoriteButton}>
+							<DynamicFavoriteButton productId={product.id} />
+						</div>
+						<div className={itemStyle.imageWrapper}>
+							<img
+								className={itemStyle.image}
+								src={product.images[0]}
+								alt={product.name}
+							/>
+						</div>
 					</Link>
 				</div>
 			</div>
 			<div className={itemStyle.itemInfo}>
-				<Link href={`/category/${product.category.slug}`}>
+				<Link href={`/category/${product.slug}`}>
 					<h3 className={itemStyle.itemTitle}>{product.name}</h3>
 				</Link>
 
-				<Link className={itemStyle.itemSlug} href={`/product/${product.slug}`}>
+				<Link
+					className={itemStyle.itemSlug}
+					href={`/product/${product.category.slug}`}
+				>
 					{product.category.name}
 				</Link>
 				<ProductRating product={product} />
@@ -44,8 +52,9 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					Price:
 					<div className={itemStyle.price}>{convertPrice(product.price)}</div>
 				</div>
-
-				<AddToCartButton product={product} />
+				<div className={itemStyle.addToCart}>
+					<AddToCartButton product={product} />
+				</div>
 			</div>
 		</div>
 	)

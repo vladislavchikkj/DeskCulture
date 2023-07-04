@@ -7,11 +7,11 @@ import {
 	welcomeRegister
 } from '@/components/common'
 
-import Heading from '@/ui/Heading'
-import Loader from '@/ui/Loader'
 import Meta from '@/ui/Meta'
 import Button from '@/ui/button/button'
+import Heading from '@/ui/heading/Heading'
 import Field from '@/ui/input/Field'
+import Loader from '@/ui/loader/Loader'
 
 import { IEmailPassword } from '@/store/user/user.interface'
 

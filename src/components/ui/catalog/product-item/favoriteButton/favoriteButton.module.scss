@@ -1,0 +1,15 @@
+.btn {
+	background: rgba(0, 0, 0, 0.144);
+	border-radius: 100%;
+	color: white;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+}

@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { IProduct } from '@/types/product.interface'
 
-import Heading from '../Heading'
-import Loader from '../Loader'
+import Heading from '../heading/Heading'
+import Loader from '../loader/Loader'
 
 import catalogStyle from './catalog.module.scss'
 import ProductItem from './product-item/ProductItem'

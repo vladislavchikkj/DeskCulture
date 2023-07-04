@@ -1,14 +1,13 @@
 .catalog {
 	display: flex;
 	flex-direction: column;
-	padding-left: 10rem;
-	padding-right: 10rem;
 	padding-top: 165px;
 }
 
 .items {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(440px, 0.7fr));
+	justify-content: center;
 	margin-top: 50px;
 	padding-top: 50px;
 	gap: 40px;

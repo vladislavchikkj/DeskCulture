@@ -4,19 +4,20 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 import { useProfile } from '@/hooks/useProfile'
 
+import buttonStyle from './favoriteButton.module.scss'
 import { UserService } from '@/services/user.service'
 
 const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	const { profile } = useProfile()
 
-	const { invalidateQueries } = useQueryClient()
+	const QueryClient = useQueryClient()
 
 	const { mutate } = useMutation(
 		['toogle favorite'],
 		() => UserService.toggleFavorite(productId),
 		{
 			onSuccess() {
-				invalidateQueries(['get profile'])
+				QueryClient.invalidateQueries(['get profile'])
 			}
 		}
 	)
@@ -25,7 +26,7 @@ const FavoriteButton: FC<{ productId: number }> = ({ productId }) => {
 	const isExist = profile.favorites.some(favorite => favorite.id === productId)
 	return (
 		<div>
-			<button onClick={() => mutate()}>
+			<button className={buttonStyle.btn} onClick={() => mutate()}>
 				{isExist ? <AiFillHeart /> : <AiOutlineHeart />}
 			</button>
 		</div>

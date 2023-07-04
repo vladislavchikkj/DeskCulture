@@ -6,6 +6,8 @@ import { useCart } from '@/hooks/useCart'
 
 import { IProduct } from '@/types/product.interface'
 
+import buttonAdd from './addToCartButton.module.scss'
+
 const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 	const { addToCart, removeFromCart } = useActions()
 	const { items } = useCart()
@@ -16,7 +18,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div>
 			<button
-				className='flex gap-2'
+				className={buttonAdd.btn}
 				onClick={() =>
 					currentElement
 						? removeFromCart({
@@ -29,8 +31,10 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 						  })
 				}
 			>
-				{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
-				Buy now
+				<div>
+					{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
+				</div>
+				<div>Buy now</div>
 			</button>
 		</div>
 	)
