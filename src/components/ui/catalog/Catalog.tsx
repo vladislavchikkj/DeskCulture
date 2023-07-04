@@ -12,13 +12,20 @@ interface ICatalog {
 	products: IProduct[]
 	isLoading?: boolean
 	title?: string
+	isPagination?: boolean
 }
 
-const Catalog: FC<ICatalog> = ({ products, isLoading, title }) => {
+const Catalog: FC<ICatalog> = ({
+	products,
+	isLoading,
+	title,
+	isPagination = false
+}) => {
 	if (isLoading) return <Loader />
 	return (
 		<section className={catalogStyle.catalog}>
 			{title && <Heading variant='catalog'>{title}</Heading>}
+			{isPagination && <SortDropdown />}
 			{products.length ? (
 				<div className={catalogStyle.items}>
 					{products.map(product => (
