@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
-import Button from '../button/Button'
+import Button from '../button/button'
 import Heading from '../heading/Heading'
 import Loader from '../loader/Loader'
 
