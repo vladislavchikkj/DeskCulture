@@ -1,10 +1,52 @@
 .button {
-	width: 100%;
-	text-decoration: none;
-	border: none;
+	width: 122px;
+	text-align: center;
+	font-size: 16px;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: -0.64px;
 
-	font-size: 9px;
-	line-height: 12.65px;
-	letter-spacing: 1.32px;
-	text-transform: uppercase;
+	border-radius: 60px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 7px 16.41px 7px 16px;
+	position: relative;
+}
+
+.black {
+	color: white;
+	background: #191b1d;
+}
+.grey {
+	color: rgb(0, 0, 0);
+	background: rgba(25, 27, 29, 0.1);
+}
+
+.button:hover {
+	cursor: pointer;
+}
+
+/*button:before (attr data-hover)*/
+.button:hover:before {
+	transform: translate(0, 0);
+}
+.button:before {
+	content: attr(data-hover);
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transform: translate(0, 170%);
+	transition: all 0.3s;
+	color: white;
+}
+/*button div (button text before hover)*/
+.button:hover span {
+	transform: translate(0, -170%);
+}
+.button span {
+	transition: all 0.3s;
 }

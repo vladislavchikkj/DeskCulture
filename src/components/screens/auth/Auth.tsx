@@ -8,7 +8,6 @@ import {
 } from '@/components/common'
 
 import Meta from '@/ui/Meta'
-import Button from '@/ui/button/button'
 import Heading from '@/ui/heading/Heading'
 import Field from '@/ui/input/Field'
 import Loader from '@/ui/loader/Loader'
@@ -20,6 +19,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
+import AuthButton from '@/screens/auth/authButton/authButton'
 
 const Auth: FC = () => {
 	useAuthRedirect()
@@ -80,17 +80,17 @@ const Auth: FC = () => {
 								placeholder='Password'
 								error={errors.password?.message}
 							></Field>
-							<Button variant='grey'>Register</Button>{' '}
-							<Button
+							<AuthButton variant='grey'>Register</AuthButton>{' '}
+							<AuthButton
 								type='button'
-								variant='changer'
+								variant='authChanger'
 								className='block mt-3 text-center mx-auto'
 								onClick={swithRegisterLogin}
 							>
 								{type === welcomeLogin
 									? 'Create an account'
 									: 'Already have an account? Sign In'}
-							</Button>
+							</AuthButton>
 						</>
 					)}
 				</form>

@@ -1,10 +1,10 @@
 import cn from 'clsx'
 import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 
-import style from '@/ui/button/button.module.scss'
+import style from './button.module.scss'
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant: 'grey' | 'black' | 'changer'
+	variant: 'grey' | 'black'
 }
 const Button: FC<PropsWithChildren<IButton>> = ({
 	children,
@@ -16,16 +16,15 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 		<button
 			{...rest}
 			className={cn(
-				`font-semibold px-20 py-4 ${style.button}`,
+				`${style.button}`,
 				{
-					'text-white bg-primary': variant === 'grey',
-					'text-white bg-black': variant === 'black',
-					'text-black ': variant === 'changer'
+					[style.grey]: variant === 'grey',
+					[style.black]: variant === 'black'
 				},
 				className
 			)}
 		>
-			{children}
+			<span className={style.text}>{children}</span>
 		</button>
 	)
 }
