@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FC } from 'react'
 
 import { useActions } from '@/hooks/useActions'
@@ -19,7 +20,9 @@ const Header: FC = () => {
 					<div className='pb-0.5'>
 						<Dots />
 					</div>
-					<span>menu</span>
+					<div data-hover='menu' className={style.textBtn}>
+						<div>menu</div>
+					</div>
 				</div>
 				<div className={style.headerButton}>
 					<span className='flex gap-2'>
@@ -42,13 +45,22 @@ const Header: FC = () => {
 						<span className={style.search}>search</span>
 					</span>
 				</div>
-				<div className={style.headerButton}>
-					<span>Sign Up</span>
-				</div>
-				<div className={style.headerButton}>
-					<span>
-						{!!user && <button onClick={() => logout()}>Logout</button>}
-					</span>
+
+				{!user && (
+					<div className={style.headerButton}>
+						<span>Sign Up</span>
+					</div>
+				)}
+				<div>
+					{(!!user && (
+						<button className={style.headerButton} onClick={() => logout()}>
+							Log Out
+						</button>
+					)) || (
+						<Link href={`/auth`}>
+							<span className={style.headerButton}>Log In</span>
+						</Link>
+					)}
 				</div>
 				<div className={style.favorites}>
 					<Favorite />

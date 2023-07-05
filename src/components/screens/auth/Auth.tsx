@@ -80,7 +80,9 @@ const Auth: FC = () => {
 								placeholder='Password'
 								error={errors.password?.message}
 							></Field>
-							<AuthButton variant='grey'>Register</AuthButton>{' '}
+							<AuthButton variant='grey'>
+								{type === welcomeLogin ? 'Sign In' : 'Register'}
+							</AuthButton>{' '}
 							<AuthButton
 								type='button'
 								variant='authChanger'
