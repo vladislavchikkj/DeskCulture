@@ -5,10 +5,10 @@ import style from './layout.module.scss'
 
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	return (
-		<div>
+		<>
 			<Header />
 			<main className={style.main}>{children}</main>
-		</div>
+		</>
 	)
 }
 

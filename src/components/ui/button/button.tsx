@@ -16,10 +16,10 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 		<button
 			{...rest}
 			className={cn(
-				`${style.button}`,
+				``,
 				{
-					[style.grey]: variant === 'grey',
-					[style.black]: variant === 'black'
+					[style.greyTypeBtn]: variant === 'grey',
+					[style.blackTypeBtn]: variant === 'black'
 				},
 				className
 			)}

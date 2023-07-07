@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
-import Button from '../button/button'
+import Button from '../button/Button'
 import Heading from '../heading/Heading'
 import Loader from '../loader/Loader'
 
@@ -39,7 +39,20 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	if (isLoading) return <Loader />
 	return (
 		<section className={catalogStyle.catalog}>
-			{title && <Heading variant='catalog'>{title}</Heading>}
+			<div>
+				{title && <Heading variant='catalog'>{title}</Heading>}
+				<div className={catalogStyle.btnWrapper}>
+					<Button data-hover='Categories' variant='grey'>
+						Categories
+					</Button>
+					<Button data-hover='Setup' variant='grey'>
+						Setup
+					</Button>
+					<Button data-hover='Products' variant='black'>
+						Products
+					</Button>
+				</div>
+			</div>
 			<SortDropdown sortType={sortType} setSortType={setSortType} />
 			{response.products.length ? (
 				<>

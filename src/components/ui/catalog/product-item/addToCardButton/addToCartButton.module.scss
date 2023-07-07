@@ -1,9 +1,10 @@
 .btn {
 	display: flex;
 	align-items: center;
-	gap: 5px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-right: 15px;
-	padding-left: 15px;
+	column-gap: 0.26vw;
+	padding-top: 0.15vw;
+	padding-bottom: 0.15vw;
+	padding-right: 0.78vw;
+	padding-left: 0.78vw;
+	font-size: 0.9vw;
 }
