@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps<
 > = async () => {
 	const data = await ProductService.getAll({
 		page: 1,
-		perPage: 4
+		perPage: 6
 	})
 	return {
 		props: data

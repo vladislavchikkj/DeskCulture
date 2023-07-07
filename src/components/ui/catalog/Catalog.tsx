@@ -1,9 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
 import { FC, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
-import Button from '../button/Button'
+import Button from '../button/button'
 import Heading from '../heading/Heading'
 import Loader from '../loader/Loader'
 
@@ -23,20 +22,32 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const [sortType, setSortType] = useState<EnumProductSort>(
 		EnumProductSort.NEWEST
 	)
-	const { data: response, isLoading } = useQuery(
-		['products', sortType, page],
-		() =>
-			ProductService.getAll({
-				page,
-				perPage: 4,
+	const [products, setProducts] = useState(data.products)
+	const [isLoading, setIsLoading] = useState(false)
+	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
+
+	const loadMoreProducts = async () => {
+		setIsLoading(true)
+		try {
+			const response = await ProductService.getAll({
+				page: page + 1,
+				perPage: 6,
 				sort: sortType
-			}),
-		{
-			initialData: data,
-			keepPreviousData: true
+			})
+			const newProducts = response.products
+			if (newProducts.length === 0) {
+				setAllProductsLoaded(true)
+			} else {
+				setProducts(prevProducts => [...prevProducts, ...newProducts])
+				setPage(prevPage => prevPage + 1)
+			}
+		} catch (error) {
+			console.error('Error loading more products:', error)
+		} finally {
+			setIsLoading(false)
 		}
-	)
-	if (isLoading) return <Loader />
+	}
+
 	return (
 		<section className={catalogStyle.catalog}>
 			<div>
@@ -54,22 +65,30 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 				</div>
 			</div>
 			<SortDropdown sortType={sortType} setSortType={setSortType} />
-			{response.products.length ? (
+			{isLoading && <Loader />}
+			{products.length ? (
 				<>
 					<div className={catalogStyle.items}>
-						{response.products.map(product => (
+						{products.map(product => (
 							<ProductItem key={product.id} product={product} />
 						))}
 					</div>
-					<div className='flex justify-end pt-12 pb-10'>
-						<Button
-							data-hover='See more'
-							variant='black'
-							onClick={() => setPage(page + 1)}
-						>
-							See more
-						</Button>
-					</div>
+					{!allProductsLoaded ? (
+						<div className='flex justify-end pt-12 pb-10'>
+							<Button
+								data-hover='See more'
+								variant='black'
+								onClick={loadMoreProducts}
+								disabled={isLoading}
+							>
+								{isLoading ? 'Loading...' : 'See more'}
+							</Button>
+						</div>
+					) : (
+						<div className='flex justify-end pt-12 pb-10'>
+							<span>No more products.</span>
+						</div>
+					)}
 				</>
 			) : (
 				<div>There are no products</div>

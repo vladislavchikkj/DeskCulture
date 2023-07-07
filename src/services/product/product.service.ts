@@ -15,7 +15,6 @@ export const ProductService = {
 			method: 'GET',
 			params: queryData
 		})
-
 		return data
 	},
 	async getSimilar(id: string | number) {
