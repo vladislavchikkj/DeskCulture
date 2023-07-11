@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const Loader: FC = () => {
-	return <svg></svg>
+	return <div>Loading...</div>
 }
 
 export default Loader

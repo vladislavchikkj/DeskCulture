@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
+import PopUp from '@/ui/common/cart/Cart'
+
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 

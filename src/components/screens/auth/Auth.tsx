@@ -8,9 +8,9 @@ import {
 } from '@/components/common'
 
 import Meta from '@/ui/Meta'
-import Heading from '@/ui/heading/Heading'
-import Field from '@/ui/input/Field'
-import Loader from '@/ui/loader/Loader'
+import Heading from '@/ui/common/heading/Heading'
+import Field from '@/ui/common/input/Field'
+import Loader from '@/ui/common/loader/Loader'
 
 import { IEmailPassword } from '@/store/user/user.interface'
 

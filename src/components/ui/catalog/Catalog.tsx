@@ -2,9 +2,9 @@ import { FC, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
-import Button from '../button/button'
-import Heading from '../heading/Heading'
-import Loader from '../loader/Loader'
+import Button from '../common/button/Button'
+import Heading from '../common/heading/Heading'
+import Loader from '../common/loader/Loader'
 
 import catalogStyle from './catalog.module.scss'
 import ProductItem from './product-item/ProductItem'
@@ -47,7 +47,6 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 			setIsLoading(false)
 		}
 	}
-
 	return (
 		<section className={catalogStyle.catalog}>
 			<div>
@@ -64,6 +63,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 					</Button>
 				</div>
 			</div>
+
 			<SortDropdown sortType={sortType} setSortType={setSortType} />
 			{isLoading && <Loader />}
 			{products.length ? (
