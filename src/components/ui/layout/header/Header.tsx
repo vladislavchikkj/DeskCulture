@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
-import PopUp from '@/ui/common/cart/Cart'
+import FavoriteBtn from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
+import Cart from './cart/Cart'
 import style from './header.module.scss'
-import Favorite from './svg/Heart.svg.svg'
-import Bag from './svg/bag.svg'
 import Dots from './svg/icon_menu.svg.svg'
 import Search from './svg/search.svg'
 
@@ -78,12 +77,8 @@ const Header: FC = () => {
 						</Link>
 					)}
 				</div>
-				<div className={style.favorites}>
-					<Favorite />
-				</div>
-				<div className={style.bag}>
-					<Bag />
-				</div>
+				<FavoriteBtn />
+				<Cart />
 			</div>
 		</header>
 	)

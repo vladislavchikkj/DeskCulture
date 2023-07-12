@@ -19,7 +19,7 @@ const SortDropdown: FC<ISortDropdown> = ({ setSortType, sortType }) => {
 				).map(key => {
 					return (
 						<option
-							key={key}
+							key={EnumProductSort[key]}
 							onChange={() => setSortType(EnumProductSort[key])}
 							value={EnumProductSort[key]}
 						>

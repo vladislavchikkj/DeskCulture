@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
-import Button from '../common/button/Button'
+import Button from '../common/buttons/Button'
 import Heading from '../common/heading/Heading'
 import Loader from '../common/loader/Loader'
 
