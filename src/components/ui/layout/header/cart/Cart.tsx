@@ -20,10 +20,12 @@ const Cart: FC = () => {
 	return (
 		<div className='relative' ref={ref}>
 			<BagBtn onClick={() => setIsShow(!isShow)} number={items.length} />
+
 			<div
 				className={cn(`${style.popup}`, isShow ? 'open-menu' : 'close-menu')}
 			>
-				<div>SHOPPING BAG</div>
+				<div className={style.title}>SHOPPING BAG</div>
+				<div className={style.itemsNum}>2 items</div>
 				<div className={style.cart}>
 					{items.length ? (
 						items.map(item => <CartItem item={item} key={item.id} />)
@@ -39,6 +41,13 @@ const Cart: FC = () => {
 					<button>Place order</button>
 				</div>
 			</div>
+			<div
+				onClick={() => setIsShow(!isShow)}
+				className={cn(
+					`${style.popupWrapper}`,
+					isShow ? 'dark-bg' : 'off-dark-bg '
+				)}
+			></div>
 		</div>
 	)
 }

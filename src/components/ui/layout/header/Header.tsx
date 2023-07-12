@@ -49,7 +49,7 @@ const Header: FC = () => {
 			<div className='grid grid-flow-col justify-self-end'>
 				{!user && (
 					<div className={style.headerButton}>
-						<span className='pl-3 pr-3'>
+						<span className='pl-6 pr-6'>
 							<div data-hover='Sign Up' className={style.textBtn}>
 								<div>Sign Up</div>
 							</div>
@@ -59,7 +59,7 @@ const Header: FC = () => {
 				<div>
 					{!!user ? (
 						<button className={style.headerButton} onClick={() => logout()}>
-							<span className='pl-3 pr-3'>
+							<span className='pl-6 pr-6'>
 								<div data-hover='Kushinada' className={style.textBtn}>
 									<div>Kushinada</div>
 								</div>
@@ -68,7 +68,7 @@ const Header: FC = () => {
 					) : (
 						<Link href={`/auth`}>
 							<span className={style.headerButton}>
-								<span className='pl-3 pr-3'>
+								<span className='pl-6 pr-6'>
 									<div data-hover='Log In' className={style.textBtn}>
 										<div>Log In</div>
 									</div>
