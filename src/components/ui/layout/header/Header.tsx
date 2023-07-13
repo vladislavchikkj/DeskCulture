@@ -6,7 +6,8 @@ import FavoriteBtn from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
-import Cart from './cart/Cart'
+import Cart from '../../common/cart/Cart'
+
 import style from './header.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
 import Search from './svg/search.svg'
@@ -35,18 +36,22 @@ const Header: FC = () => {
 					</div>
 				</div>
 				<div className={`${style.headerButton} ${style.hideBtn}`}>
+					<div data-hover='For the client ›' className={style.textBtn}>
+						<div className='flex gap-2'>About Us</div>
+					</div>
+				</div>
+				<div className={`${style.headerButton} ${style.hideBtn}`}>
 					<div data-hover='Catalog' className={style.textBtn}>
 						<div>Catalog</div>
 					</div>
 				</div>
-
+			</div>
+			<div className={style.mainLogo}>DeskCulture</div>
+			<div className='grid grid-flow-col justify-self-end'>
 				<span className={style.search}>
 					<Search />
 					<span className='pt-0.5 pl-2'>search</span>
 				</span>
-			</div>
-			<div className={style.mainLogo}>DeskCulture</div>
-			<div className='grid grid-flow-col justify-self-end'>
 				{!user && (
 					<div className={style.headerButton}>
 						<span className='pl-6 pr-6'>
