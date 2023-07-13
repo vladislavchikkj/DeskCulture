@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
 import { ICartItem } from '@/types/cart.interface'
@@ -6,19 +5,21 @@ import { ICartItem } from '@/types/cart.interface'
 import { convertPrice } from '@/utils/convertPrice'
 
 import CartActions from './cart-actions/CartActions'
+import style from './cartitem.module.scss'
 
 const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 	return (
-		<div>
-			<Image
+		<div className={style.wrapper}>
+			<img
+				className={style.image}
 				src={item.product.images[0]}
-				width={100}
-				height={100}
 				alt={item.product.name}
 			/>
-			<div>
-				<div>{item.product.name}</div>
-				<div>{convertPrice(item.product.price)}</div>
+			<div className={style.info}>
+				<div>
+					<div className={style.name}>{item.product.name}</div>
+					<div className={style.price}>{convertPrice(item.product.price)}</div>
+				</div>
 
 				<CartActions item={item} />
 			</div>

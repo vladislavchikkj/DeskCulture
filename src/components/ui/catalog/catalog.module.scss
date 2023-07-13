@@ -6,9 +6,11 @@
 	grid-template-columns: repeat(auto-fit, minmax(17vw, 0.7fr));
 	justify-content: center;
 	margin-top: 50px;
-	padding-top: 50px;
+	padding-top: 60px;
 	// gap: 40px;
-	gap: 3vw;
+	gap: 2vw;
+	column-gap: 2vw;
+	row-gap: 3.5vw;
 	border-top: 1px solid rgba(25, 27, 29, 0.1);
 }
 

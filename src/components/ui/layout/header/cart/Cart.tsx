@@ -11,6 +11,7 @@ import { convertPrice } from '@/utils/convertPrice'
 
 import CartItem from './cart-item/CartItem'
 import style from './cart.module.scss'
+import AuthButton from '@/screens/auth/authButton/authButton'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
@@ -24,8 +25,10 @@ const Cart: FC = () => {
 			<div
 				className={cn(`${style.popup}`, isShow ? 'open-menu' : 'close-menu')}
 			>
-				<div className={style.title}>SHOPPING BAG</div>
-				<div className={style.itemsNum}>2 items</div>
+				<div className={style.titleWrapper}>
+					<div className={style.title}>SHOPPING BAG</div>
+					<div className={style.itemsNum}>{items.length} items</div>
+				</div>
 				<div className={style.cart}>
 					{items.length ? (
 						items.map(item => <CartItem item={item} key={item.id} />)
@@ -33,12 +36,12 @@ const Cart: FC = () => {
 						<div>YOUR BAG IS EMPTY</div>
 					)}
 				</div>
-				<div>
-					<div>Total:</div>
-					<div>{convertPrice(total)}</div>
+				<div className={style.total}>
+					<div className={style.totalText}>Total:</div>
+					<div className={style.totalPrice}>{convertPrice(total)}</div>
 				</div>
-				<div>
-					<button>Place order</button>
+				<div className={style.totalBtn}>
+					<AuthButton variant='black'>View my Shopping Bag</AuthButton>
 				</div>
 			</div>
 			<div

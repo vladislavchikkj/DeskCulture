@@ -16,7 +16,7 @@ const AuthButton: FC<PropsWithChildren<IButton>> = ({
 		<button
 			{...rest}
 			className={cn(
-				`font-semibold px-20 py-4 ${style.button}`,
+				`font-semibold ${style.button}`,
 				{
 					'text-white bg-primary': variant === 'grey',
 					'text-white bg-black': variant === 'black',

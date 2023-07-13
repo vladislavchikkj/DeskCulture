@@ -1,10 +1,12 @@
 import { FC } from 'react'
-import { FiMinus, FiPlus, FiTrash } from 'react-icons/fi'
+import { FiMinus, FiPlus } from 'react-icons/fi'
 
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 
 import { ICartItem } from '@/types/cart.interface'
+
+import style from './cartactions.module.scss'
 
 const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 	const { removeFromCart, changeQuantity } = useActions()
@@ -12,20 +14,25 @@ const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 	const quantity = items.find(cartItem => cartItem.id === item.id)?.quantity
 	return (
 		<div>
-			<div>
+			<div className={style.counterWr}>
 				<button
-					onClick={() => changeQuantity({ id: item.id, type: 'minus' })}
-					disabled={quantity === 1}
+					className={style.remove}
+					onClick={() => removeFromCart({ id: item.id })}
 				>
-					<FiMinus fontSize={13} />
+					remove
 				</button>
-				<input disabled readOnly value={quantity} />
-				<button onClick={() => changeQuantity({ id: item.id, type: 'plus' })}>
-					<FiPlus fontSize={13} />
-				</button>
-				<button onClick={() => removeFromCart({ id: item.id })}>
-					<FiTrash />
-				</button>
+				<div className={style.counter}>
+					<button
+						onClick={() => changeQuantity({ id: item.id, type: 'minus' })}
+						disabled={quantity === 1}
+					>
+						<FiMinus fontSize={13} />
+					</button>
+					<div>{quantity}</div>
+					<button onClick={() => changeQuantity({ id: item.id, type: 'plus' })}>
+						<FiPlus fontSize={13} />
+					</button>
+				</div>
 			</div>
 		</div>
 	)
