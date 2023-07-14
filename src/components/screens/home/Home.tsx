@@ -14,8 +14,7 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 			autoHide
 			universal={true}
 			style={{
-				height: '100vh',
-				zIndex: 101
+				height: '100vh'
 			}}
 		>
 			<Meta title='Home'>

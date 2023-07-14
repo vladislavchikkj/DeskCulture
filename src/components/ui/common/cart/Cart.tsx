@@ -17,7 +17,6 @@ const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const { items, total } = useCart()
 	const { push } = useRouter()
-
 	return (
 		<div className='relative' ref={ref}>
 			<BagBtn onClick={() => setIsShow(!isShow)} number={items.length} />

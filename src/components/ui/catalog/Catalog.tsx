@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { TypePaginationProducts } from '@/types/product.interface'
 
@@ -26,6 +26,29 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
 
+	useEffect(() => {
+		// Обновление списка продуктов при изменении типа сортировки
+		const updateProducts = async () => {
+			setIsLoading(true)
+			try {
+				const response = await ProductService.getAll({
+					page: 1,
+					perPage: 6,
+					sort: sortType
+				})
+				setProducts(response.products)
+				setPage(1)
+				setAllProductsLoaded(false)
+			} catch (error) {
+				console.error('Error updating products:', error)
+			} finally {
+				setIsLoading(false)
+			}
+		}
+
+		updateProducts()
+	}, [sortType])
+
 	const loadMoreProducts = async () => {
 		setIsLoading(true)
 		try {
@@ -38,7 +61,11 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 			if (newProducts.length === 0) {
 				setAllProductsLoaded(true)
 			} else {
-				setProducts(prevProducts => [...prevProducts, ...newProducts])
+				// Удаление дубликатов из новых продуктов
+				const uniqueNewProducts = newProducts.filter(
+					newProduct => !products.some(product => product.id === newProduct.id)
+				)
+				setProducts(prevProducts => [...prevProducts, ...uniqueNewProducts])
 				setPage(prevPage => prevPage + 1)
 			}
 		} catch (error) {
