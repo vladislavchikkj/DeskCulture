@@ -20,7 +20,7 @@ const Header: FC = () => {
 		<header className={style.header}>
 			<div className='grid grid-flow-col'>
 				<div className={style.menu}>
-					<div className='pb-0.5'>
+					<div>
 						<Dots />
 					</div>
 					<div data-hover='menu' className={style.textBtn}>
@@ -36,7 +36,7 @@ const Header: FC = () => {
 					</div>
 				</div>
 				<div className={`${style.headerButton} ${style.hideBtn}`}>
-					<div data-hover='For the client ›' className={style.textBtn}>
+					<div data-hover='About Us' className={style.textBtn}>
 						<div className='flex gap-2'>About Us</div>
 					</div>
 				</div>

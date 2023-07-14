@@ -25,7 +25,6 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const [products, setProducts] = useState(data.products)
 	const [isLoading, setIsLoading] = useState(false)
 	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
-
 	useEffect(() => {
 		// Обновление списка продуктов при изменении типа сортировки
 		const updateProducts = async () => {
