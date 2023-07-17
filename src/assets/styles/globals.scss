@@ -17,9 +17,9 @@ body {
 	opacity: 0.2 !important;
 }
 
-.container {
-	padding-left: 10rem;
-	padding-right: 10rem;
+.container-f {
+	padding-left: 15vw;
+	padding-right: 15vw;
 }
 
 .disabled {
@@ -70,6 +70,9 @@ body {
 	}
 }
 
+::-webkit-scrollbar {
+	width: 0;
+}
 // // Popup scrollbar
 // body::-webkit-scrollbar {
 // 	width: 6px;

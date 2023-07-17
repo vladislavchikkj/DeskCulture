@@ -74,7 +74,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 		}
 	}
 	return (
-		<section className={catalogStyle.catalog}>
+		<section className={`${catalogStyle.catalog} container-f`}>
 			<div>
 				{title && <Heading variant='catalog'>{title}</Heading>}
 				<div className={catalogStyle.btnWrapper}>
