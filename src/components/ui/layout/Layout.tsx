@@ -1,12 +1,16 @@
 import { FC, PropsWithChildren } from 'react'
 
+import SmoothScrollContainer from '@/components/common/smoothScrollContainer/SmoothScrollContainer'
+
 import Header from './header/Header'
 
 const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	return (
 		<>
-			<Header />
-			<main>{children}</main>
+			<SmoothScrollContainer>
+				<Header />
+				<main>{children}</main>
+			</SmoothScrollContainer>
 		</>
 	)
 }
