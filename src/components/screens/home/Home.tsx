@@ -43,7 +43,7 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={0} speed={0.7} style={{ transition: '.1s' }}>
-							<div className={style.homeGreyBg}>
+							<div className={style.intro}>
 								<ParallaxLayer offset={0} speed={0.2}>
 									<div className='container-f'>
 										<div className={style.title}>
