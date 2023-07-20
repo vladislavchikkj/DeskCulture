@@ -95,3 +95,117 @@
 .greyTypeBtn span {
 	transition: all 0.3s;
 }
+
+.btnArrow {
+	width: 1.5vw;
+	height: 1.5vw;
+	color: #191b1d;
+	background: rgba(25, 27, 29, 0.1);
+
+	text-align: center;
+	font-size: 0.7vw;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: -0.64px;
+
+	border-radius: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	position: relative;
+	overflow: hidden;
+}
+
+.btnArrow:hover {
+	cursor: pointer;
+}
+
+/*btnArrow:before (attr data-hover)*/
+.btnArrow:hover:before {
+	transform: translate(0, 0);
+}
+.btnArrow:before {
+	width: 1.5vw;
+	height: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	content: attr(data-hover);
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transform: translate(0, 170%);
+	transition: all 0.3s;
+	color: white;
+	background: #191b1d;
+	border-radius: 60px;
+}
+/*btnArrow div (btnArrow text before hover)*/
+.btnArrow:hover span {
+	transform: translate(0, -170%);
+}
+.btnArrow span {
+	transition: all 0.3s;
+}
+
+.btnPlus {
+	width: 1.6vw;
+	height: 1.6vw;
+	color: #191b1d;
+	background: rgba(25, 27, 29, 0.1);
+
+	text-align: center;
+	font-size: 1.3vw;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1vw;
+	letter-spacing: -0.64px;
+
+	border-radius: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	position: relative;
+	overflow: hidden;
+}
+
+.btnPlus:hover {
+	cursor: pointer;
+}
+
+/*btnPlus:before (attr data-hover)*/
+.btnPlus:hover:before {
+	transform: translate(0, 0);
+}
+.btnPlus:before {
+	width: 1.5vw;
+	height: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	content: attr(data-hover);
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transform: translate(0, 170%);
+	transition: all 0.3s;
+	color: white;
+	background: #191b1d;
+	border-radius: 60px;
+}
+/*btnPlus div (btnPlus text before hover)*/
+.btnPlus:hover span {
+	transform: translate(0, -170%);
+}
+.btnPlus span {
+	transition: all 0.3s;
+}

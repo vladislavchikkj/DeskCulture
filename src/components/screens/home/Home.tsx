@@ -13,17 +13,23 @@ import { TypePaginationProducts } from '@/types/product.interface'
 import style from './home.module.scss'
 import testImg3 from './img/category-1.png'
 import testImg4 from './img/category-2.png'
+import rev1 from './img/rev-1.png'
+import rev2 from './img/rev-2.png'
+import rev3 from './img/rev-3.png'
 import testImg from './img/test-1.png'
 import testImg2 from './img/test-2.png'
+import FacebookImg from './svg/facebook.svg'
+import InstImg from './svg/instagram.svg'
 import Logo from './svg/logo.svg'
 import LowbarBtn from './svg/lowbar.svg'
+import TiktokImg from './svg/tiktok.svg'
 
 const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 	return (
 		<Meta title='Home'>
 			<Layout>
 				<section className={style.home}>
-					<Parallax pages={5} style={{ top: '0', left: '0' }}>
+					<Parallax pages={4} style={{ top: '0', left: '0' }}>
 						<ParallaxLayer offset={0} speed={0.2}>
 							<div className={style.video}>
 								<ReactPlayer
@@ -144,25 +150,136 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 							</ParallaxLayer>
 							<ParallaxLayer offset={2.95} speed={0.7}>
 								<div className={`${style.social} container-f`}>
-									<div className={style.btnWrapper}>
-										<span className={style.numdot}>03</span>
-										<Button data-hover='Follow Us' variant='grey'>
-											Follow Us
-										</Button>
-									</div>
-									<div className={style.categoryName}>
-										<div>
-											Connect with Us! Explore the World of Stylish Desk
-											Accessories on Our Social Media Platforms.
+									<div className={style.socialInfo}>
+										<div className={style.btnWrapper}>Follow Us</div>
+										<div className={style.categoryName}>
+											<div className={style.socialTitle}>
+												Connect with Us! Explore the World of Stylish Desk
+												Accessories on Our Social Media Platforms.
+											</div>
+											<div className={style.moreBtn}>
+												<Button data-hover='More About Us' variant='grey'>
+													More About Us
+												</Button>
+											</div>
 										</div>
-										<div>
-											<Button data-hover='More About Us' variant='grey'>
-												More About Us
+									</div>
+									<div className={style.slider}>
+										<div className={style.sliderBtns}>
+											<Button data-hover='←' variant='btnArrow'>
+												←
 											</Button>
+											<Button data-hover='→' variant='btnArrow'>
+												→
+											</Button>
+										</div>
+										<div className={style.links}>
+											<div className={style.link}>
+												<div className={style.linkImg}>
+													<InstImg />
+												</div>
+												<div className={style.linkDescr}>
+													<span className={style.linkName}>Instagram</span>
+													<Button data-hover='+' variant='btnPlus'>
+														+
+													</Button>
+												</div>
+											</div>
+											<div className={style.link}>
+												<div className={style.linkImg}>
+													<FacebookImg />
+												</div>
+												<div className={style.linkDescr}>
+													<span className={style.linkName}>Facebook</span>
+													<Button data-hover='+' variant='btnPlus'>
+														+
+													</Button>
+												</div>
+											</div>
+											<div className={style.link}>
+												<div className={style.linkImg}>
+													<TiktokImg />
+												</div>
+												<div className={style.linkDescr}>
+													<span className={style.linkName}>Tiktok</span>
+													<Button data-hover='+' variant='btnPlus'>
+														+
+													</Button>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</ParallaxLayer>
+						</ParallaxLayer>
+						<ParallaxLayer offset={2.8} speed={2}>
+							<div className={`${style.reviews}  container-f`}>
+								<div className={style.reviews__header}>
+									<span className={style.reviews__title}>Reviews</span>
+									<Button data-hover='Read More' variant='grey'>
+										Read More
+									</Button>
+								</div>
+								<div className={style.reviews__items}>
+									<div className={style.reviews__item}>
+										<Image
+											className={style.reviews__img}
+											src={rev1}
+											alt='img'
+										></Image>
+										<div className={style.reviews__info}>
+											<div className={style.reviews__name}>Rob Stevenson</div>
+											<div className={style.reviews__text}>
+												This luxurious Grey Desk Mat, made from soft cloth is
+												perfect for any desk setup. Give your home office a
+												modern look and achieve the perfect balance of control
+												and speed with this micro-textured desk pad to enhance
+												your performance.
+											</div>
+											<div className={style.reviews__rating}>Rating</div>
+											<div className={style.reviews__rating}>Etc.</div>
+										</div>
+									</div>
+									<div className={style.reviews__item}>
+										<Image
+											className={style.reviews__img}
+											src={rev2}
+											alt='img'
+										></Image>
+										<div className={style.reviews__info}>
+											<div className={style.reviews__name}>Rob Stevenson</div>
+											<div className={style.reviews__text}>
+												This luxurious Grey Desk Mat, made from soft cloth is
+												perfect for any desk setup. Give your home office a
+												modern look and achieve the perfect balance of control
+												and speed with this micro-textured desk pad to enhance
+												your performance.
+											</div>
+											<div className={style.reviews__rating}>Rating</div>
+											<div className={style.reviews__rating}>Etc.</div>
+										</div>
+									</div>
+									<div className={style.reviews__item}>
+										<Image
+											className={style.reviews__img}
+											src={rev3}
+											alt='img'
+										></Image>
+										<div className={style.reviews__info}>
+											<div className={style.reviews__name}>Rob Stevenson</div>
+											<div className={style.reviews__text}>
+												This luxurious Grey Desk Mat, made from soft cloth is
+												perfect for any desk setup. Give your home office a
+												modern look and achieve the perfect balance of control
+												and speed with this micro-textured desk pad to enhance
+												your performance.
+											</div>
+											<div className={style.reviews__rating}>Rating</div>
+											<div className={style.reviews__rating}>Etc.</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</ParallaxLayer>
 					</Parallax>
 					<div className={`${style.lowbar} container-f`}>
