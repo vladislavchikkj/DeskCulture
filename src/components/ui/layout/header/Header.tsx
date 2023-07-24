@@ -40,13 +40,17 @@ const Header: FC = () => {
 						<div className='flex gap-2'>About Us</div>
 					</div>
 				</div>
-				<div className={`${style.headerButton} ${style.hideBtn}`}>
-					<div data-hover='Catalog' className={style.textBtn}>
-						<div>Catalog</div>
+				<Link href={`/catalog`}>
+					<div className={`${style.headerButton} ${style.hideBtn}`}>
+						<div data-hover='Catalog' className={style.textBtn}>
+							<div>Catalog</div>
+						</div>
 					</div>
-				</div>
+				</Link>
 			</div>
-			<div className={style.mainLogo}>DeskCulture</div>
+			<div className={style.mainLogo}>
+				<Link href={`/`}>DeskCulture</Link>
+			</div>
 			<div className='grid grid-flow-col justify-self-end'>
 				<span className={style.search}>
 					<Search />
