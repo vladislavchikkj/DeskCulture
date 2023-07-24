@@ -49,7 +49,9 @@ const Cart: FC = () => {
 					`${style.popupWrapper}`,
 					isShow ? 'dark-bg' : 'off-dark-bg '
 				)}
-			></div>
+			>
+				123
+			</div>
 		</div>
 	)
 }
