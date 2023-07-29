@@ -6,7 +6,7 @@ import 'react-html5video/dist/styles.css'
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
 
-import { TypePaginationProducts } from '@/types/product.interface'
+import { TypePaginationCategories } from '@/types/product.interface'
 
 import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
@@ -17,7 +17,8 @@ import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 
-const Home: FC<TypePaginationProducts> = ({ products, length }) => {
+const Home: FC<TypePaginationCategories> = ({ products, length }) => {
+	console.log(products)
 	return (
 		<Meta title='Home'>
 			<Layout>
@@ -48,8 +49,6 @@ const Home: FC<TypePaginationProducts> = ({ products, length }) => {
 					</Parallax>
 					<LowBar />
 				</section>
-
-				{/* <Catalog title='Catalog' data={{ products, length }} /> */}
 			</Layout>
 		</Meta>
 	)

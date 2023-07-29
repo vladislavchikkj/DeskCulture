@@ -6,10 +6,11 @@ const CATEGORIES = 'categories'
 
 export const CategoryService = {
 	async getAll() {
-		return axiosClassic<ICategory[]>({
+		const { data } = await axiosClassic<ICategory[]>({
 			url: CATEGORIES,
 			method: 'GET'
 		})
+		return data
 	},
 	async getById(id: string | number) {
 		return instance<ICategory>({

@@ -1,15 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
-
-import { useOutside } from '@/hooks/useOutside'
+import { Dispatch, FC, MutableRefObject, SetStateAction } from 'react'
 
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 import { ProductService } from '@/services/product/product.service'
 
-const Search: FC = () => {
+type SearchType = {
+	isShow: boolean
+	setIsShow: Dispatch<SetStateAction<boolean>>
+	headerRef: MutableRefObject<null | HTMLElement>
+}
+
+const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 	const { query } = useRouter()
 
 	const { data } = useQuery(['search products', query.term], () =>
@@ -17,11 +21,15 @@ const Search: FC = () => {
 			searchTerm: query.term as string
 		})
 	)
-	const { isShow, setIsShow, ref } = useOutside(false)
 	return (
 		<>
 			<div className='flex'>
-				<SearchIcon onClick={() => setIsShow(!isShow)} />
+				<SearchIcon
+					onClick={() => {
+						console.log(headerRef.current?.offsetHeight)
+						setIsShow(!isShow)
+					}}
+				/>
 				<span className='pt-0.5 pl-2'>search</span>
 			</div>
 			<div
@@ -30,7 +38,7 @@ const Search: FC = () => {
 					isShow ? `${style.openSearch}` : `${style.closeSearch}`
 				)}
 			>
-				hi-may name is
+				hi my name is
 			</div>
 			<div
 				onClick={() => setIsShow(!isShow)}

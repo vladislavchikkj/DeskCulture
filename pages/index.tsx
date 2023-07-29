@@ -1,23 +1,27 @@
 import { GetStaticProps, NextPage } from 'next'
 
-import { TypePaginationProducts } from '@/types/product.interface'
+import { ICategory } from '@/types/category.interface'
 
 import Home from '@/screens/home/Home'
-import { ProductService } from '@/services/product/product.service'
+import { CategoryService } from '@/services/category.service'
 
-const HomePage: NextPage<TypePaginationProducts> = ({ length, products }) => {
-	return <Home products={products} length={length} />
+const HomePage: NextPage<{ categories: ICategory[] }> = props => {
+	return <Home products={props.categories} length={length} />
 }
 
-export const getStaticProps: GetStaticProps<
-	TypePaginationProducts
-> = async () => {
-	const data = await ProductService.getAll({
-		page: 1,
-		perPage: 6
-	})
+export const getStaticProps: GetStaticProps<{
+	categories: ICategory[]
+	// setups: ISetups[]
+}> = async () => {
+	const categories = await CategoryService.getAll()
+
+	// const setups = await SetupService.getAll()
+	const obj = {
+		categories: categories
+		// setups: setups
+	}
 	return {
-		props: data
+		props: obj
 	}
 }
 

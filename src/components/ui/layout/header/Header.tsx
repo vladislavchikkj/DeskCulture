@@ -1,11 +1,12 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 
 import FavoriteBtn from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
 import Search from '@/ui/common/search/Search'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
+import { useOutside } from '@/hooks/useOutside'
 
 import Cart from '../../common/cart/Cart'
 
@@ -15,9 +16,11 @@ import Dots from './svg/icon_menu.svg.svg'
 const Header: FC = () => {
 	const { user } = useAuth()
 	const { logout } = useActions()
+	const { isShow, setIsShow, ref } = useOutside(false)
+	const headerRef = useRef<HTMLElement>(null)
 
 	return (
-		<header className={style.header}>
+		<header className={style.header} ref={headerRef}>
 			<div className='grid grid-flow-col'>
 				<div className={style.menu}>
 					<div>
@@ -53,7 +56,7 @@ const Header: FC = () => {
 			</div>
 			<div className='grid grid-flow-col justify-self-end'>
 				<span className={style.search}>
-					<Search />
+					<Search isShow={isShow} setIsShow={setIsShow} headerRef={headerRef} />
 				</span>
 				{!user && (
 					<div className={style.headerButton}>
