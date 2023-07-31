@@ -1,5 +1,6 @@
 import { ICategory } from './category.interface'
 import { IReview } from './review.interface'
+import { ISetups } from './setups.interface'
 
 export interface IProduct {
 	id: number
@@ -27,10 +28,13 @@ export type TypePaginationProducts = {
 }
 
 export type TypePaginationCategories = {
-	length: number
-	products: ICategory[]
+	categoriesLength: number
+	categories: ICategory[]
 }
 export type TypePaginationSetup = {
-	length: number
-	products: IProduct[]
+	setupsLength: number
+	setups: ISetups[]
 }
+
+export type TypeCombinedPagination = TypePaginationCategories &
+	TypePaginationSetup
