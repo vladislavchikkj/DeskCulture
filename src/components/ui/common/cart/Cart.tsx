@@ -30,7 +30,13 @@ const Cart: FC = () => {
 				</div>
 				<div className={style.cart}>
 					{items.length ? (
-						items.map(item => <CartItem item={item} key={item.product.id} />)
+						items.map(item => (
+							<CartItem
+								item={item}
+								key={item.product.id}
+								// isFavotites={item.product.id % 2 == 0}
+							/>
+						))
 					) : (
 						<div>YOUR BAG IS EMPTY</div>
 					)}

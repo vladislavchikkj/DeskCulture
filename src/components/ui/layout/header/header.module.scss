@@ -1,4 +1,7 @@
 .header {
+	position: relative;
+}
+.headerWrapper {
 	position: fixed;
 	width: 100%;
 	display: grid;
@@ -145,4 +148,11 @@
 	.search {
 		font-size: 1.3vw;
 	}
+}
+
+.openSearch {
+	background: #ffffff00;
+}
+.closeSearch {
+	background: #cdcecf;
 }
