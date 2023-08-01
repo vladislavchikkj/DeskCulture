@@ -1,13 +1,17 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
-import style from './homecategory.module.scss'
-import testImg3 from './img/category-1.png'
-import testImg4 from './img/category-2.png'
+import { TypePaginationCategories } from '@/types/product.interface'
 
-const HomeCategory: FC = () => {
+import style from './homecategory.module.scss'
+
+const HomeCategory: FC<TypePaginationCategories> = ({
+	categories,
+	categoriesLength
+}) => {
+	// Создаем новый массив, содержащий только первые два сетапа
+	const firstTwoSetups = categories.slice(0, categoriesLength)
 	return (
 		<>
 			<div className={style.category}>
@@ -27,24 +31,21 @@ const HomeCategory: FC = () => {
 							chargers, and much more.
 						</h3>
 					</div>
-					<div className={style.item}>
-						<Image src={testImg3} alt={'img'}></Image>
-						<div className={style.descr}>
-							<h3>Desk Mats</h3>
-							<h4>
-								Elevate your workspace with our premium mouse pads, designed to
-								enhance your productivity and declutter your setup.
-							</h4>
+					{firstTwoSetups.map(categories => (
+						<div key={categories.id} className={style.item}>
+							<div className={style.imageWrapper}>
+								<img
+									src={categories.image}
+									alt={categories.name}
+									className={style.image}
+								/>
+							</div>
+							<div className={style.descr}>
+								<h3>{categories.name}</h3>
+								<h4>{categories.description}</h4>
+							</div>
 						</div>
-					</div>
-					<div className={style.item}>
-						<Image src={testImg4} alt={'img'}></Image>
-						<h3>Stands</h3>
-						<h4>
-							Ideal for crafting a versatile workstation, catering to laptops,
-							smartphones, and tablets alike.
-						</h4>
-					</div>
+					))}
 				</div>
 			</div>
 		</>

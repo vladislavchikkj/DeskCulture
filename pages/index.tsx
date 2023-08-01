@@ -2,9 +2,11 @@ import { GetStaticProps, NextPage } from 'next'
 
 import { ICategory } from '@/types/category.interface'
 import { TypeCombinedPagination } from '@/types/product.interface'
+import { ISetups } from '@/types/setups.interface'
 
 import Home from '@/screens/home/Home'
 import { CategoryService } from '@/services/category.service'
+import { SetupsService } from '@/services/setups.service'
 
 const HomePage: NextPage<TypeCombinedPagination> = props => {
 	return (
@@ -19,14 +21,14 @@ const HomePage: NextPage<TypeCombinedPagination> = props => {
 
 export const getStaticProps: GetStaticProps<{
 	categories: ICategory[]
-	// setups: ISetups[]
+	setups: ISetups[]
 }> = async () => {
 	const categories = await CategoryService.getAll()
-	// const setups = await SetupsService.getAll()
+	const setups = await SetupsService.getAll()
 
 	const obj = {
-		categories: categories
-		// setups: setups
+		categories: categories,
+		setups: setups
 	}
 	return {
 		props: obj

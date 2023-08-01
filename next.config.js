@@ -6,7 +6,14 @@ const nextConfig = {
 		APP_URL: process.env.APP_URL
 	},
 	images: {
-		domains: ['loremflickr.com', 'www.aptronixindia.com', 'picsum.photos']
+		domains: [
+			'loremflickr.com',
+			'www.aptronixindia.com',
+			'picsum.photos',
+			'i.pinimg.com',
+			'i.ytimg.com',
+			'blog-imgs-110.fc2.com'
+		]
 	},
 	webpack(config) {
 		const fileLoaderRule = config.module.rules.find(rule =>

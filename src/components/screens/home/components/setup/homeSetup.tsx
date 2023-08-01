@@ -1,13 +1,15 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
-import style from './homesetup.module.scss'
-import testImg from './img/test-1.png'
-import testImg2 from './img/test-2.png'
+import { TypePaginationSetup } from '@/types/product.interface'
 
-const HomeSetup: FC = () => {
+import style from './homesetup.module.scss'
+
+const HomeSetup: FC<TypePaginationSetup> = ({ setups, setupsLength }) => {
+	// Создаем новый массив, содержащий только первые два сетапа
+	const firstTwoSetups = setups.slice(0, setupsLength)
+
 	return (
 		<>
 			<div className={style.category}>
@@ -27,29 +29,25 @@ const HomeSetup: FC = () => {
 							chargers, and much more.
 						</h3>
 					</div>
-					<div className={style.item}>
-						<Image src={testImg2} alt={'img'}></Image>
-						<div className={style.descr}>
-							<h3>White Style SetUp</h3>
-							<h4>
-								A white modern workstation epitomizes elegance and
-								functionality. It features clean lines and minimalist design,
-								with ample space and storage.
-							</h4>
+					{firstTwoSetups.map(setup => (
+						<div key={setup.id} className={style.item}>
+							<div className={style.imageWrapper}>
+								<img
+									src={setup.image}
+									alt={setup.name}
+									className={style.image}
+								/>
+							</div>
+							<div className={style.descr}>
+								<h3>{setup.name}</h3>
+								<h4>{setup.description}</h4>
+							</div>
 						</div>
-					</div>
-					<div className={style.item}>
-						<Image src={testImg} alt={'img'}></Image>
-						<h3>Warm Style SetUp</h3>
-						<h4>
-							A warm, modern workstation with wood tones exudes a cozy and
-							inviting atmosphere. It combines sleek contemporary design with
-							natural elements, creating a harmonious balance.
-						</h4>
-					</div>
+					))}
 				</div>
 			</div>
 		</>
 	)
 }
+
 export default HomeSetup

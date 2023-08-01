@@ -17,7 +17,13 @@ import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 
-const Home: FC<TypeCombinedPagination> = ({ categories, categoriesLength }) => {
+const Home: FC<TypeCombinedPagination> = ({
+	categories,
+	categoriesLength,
+	setups,
+	setupsLength
+}) => {
+	console.log(setups)
 	return (
 		<Meta title='Home'>
 			<Layout>
@@ -33,10 +39,10 @@ const Home: FC<TypeCombinedPagination> = ({ categories, categoriesLength }) => {
 								</ParallaxLayer>
 							</div>
 							<ParallaxLayer offset={1.6} speed={0.1}>
-								<HomeSetup />
+								<HomeSetup setups={setups} setupsLength={2} />
 							</ParallaxLayer>
 							<ParallaxLayer offset={2.3} speed={0.3}>
-								<HomeCategory />
+								<HomeCategory categories={categories} categoriesLength={2} />
 							</ParallaxLayer>
 							<ParallaxLayer offset={2.95} speed={0.7}>
 								<HomeSocial />
