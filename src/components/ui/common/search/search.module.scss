@@ -7,7 +7,7 @@
 	background: #ffffff;
 	z-index: 11;
 	margin: 0 auto;
-	padding-top: 5vw;
+	padding: 5vw;
 }
 .popupWrapper {
 	margin: 0 auto;
@@ -34,6 +34,13 @@
 	animation: off 1s forwards;
 }
 
+.searchl {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 @keyframes on {
 	from {
 		opacity: 0;
@@ -48,4 +55,102 @@
 	to {
 		background-color: rgba(0, 0, 0, 0.514);
 	}
+}
+
+.searchItems {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 2vw;
+	overflow: scroll;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+.searchItemsWrapper {
+	display: flex;
+	gap: 1vw;
+	width: 100%;
+	padding-bottom: 1.5vw;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+.searchItemInfo {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.searchItemNameWr {
+	display: flex;
+	flex-direction: column;
+}
+.searchItemName {
+	color: #000;
+	font-family: Inter;
+	font-size: 0.8vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 1.2vw; /* 180% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.searchItemSlug {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1vw; /* 163.637% */
+	letter-spacing: 0.26px;
+}
+.searchItemImage {
+	width: 7vw;
+	height: 9vw;
+	flex-shrink: 0;
+	object-fit: cover;
+	background: rgb(161, 161, 161);
+}
+
+.addToBag {
+	display: flex;
+	align-items: flex-end;
+
+	color: rgba(0, 0, 0, 0.5);
+	text-align: right;
+	font-family: Inter;
+	font-size: 0.6vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12.65px; /* 126.5% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.addToFav {
+	display: flex;
+	align-items: flex-end;
+
+	color: rgba(0, 0, 0, 0.5);
+	text-align: right;
+	font-family: Inter;
+	font-size: 0.6vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12.65px; /* 126.5% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+
+.price {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	color: #a08750;
+	text-align: right;
+	font-family: Inter;
+	font-size: 0.8vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 22px; /* 183.333% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
 }

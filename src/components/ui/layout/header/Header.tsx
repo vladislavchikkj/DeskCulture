@@ -58,11 +58,17 @@ const Header: FC = () => {
 						</div>
 					</Link>
 				</div>
-				<div className={style.mainLogo}>
+				<div className={style.logoPlace}>
 					{!isShow ? (
-						<Link href={`/`}>DeskCulture</Link>
+						<div className={style.mainLogo}>
+							<Link href={`/`}>DeskCulture</Link>
+						</div>
 					) : (
-						<input type='text' />
+						<input
+							className={style.searchInput}
+							type='text'
+							placeholder='Search...'
+						/>
 					)}
 				</div>
 				<div className='grid grid-flow-col justify-self-end'>

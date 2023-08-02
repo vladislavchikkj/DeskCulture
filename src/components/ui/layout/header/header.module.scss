@@ -49,7 +49,13 @@
 	text-transform: uppercase;
 	cursor: pointer;
 }
-
+.logoPlace {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 0.1vw;
+}
 .mainLogo {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -69,7 +75,7 @@
 .search {
 	display: flex;
 	align-items: center;
-	gap: 2;
+	gap: 2vw;
 	padding-left: 2rem;
 	padding-top: 2px;
 	color: rgba(25, 27, 29, 0.5);
@@ -155,4 +161,31 @@
 }
 .closeSearch {
 	background: #cdcecf;
+}
+
+.searchInput {
+	width: 100%;
+	text-decoration: none;
+	border: none;
+	border-radius: 0.4rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	background: rgba(0, 0, 0, 0);
+	padding-left: 1.5vw;
+
+	color: rgb(0, 0, 0);
+	font-family: Inter;
+	font-size: 1vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 40px; /* 166.666% */
+	letter-spacing: -0.09vw;
+}
+.searchInput::placeholder {
+	font-size: 1.2vw;
+}
+.searchInput:focus {
+	outline: none;
+	box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
 }
