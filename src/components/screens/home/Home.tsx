@@ -23,7 +23,6 @@ const Home: FC<TypeCombinedPagination> = ({
 	setups,
 	setupsLength
 }) => {
-	console.log(setups)
 	return (
 		<Meta title='Home'>
 			<Layout>

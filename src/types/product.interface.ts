@@ -38,3 +38,9 @@ export type TypePaginationSetup = {
 
 export type TypeCombinedPagination = TypePaginationCategories &
 	TypePaginationSetup
+
+export type TypePaginationСatalog = {
+	products: IProduct[]
+	categories: ICategory[]
+	setups: ISetups[]
+}

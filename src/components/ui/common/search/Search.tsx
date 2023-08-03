@@ -46,7 +46,7 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 							)}
 						>
 							<div className={style.searchItems}>
-								<div className='container-f'>
+								<div className={`${style.searchItem} container-f`}>
 									<div className={`${style.searchItemsWrapper} `}>
 										<img
 											className={style.searchItemImage}
@@ -74,7 +74,9 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 										</div>
 									</div>
 									<div className='flex justify-end pt-4'>
-										<Button variant={'black'}>See more</Button>
+										<Button data-hover='See more' variant={'black'}>
+											See more
+										</Button>
 									</div>
 								</div>
 							</div>

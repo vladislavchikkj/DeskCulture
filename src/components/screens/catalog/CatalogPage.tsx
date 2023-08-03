@@ -5,15 +5,19 @@ import Meta from '@/ui/Meta'
 import Catalog from '@/ui/catalog/Catalog'
 import Layout from '@/ui/layout/Layout'
 
-import { TypePaginationProducts } from '@/types/product.interface'
+import { TypePaginationСatalog } from '@/types/product.interface'
 
-const CatalogPage: FC<TypePaginationProducts> = ({ products, length }) => {
+const CatalogPage: FC<TypePaginationСatalog> = ({
+	products,
+	categories,
+	setups
+}) => {
 	return (
 		<Meta title='Catalog'>
 			<Layout>
-				<Parallax pages={1.9} style={{ top: '0', left: '0' }}>
+				<Parallax pages={2.5} style={{ top: '0', left: '0' }}>
 					<ParallaxLayer offset={0} speed={0.2}>
-						<Catalog title='Catalog' data={{ products, length }} />
+						<Catalog title='Catalog' data={{ products, categories, setups }} />
 					</ParallaxLayer>
 				</Parallax>
 			</Layout>
