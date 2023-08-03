@@ -159,9 +159,6 @@
 .openSearch {
 	background: #ffffff00;
 }
-.closeSearch {
-	background: #cdcecf;
-}
 
 .searchInput {
 	width: 100%;
@@ -188,4 +185,9 @@
 .searchInput:focus {
 	outline: none;
 	box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+}
+
+.whiteBackground {
+	background-color: white; /* Измените на желаемый цвет */
+	/* Другие стили для хедера, когда он прокручен вниз */
 }

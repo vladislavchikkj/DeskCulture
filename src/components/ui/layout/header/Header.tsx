@@ -2,7 +2,7 @@ import cn from 'clsx'
 import Link from 'next/link'
 import { FC, useRef } from 'react'
 
-import FavoriteBtn from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
+import Favorite from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
 import Search from '@/ui/common/search/Search'
 
 import { useActions } from '@/hooks/useActions'
@@ -19,12 +19,33 @@ const Header: FC = () => {
 	const { logout } = useActions()
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
+	// const [isHeaderWhite, setIsHeaderWhite] = useState(false)
 
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const scrollPosition = window.scrollY
+	// 		const пороговое_значение = 100
+	// 		setIsHeaderWhite(scrollPosition > пороговое_значение)
+	// 	}
+
+	// 	window.addEventListener('scroll', handleScroll)
+
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll)
+	// 	}
+	// }, [])
 	return (
-		<header className={style.header} ref={headerRef}>
+		<header
+			className={cn(
+				style.header
+				//  { [style.whiteBackground]: isHeaderWhite }
+			)}
+			ref={headerRef}
+		>
 			<div
 				className={cn(
-					`${style.headerWrapper}`,
+					style.headerWrapper,
+					// { [style.whiteBackground]: isHeaderWhite },
 					isShow ? `${style.openSearch}` : `${style.closeSearch}`
 				)}
 			>
@@ -109,7 +130,7 @@ const Header: FC = () => {
 							</Link>
 						)}
 					</div>
-					<FavoriteBtn />
+					<Favorite />
 					<Cart />
 				</div>
 			</div>

@@ -1,5 +1,4 @@
 import cn from 'clsx'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 import BagBtn from '@/ui/common/buttons/bagbtn/BagBtn'
@@ -16,7 +15,6 @@ import AuthButton from '@/screens/auth/authButton/authButton'
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const { items, total } = useCart()
-	const { push } = useRouter()
 	return (
 		<div className='relative' ref={ref}>
 			<BagBtn onClick={() => setIsShow(!isShow)} number={items.length} />
