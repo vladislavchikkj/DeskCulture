@@ -1,7 +1,7 @@
 import cn from 'clsx'
-import { FC } from 'react'
 
-import { useActions } from '@/hooks/useActions'
+import { NextPageAuth } from '@/providers/auth-provider/auth-page.types'
+
 import { useOutside } from '@/hooks/useOutside'
 import { useProfile } from '@/hooks/useProfile'
 
@@ -10,10 +10,13 @@ import FavoritesItem from './favoriteItem/favoriteItem'
 import FavoriteBtn from './svg/Heart.svg.svg'
 import AuthButton from '@/screens/auth/authButton/authButton'
 
-const Favorite: FC = () => {
+const Favorite: NextPageAuth = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 
 	const { profile } = useProfile()
+
+	// Function to render the appropriate message for the button
+
 	return (
 		<div ref={ref}>
 			<div className={style.favorites}>
@@ -34,12 +37,22 @@ const Favorite: FC = () => {
 							<FavoritesItem key={item.id} item={item} />
 						))
 					) : (
-						<div>YOUR BAG IS EMPTY</div>
+						<>
+							{profile ? (
+								<div>YOUR BAG IS EMPTY</div>
+							) : (
+								<div>Register to add to favorites</div>
+							)}
+						</>
 					)}
 				</div>
 
 				<div className={style.totalBtn}>
-					<AuthButton variant='black'>View my WHISHLIST</AuthButton>
+					{!profile ? (
+						<AuthButton variant='black'>SIGN IN</AuthButton>
+					) : (
+						<AuthButton variant='black'>View my WHISHLIST</AuthButton>
+					)}
 				</div>
 			</div>
 			<div
@@ -54,5 +67,7 @@ const Favorite: FC = () => {
 		</div>
 	)
 }
+
+Favorite.isOnlyUser = true
 
 export default Favorite

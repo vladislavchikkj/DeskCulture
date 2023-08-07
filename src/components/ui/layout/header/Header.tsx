@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, useRef } from 'react'
+import { FC, useRef, useState } from 'react'
 
 import Favorite from '@/ui/common/favoriteCard/Favorite'
 import Search from '@/ui/common/search/Search'
@@ -19,6 +19,7 @@ const Header: FC = () => {
 	const { logout } = useActions()
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
+	const [searchData, setSearchData] = useState('')
 	// const [isHeaderWhite, setIsHeaderWhite] = useState(false)
 
 	// useEffect(() => {
@@ -89,6 +90,8 @@ const Header: FC = () => {
 							className={style.searchInput}
 							type='text'
 							placeholder='Search...'
+							value={searchData}
+							onChange={e => setSearchData(e.target.value)}
 						/>
 					)}
 				</div>
@@ -98,6 +101,7 @@ const Header: FC = () => {
 							isShow={isShow}
 							setIsShow={setIsShow}
 							headerRef={headerRef}
+							searchData={searchData}
 						/>
 					</span>
 					{!user && (

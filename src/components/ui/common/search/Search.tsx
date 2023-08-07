@@ -1,10 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { useRouter } from 'next/router'
-import { Dispatch, FC, MutableRefObject, SetStateAction } from 'react'
+import {
+	Dispatch,
+	FC,
+	MutableRefObject,
+	SetStateAction,
+	useEffect,
+	useState
+} from 'react'
 import { createPortal } from 'react-dom'
 
-import Button from '../buttons/Button'
+import { IProduct } from '@/types/product.interface'
 
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
@@ -14,9 +21,17 @@ type SearchType = {
 	isShow: boolean
 	setIsShow: Dispatch<SetStateAction<boolean>>
 	headerRef: MutableRefObject<null | HTMLElement>
+	searchData: string
 }
 
-const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
+const Search: FC<SearchType> = ({
+	isShow,
+	setIsShow,
+	headerRef,
+	searchData
+}) => {
+	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
+
 	const { query } = useRouter()
 
 	const { data } = useQuery(['search products', query.term], () =>
@@ -24,7 +39,22 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 			searchTerm: query.term as string
 		})
 	)
-	const header = document.querySelector('header') as HTMLElement
+
+	const filterProducts = () => {
+		if (data?.products && searchData.trim() !== '') {
+			const filtered = data.products.filter(product =>
+				product.name.toLowerCase().includes(searchData.toLowerCase())
+			)
+			setFilteredProducts(filtered)
+		} else {
+			setFilteredProducts([])
+		}
+	}
+
+	useEffect(() => {
+		filterProducts()
+	}, [searchData, data?.products])
+
 	return (
 		<>
 			<div
@@ -34,9 +64,10 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 				}}
 			>
 				<SearchIcon />
-				<span className={style.searchl}>search</span>
+				<span className={style.searchl}>Search</span>
 			</div>
-			{isShow &&
+			{headerRef.current &&
+				isShow &&
 				createPortal(
 					<>
 						<div
@@ -45,40 +76,44 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 								isShow ? `${style.openSearch}` : `${style.closeSearch}`
 							)}
 						>
-							<div className={style.searchItems}>
-								<div className={`${style.searchItem} container-f`}>
-									<div className={`${style.searchItemsWrapper} `}>
-										<img
-											className={style.searchItemImage}
-											src={
-												'https://i.pinimg.com/originals/c3/4d/14/c34d14cad61cf42ce70cb2dcbd4bb0a8.jpg'
-											}
-											alt={'test'}
-										/>
-										<div className={style.searchItemInfo}>
-											<div className='flex flex-col justify-between'>
-												<div className={style.searchItemNameWr}>
-													<span className={style.searchItemName}>
-														Grey desc mats
-													</span>
-													<span className={style.searchItemSlug}>
-														Desc mats
-													</span>
+							<div className={`${style.searchItems} container-f`}>
+								{searchData.trim() !== '' ? (
+									filteredProducts.length > 0 ? (
+										filteredProducts.map(product => (
+											<div key={product.id} className={`${style.searchItem}`}>
+												<img
+													className={style.searchItemImage}
+													src={product.images[0]}
+													alt={product.name}
+												/>
+												<div className={style.searchItemInfo}>
+													<div className='flex flex-col justify-between'>
+														<div className={style.searchItemNameWr}>
+															<span className={style.searchItemName}>
+																{product.name}
+															</span>
+														</div>
+														<span className={style.addToFav}>
+															Save for later
+														</span>
+													</div>
+													<div className={style.price}>
+														$7,700
+														<div className={style.addToBag}>add to bag</div>
+													</div>
 												</div>
-												<span className={style.addToFav}>Save for later</span>
 											</div>
-											<div className={style.price}>
-												$7,700
-												<div className={style.addToBag}>add to bag</div>
-											</div>
+										))
+									) : (
+										<div className={style.noResults}>
+											No matching products found.
 										</div>
+									)
+								) : (
+									<div className={style.noResults}>
+										Enter a name to find the product.
 									</div>
-									<div className='flex justify-end pt-4'>
-										<Button data-hover='See more' variant={'black'}>
-											See more
-										</Button>
-									</div>
-								</div>
+								)}
 							</div>
 						</div>
 						<div
@@ -89,7 +124,7 @@ const Search: FC<SearchType> = ({ isShow, setIsShow, headerRef }) => {
 							)}
 						></div>
 					</>,
-					header
+					headerRef.current
 				)}
 		</>
 	)

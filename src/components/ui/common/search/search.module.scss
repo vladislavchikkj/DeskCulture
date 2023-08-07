@@ -70,7 +70,11 @@
 	scroll-behavior: smooth;
 }
 .searchItem {
+	display: flex;
+	gap: 2vw;
+	border-bottom: 1px solid #b7b7b7;
 	animation: openItems 0.7s forwards;
+	padding-bottom: 2vw;
 }
 @keyframes openItems {
 	from {
