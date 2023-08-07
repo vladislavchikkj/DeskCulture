@@ -2,7 +2,7 @@ import cn from 'clsx'
 import Link from 'next/link'
 import { FC, useRef } from 'react'
 
-import Favorite from '@/ui/common/buttons/favoritebtn/FavoriteBtn'
+import Favorite from '@/ui/common/favoriteCard/Favorite'
 import Search from '@/ui/common/search/Search'
 
 import { useActions } from '@/hooks/useActions'

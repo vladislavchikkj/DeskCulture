@@ -7,10 +7,7 @@ import { convertPrice } from '@/utils/convertPrice'
 import CartActions from './cart-actions/CartActions'
 import style from './cartitem.module.scss'
 
-const CartItem: FC<{ item: ICartItem; isFavotites?: boolean }> = ({
-	item,
-	isFavotites
-}) => {
+const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 	return (
 		<div className={style.wrapper}>
 			<img
@@ -24,7 +21,7 @@ const CartItem: FC<{ item: ICartItem; isFavotites?: boolean }> = ({
 					<div className={style.price}>{convertPrice(item.product.price)}</div>
 				</div>
 
-				{!isFavotites ? <CartActions item={item} /> : null}
+				<CartActions item={item} />
 			</div>
 		</div>
 	)
