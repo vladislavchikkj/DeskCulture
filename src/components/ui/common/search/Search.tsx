@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { useRouter } from 'next/router'
 import {
@@ -15,34 +14,35 @@ import { IProduct } from '@/types/product.interface'
 
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
-import { ProductService } from '@/services/product/product.service'
 
 type SearchType = {
 	isShow: boolean
 	setIsShow: Dispatch<SetStateAction<boolean>>
 	headerRef: MutableRefObject<null | HTMLElement>
 	searchData: string
+	allProducts: IProduct[]
 }
 
 const Search: FC<SearchType> = ({
 	isShow,
 	setIsShow,
 	headerRef,
-	searchData
+	searchData,
+	allProducts
 }) => {
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
 	const { query } = useRouter()
 
-	const { data } = useQuery(['search products', query.term], () =>
-		ProductService.getAll({
-			searchTerm: query.term as string
-		})
-	)
+	// const { data } = useQuery(['search products', query.term], () =>
+	// 	ProductService.getAll({
+	// 		searchTerm: query.term as string
+	// 	})
+	// )
 
 	const filterProducts = () => {
-		if (data?.products && searchData.trim() !== '') {
-			const filtered = data.products.filter(product =>
+		if (allProducts && searchData.trim() !== '') {
+			const filtered = allProducts.filter(product =>
 				product.name.toLowerCase().includes(searchData.toLowerCase())
 			)
 			setFilteredProducts(filtered)
@@ -53,8 +53,7 @@ const Search: FC<SearchType> = ({
 
 	useEffect(() => {
 		filterProducts()
-	}, [searchData, data?.products])
-
+	}, [searchData])
 	return (
 		<>
 			<div

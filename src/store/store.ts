@@ -22,7 +22,6 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
 	cart: cartSlice.reducer,
-	// carousel: carouselSlice.reducer,
 	user: userSlice.reducer
 })
 

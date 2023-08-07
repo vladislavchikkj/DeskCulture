@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import Favorite from '@/ui/common/favoriteCard/Favorite'
 import Search from '@/ui/common/search/Search'
@@ -9,10 +9,13 @@ import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { useOutside } from '@/hooks/useOutside'
 
+import { IProduct } from '@/types/product.interface'
+
 import Cart from '../../common/cart/Cart'
 
 import style from './header.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
+import { ProductService } from '@/services/product/product.service'
 
 const Header: FC = () => {
 	const { user } = useAuth()
@@ -20,6 +23,17 @@ const Header: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
 	const [searchData, setSearchData] = useState('')
+	const [products, setProducts] = useState<IProduct[]>([])
+	useEffect(() => {
+		const getAllProducts = async () => {
+			const result = await ProductService.getAll()
+			return result.products
+		}
+		getAllProducts()
+			.then(result => setProducts(result))
+			.catch(err => err)
+	}, [])
+	console.log('products', products)
 	// const [isHeaderWhite, setIsHeaderWhite] = useState(false)
 
 	// useEffect(() => {
@@ -102,6 +116,7 @@ const Header: FC = () => {
 							setIsShow={setIsShow}
 							headerRef={headerRef}
 							searchData={searchData}
+							allProducts={products}
 						/>
 					</span>
 					{!user && (
