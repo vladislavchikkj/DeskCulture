@@ -86,6 +86,19 @@
 		transform: translateY(0);
 	}
 }
+.noResults {
+	animation: openNoResults 0.9s forwards;
+}
+@keyframes openNoResults {
+	from {
+		opacity: 0;
+		transform: translateY(-300%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 
 .searchItemsWrapper {
 	display: flex;

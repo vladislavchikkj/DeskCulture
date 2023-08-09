@@ -19,8 +19,8 @@ const Favorite: NextPageAuth = () => {
 
 	return (
 		<div ref={ref}>
-			<div className={style.favorites}>
-				<FavoriteBtn onClick={() => setIsShow(!isShow)} />
+			<div className={style.favorites} onClick={() => setIsShow(!isShow)}>
+				<FavoriteBtn />
 			</div>
 			<div
 				className={cn(`${style.popup}`, isShow ? 'open-menu' : 'close-menu')}

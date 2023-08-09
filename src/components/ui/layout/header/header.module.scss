@@ -8,7 +8,7 @@
 	grid-template-columns: 1fr 1.2fr 1fr;
 	justify-content: space-between;
 	border-bottom: 1px solid #b7b7b7;
-	background: #cdcecf;
+	background: #cdcecf00;
 	// background: white;
 	z-index: 100;
 }
@@ -65,7 +65,7 @@
 	align-items: center;
 	text-align: center;
 	color: #191b1d;
-	font-size: 2vw; /* 38px / 16px = 2.375em */
+	font-size: 1.8vw; /* 38px / 16px = 2.375em */
 	font-weight: 500;
 	line-height: 40px;
 	letter-spacing: -1.9px;

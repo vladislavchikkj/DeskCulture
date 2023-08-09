@@ -1,14 +1,8 @@
 import cn from 'clsx'
-import { useRouter } from 'next/router'
-import {
-	Dispatch,
-	FC,
-	MutableRefObject,
-	SetStateAction,
-	useEffect,
-	useState
-} from 'react'
+import { FC, MutableRefObject, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+
+import { useOutside } from '@/hooks/useOutside'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -16,29 +10,14 @@ import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 
 type SearchType = {
-	isShow: boolean
-	setIsShow: Dispatch<SetStateAction<boolean>>
 	headerRef: MutableRefObject<null | HTMLElement>
 	searchData: string
 	allProducts: IProduct[]
 }
 
-const Search: FC<SearchType> = ({
-	isShow,
-	setIsShow,
-	headerRef,
-	searchData,
-	allProducts
-}) => {
+const Search: FC<SearchType> = ({ headerRef, searchData, allProducts }) => {
+	const { isShow, setIsShow } = useOutside(false)
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
-
-	const { query } = useRouter()
-
-	// const { data } = useQuery(['search products', query.term], () =>
-	// 	ProductService.getAll({
-	// 		searchTerm: query.term as string
-	// 	})
-	// )
 
 	const filterProducts = () => {
 		if (allProducts && searchData.trim() !== '') {

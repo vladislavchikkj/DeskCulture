@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 
 import Favorite from '@/ui/common/favoriteCard/Favorite'
-import Search from '@/ui/common/search/Search'
+import Search from '@/ui/layout/header/search/Search'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
@@ -14,16 +14,17 @@ import { IProduct } from '@/types/product.interface'
 import Cart from '../../common/cart/Cart'
 
 import style from './header.module.scss'
-import Dots from './svg/icon_menu.svg.svg'
+import Menu from './menu/Menu'
 import { ProductService } from '@/services/product/product.service'
 
 const Header: FC = () => {
 	const { user } = useAuth()
 	const { logout } = useActions()
-	const { isShow, setIsShow, ref } = useOutside(false)
+	const { isShow, setIsShow } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
 	const [searchData, setSearchData] = useState('')
 	const [products, setProducts] = useState<IProduct[]>([])
+
 	useEffect(() => {
 		const getAllProducts = async () => {
 			const result = await ProductService.getAll()
@@ -33,7 +34,6 @@ const Header: FC = () => {
 			.then(result => setProducts(result))
 			.catch(err => err)
 	}, [])
-	console.log('products', products)
 	// const [isHeaderWhite, setIsHeaderWhite] = useState(false)
 
 	// useEffect(() => {
@@ -65,14 +65,7 @@ const Header: FC = () => {
 				)}
 			>
 				<div className='grid grid-flow-col'>
-					<div className={style.menu}>
-						<div>
-							<Dots />
-						</div>
-						<div data-hover='menu' className={style.textBtn}>
-							<div>menu</div>
-						</div>
-					</div>
+					<Menu headerRef={headerRef} />
 					<div className={`${style.headerButton} ${style.hideBtn}`}>
 						<div data-hover='For the client ›' className={style.textBtn}>
 							<div className='flex gap-2'>
@@ -112,8 +105,6 @@ const Header: FC = () => {
 				<div className='grid grid-flow-col justify-self-end'>
 					<span className={style.search}>
 						<Search
-							isShow={isShow}
-							setIsShow={setIsShow}
 							headerRef={headerRef}
 							searchData={searchData}
 							allProducts={products}

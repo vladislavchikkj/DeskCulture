@@ -1,0 +1,123 @@
+.searchMenu {
+	display: flex;
+	position: relative;
+	opacity: 0;
+	width: 100vw;
+	height: 70vh;
+	background: #ffffff;
+	z-index: 11;
+	margin: 0 auto;
+	padding-top: 6vw;
+	padding-left: 6vw;
+	padding-right: 6vw;
+	padding-bottom: 6vw;
+}
+.popupWrapper {
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+
+	z-index: 10;
+	animation: darkBg 1s forwards;
+}
+@keyframes darkBg {
+	to {
+		background-color: rgba(0, 0, 0, 0.514);
+	}
+}
+.openMenu {
+	opacity: 1;
+	transition: 0.4s;
+	animation: on 0.5s forwards;
+}
+.closeMenu {
+	opacity: 0.8;
+	transform: translateY(-150%);
+	transition: 0.4s;
+	animation: off 1s forwards;
+}
+@keyframes on {
+	from {
+		opacity: 0;
+		transform: translateY(-150%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes off {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-150%);
+	}
+}
+.menuWrapper {
+	padding-top: 5vh;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 15vw;
+}
+.menuSide {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.menuNav {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 16px; /* 66.667% */
+	letter-spacing: 1px;
+}
+.menuLogo {
+	width: 15vw;
+	padding-bottom: 0.3vw;
+}
+.menuList {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+.menuList:not(:last-child) {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.menuList:not(:first-child):not(:last-child) {
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+}
+.menuList:last-child {
+	padding-top: 1vw;
+}
+.menuList:first-child {
+	padding-bottom: 1vw;
+}
+.menuListWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.menuListName {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1.5vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 2vw; /* 105.263% */
+	letter-spacing: -1.9px;
+}

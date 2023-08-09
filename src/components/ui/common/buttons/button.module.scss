@@ -209,3 +209,60 @@
 .btnPlus span {
 	transition: all 0.3s;
 }
+
+.btnArrowMenu {
+	width: 1.3vw;
+	height: 1.3vw;
+	color: #191b1d;
+	background: rgba(25, 27, 29, 0.1);
+
+	text-align: center;
+	font-size: 0.7vw;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: -0.64px;
+
+	border-radius: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	position: relative;
+	overflow: hidden;
+}
+
+.btnArrowMenu:hover {
+	cursor: pointer;
+}
+
+/*btnArrowMenu:before (attr data-hover)*/
+.btnArrowMenu:hover:before {
+	transform: translate(0, 0);
+}
+.btnArrowMenu:before {
+	width: 1.5vw;
+	height: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.1vw;
+	content: attr(data-hover);
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transform: translate(0, 170%);
+	transition: all 0.3s;
+	color: white;
+	background: #191b1d;
+	border-radius: 60px;
+}
+/*btnArrowMenu div (btnArrowMenu text before hover)*/
+.btnArrowMenu:hover span {
+	transform: translate(0, -170%);
+}
+.btnArrowMenu span {
+	transition: all 0.3s;
+}
