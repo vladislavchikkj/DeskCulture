@@ -28,6 +28,7 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 				<div>
 					<Dots />
 				</div>
+
 				<div data-hover='menu' className={styleHeader.textBtn}>
 					<div>menu</div>
 				</div>
@@ -44,7 +45,9 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 						>
 							<div className={`${style.menuWrapper} container-f`}>
 								<div className={style.menuSide}>
-									<span className={style.menuNav}>navigate</span>
+									<span className={style.menuNav}>
+										<div>navigate</div>
+									</span>
 									<div className={style.menuLogo}>
 										<MenuLogo />
 									</div>

@@ -22,6 +22,7 @@
 	width: 100vw;
 
 	z-index: 10;
+	overflow: hidden;
 	animation: darkBg 1s forwards;
 }
 @keyframes darkBg {
@@ -66,12 +67,15 @@
 	justify-content: space-between;
 	width: 100%;
 	gap: 15vw;
+	overflow: hidden;
+	animation: fade-wrap 1.5s forwards;
 }
 .menuSide {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
+	animation: fade-left 1s forwards;
 }
 .menuNav {
 	color: #191b1d;
@@ -81,16 +85,25 @@
 	font-weight: 600;
 	line-height: 16px; /* 66.667% */
 	letter-spacing: 1px;
+	overflow: hidden;
+	padding: 0.2vw;
+}
+.menuNav div {
+	opacity: 0;
+	animation: fade-l 2s forwards;
 }
 .menuLogo {
 	width: 15vw;
 	padding-bottom: 0.3vw;
+	opacity: 0;
+	animation: fade-o 2s forwards;
 }
 .menuList {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
+	overflow: hidden;
 }
 .menuList:not(:last-child) {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -110,6 +123,8 @@
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
+	opacity: 0;
+	animation: fade-right 1s forwards;
 }
 
 .menuListName {
@@ -120,4 +135,55 @@
 	font-weight: 500;
 	line-height: 2vw; /* 105.263% */
 	letter-spacing: -1.9px;
+	overflow: hidden;
+	opacity: 0;
+	animation: fade 1.5s forwards;
+}
+@keyframes fade {
+	0% {
+		opacity: 0;
+		transform: translateY(500%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fade-l {
+	0% {
+		opacity: 0;
+		transform: translateY(500%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fade-o {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes fade-left {
+	0% {
+		opacity: 0;
+		transform: translateX(-10%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes fade-right {
+	0% {
+		opacity: 0;
+		transform: translateX(10%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }

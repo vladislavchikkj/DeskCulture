@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import style from './homeintro.module.scss'
-import Logo from './svg/logo.svg'
+import Logo from './svg/newlogo.svg'
 
 const HomeIntro: FC = () => {
 	return (
