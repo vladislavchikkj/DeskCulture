@@ -20,7 +20,7 @@ import { ProductService } from '@/services/product/product.service'
 const Header: FC = () => {
 	const { user } = useAuth()
 	const { logout } = useActions()
-	const { isShow, setIsShow } = useOutside(false)
+	const { isShow, setIsShow, ref } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
 	const [searchData, setSearchData] = useState('')
 	const [products, setProducts] = useState<IProduct[]>([])
@@ -110,6 +110,7 @@ const Header: FC = () => {
 							allProducts={products}
 							isShow={isShow}
 							setIsShow={setIsShow}
+							closeSearch={ref}
 						/>
 					</span>
 					{!user && (

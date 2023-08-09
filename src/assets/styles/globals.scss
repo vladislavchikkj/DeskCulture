@@ -6,6 +6,10 @@
 * {
 	scroll-behavior: smooth;
 }
+#player {
+	max-width: auto;
+	height: auto;
+}
 body {
 	@apply text-base text-black;
 	font-family: 'Inter', sans-serif;

@@ -27,11 +27,43 @@ const Home: FC<TypeCombinedPagination> = ({
 		<Meta title='Home'>
 			<Layout>
 				<section className={style.home}>
-					<Parallax pages={3.4} style={{ top: '0', left: '0' }}>
-						<ParallaxLayer offset={0} speed={0.2}>
+					<Parallax pages={5} style={{ top: '0', left: '0' }}>
+						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
+							<div className={style.intro}>
+								<ParallaxLayer offset={0} speed={0.5}>
+									<HomeIntro />
+								</ParallaxLayer>
+							</div>
+						</ParallaxLayer>
+						<ParallaxLayer
+							offset={0.55}
+							speed={0.2 / 100}
+							style={{ zIndex: '1', overflow: 'hidden' }}
+						>
 							<HomePlayer />
 						</ParallaxLayer>
-						<ParallaxLayer offset={0} speed={0.7} style={{ transition: '.1s' }}>
+						<ParallaxLayer offset={1.6} speed={0.5} style={{ zIndex: '2' }}>
+							<HomeSetup setups={setups} setupsLength={2} />
+						</ParallaxLayer>
+						<ParallaxLayer offset={2} speed={1} style={{ zIndex: '2' }}>
+							<HomeCategory categories={categories} categoriesLength={2} />
+						</ParallaxLayer>
+						<ParallaxLayer offset={2.95} speed={0.7} style={{ zIndex: '2' }}>
+							<HomeSocial />
+						</ParallaxLayer>
+						<ParallaxLayer offset={3.1} speed={1} style={{ zIndex: '2' }}>
+							<HomeReviews />
+						</ParallaxLayer>
+					</Parallax>
+					{/* <Parallax pages={3.4} style={{ top: '0', left: '0' }}>
+						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
+							<HomePlayer />
+						</ParallaxLayer>
+						<ParallaxLayer
+							offset={0}
+							speed={0.7}
+							style={{ transition: '.1s', zIndex: '1' }}
+						>
 							<div className={style.intro}>
 								<ParallaxLayer offset={0} speed={0.2}>
 									<HomeIntro />
@@ -50,7 +82,7 @@ const Home: FC<TypeCombinedPagination> = ({
 								<HomeReviews />
 							</ParallaxLayer>
 						</ParallaxLayer>
-					</Parallax>
+					</Parallax> */}
 					<LowBar />
 				</section>
 			</Layout>

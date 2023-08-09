@@ -1,8 +1,8 @@
 import cn from 'clsx'
-import { useRouter } from 'next/router'
 import {
 	Dispatch,
 	FC,
+	LegacyRef,
 	MutableRefObject,
 	SetStateAction,
 	useEffect,
@@ -21,6 +21,7 @@ type SearchType = {
 	headerRef: MutableRefObject<null | HTMLElement>
 	searchData: string
 	allProducts: IProduct[]
+	closeSearch: LegacyRef<HTMLDivElement> | undefined
 }
 
 const Search: FC<SearchType> = ({
@@ -28,7 +29,8 @@ const Search: FC<SearchType> = ({
 	setIsShow,
 	headerRef,
 	searchData,
-	allProducts
+	allProducts,
+	closeSearch
 }) => {
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
@@ -62,6 +64,7 @@ const Search: FC<SearchType> = ({
 				createPortal(
 					<>
 						<div
+							ref={closeSearch}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openSearch}` : `${style.closeSearch}`

@@ -16,7 +16,7 @@ type MenuType = {
 	headerRef: MutableRefObject<null | HTMLElement>
 }
 const Menu: FC<MenuType> = ({ headerRef }) => {
-	const { isShow, setIsShow } = useOutside(false)
+	const { isShow, setIsShow, ref } = useOutside(false)
 	return (
 		<>
 			<div
@@ -38,6 +38,7 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 				createPortal(
 					<>
 						<div
+							ref={ref}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openMenu}` : `${style.closeMenu}`
