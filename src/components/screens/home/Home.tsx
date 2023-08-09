@@ -28,7 +28,7 @@ const Home: FC<TypeCombinedPagination> = ({
 			<Layout>
 				<section className={style.home}>
 					<Parallax
-						pages={4}
+						pages={5}
 						style={{ top: '0', left: '0', background: 'red' }}
 					>
 						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
@@ -46,13 +46,11 @@ const Home: FC<TypeCombinedPagination> = ({
 							<HomePlayer />
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
-							<ParallaxLayer speed={-0.2} style={{ zIndex: '2' }}>
-								<HomeSetup setups={setups} setupsLength={2} />
-							</ParallaxLayer>
+							<HomeSetup setups={setups} setupsLength={2} />
 						</ParallaxLayer>
 						<ParallaxLayer
-							offset={2}
-							speed={1}
+							offset={2.3}
+							speed={0.8}
 							style={{ zIndex: '2', top: '-18%' }}
 						>
 							<HomeCategory categories={categories} categoriesLength={2} />
