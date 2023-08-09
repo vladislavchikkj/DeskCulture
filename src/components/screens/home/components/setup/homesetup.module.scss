@@ -1,16 +1,20 @@
 .category {
 	background: rgb(255, 255, 255);
+	height: 100%;
 }
 .setup {
 	width: 100%;
-	height: 45vw;
+	height: 100%;
 	background: rgb(255, 255, 255);
 
-	padding-top: 4vw;
+	padding-top: 8vw;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 0.5fr 1fr;
 	gap: 2.5vw;
+	.item {
+		align-self: center;
+	}
 }
 .btnWrapper {
 	display: flex;
