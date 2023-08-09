@@ -6,7 +6,7 @@ import Logo from './svg/newlogo.svg'
 const HomeIntro: FC = () => {
 	return (
 		<>
-			<div className='container-f'>
+			<div className={`${style.homeIntro} container-f`}>
 				<div className={style.title}>
 					<h1>
 						Create. Your.

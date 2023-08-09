@@ -1,8 +1,14 @@
 import cn from 'clsx'
-import { FC, MutableRefObject, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import {
+	Dispatch,
+	FC,
+	MutableRefObject,
+	SetStateAction,
+	useEffect,
+	useState
+} from 'react'
 import { createPortal } from 'react-dom'
-
-import { useOutside } from '@/hooks/useOutside'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -10,13 +16,20 @@ import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 
 type SearchType = {
+	isShow: boolean
+	setIsShow: Dispatch<SetStateAction<boolean>>
 	headerRef: MutableRefObject<null | HTMLElement>
 	searchData: string
 	allProducts: IProduct[]
 }
 
-const Search: FC<SearchType> = ({ headerRef, searchData, allProducts }) => {
-	const { isShow, setIsShow } = useOutside(false)
+const Search: FC<SearchType> = ({
+	isShow,
+	setIsShow,
+	headerRef,
+	searchData,
+	allProducts
+}) => {
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
 	const filterProducts = () => {

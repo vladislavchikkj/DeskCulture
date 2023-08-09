@@ -108,6 +108,8 @@ const Header: FC = () => {
 							headerRef={headerRef}
 							searchData={searchData}
 							allProducts={products}
+							isShow={isShow}
+							setIsShow={setIsShow}
 						/>
 					</span>
 					{!user && (
