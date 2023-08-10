@@ -18,9 +18,8 @@ type MenuType = {
 const Menu: FC<MenuType> = ({ headerRef }) => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	return (
-		<>
+		<div ref={ref} className={styleHeader.menu}>
 			<div
-				className={styleHeader.menu}
 				onClick={() => {
 					setIsShow(!isShow)
 				}}
@@ -38,7 +37,6 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 				createPortal(
 					<>
 						<div
-							ref={ref}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openMenu}` : `${style.closeMenu}`
@@ -99,7 +97,7 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 					</>,
 					headerRef.current
 				)}
-		</>
+		</div>
 	)
 }
 

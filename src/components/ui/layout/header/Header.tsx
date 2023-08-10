@@ -23,7 +23,7 @@ type Props = {
 const Header: FC<Props> = ({ inView }) => {
 	const { user } = useAuth()
 	const { logout } = useActions()
-	const { isShow, setIsShow, ref } = useOutside(false)
+	const { isShow, setIsShow, ref, addRef } = useOutside(false, true)
 	const headerRef = useRef<HTMLElement>(null)
 	const [searchData, setSearchData] = useState('')
 	const [products, setProducts] = useState<IProduct[]>([])
@@ -69,7 +69,7 @@ const Header: FC<Props> = ({ inView }) => {
 						</div>
 					</Link>
 				</div>
-				<div className={style.logoPlace}>
+				<div ref={addRef} className={style.logoPlace}>
 					{!isShow ? (
 						<div className={style.mainLogo}>
 							<Link translate='no' href={`/`}>
