@@ -1,16 +1,33 @@
+import cn from 'clsx'
+import Link from 'next/link'
 import { FC } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
 import style from './footer.module.scss'
 
-const Footer: FC = () => {
+type PageProps = {
+	home?: boolean
+}
+
+const Footer: FC<PageProps> = ({ home }) => {
 	return (
 		<>
-			<div className={`${style.footer} container-f`}>
+			<div
+				className={cn(
+					`${style.footer} container-f`,
+					!home ? '' : style.footerHome
+				)}
+			>
 				<div className={style.info}>
-					<div className={style.logo}>DeskCulture</div>
-					<div className={style.links}>
+					<div className={style.logo}>
+						<span>
+							<Link translate='no' href={`/`}>
+								DeskCulture
+							</Link>
+						</span>
+					</div>
+					<div translate='no' className={style.links}>
 						<div className={style.link}>Facebook</div>
 						<div className={style.link}>Instagram</div>
 						<div className={style.link}>Behance</div>

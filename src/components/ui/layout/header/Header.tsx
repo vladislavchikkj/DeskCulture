@@ -90,7 +90,9 @@ const Header: FC = () => {
 				<div className={style.logoPlace}>
 					{!isShow ? (
 						<div className={style.mainLogo}>
-							<Link href={`/`}>DeskCulture</Link>
+							<Link translate='no' href={`/`}>
+								DeskCulture
+							</Link>
 						</div>
 					) : (
 						<input

@@ -8,9 +8,11 @@ const HomeIntro: FC = () => {
 		<>
 			<div className={`${style.homeIntro} container-f`}>
 				<div className={style.title}>
-					<h1>
+					<h1 translate='no'>
 						Create. Your.
-						<span className='text-white block'>Workspace.</span>
+						<span translate='no' className='text-white block'>
+							Workspace.
+						</span>
 					</h1>
 				</div>
 				<div className={style.lowSide}>

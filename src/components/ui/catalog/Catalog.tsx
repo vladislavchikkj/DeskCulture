@@ -5,6 +5,7 @@ import { TypePaginationСatalog } from '@/types/product.interface'
 import Button from '../common/buttons/Button'
 import Heading from '../common/heading/Heading'
 import Loader from '../common/loader/Loader'
+import Footer from '../layout/footer/Footer'
 
 import catalogStyle from './catalog.module.scss'
 import setupStyle from './catalogSetups.module.scss'
@@ -94,106 +95,109 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	}
 
 	return (
-		<section className={`${catalogStyle.catalog} container-f`}>
-			<div>
-				{title && <Heading variant='catalog'>{title}</Heading>}
-				<div className={catalogStyle.btnWrapper}>
-					<Button
-						data-hover='Categories'
-						variant={selectedButton === 'Categories' ? 'black' : 'grey'}
-						onClick={handleCategoriesClick}
-					>
-						Categories
-					</Button>
-					<Button
-						data-hover='Setup'
-						variant={selectedButton === 'Setup' ? 'black' : 'grey'}
-						onClick={handleSetupClick}
-					>
-						Setup
-					</Button>
-					<Button
-						data-hover='Products'
-						variant={selectedButton === 'Products' ? 'black' : 'grey'}
-						onClick={handleProductsClick}
-					>
-						Products
-					</Button>
+		<section className={`${catalogStyle.catalog}`}>
+			<div className='container-f'>
+				<div>
+					{title && <Heading variant='catalog'>{title}</Heading>}
+					<div className={catalogStyle.btnWrapper}>
+						<Button
+							data-hover='Categories'
+							variant={selectedButton === 'Categories' ? 'black' : 'grey'}
+							onClick={handleCategoriesClick}
+						>
+							Categories
+						</Button>
+						<Button
+							data-hover='Setup'
+							variant={selectedButton === 'Setup' ? 'black' : 'grey'}
+							onClick={handleSetupClick}
+						>
+							Setup
+						</Button>
+						<Button
+							data-hover='Products'
+							variant={selectedButton === 'Products' ? 'black' : 'grey'}
+							onClick={handleProductsClick}
+						>
+							Products
+						</Button>
+					</div>
 				</div>
+
+				{selectedButton === 'Categories' && (
+					<div className={setupStyle.itemWrapper}>
+						{categories.map(category => (
+							<div key={category.id} className={setupStyle.item}>
+								<div className={setupStyle.imageWrapper}>
+									<img
+										src={category.image}
+										alt={category.name}
+										className={setupStyle.image}
+									/>
+								</div>
+								<div className={setupStyle.descr}>
+									<h3>{category.name}</h3>
+									<h4>{category.description}</h4>
+								</div>
+							</div>
+						))}
+					</div>
+				)}
+				{selectedButton === 'Setup' && (
+					<div className={setupStyle.itemWrapper}>
+						{setups.map(setup => (
+							<div key={setup.id} className={setupStyle.item}>
+								<div className={setupStyle.imageWrapper}>
+									<img
+										src={setup.image}
+										alt={setup.name}
+										className={setupStyle.image}
+									/>
+								</div>
+								<div className={setupStyle.descr}>
+									<h3>{setup.name}</h3>
+									<h4>{setup.description}</h4>
+								</div>
+							</div>
+						))}
+					</div>
+				)}
+				{selectedButton === 'Products' && (
+					<>
+						<SortDropdown sortType={sortType} setSortType={setSortType} />
+						{isLoading && <Loader />}
+
+						{products.length ? (
+							<>
+								<div className={catalogStyle.items}>
+									{products.map(product => (
+										<ProductItem key={product.id} product={product} />
+									))}
+								</div>
+								{!allProductsLoaded ? (
+									<div className='flex justify-end pt-12 pb-10'>
+										<Button
+											data-hover='See more'
+											variant='black'
+											onClick={loadMoreProducts}
+											disabled={isLoading}
+										>
+											{isLoading ? 'Loading...' : 'See more'}
+										</Button>
+									</div>
+								) : (
+									<div className='flex justify-end pt-12 pb-10'>
+										<span>No more products.</span>
+									</div>
+								)}
+							</>
+						) : (
+							<div>There are no products</div>
+						)}
+					</>
+				)}
 			</div>
-
-			{selectedButton === 'Categories' && (
-				<div className={setupStyle.itemWrapper}>
-					{categories.map(category => (
-						<div key={category.id} className={setupStyle.item}>
-							<div className={setupStyle.imageWrapper}>
-								<img
-									src={category.image}
-									alt={category.name}
-									className={setupStyle.image}
-								/>
-							</div>
-							<div className={setupStyle.descr}>
-								<h3>{category.name}</h3>
-								<h4>{category.description}</h4>
-							</div>
-						</div>
-					))}
-				</div>
-			)}
-			{selectedButton === 'Setup' && (
-				<div className={setupStyle.itemWrapper}>
-					{setups.map(setup => (
-						<div key={setup.id} className={setupStyle.item}>
-							<div className={setupStyle.imageWrapper}>
-								<img
-									src={setup.image}
-									alt={setup.name}
-									className={setupStyle.image}
-								/>
-							</div>
-							<div className={setupStyle.descr}>
-								<h3>{setup.name}</h3>
-								<h4>{setup.description}</h4>
-							</div>
-						</div>
-					))}
-				</div>
-			)}
-			{selectedButton === 'Products' && (
-				<>
-					<SortDropdown sortType={sortType} setSortType={setSortType} />
-					{isLoading && <Loader />}
-
-					{products.length ? (
-						<>
-							<div className={catalogStyle.items}>
-								{products.map(product => (
-									<ProductItem key={product.id} product={product} />
-								))}
-							</div>
-							{!allProductsLoaded ? (
-								<div className='flex justify-end pt-12 pb-10'>
-									<Button
-										data-hover='See more'
-										variant='black'
-										onClick={loadMoreProducts}
-										disabled={isLoading}
-									>
-										{isLoading ? 'Loading...' : 'See more'}
-									</Button>
-								</div>
-							) : (
-								<div className='flex justify-end pt-12 pb-10'>
-									<span>No more products.</span>
-								</div>
-							)}
-						</>
-					) : (
-						<div>There are no products</div>
-					)}
-				</>
-			)}
+			<Footer />
 		</section>
 	)
 }

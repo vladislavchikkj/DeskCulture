@@ -16,12 +16,7 @@ const CatalogPage: FC<TypePaginationСatalog> = ({
 	return (
 		<Meta title='Catalog'>
 			<Layout>
-				<Parallax pages={2.5} style={{ top: '0', left: '0' }}>
-					<ParallaxLayer offset={0} speed={0.2}>
-						<Catalog title='Catalog' data={{ products, categories, setups }} />
-					</ParallaxLayer>
-					<Footer />
-				</Parallax>
+				<Catalog title='Catalog' data={{ products, categories, setups }} />
 			</Layout>
 		</Meta>
 	)

@@ -44,14 +44,15 @@ const Home: FC<TypeCombinedPagination> = ({
 							<HomePlayer />
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
+							<LowBar>Select a ready setup</LowBar>
 							<HomeSetup setups={setups} setupsLength={2} />
-							<LowBar />
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={2.2}
 							speed={0.8}
 							style={{ zIndex: '2', top: '-18%' }}
 						>
+							<LowBar>Select categories</LowBar>
 							<HomeCategory categories={categories} categoriesLength={2} />
 						</ParallaxLayer>
 						<ParallaxLayer
@@ -70,8 +71,9 @@ const Home: FC<TypeCombinedPagination> = ({
 							<HomeReviews />
 						</ParallaxLayer>
 						<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
-						<Footer />
+						<Footer home={true} />
 					</Parallax>
+					<LowBar>Select a ready setup</LowBar>
 				</section>
 			</Layout>
 		</Meta>
