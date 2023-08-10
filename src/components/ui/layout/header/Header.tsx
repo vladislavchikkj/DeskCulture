@@ -87,16 +87,14 @@ const Header: FC<Props> = ({ inView }) => {
 					)}
 				</div>
 				<div className='grid grid-flow-col justify-self-end'>
-					<span className={style.search}>
-						<Search
-							headerRef={headerRef}
-							searchData={searchData}
-							allProducts={products}
-							isShow={isShow}
-							setIsShow={setIsShow}
-							closeSearch={ref}
-						/>
-					</span>
+					<Search
+						headerRef={headerRef}
+						searchData={searchData}
+						allProducts={products}
+						isShow={isShow}
+						setIsShow={setIsShow}
+						closeSearch={ref}
+					/>
 					{!user && (
 						<div className={style.headerButton}>
 							<span className='pl-6 pr-6'>

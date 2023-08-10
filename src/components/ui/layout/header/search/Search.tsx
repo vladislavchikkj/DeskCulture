@@ -12,6 +12,8 @@ import { createPortal } from 'react-dom'
 
 import { IProduct } from '@/types/product.interface'
 
+import styleHeader from '../header.module.scss'
+
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 
@@ -49,9 +51,9 @@ const Search: FC<SearchType> = ({
 		filterProducts()
 	}, [searchData])
 	return (
-		<>
+		<div className={styleHeader.search}>
 			<div
-				className='flex gap-1'
+				className={style.searchBtn}
 				onClick={() => {
 					setIsShow(!isShow)
 				}}
@@ -64,7 +66,6 @@ const Search: FC<SearchType> = ({
 				createPortal(
 					<>
 						<div
-							ref={closeSearch}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openSearch}` : `${style.closeSearch}`
@@ -120,7 +121,7 @@ const Search: FC<SearchType> = ({
 					</>,
 					headerRef.current
 				)}
-		</>
+		</div>
 	)
 }
 
