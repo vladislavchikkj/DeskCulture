@@ -17,7 +17,10 @@ import style from './header.module.scss'
 import Menu from './menu/Menu'
 import { ProductService } from '@/services/product/product.service'
 
-const Header: FC = () => {
+type Props = {
+	inView: boolean
+}
+const Header: FC<Props> = ({ inView }) => {
 	const { user } = useAuth()
 	const { logout } = useActions()
 	const { isShow, setIsShow, ref } = useOutside(false)
@@ -34,34 +37,13 @@ const Header: FC = () => {
 			.then(result => setProducts(result))
 			.catch(err => err)
 	}, [])
-	// const [isHeaderWhite, setIsHeaderWhite] = useState(false)
-
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		const scrollPosition = window.scrollY
-	// 		const пороговое_значение = 100
-	// 		setIsHeaderWhite(scrollPosition > пороговое_значение)
-	// 	}
-
-	// 	window.addEventListener('scroll', handleScroll)
-
-	// 	return () => {
-	// 		window.removeEventListener('scroll', handleScroll)
-	// 	}
-	// }, [])
 	return (
-		<header
-			className={cn(
-				style.header
-				//  { [style.whiteBackground]: isHeaderWhite }
-			)}
-			ref={headerRef}
-		>
+		<header className={cn(style.header)} ref={headerRef}>
 			<div
 				className={cn(
 					style.headerWrapper,
-					// { [style.whiteBackground]: isHeaderWhite },
-					isShow ? `${style.openSearch}` : `${style.closeSearch}`
+					isShow ? `${style.openSearch}` : `${style.closeSearch}`,
+					!inView ? `${style.headerWhite}` : ''
 				)}
 			>
 				<div className='grid grid-flow-col'>

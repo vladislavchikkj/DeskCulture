@@ -2,6 +2,7 @@
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { FC } from 'react'
 import 'react-html5video/dist/styles.css'
+import { useInView } from 'react-intersection-observer'
 
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
@@ -24,13 +25,21 @@ const Home: FC<TypeCombinedPagination> = ({
 	setups,
 	setupsLength
 }) => {
+	const {
+		ref: inViewRef,
+		inView,
+		entry
+	} = useInView({
+		/* Optional options */
+		threshold: 0
+	})
 	return (
 		<Meta title='Home'>
-			<Layout>
+			<Layout inView={inView}>
 				<section className={style.home}>
 					<Parallax pages={4} style={{ top: '0', left: '0' }}>
 						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
-							<div className={style.intro}>
+							<div ref={inViewRef} className={style.intro}>
 								<ParallaxLayer offset={0} speed={0.5}>
 									<HomeIntro />
 								</ParallaxLayer>

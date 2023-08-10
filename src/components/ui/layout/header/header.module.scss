@@ -11,6 +11,11 @@
 	background: #cdcecf;
 	// background: white;
 	z-index: 100;
+	transition: all 0.5s;
+}
+.headerWhite {
+	transition: all 0.5s;
+	background: white;
 }
 
 .headerButton {

@@ -1,10 +1,8 @@
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { FC } from 'react'
 
 import Meta from '@/ui/Meta'
 import Catalog from '@/ui/catalog/Catalog'
 import Layout from '@/ui/layout/Layout'
-import Footer from '@/ui/layout/footer/Footer'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
 

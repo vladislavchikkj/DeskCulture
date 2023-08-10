@@ -1,12 +1,15 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC } from 'react'
 
-import Footer from './footer/Footer'
 import Header from './header/Header'
 
-const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
+type Props = {
+	children: React.ReactNode
+	inView: boolean
+}
+const Layout: FC<Props> = ({ children, inView }) => {
 	return (
 		<>
-			<Header />
+			<Header inView={inView} />
 			<main>{children}</main>
 		</>
 	)
