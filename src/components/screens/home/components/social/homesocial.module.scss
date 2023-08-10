@@ -1,9 +1,9 @@
 .social {
 	width: 100%;
-	height: 65vw;
+	height: 120vh;
 	background: #cdcecf;
 
-	padding-top: 4vw;
+	padding-top: 8vh;
 }
 
 .socialInfo {
@@ -19,7 +19,9 @@
 .slider {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	gap: 2.5vw;
+	height: 50%;
 }
 
 .sliderBtns {
@@ -28,7 +30,6 @@
 }
 
 .links {
-	position: absolute;
 	display: grid;
 	grid-auto-flow: column;
 	margin-top: 4vw;
@@ -40,7 +41,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	padding: 3vw;
+	padding: 3vh;
 	background: rgb(255, 255, 255);
 }
 

@@ -1,13 +1,16 @@
 .reviews {
 	background: rgb(255, 255, 255);
-	height: 500px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .reviews__header {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-	padding-top: 2vw;
+	padding-top: 4vh;
 }
 
 .reviews__title {

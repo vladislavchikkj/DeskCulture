@@ -5,6 +5,7 @@ import 'react-html5video/dist/styles.css'
 
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
+import Footer from '@/ui/layout/footer/Footer'
 
 import { TypeCombinedPagination } from '@/types/product.interface'
 
@@ -27,10 +28,7 @@ const Home: FC<TypeCombinedPagination> = ({
 		<Meta title='Home'>
 			<Layout>
 				<section className={style.home}>
-					<Parallax
-						pages={5}
-						style={{ top: '0', left: '0', background: 'red' }}
-					>
+					<Parallax pages={4} style={{ top: '0', left: '0' }}>
 						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
 							<div className={style.intro}>
 								<ParallaxLayer offset={0} speed={0.5}>
@@ -47,50 +45,33 @@ const Home: FC<TypeCombinedPagination> = ({
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
 							<HomeSetup setups={setups} setupsLength={2} />
+							<LowBar />
 						</ParallaxLayer>
 						<ParallaxLayer
-							offset={2.3}
+							offset={2.2}
 							speed={0.8}
 							style={{ zIndex: '2', top: '-18%' }}
 						>
 							<HomeCategory categories={categories} categoriesLength={2} />
 						</ParallaxLayer>
-						<ParallaxLayer offset={2.3} speed={1.2} style={{ zIndex: '2' }}>
+						<ParallaxLayer
+							offset={2.5}
+							speed={1}
+							factor={1.2}
+							style={{ zIndex: '2', top: '-2%' }}
+						>
 							<HomeSocial />
 						</ParallaxLayer>
-						<ParallaxLayer offset={3.1} speed={1} style={{ zIndex: '2' }}>
+						<ParallaxLayer
+							offset={3}
+							speed={1.2}
+							style={{ zIndex: '2', top: '-15%' }}
+						>
 							<HomeReviews />
 						</ParallaxLayer>
+						<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
+						<Footer />
 					</Parallax>
-					{/* <Parallax pages={3.4} style={{ top: '0', left: '0' }}>
-						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
-							<HomePlayer />
-						</ParallaxLayer>
-						<ParallaxLayer
-							offset={0}
-							speed={0.7}
-							style={{ transition: '.1s', zIndex: '1' }}
-						>
-							<div className={style.intro}>
-								<ParallaxLayer offset={0} speed={0.2}>
-									<HomeIntro />
-								</ParallaxLayer>
-							</div>
-							<ParallaxLayer offset={1.6} speed={0.1}>
-								<HomeSetup setups={setups} setupsLength={2} />
-							</ParallaxLayer>
-							<ParallaxLayer offset={2.3} speed={0.3}>
-								<HomeCategory categories={categories} categoriesLength={2} />
-							</ParallaxLayer>
-							<ParallaxLayer offset={2.95} speed={0.7}>
-								<HomeSocial />
-							</ParallaxLayer>
-							<ParallaxLayer offset={3.1} speed={1}>
-								<HomeReviews />
-							</ParallaxLayer>
-						</ParallaxLayer>
-					</Parallax> */}
-					<LowBar />
 				</section>
 			</Layout>
 		</Meta>
