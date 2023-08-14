@@ -1,6 +1,6 @@
 .searchMenu {
 	display: flex;
-	position: relative;
+	position: absolute;
 	opacity: 0;
 	width: 100vw;
 	height: 70vh;
@@ -135,7 +135,6 @@
 	font-weight: 500;
 	line-height: 2vw; /* 105.263% */
 	letter-spacing: -1.9px;
-	overflow: hidden;
 	opacity: 0;
 	animation: fade 1.5s forwards;
 }

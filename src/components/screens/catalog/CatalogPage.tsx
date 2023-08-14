@@ -13,7 +13,7 @@ const CatalogPage: FC<TypePaginationСatalog> = ({
 }) => {
 	return (
 		<Meta title='Catalog'>
-			<Layout>
+			<Layout inView={false}>
 				<Catalog title='Catalog' data={{ products, categories, setups }} />
 			</Layout>
 		</Meta>

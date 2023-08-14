@@ -4,7 +4,13 @@ import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 import style from './button.module.scss'
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant: 'grey' | 'black' | 'btnArrow' | 'btnPlus' | 'btnArrowMenu'
+	variant:
+		| 'grey'
+		| 'black'
+		| 'btnArrow'
+		| 'btnPlus'
+		| 'btnArrowMenu'
+		| 'btnPlusWhite'
 }
 const Button: FC<PropsWithChildren<IButton>> = ({
 	children,
@@ -22,7 +28,8 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 					[style.blackTypeBtn]: variant === 'black',
 					[style.btnArrow]: variant === 'btnArrow',
 					[style.btnArrowMenu]: variant === 'btnArrowMenu',
-					[style.btnPlus]: variant === 'btnPlus'
+					[style.btnPlus]: variant === 'btnPlus',
+					[style.btnPlusWhite]: variant === 'btnPlusWhite'
 				},
 				className
 			)}

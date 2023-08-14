@@ -1,6 +1,8 @@
 import cn from 'clsx'
+import Link from 'next/link'
 import { FC, MutableRefObject } from 'react'
 import { createPortal } from 'react-dom'
+import { useInView } from 'react-intersection-observer'
 
 import Button from '@/ui/common/buttons/Button'
 
@@ -17,6 +19,14 @@ type MenuType = {
 }
 const Menu: FC<MenuType> = ({ headerRef }) => {
 	const { isShow, setIsShow, ref } = useOutside(false)
+	const {
+		ref: inViewRefModal,
+		inView,
+		entry
+	} = useInView({
+		/* Optional options */
+		threshold: 0
+	})
 	return (
 		<>
 			<div
@@ -39,6 +49,7 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 				createPortal(
 					<>
 						<div
+							ref={inViewRefModal}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openMenu}` : `${style.closeMenu}`
@@ -68,12 +79,14 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 											↓
 										</Button>
 									</div>
-									<div className={style.menuList}>
-										<span className={style.menuListName}>Catalog</span>
-										<Button data-hover='↓' variant={'btnArrowMenu'}>
-											↓
-										</Button>
-									</div>
+									<Link href={`/catalog`}>
+										<div className={style.menuList}>
+											<span className={style.menuListName}>Catalog</span>
+											<Button data-hover='↓' variant={'btnArrowMenu'}>
+												↓
+											</Button>
+										</div>
+									</Link>
 									<div className={style.menuList}>
 										<span className={style.menuListName}>About us</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>

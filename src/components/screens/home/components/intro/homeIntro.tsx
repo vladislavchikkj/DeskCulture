@@ -3,10 +3,7 @@ import { FC, LegacyRef } from 'react'
 import style from './homeintro.module.scss'
 import Logo from './svg/newlogo.svg'
 
-type props = {
-	refIntro?: LegacyRef<HTMLDivElement> | undefined
-}
-const HomeIntro: FC<props> = ({ refIntro }) => {
+const HomeIntro: FC = () => {
 	return (
 		<>
 			<div className={`${style.homeIntro} container-f`}>

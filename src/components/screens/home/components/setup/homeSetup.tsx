@@ -37,6 +37,11 @@ const HomeSetup: FC<TypePaginationSetup> = ({ setups, setupsLength }) => {
 									alt={setup.name}
 									className={style.image}
 								/>
+								<div className={style.plusBtn}>
+									<Button data-hover='+' variant='btnPlusWhite'>
+										+
+									</Button>
+								</div>
 							</div>
 							<div className={style.descr}>
 								<h3>{setup.name}</h3>

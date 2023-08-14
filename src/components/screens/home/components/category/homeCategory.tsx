@@ -39,6 +39,11 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 									alt={categories.name}
 									className={style.image}
 								/>
+								<div className={style.plusBtn}>
+									<Button data-hover='+' variant='btnPlusWhite'>
+										+
+									</Button>
+								</div>
 							</div>
 							<div className={style.descr}>
 								<h3>{categories.name}</h3>
