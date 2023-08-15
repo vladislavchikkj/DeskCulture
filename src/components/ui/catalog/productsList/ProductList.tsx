@@ -14,9 +14,10 @@ import { EnumProductSort } from '@/services/product/product.types'
 
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
+	slug?: string // Add this line
 }
 
-const ProductList: FC<ProductListProps> = ({ initialProducts }) => {
+const ProductList: FC<ProductListProps> = ({ initialProducts, slug }) => {
 	const [page, setPage] = useState(1)
 	const [sortType, setSortType] = useState<EnumProductSort>(
 		EnumProductSort.NEWEST
@@ -44,7 +45,7 @@ const ProductList: FC<ProductListProps> = ({ initialProducts }) => {
 			}
 		}
 
-		updateProducts()
+		// updateProducts() // edit
 	}, [sortType])
 
 	const loadMoreProducts = async () => {
