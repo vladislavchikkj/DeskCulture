@@ -136,7 +136,7 @@
 	line-height: 2vw; /* 105.263% */
 	letter-spacing: -1.9px;
 	opacity: 0;
-	animation: fade 1.5s forwards;
+	animation: fade 1s forwards;
 }
 @keyframes fade {
 	0% {
@@ -169,20 +169,16 @@
 @keyframes fade-left {
 	0% {
 		opacity: 0;
-		transform: translateX(-10%);
 	}
 	100% {
 		opacity: 1;
-		transform: translateX(0);
 	}
 }
 @keyframes fade-right {
 	0% {
 		opacity: 0;
-		transform: translateX(10%);
 	}
 	100% {
 		opacity: 1;
-		transform: translateX(0);
 	}
 }

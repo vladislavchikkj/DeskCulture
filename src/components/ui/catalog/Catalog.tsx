@@ -8,9 +8,9 @@ import Footer from '../layout/footer/Footer'
 
 import ButtonSwitcher from './buttonSwitcher/ButtonSwitcher'
 import catalogStyle from './catalog.module.scss'
-import CategoryList from './category/[Category]'
-import ProductList from './products/ProductList'
-import SetupList from './setups/Setups'
+import CategoryList from './categoryList/CategoryList'
+import ProductList from './productsList/ProductList'
+import SetupList from './setupsList/Setups'
 
 interface ICatalog {
 	data: TypePaginationСatalog
