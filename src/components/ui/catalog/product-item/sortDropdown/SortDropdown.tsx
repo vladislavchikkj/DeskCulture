@@ -26,7 +26,8 @@ const SortDropdown: FC<ISortDropdown> = ({ setSortType, sortType }) => {
 							value={EnumProductSort[key]}
 							className={style.x}
 						>
-							{EnumProductSort[key]}
+							{EnumProductSort[key].charAt(0).toUpperCase() +
+								EnumProductSort[key].slice(1)}
 						</option>
 					)
 				})}

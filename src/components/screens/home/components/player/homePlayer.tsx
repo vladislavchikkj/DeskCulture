@@ -9,6 +9,7 @@ const HomePlayer: FC = () => {
 			<div className={style.video}>
 				<ReactPlayer
 					muted
+					loop={true}
 					width={'250.66667vh'}
 					height={'130vh'}
 					url={'https://player.vimeo.com/video/726622515?h=557969d636'}

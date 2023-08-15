@@ -1,0 +1,63 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Link from 'next/link'
+import React from 'react'
+
+import { ICategory } from '@/types/category.interface'
+
+import setupStyle from '../catalogSetups.module.scss'
+
+import { CategoryService } from '@/services/category.service'
+import { ProductService } from '@/services/product/product.service'
+
+interface CategoryProps {
+	categories: ICategory[]
+}
+export const getStaticPaths: GetStaticPaths = async () => {
+	const categories = await CategoryService.getAll()
+
+	const paths = categories.map(category => {
+		return {
+			params: { slug: category.slug }
+		}
+	})
+	return { paths, fallback: false }
+}
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const { data: products } = await ProductService.getByCategory(
+		params?.slug as string
+	)
+	const { data: category } = await CategoryService.getBySlug(
+		params?.slug as string
+	)
+	return {
+		props: {
+			products,
+			category
+		}
+	}
+}
+const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
+	return (
+		<div className={setupStyle.itemWrapper}>
+			{categories.map(category => (
+				<div key={category.id} className={setupStyle.item}>
+					<div className={setupStyle.imageWrapper}>
+						<Link href={`/category/${category.slug}`}>
+							<img
+								src={category.image}
+								alt={category.name}
+								className={setupStyle.image}
+							/>
+						</Link>
+					</div>
+					<div className={setupStyle.descr}>
+						<h3>{category.name}</h3>
+						<h4>{category.description}</h4>
+					</div>
+				</div>
+			))}
+		</div>
+	)
+}
+
+export default CategoryList
