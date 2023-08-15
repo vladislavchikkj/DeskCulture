@@ -75,9 +75,9 @@ const ProductList: FC<ProductListProps> = ({ initialProducts }) => {
 	return (
 		<div>
 			<SortDropdown sortType={sortType} setSortType={setSortType} />
-			{isLoading && <Loader />}
-
-			{products.length ? (
+			{isLoading ? ( // Если isLoading === true, показываем лоадер
+				<Loader />
+			) : products.length > 0 ? ( // Если isLoading === false и есть продукты, показываем продукты
 				<>
 					<div className={catalogStyle.items}>
 						{products.map(product => (
@@ -102,6 +102,7 @@ const ProductList: FC<ProductListProps> = ({ initialProducts }) => {
 					)}
 				</>
 			) : (
+				// Если isLoading === false и нет продуктов, показываем сообщение об отсутствии продуктов
 				<div>There are no products</div>
 			)}
 		</div>
