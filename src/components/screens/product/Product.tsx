@@ -1,18 +1,19 @@
 import { FC } from 'react'
 
-import Meta from '@/ui/Meta'
-import Layout from '@/ui/layout/Layout'
+import { IProduct } from '@/types/product.interface'
 
 import style from './product.module.scss'
 
-const Product: FC = () => {
+type props = {
+	product: IProduct
+}
+
+const Products: FC<props> = ({ product }) => {
 	return (
-		<Meta title='Product'>
-			<Layout inView={false}>
-				<div className={style.product}>Name</div>
-			</Layout>
-		</Meta>
+		<div className={style.product}>
+			<div>{product.price}</div>
+		</div>
 	)
 }
 
-export default Product
+export default Products

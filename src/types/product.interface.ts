@@ -23,6 +23,7 @@ export type TypeProducts = {
 }
 
 export type TypePaginationProducts = {
+	[x: string]: any
 	length: number
 	products: IProduct[]
 }

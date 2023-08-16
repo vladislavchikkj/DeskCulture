@@ -25,7 +25,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					<div className={itemStyle.favoriteButton}>
 						<DynamicFavoriteButton productId={product.id} />
 					</div>
-					<Link href={`/product/${product.slug}`}>
+					<Link href={`/products/${product.slug}`}>
 						<div className={itemStyle.imageWrapper}>
 							<img
 								className={itemStyle.image}
