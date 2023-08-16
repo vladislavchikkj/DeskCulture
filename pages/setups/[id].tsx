@@ -2,10 +2,12 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
+import Footer from '@/ui/layout/footer/Footer'
 
 import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
+import Setup from '@/screens/setup/Setup'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
 
@@ -38,7 +40,10 @@ const SetupsPage: NextPage<{
 	console.log(products)
 	return (
 		<Meta title={setups.name}>
-			<Layout inView={false}>{products.length}</Layout>
+			<Layout inView={false}>
+				<Setup products={products} setups={setups} />
+			</Layout>
+			<Footer />
 		</Meta>
 	)
 }

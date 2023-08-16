@@ -1,0 +1,149 @@
+.setup {
+	position: relative;
+}
+.intro {
+	width: 100vw;
+	height: 35vw;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: brightness(60%);
+	}
+}
+.name {
+	position: absolute;
+	top: 17vh;
+
+	color: #fff;
+	font-family: Inter;
+	font-size: 3.5vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 4vw; /* 140.625% */
+	letter-spacing: -0.1vw;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	background: rgb(255, 255, 255);
+
+	padding-top: 8vw;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 0.5fr 1fr;
+	gap: 2.5vw;
+}
+.btnWrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 1vw;
+
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1vw; /* 100% */
+	letter-spacing: -0.64px;
+}
+.numdot {
+	width: 1.5vw;
+	height: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 0vw; /* 123.077% */
+	letter-spacing: -0.56px;
+	border-radius: 100%;
+	background: #000;
+}
+.categoryName h2 {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 2vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.1vw; /* 105.263% */
+	letter-spacing: -1.9px;
+}
+.categoryName h3 {
+	padding-top: 2vw;
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1.15vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5vw; /* 129.545% */
+	letter-spacing: -1.1px;
+	padding-bottom: 1.5vw;
+}
+.categoryName div {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1.9vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 2.1vw; /* 105.263% */
+	letter-spacing: -1.9px;
+}
+.title {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 2vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 40px; /* 105.263% */
+	letter-spacing: -1.9px;
+}
+
+.setupItems {
+	display: flex;
+	flex-direction: column;
+	grid-column-start: 2;
+	grid-column-end: 2;
+	padding-bottom: 5vh;
+}
+.setupItem {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+	width: 100%;
+	padding-top: 1.5vh;
+	padding-bottom: 1.5vh;
+	cursor: pointer;
+}
+.prodName {
+	color: #000;
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.arr {
+	transform: rotate(90deg);
+	font-weight: 600;
+	font-size: 1.3vw;
+}
+
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5vw;
+	padding-bottom: 10vh;
+}
+.intrested {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 5vh;
+	margin-top: 5vh;
+	border-top: 1px solid rgba(25, 27, 29, 0.1);
+}

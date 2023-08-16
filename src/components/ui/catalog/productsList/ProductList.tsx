@@ -15,9 +15,14 @@ import { EnumProductSort } from '@/services/product/product.types'
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
 	slug?: string // Add this line
+	DropdownOff?: boolean
 }
 
-const ProductList: FC<ProductListProps> = ({ initialProducts, slug }) => {
+const ProductList: FC<ProductListProps> = ({
+	initialProducts,
+	slug,
+	DropdownOff
+}) => {
 	const [page, setPage] = useState(1)
 	const [sortType, setSortType] = useState<EnumProductSort>(
 		EnumProductSort.NEWEST
@@ -75,7 +80,9 @@ const ProductList: FC<ProductListProps> = ({ initialProducts, slug }) => {
 
 	return (
 		<div>
-			<SortDropdown sortType={sortType} setSortType={setSortType} />
+			{!DropdownOff && (
+				<SortDropdown sortType={sortType} setSortType={setSortType} />
+			)}
 			{isLoading ? ( // Если isLoading === true, показываем лоадер
 				<Loader />
 			) : products.length > 0 ? ( // Если isLoading === false и есть продукты, показываем продукты

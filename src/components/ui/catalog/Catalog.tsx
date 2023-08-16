@@ -10,7 +10,7 @@ import ButtonSwitcher from './buttonSwitcher/ButtonSwitcher'
 import catalogStyle from './catalog.module.scss'
 import CategoryList from './categoryList/CategoryList'
 import ProductList from './productsList/ProductList'
-import SetupList from './setupsList/Setups'
+import SetupList from './setupsList/SetupsList'
 
 interface ICatalog {
 	data: TypePaginationСatalog
