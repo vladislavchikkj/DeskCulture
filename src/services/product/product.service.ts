@@ -41,6 +41,12 @@ export const ProductService = {
 			method: 'GET'
 		})
 	},
+	async getBySetupsId(id: string | number) {
+		return instance<IProduct>({
+			url: `${PRODUCTS}/by-setups/${id}`,
+			method: 'GET'
+		})
+	},
 	async create() {
 		return instance<IProduct>({
 			url: PRODUCTS,

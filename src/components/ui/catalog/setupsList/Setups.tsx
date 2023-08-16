@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 import Loader from '@/ui/common/loader/Loader'
@@ -12,7 +13,6 @@ interface SetupProps {
 
 const SetupList: React.FC<SetupProps> = ({ setups }) => {
 	const [isLoading, setIsLoading] = useState(false) // Добавляем стейт для загрузки
-
 	return (
 		<div className={setupStyle.itemWrapper}>
 			{isLoading ? ( // Если isLoading === true, показываем лоадер
@@ -21,11 +21,13 @@ const SetupList: React.FC<SetupProps> = ({ setups }) => {
 				setups.map(setup => (
 					<div key={setup.id} className={setupStyle.item}>
 						<div className={setupStyle.imageWrapper}>
-							<img
-								src={setup.image}
-								alt={setup.name}
-								className={setupStyle.image}
-							/>
+							<Link href={`/setups/${setup.id}`}>
+								<img
+									src={setup.image}
+									alt={setup.name}
+									className={setupStyle.image}
+								/>
+							</Link>
 						</div>
 						<div className={setupStyle.descr}>
 							<h3>{setup.name}</h3>
