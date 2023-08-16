@@ -1,18 +1,20 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { useRouter } from 'next/router'
 
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
 
 import { IProduct } from '@/types/product.interface'
 
-// Укажите путь в соответствии с вашей структурой файлов
 import Product from '@/screens/product/Product'
+// Укажите путь в соответствии с вашей структурой файлов
 import { ProductService } from '@/services/product/product.service'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const productsData = await ProductService.getAll()
-	const products = productsData.products || [] // Убедитесь, что массив продуктов существует
+	const productsData = await ProductService.getAll({
+		page: 1,
+		perPage: 6
+	})
+	const products = productsData.products || []
 	const paths = products.map((product: { slug: string }) => ({
 		params: { slug: product.slug }
 	}))
@@ -26,31 +28,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		return { notFound: true }
 	}
 
-	const response = await ProductService.getBySlug(slug)
+	const { data: products } = await ProductService.getBySlug(
+		params?.slug as string
+	)
 
-	if (!response) {
+	if (!products) {
 		return { notFound: true }
 	}
 
-	const product = {
-		...response.data // Передайте только данные продукта, не включая headers
-	}
+	const product = products
 
 	return { props: { product }, revalidate: 60 }
 }
 
 const ProductPage: NextPage<{
-	product: IProduct
+	product: IProduct[]
 }> = ({ product }) => {
-	const router = useRouter()
-
-	// Обработка состояния загрузки
-	if (router.isFallback) {
-		return <div>Загрузка...</div>
-	}
-
+	const [productArr] = product
 	return (
-		<Meta title={product.name}>
+		<Meta title={productArr.name}>
 			<Layout inView={false}>
 				<Product product={product} />
 			</Layout>
