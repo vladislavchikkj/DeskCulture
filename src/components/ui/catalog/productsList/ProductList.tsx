@@ -16,12 +16,14 @@ interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
 	slug?: string // Add this line
 	DropdownOff?: boolean
+	loadMoreBtnOff?: boolean
 }
 
 const ProductList: FC<ProductListProps> = ({
 	initialProducts,
 	slug,
-	DropdownOff
+	DropdownOff,
+	loadMoreBtnOff
 }) => {
 	const [page, setPage] = useState(1)
 	const [sortType, setSortType] = useState<EnumProductSort>(
@@ -94,14 +96,16 @@ const ProductList: FC<ProductListProps> = ({
 					</div>
 					{!allProductsLoaded ? (
 						<div className='flex justify-end pt-12 pb-10'>
-							<Button
-								data-hover='See more'
-								variant='black'
-								onClick={loadMoreProducts}
-								disabled={isLoading}
-							>
-								{isLoading ? 'Loading...' : 'See more'}
-							</Button>
+							{!loadMoreBtnOff && (
+								<Button
+									data-hover='See more'
+									variant='black'
+									onClick={loadMoreProducts}
+									disabled={isLoading}
+								>
+									{isLoading ? 'Loading...' : 'See more'}
+								</Button>
+							)}
 						</div>
 					) : (
 						<div className='flex justify-end pt-12 pb-10'>

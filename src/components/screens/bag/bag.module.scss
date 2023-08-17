@@ -1,0 +1,91 @@
+.wrapper {
+	padding-top: 15vh;
+	padding-bottom: 15vh;
+}
+.title {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 1.5vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 40px; /* 153.846% */
+	letter-spacing: 3.48px;
+	text-transform: uppercase;
+	padding-bottom: 5vh;
+}
+.cartLayout {
+	display: grid;
+	grid-template-columns: 1fr 0.5fr;
+}
+.cart {
+	padding-right: 2.5vw;
+	border-right: 1px solid rgba(25, 27, 29, 0.1);
+}
+.cartInfo {
+	padding-left: 2.5vw;
+}
+.productsPrice,
+.salesTax,
+.total {
+	display: flex;
+	justify-content: space-between;
+
+	color: #000;
+	font-family: Inter;
+	font-size: 0.6vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.productsPrice {
+	padding-bottom: 1vh;
+}
+.salesTax {
+	padding-bottom: 2.5vh;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+}
+.total {
+	display: flex;
+	align-items: center;
+	padding-top: 2.5vh;
+	padding-bottom: 2.5vh;
+}
+.totalPrice {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 0.9vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px; /* 176.471% */
+	letter-spacing: 2.16px;
+	text-transform: uppercase;
+}
+.otherInfo {
+	padding-top: 5vh;
+
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.5vw;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.otherInfo > div:first-child {
+	padding-bottom: 0.7vw;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+}
+
+.otherInfo > div:last-child {
+	padding-top: 0.7vw;
+}
+.otherInfoList {
+	display: flex;
+	justify-content: space-between;
+}
+.otherInfoList > span:last-child {
+	transform: rotate(90deg);
+	font-size: 0.9vw;
+}

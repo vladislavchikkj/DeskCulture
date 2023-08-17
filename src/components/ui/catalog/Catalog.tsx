@@ -47,6 +47,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 					<ProductList initialProducts={data.products} />
 				)}
 			</div>
+
 			<Footer />
 		</section>
 	)

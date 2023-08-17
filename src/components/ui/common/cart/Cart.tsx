@@ -1,4 +1,5 @@
 import cn from 'clsx'
+import Link from 'next/link'
 import { FC } from 'react'
 
 import BagBtn from '@/ui/common/buttons/bagbtn/BagBtn'
@@ -44,7 +45,9 @@ const Cart: FC = () => {
 					<div className={style.totalPrice}>{convertPrice(total)}</div>
 				</div>
 				<div className={style.totalBtn}>
-					<AuthButton variant='black'>View my Shopping Bag</AuthButton>
+					<Link href={'/cart'}>
+						<AuthButton variant='black'>View my Shopping Bag</AuthButton>
+					</Link>
 				</div>
 			</div>
 			<div

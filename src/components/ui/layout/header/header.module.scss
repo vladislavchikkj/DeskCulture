@@ -5,7 +5,7 @@
 	position: fixed;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1.2fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr;
 	justify-content: space-between;
 	border-bottom: 1px solid #b7b7b7;
 	background: #cdcecf;
@@ -35,6 +35,10 @@
 	line-height: 19px;
 	height: 100%;
 	cursor: pointer;
+}
+.leftBtnHeader {
+	display: grid;
+	grid-auto-flow: column;
 }
 .menu {
 	padding-left: 1.5rem;

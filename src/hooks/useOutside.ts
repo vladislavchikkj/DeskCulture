@@ -30,10 +30,19 @@ export const useOutside = (
 
 	useEffect(() => {
 		document.addEventListener('click', handleClickOutside, true)
+
+		if (isShow) {
+			document.body.style.overflow = 'hidden' // Запрещаем прокрутку страницы
+		} else {
+			document.body.style.overflow = '' // Восстанавливаем прокрутку страницы
+		}
+
 		return () => {
 			document.removeEventListener('click', handleClickOutside, true)
+			document.body.style.overflow = '' // Восстанавливаем прокрутку страницы при размонтировании компонента
 		}
-	})
+	}, [isShow])
+
 	return addRefNeeded
 		? { ref, isShow, setIsShow, addRef }
 		: { ref, isShow, setIsShow }

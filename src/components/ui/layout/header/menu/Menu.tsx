@@ -79,16 +79,14 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 											↓
 										</Button>
 									</div>
-									<Link href={`/catalog`}>
-										<div className={style.menuList}>
-											<span className={style.menuListName}>Catalog</span>
-											<Button data-hover='↓' variant={'btnArrowMenu'}>
-												↓
-											</Button>
-										</div>
+									<Link href={`/catalog`} className={style.menuList}>
+										<span className={style.menuListName}>Catalog</span>
+										<Button data-hover='↓' variant={'btnArrowMenu'}>
+											↓
+										</Button>
 									</Link>
 									<div className={style.menuList}>
-										<span className={style.menuListName}>About us</span>
+										<span className={style.menuListName}>For the client</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>

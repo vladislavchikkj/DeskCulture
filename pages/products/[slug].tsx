@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Meta from '@/ui/Meta'
 import Layout from '@/ui/layout/Layout'
+import Footer from '@/ui/layout/footer/Footer'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -50,6 +51,7 @@ const ProductPage: NextPage<{
 			<Layout inView={false}>
 				<Product product={product} />
 			</Layout>
+			<Footer />
 		</Meta>
 	)
 }

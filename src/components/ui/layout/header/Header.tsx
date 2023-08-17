@@ -42,32 +42,34 @@ const Header: FC<Props> = ({ inView }) => {
 			<div
 				className={cn(
 					style.headerWrapper,
-					isShow ? `${style.openSearch}` : `${style.closeSearch}`,
+					// isShow ? `${style.openSearch}` : `${style.closeSearch}`,
 					!inView ? `${style.headerWhite}` : ''
 				)}
 			>
-				<div className='grid grid-flow-col'>
+				<div className={style.leftBtnHeader}>
 					<Menu headerRef={headerRef} />
-					<div className={`${style.headerButton} ${style.hideBtn}`}>
+					<div className='grid grid-flow-col'>
+						{/* <div className={`${style.headerButton} ${style.hideBtn}`}>
 						<div data-hover='For the client ›' className={style.textBtn}>
 							<div className='flex gap-2'>
 								For the client
 								<div className='rotate-90'>›</div>
 							</div>
 						</div>
-					</div>
-					<div className={`${style.headerButton} ${style.hideBtn}`}>
-						<div data-hover='About Us' className={style.textBtn}>
-							<div className='flex gap-2'>About Us</div>
-						</div>
-					</div>
-					<Link href={`/catalog`}>
+					</div> */}
 						<div className={`${style.headerButton} ${style.hideBtn}`}>
-							<div data-hover='Catalog' className={style.textBtn}>
-								<div>Catalog</div>
+							<div data-hover='About Us' className={style.textBtn}>
+								<div className='flex gap-2'>About Us</div>
 							</div>
 						</div>
-					</Link>
+						<Link href={`/catalog`}>
+							<div className={`${style.headerButton} ${style.hideBtn}`}>
+								<div data-hover='Catalog' className={style.textBtn}>
+									<div>Catalog</div>
+								</div>
+							</div>
+						</Link>
+					</div>
 				</div>
 				<div ref={addRef} className={style.logoPlace}>
 					{!isShow ? (
@@ -108,8 +110,8 @@ const Header: FC<Props> = ({ inView }) => {
 						{!!user ? (
 							<button className={style.headerButton} onClick={() => logout()}>
 								<span className='pl-6 pr-6'>
-									<div data-hover='Kushinada' className={style.textBtn}>
-										<div>Kushinada</div>
+									<div data-hover='My Profile' className={style.textBtn}>
+										<div>My Profile</div>
 									</div>
 								</span>
 							</button>

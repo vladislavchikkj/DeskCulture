@@ -7,7 +7,7 @@
 }
 .searchMenu {
 	display: flex;
-	position: relative;
+	position: fixed;
 	opacity: 0;
 	width: 100vw;
 	height: 60vh;
@@ -21,7 +21,7 @@
 }
 .popupWrapper {
 	margin: 0 auto;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	display: flex;

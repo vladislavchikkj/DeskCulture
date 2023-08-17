@@ -22,7 +22,12 @@ const Category: FC<props> = ({ products, category }) => {
 			</div>
 			<div className={`${style.title} container-f`}>All Products</div>
 			<div className='container-f'>
-				<ProductList initialProducts={products} slug={category.slug} />
+				<ProductList
+					initialProducts={products}
+					slug={category.slug}
+					DropdownOff={true}
+					loadMoreBtnOff={true}
+				/>
 			</div>
 		</div>
 	)
