@@ -17,22 +17,23 @@ interface ProductListProps {
 	slug?: string // Add this line
 	DropdownOff?: boolean
 	loadMoreBtnOff?: boolean
+	needToUpdate?: boolean
 }
 
 const ProductList: FC<ProductListProps> = ({
 	initialProducts,
 	slug,
 	DropdownOff,
-	loadMoreBtnOff
+	loadMoreBtnOff,
+	needToUpdate = true
 }) => {
 	const [page, setPage] = useState(1)
 	const [sortType, setSortType] = useState<EnumProductSort>(
 		EnumProductSort.NEWEST
 	)
-	const [products, setProducts] = useState(initialProducts)
+	const [products, setProducts] = useState(initialProducts.slice(0, 6))
 	const [isLoading, setIsLoading] = useState(false)
 	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
-
 	useEffect(() => {
 		const updateProducts = async () => {
 			setIsLoading(true)
@@ -52,7 +53,9 @@ const ProductList: FC<ProductListProps> = ({
 			}
 		}
 
-		// updateProducts() // edit
+		if (needToUpdate) {
+			updateProducts() // edit
+		}
 	}, [sortType])
 
 	const loadMoreProducts = async () => {
@@ -64,6 +67,7 @@ const ProductList: FC<ProductListProps> = ({
 				sort: sortType
 			})
 			const newProducts = response.products
+			console.log(newProducts)
 			if (newProducts.length === 0) {
 				setAllProductsLoaded(true)
 			} else {

@@ -87,7 +87,11 @@ const Products: FC<props> = ({ product }) => {
 						YOU MAY ALSO BE <br /> INTERESTED IN:
 					</div>
 				</div>
-				<ProductList initialProducts={product} DropdownOff={true} />
+				<ProductList
+					initialProducts={product}
+					DropdownOff={true}
+					loadMoreBtnOff={true}
+				/>
 			</div>
 		</div>
 	)

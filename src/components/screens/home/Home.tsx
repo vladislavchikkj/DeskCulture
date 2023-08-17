@@ -73,7 +73,7 @@ const Home: FC<TypeCombinedPagination> = ({
 							<HomeSocial />
 						</ParallaxLayer>
 						<ParallaxLayer
-							offset={3}
+							offset={3.1}
 							speed={1.2}
 							style={{ zIndex: '2', top: '-15%' }}
 						>

@@ -34,38 +34,40 @@ const HomeSocial: FC = () => {
 							→
 						</Button>
 					</div>
-					<div className={style.links}>
-						<div className={style.link}>
-							<div className={style.linkImg}>
-								<InstImg />
+					<div className={style.linksWrap}>
+						<div className={style.links}>
+							<div className={style.link}>
+								<div className={style.linkImg}>
+									<InstImg />
+								</div>
+								<div className={style.linkDescr}>
+									<span className={style.linkName}>Instagram</span>
+									<Button data-hover='+' variant='btnPlus'>
+										+
+									</Button>
+								</div>
 							</div>
-							<div className={style.linkDescr}>
-								<span className={style.linkName}>Instagram</span>
-								<Button data-hover='+' variant='btnPlus'>
-									+
-								</Button>
+							<div className={style.link}>
+								<div className={style.linkImg}>
+									<FacebookImg />
+								</div>
+								<div className={style.linkDescr}>
+									<span className={style.linkName}>Facebook</span>
+									<Button data-hover='+' variant='btnPlus'>
+										+
+									</Button>
+								</div>
 							</div>
-						</div>
-						<div className={style.link}>
-							<div className={style.linkImg}>
-								<FacebookImg />
-							</div>
-							<div className={style.linkDescr}>
-								<span className={style.linkName}>Facebook</span>
-								<Button data-hover='+' variant='btnPlus'>
-									+
-								</Button>
-							</div>
-						</div>
-						<div className={style.link}>
-							<div className={style.linkImg}>
-								<TiktokImg />
-							</div>
-							<div className={style.linkDescr}>
-								<span className={style.linkName}>Tiktok</span>
-								<Button data-hover='+' variant='btnPlus'>
-									+
-								</Button>
+							<div className={style.link}>
+								<div className={style.linkImg}>
+									<TiktokImg />
+								</div>
+								<div className={style.linkDescr}>
+									<span className={style.linkName}>Tiktok</span>
+									<Button data-hover='+' variant='btnPlus'>
+										+
+									</Button>
+								</div>
 							</div>
 						</div>
 					</div>

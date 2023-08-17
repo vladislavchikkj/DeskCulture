@@ -74,11 +74,7 @@ const Setup: FC<props> = ({ products, setups }) => {
 							YOU MAY ALSO BE <br /> INTERESTED IN:
 						</div>
 					</div>
-					<ProductList
-						initialProducts={products}
-						DropdownOff={true}
-						loadMoreBtnOff={true}
-					/>
+					<ProductList initialProducts={products} DropdownOff={true} />
 				</div>
 			</div>
 		</div>

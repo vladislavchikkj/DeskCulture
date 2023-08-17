@@ -27,6 +27,7 @@ const Category: FC<props> = ({ products, category }) => {
 					slug={category.slug}
 					DropdownOff={true}
 					loadMoreBtnOff={true}
+					needToUpdate={false}
 				/>
 			</div>
 		</div>
