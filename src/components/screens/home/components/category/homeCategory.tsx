@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FC } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
@@ -34,11 +35,14 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 					{firstTwoSetups.map(categories => (
 						<div key={categories.id} className={style.item}>
 							<div className={style.imageWrapper}>
-								<img
-									src={categories.image}
-									alt={categories.name}
-									className={style.image}
-								/>
+								<Link href={`/category/${categories.slug}`}>
+									<img
+										src={categories.image}
+										alt={categories.name}
+										className={style.image}
+									/>
+								</Link>
+
 								<div className={style.plusBtn}>
 									<Button data-hover='+' variant='btnPlusWhite'>
 										+

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FC } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
@@ -32,11 +33,14 @@ const HomeSetup: FC<TypePaginationSetup> = ({ setups, setupsLength }) => {
 					{firstTwoSetups.map(setup => (
 						<div key={setup.id} className={style.item}>
 							<div className={style.imageWrapper}>
-								<img
-									src={setup.image}
-									alt={setup.name}
-									className={style.image}
-								/>
+								<Link href={`/setups/${setup.id}`}>
+									<img
+										src={setup.image}
+										alt={setup.name}
+										className={style.image}
+									/>
+								</Link>
+
 								<div className={style.plusBtn}>
 									<Button data-hover='+' variant='btnPlusWhite'>
 										+

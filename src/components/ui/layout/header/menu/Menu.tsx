@@ -58,7 +58,9 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 							<div className={`${style.menuWrapper} container-f`}>
 								<div className={style.menuSide}>
 									<span className={style.menuNav}>
-										<div>navigate</div>
+										<Link href={'/'}>
+											<div className='cursor-pointer'>Home</div>
+										</Link>
 									</span>
 									<div className={style.menuLogo}>
 										<MenuLogo />
