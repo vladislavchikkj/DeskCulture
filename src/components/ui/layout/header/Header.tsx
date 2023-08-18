@@ -8,6 +8,7 @@ import Search from '@/ui/layout/header/search/Search'
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { useOutside } from '@/hooks/useOutside'
+import { useProfile } from '@/hooks/useProfile'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -27,7 +28,7 @@ const Header: FC<Props> = ({ inView }) => {
 	const headerRef = useRef<HTMLElement>(null)
 	const [searchData, setSearchData] = useState('')
 	const [products, setProducts] = useState<IProduct[]>([])
-
+	const { profile } = useProfile()
 	useEffect(() => {
 		const getAllProducts = async () => {
 			const result = await ProductService.getAll()
@@ -110,8 +111,8 @@ const Header: FC<Props> = ({ inView }) => {
 						{!!user ? (
 							<button className={style.headerButton} onClick={() => logout()}>
 								<span className='pl-6 pr-6'>
-									<div data-hover='My Profile' className={style.textBtn}>
-										<div>My Profile</div>
+									<div data-hover={profile?.name} className={style.textBtn}>
+										<div>{profile?.name}</div>
 									</div>
 								</span>
 							</button>

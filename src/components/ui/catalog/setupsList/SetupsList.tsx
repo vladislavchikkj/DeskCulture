@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 
 import Loader from '@/ui/common/loader/Loader'
 
+import { ISetups } from '@/types/setups.interface'
+
 import setupStyle from '../catalogSetups.module.scss'
 
-// Подключите компонент лоадера
-
 interface SetupProps {
-	setups: any[] // Замените на соответствующий тип
+	setups: ISetups[] // Заменить на соответствующий тип
 }
 
 const SetupList: React.FC<SetupProps> = ({ setups }) => {

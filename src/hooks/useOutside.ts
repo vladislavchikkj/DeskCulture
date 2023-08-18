@@ -16,10 +16,6 @@ export const useOutside = (
 	const addRef = useRef<HTMLElement>(null)
 
 	const handleClickOutside = (event: any) => {
-		if (addRefNeeded && ref.current) {
-			console.log(addRef.current?.parentElement)
-			console.log(addRef.current === event.target)
-		}
 		if (ref.current && !ref.current.contains(event.target)) {
 			if (addRef.current && addRef.current.contains(event.target)) {
 				return

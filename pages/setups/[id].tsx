@@ -21,27 +21,38 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	})
 	return { paths, fallback: 'blocking' }
 }
+export const getAllSetups = async (excludeId: number) => {
+	const allSetups = await SetupsService.getAll()
+	return allSetups
+		.filter(setup => setup.id !== excludeId)
+		.sort(() => Math.random() - 0.5)
+		.slice(0, 2)
+}
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { data: products } = await ProductService.getBySetupsId(
 		String(params?.id)
 	)
 	const { data: setups } = await SetupsService.getById(String(params?.id))
+	const allSetups = await getAllSetups(setups.id) // Исключаем текущий setup
 	return {
 		props: {
 			products,
-			setups
+			setups,
+			allSetups // Передаем список всех сетапов без текущего в props
 		}
 	}
 }
+
 const SetupsPage: NextPage<{
 	products: IProduct[]
 	setups: ISetups
-}> = ({ products, setups }) => {
-	console.log(products)
+	allSetups: ISetups[]
+}> = ({ products, setups, allSetups }) => {
 	return (
 		<Meta title={setups.name}>
 			<Layout inView={false}>
-				<Setup products={products} setups={setups} />
+				<Setup products={products} setups={setups} allSetups={allSetups} />
 			</Layout>
 			<Footer />
 		</Meta>

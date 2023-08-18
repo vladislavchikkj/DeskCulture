@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import ProductList from '@/ui/catalog/productsList/ProductList'
+import SetupList from '@/ui/catalog/setupsList/SetupsList'
 import Button from '@/ui/common/buttons/Button'
 
 import { IProduct } from '@/types/product.interface'
@@ -11,9 +11,10 @@ import style from './setup.module.scss'
 type props = {
 	products: IProduct[]
 	setups: ISetups
+	allSetups: ISetups[]
 }
 
-const Setup: FC<props> = ({ products, setups }) => {
+const Setup: FC<props> = ({ products, setups, allSetups }) => {
 	return (
 		<div className={style.setup}>
 			<div className={style.intro}>
@@ -74,7 +75,8 @@ const Setup: FC<props> = ({ products, setups }) => {
 							YOU MAY ALSO BE <br /> INTERESTED IN:
 						</div>
 					</div>
-					<ProductList initialProducts={products} DropdownOff={true} />
+					<SetupList setups={allSetups} />
+					{/* <ProductList initialProducts={products} DropdownOff={true} /> */}
 				</div>
 			</div>
 		</div>

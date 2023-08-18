@@ -37,13 +37,13 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 				</div>
 			</div>
 			<div className={itemStyle.itemInfo}>
-				<Link href={`/category/${product.slug}`}>
+				<Link href={`/products/${product.slug}`}>
 					<h3 className={itemStyle.itemTitle}>{product.name}</h3>
 				</Link>
 
 				<Link
 					className={itemStyle.itemSlug}
-					href={`/product/${product.category.slug}`}
+					href={`/category/${product.category.slug}`}
 				>
 					{product.category.name}
 				</Link>

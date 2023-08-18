@@ -67,7 +67,6 @@ const ProductList: FC<ProductListProps> = ({
 				sort: sortType
 			})
 			const newProducts = response.products
-			console.log(newProducts)
 			if (newProducts.length === 0) {
 				setAllProductsLoaded(true)
 			} else {

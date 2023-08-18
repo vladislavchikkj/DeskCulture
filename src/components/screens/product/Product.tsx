@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { FC } from 'react'
 
 import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
@@ -26,7 +27,19 @@ const Products: FC<props> = ({ product }) => {
 			<div className={style.content}>
 				<div className={style.imagesWraper}>
 					<div className={style.breadcrumbs}>
-						Home / Categories / {productArr.category.name} / {productArr.name}
+						<span>
+							<Link href={'/'}>Home</Link>
+						</span>
+						<div className={style.slesh}>/</div>
+						<span>
+							<Link href={'/catalog'}>Categories</Link>
+						</span>
+						<div className={style.slesh}>/</div>
+						<span>
+							<Link href={'/category/stands'}>{productArr.category.name}</Link>
+						</span>
+						<div className={style.slesh}>/</div>
+						<span className={style.select}>{productArr.name}</span>
 					</div>
 					<div className={style.slider}>
 						<img
@@ -67,11 +80,26 @@ const Products: FC<props> = ({ product }) => {
 						</div>
 					</div>
 					<div className={style.details}>
-						<div className={style.detail}>Product Details</div>
-						<div className={style.detail}>Shipping Details</div>
-						<div className={style.detail}>Payment</div>
-						<div className={style.detail}>Gifting</div>
-						<div className={style.detail}>Next Day Pick Up</div>
+						<div className={style.detail}>
+							<div>Product Details</div>
+							<div>+</div>
+						</div>
+						<div className={style.detail}>
+							<div>Shipping Details</div>
+							<div>+</div>
+						</div>
+						<div className={style.detail}>
+							<div>Payment</div>
+							<div>+</div>
+						</div>
+						<div className={style.detail}>
+							<div>Gifting</div>
+							<div>+</div>
+						</div>
+						<div className={style.detail}>
+							<div>Next Day Pick Up</div>
+							<div>+</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -79,8 +107,8 @@ const Products: FC<props> = ({ product }) => {
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
-						<Button data-hover='ready setup' variant='grey'>
-							ready setup
+						<Button data-hover='Learn More' variant='grey'>
+							Learn More
 						</Button>
 					</div>
 					<div className={style.title}>

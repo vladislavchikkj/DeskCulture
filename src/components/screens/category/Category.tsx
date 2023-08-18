@@ -13,7 +13,6 @@ type props = {
 }
 
 const Category: FC<props> = ({ products, category }) => {
-	console.log(products)
 	return (
 		<div className={style.category}>
 			<div className={style.intro}>
