@@ -19,7 +19,7 @@ import Menu from './menu/Menu'
 import { ProductService } from '@/services/product/product.service'
 
 type Props = {
-	inView: boolean
+	inView?: boolean
 }
 const Header: FC<Props> = ({ inView }) => {
 	const { user } = useAuth()
@@ -41,11 +41,7 @@ const Header: FC<Props> = ({ inView }) => {
 	return (
 		<header className={cn(style.header)} ref={headerRef}>
 			<div
-				className={cn(
-					style.headerWrapper,
-					// isShow ? `${style.openSearch}` : `${style.closeSearch}`,
-					!inView ? `${style.headerWhite}` : ''
-				)}
+				className={cn(style.headerWrapper, !inView && `${style.headerWhite}`)}
 			>
 				<div className={style.leftBtnHeader}>
 					<Menu headerRef={headerRef} />

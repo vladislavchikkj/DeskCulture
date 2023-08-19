@@ -1,5 +1,6 @@
 // ... other imports
 import { FC, useState } from 'react'
+import { InView } from 'react-intersection-observer'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
 
@@ -25,7 +26,6 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const handleClick = (button: 'Categories' | 'Setup' | 'Products') => {
 		setSelectedButton(button)
 	}
-
 	return (
 		<section className={`${catalogStyle.catalog}`}>
 			<div className='container-f'>
@@ -47,7 +47,6 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 					<ProductList initialProducts={data.products} />
 				)}
 			</div>
-
 			<Footer />
 		</section>
 	)

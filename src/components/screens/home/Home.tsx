@@ -1,6 +1,6 @@
 // import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
@@ -27,15 +27,19 @@ const Home: FC<TypeCombinedPagination> = ({
 }) => {
 	const {
 		ref: inViewRef,
-		inView,
+		inView: inViewIntro,
 		entry
 	} = useInView({
-		/* Optional options */
 		threshold: 0
 	})
+	// const { ref: refLowBar, inView: inViewLowBar } = useInView({
+	// 	threshold: 0
+	// })
+
+	const [inView, setInView] = useState(true)
 	return (
 		<Meta title='Home'>
-			<Layout inView={inView}>
+			<Layout inView={inViewIntro}>
 				<section className={style.home}>
 					<Parallax pages={4} style={{ top: '0', left: '0' }}>
 						<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
@@ -53,7 +57,6 @@ const Home: FC<TypeCombinedPagination> = ({
 							<HomePlayer />
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
-							<LowBar>Select a ready setup</LowBar>
 							<HomeSetup setups={setups} setupsLength={2} />
 						</ParallaxLayer>
 						<ParallaxLayer

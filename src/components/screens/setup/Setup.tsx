@@ -76,7 +76,6 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 						</div>
 					</div>
 					<SetupList setups={allSetups} />
-					{/* <ProductList initialProducts={products} DropdownOff={true} /> */}
 				</div>
 			</div>
 		</div>

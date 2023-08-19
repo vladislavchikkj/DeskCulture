@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import ProductList from '@/ui/catalog/productsList/ProductList'
 import Button from '@/ui/common/buttons/Button'
+
+import { useProfile } from '@/hooks/useProfile'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -15,6 +17,7 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	const { profile } = useProfile()
 	const [productArr] = product
 	const DynamicFavoriteButton = dynamic(
 		() => import('@/ui/catalog/product-item/favoriteButton/FavoriteButton'),
@@ -22,6 +25,11 @@ const Products: FC<props> = ({ product }) => {
 			ssr: false
 		}
 	)
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0) // Step 1: State variable for selected image index
+
+	const handleImageClick = (index: number) => {
+		setSelectedImageIndex(index)
+	}
 	return (
 		<div className='container-f'>
 			<div className={style.content}>
@@ -36,7 +44,9 @@ const Products: FC<props> = ({ product }) => {
 						</span>
 						<div className={style.slesh}>/</div>
 						<span>
-							<Link href={'/category/stands'}>{productArr.category.name}</Link>
+							<Link href={`/category/${productArr.category.slug}`}>
+								{productArr.category.name}
+							</Link>
 						</span>
 						<div className={style.slesh}>/</div>
 						<span className={style.select}>{productArr.name}</span>
@@ -44,25 +54,21 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.slider}>
 						<img
 							className={style.image}
-							src={productArr.images[0]}
+							src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
 							alt={productArr.name}
 						/>
 						<div className={style.sliderItems}>
-							<img
-								className={style.image}
-								src={productArr.images[0]}
-								alt={productArr.name}
-							/>
-							<img
-								className={style.image}
-								src={productArr.images[0]}
-								alt={productArr.name}
-							/>
-							<img
-								className={style.image}
-								src={productArr.images[0]}
-								alt={productArr.name}
-							/>
+							{productArr.images.map((image, index) => (
+								<img
+									key={index}
+									className={`${style.image} ${
+										selectedImageIndex === index ? style.selectedImage : ''
+									}`}
+									src={image}
+									alt={productArr.name}
+									onClick={() => handleImageClick(index)} // Step 2: Add click handler
+								/>
+							))}
 						</div>
 					</div>
 				</div>
@@ -75,9 +81,14 @@ const Products: FC<props> = ({ product }) => {
 						<div className={style.addToCart}>
 							<AddToCartButton product={productArr} />
 						</div>
-						<div className={style.favoriteButton}>
-							<DynamicFavoriteButton productId={productArr.id} />
-						</div>
+						{!!profile && (
+							<div className={style.favoriteButton}>
+								<DynamicFavoriteButton
+									productId={productArr.id}
+									variant='default'
+								/>
+							</div>
+						)}
 					</div>
 					<div className={style.details}>
 						<div className={style.detail}>

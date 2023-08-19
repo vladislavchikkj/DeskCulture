@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, LegacyRef } from 'react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -12,44 +12,14 @@ import FacebookImg from './svg/facebook.svg'
 import InstImg from './svg/instagram.svg'
 import TiktokImg from './svg/tiktok.svg'
 
-const HomeSocial: FC = () => {
-	// const [isDragging, setIsDragging] = useState(false)
-	// const [startX, setStartX] = useState(0)
-	// const [offsetX, setOffsetX] = useState(0)
-	// const scrollRef = useRef<HTMLDivElement>(null)
+type HomeSocialProps = {
+	socialRef?: LegacyRef<HTMLDivElement> | undefined
+}
 
-	// const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-	// 	setIsDragging(true)
-	// 	setStartX(event.clientX)
-	// }
-
-	// const handleMouseMove = (event: MouseEvent) => {
-	// 	if (!isDragging) return
-	// 	const newOffsetX = Math.min(
-	// 		0,
-	// 		Math.max(-1000, event.clientX - startX + offsetX) // Ограничиваем прокрутку до -100vw и 0vw
-	// 	)
-	// 	setOffsetX(newOffsetX)
-	// }
-	// const handleMouseUp = () => {
-	// 	setIsDragging(false)
-	// }
-
-	// useEffect(() => {
-	// 	if (isDragging) {
-	// 		document.addEventListener('mousemove', handleMouseMove)
-	// 	} else {
-	// 		document.removeEventListener('mousemove', handleMouseMove)
-	// 	}
-
-	// 	return () => {
-	// 		document.removeEventListener('mousemove', handleMouseMove)
-	// 	}
-	// }, [isDragging])
-
+const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 	return (
 		<>
-			<div className={`${style.social} container-f`}>
+			<div ref={socialRef} className={`${style.social} container-f`}>
 				<div className={style.socialInfo}>
 					<div className={style.btnWrapper}>Follow Us</div>
 					<div className={style.categoryName}>
@@ -74,11 +44,15 @@ const HomeSocial: FC = () => {
 						</Button>
 					</div>
 					<div className={style.linksWrap}>
-						{/* <div className={style.linksWrapContainer}>
-							<div className={style.linksWrapScroll}> */}
-
-						<Swiper className='mySwiper'>
-							<div className={style.links}>
+						<div className={style.linksWrapContainer}>
+							<Swiper
+								className={style.swiper}
+								slidesPerView={2.5}
+								spaceBetween={30}
+								pagination={{
+									clickable: true
+								}}
+							>
 								<SwiperSlide>
 									<div className={style.link}>
 										<div className={style.linkImg}>
@@ -119,7 +93,6 @@ const HomeSocial: FC = () => {
 									</div>
 								</SwiperSlide>
 								<SwiperSlide>
-									{' '}
 									<div className={style.link}>
 										<div className={style.linkImg}>
 											<TiktokImg />
@@ -132,13 +105,11 @@ const HomeSocial: FC = () => {
 										</div>
 									</div>
 								</SwiperSlide>
-							</div>
-						</Swiper>
+							</Swiper>
+						</div>
 					</div>
 				</div>
 			</div>
-			{/* </div>
-			</div> */}
 		</>
 	)
 }

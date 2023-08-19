@@ -1,4 +1,5 @@
-import { FC, LegacyRef } from 'react'
+import { FC } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 import style from './homeintro.module.scss'
 import Logo from './svg/newlogo.svg'

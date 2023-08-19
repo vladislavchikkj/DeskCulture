@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, LegacyRef } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
@@ -7,13 +7,18 @@ import { TypePaginationSetup } from '@/types/product.interface'
 
 import style from './homesetup.module.scss'
 
-const HomeSetup: FC<TypePaginationSetup> = ({ setups, setupsLength }) => {
+type HomeSetupProps = {
+	homeRef?: LegacyRef<HTMLDivElement> | undefined
+}
+type prop = HomeSetupProps & TypePaginationSetup
+
+const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 	// Создаем новый массив, содержащий только первые два сетапа
 	const firstTwoSetups = setups.slice(0, setupsLength)
 
 	return (
 		<>
-			<div className={style.category}>
+			<div ref={homeRef} className={style.category}>
 				<div className={`${style.setup} container-f`}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
