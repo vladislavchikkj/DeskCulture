@@ -1,6 +1,5 @@
 // ... other imports
 import { FC, useState } from 'react'
-import { InView } from 'react-intersection-observer'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
 

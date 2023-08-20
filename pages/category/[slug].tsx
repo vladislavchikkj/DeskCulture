@@ -41,9 +41,7 @@ const CategoryPage: NextPage<{
 }> = ({ products, category }) => {
 	return (
 		<Meta title={category.name}>
-			<Layout inView={false}>
 				<Category products={products} category={category} />
-			</Layout>
 			<Footer />
 		</Meta>
 	)

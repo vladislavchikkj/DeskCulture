@@ -51,9 +51,7 @@ const SetupsPage: NextPage<{
 }> = ({ products, setups, allSetups }) => {
 	return (
 		<Meta title={setups.name}>
-			<Layout inView={false}>
 				<Setup products={products} setups={setups} allSetups={allSetups} />
-			</Layout>
 			<Footer />
 		</Meta>
 	)
