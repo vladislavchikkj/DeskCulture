@@ -1,5 +1,6 @@
+import { motion } from 'framer-motion'
+import router from 'next/router'
 import { FC } from 'react'
-import { useInView } from 'react-intersection-observer'
 
 import Header from './header/Header'
 
@@ -14,7 +15,17 @@ const Layout: FC<Props> = ({ children, inView }) => {
 	return (
 		<>
 			<Header inView={inView} />
-			<main>{children}</main>
+			<motion.div
+				key={router.route}
+				initial={{ y: 25, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				className='nav-bar'
+				transition={{
+					duration: 0.75
+				}}
+			>
+				<main>{children}</main>
+			</motion.div>
 		</>
 	)
 }

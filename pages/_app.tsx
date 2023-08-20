@@ -1,5 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AnimatePresence, motion } from 'framer-motion'
 import { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
@@ -22,15 +24,38 @@ export default function App({
 	Component,
 	pageProps
 }: AppProps & TypeComponentAuthFields) {
+	const router = useRouter()
 	return (
-		<QueryClientProvider client={queryClient}>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<AuthProvider Component={{ isOnlyUser: Component.isOnlyUser }}>
-						<Component {...pageProps}></Component>
-					</AuthProvider>
-				</PersistGate>
-			</Provider>
-		</QueryClientProvider>
+		<AnimatePresence mode='wait'>
+			{/* <motion.div
+				key={router.route}
+				initial='initialState'
+				animate='animateState'
+				exit='exitState'
+				className='base-page-size'
+				transition={{
+					duration: 0.75
+				}}
+				variants={{
+					initialState: {
+						opacity: 0
+					},
+					animateState: {
+						opacity: 1
+					},
+					exitState: {}
+				}}
+			> */}
+			<QueryClientProvider client={queryClient}>
+				<Provider store={store}>
+					<PersistGate loading={null} persistor={persistor}>
+						<AuthProvider Component={{ isOnlyUser: Component.isOnlyUser }}>
+							<Component {...pageProps}></Component>
+						</AuthProvider>
+					</PersistGate>
+				</Provider>
+			</QueryClientProvider>
+			{/* </motion.div> */}
+		</AnimatePresence>
 	)
 }
