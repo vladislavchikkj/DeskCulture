@@ -28,12 +28,12 @@ const Home: FC<TypeCombinedPagination> = ({
 		inView: inViewIntro,
 		entry
 	} = useInView({
-		threshold: 0
+		threshold: 0.2
 	})
 	return (
 		<Meta title='Home'>
 			<section className={style.home}>
-				<Parallax pages={4} style={{ top: '0', left: '0' }}>
+				<Parallax pages={4}>
 					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
 						<div ref={inViewRef} className={style.intro}>
 							<ParallaxLayer offset={0} speed={0.5}>
@@ -49,7 +49,9 @@ const Home: FC<TypeCombinedPagination> = ({
 						<HomePlayer />
 					</ParallaxLayer>
 					<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
-						<HomeSetup setups={setups} setupsLength={2} />
+						<span id='homesetup'>
+							<HomeSetup setups={setups} setupsLength={2} />
+						</span>
 					</ParallaxLayer>
 					<ParallaxLayer
 						offset={2.2}
@@ -77,7 +79,7 @@ const Home: FC<TypeCombinedPagination> = ({
 					<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
 					<Footer home={true} />
 				</Parallax>
-				<LowBar>Select a ready setup</LowBar>
+				<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
 			</section>
 		</Meta>
 	)

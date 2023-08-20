@@ -12,8 +12,11 @@ const LowBar: FC<Props> = ({ children, lowbarState }) => {
 	return (
 		<>
 			<div
-				style={lowbarState ? { opacity: '0' } : { opacity: '1' }}
-				className={`${style.lowbar} container-f ${style.off}`}
+				className={
+					lowbarState
+						? `${style.lowbar} container-f`
+						: `${style.lowbar} container-f ${style.off}`
+				}
 			>
 				<div className={style.select}>{children}</div>
 				<div className={style.btn}>

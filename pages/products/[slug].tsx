@@ -6,7 +6,6 @@ import Footer from '@/ui/layout/footer/Footer'
 import { IProduct } from '@/types/product.interface'
 
 import Product from '@/screens/product/Product'
-// Укажите путь в соответствии с вашей структурой файлов
 import { ProductService } from '@/services/product/product.service'
 
 export const getStaticPaths: GetStaticPaths = async () => {

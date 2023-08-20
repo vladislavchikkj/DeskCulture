@@ -7,8 +7,13 @@
 	width: 100vw;
 	height: 8vh;
 	border-top: 1px solid rgba(25, 27, 29, 0.1);
-	transition: all 0.3s;
+	transition: all 0.5s;
+}
+.lowbar:hover {
+	height: 10vh;
+	cursor: pointer;
 }
 .off {
+	transform: translateY(10vh);
 	opacity: 0;
 }

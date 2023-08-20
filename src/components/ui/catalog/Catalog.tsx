@@ -25,6 +25,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const handleClick = (button: 'Categories' | 'Setup' | 'Products') => {
 		setSelectedButton(button)
 	}
+
 	return (
 		<section className={`${catalogStyle.catalog}`}>
 			<div className='container-f'>
@@ -37,7 +38,6 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 						handleProductsClick={() => handleClick('Products')}
 					/>
 				</div>
-
 				{selectedButton === 'Categories' && (
 					<CategoryList categories={data.categories} />
 				)}
