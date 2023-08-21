@@ -2,18 +2,18 @@
 	display: flex;
 	justify-content: space-between;
 	padding-top: 1vw;
-	position: absolute;
 	background-color: #ffffff;
 	width: 100vw;
 	height: 8vh;
 	border-top: 1px solid rgba(25, 27, 29, 0.1);
-	transition: all 0.5s;
+	transition: all 0.2s;
+	z-index: 5;
 }
 .lowbar:hover {
 	height: 10vh;
 	cursor: pointer;
 }
 .off {
-	transform: translateY(10vh);
+	transition: all 0.2s;
 	opacity: 0;
 }

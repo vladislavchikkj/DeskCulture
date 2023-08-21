@@ -1,4 +1,5 @@
 // ... other imports
+import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
@@ -25,11 +26,24 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const handleClick = (button: 'Categories' | 'Setup' | 'Products') => {
 		setSelectedButton(button)
 	}
-
+	const textAnimation = {
+		hidden: {
+			y: -100,
+			opacity: 0
+		},
+		visible: {
+			y: 0,
+			opacity: 1
+		}
+	}
 	return (
-		<section className={`${catalogStyle.catalog}`}>
+		<motion.section
+			initial='hidden'
+			whileInView='visible'
+			className={`${catalogStyle.catalog}`}
+		>
 			<div className='container-f'>
-				<div>
+				<motion.div variants={textAnimation}>
 					{title && <Heading variant='catalog'>{title}</Heading>}
 					<ButtonSwitcher
 						selectedButton={selectedButton}
@@ -37,7 +51,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 						handleSetupClick={() => handleClick('Setup')}
 						handleProductsClick={() => handleClick('Products')}
 					/>
-				</div>
+				</motion.div>
 				{selectedButton === 'Categories' && (
 					<CategoryList categories={data.categories} />
 				)}
@@ -47,7 +61,7 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 				)}
 			</div>
 			<Footer />
-		</section>
+		</motion.section>
 	)
 }
 

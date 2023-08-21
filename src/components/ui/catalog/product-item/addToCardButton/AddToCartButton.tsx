@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { RiShoppingCartFill, RiShoppingCartLine } from 'react-icons/ri'
 
 import { useActions } from '@/hooks/useActions'
@@ -7,8 +7,14 @@ import { useCart } from '@/hooks/useCart'
 import { IProduct } from '@/types/product.interface'
 
 import buttonAdd from './addToCartButton.module.scss'
+import style from './addToCartButton.module.scss'
 
-const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
+type props = {
+	product: IProduct
+	children?: React.ReactNode
+}
+
+const AddToCartButton: FC<props> = ({ product, children }) => {
 	const { addToCart, removeFromCart } = useActions()
 	const { items } = useCart()
 
@@ -34,7 +40,7 @@ const AddToCartButton: FC<{ product: IProduct }> = ({ product }) => {
 				<div>
 					{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
 				</div>
-				<span>Buy now</span>
+				<span className={style.btn}>{!children ? 'Buy now' : children}</span>
 			</button>
 		</div>
 	)

@@ -2,7 +2,6 @@ import cn from 'clsx'
 import Link from 'next/link'
 import { FC, MutableRefObject } from 'react'
 import { createPortal } from 'react-dom'
-import { useInView } from 'react-intersection-observer'
 
 import Button from '@/ui/common/buttons/Button'
 
@@ -18,19 +17,11 @@ type MenuType = {
 	headerRef: MutableRefObject<null | HTMLElement>
 }
 const Menu: FC<MenuType> = ({ headerRef }) => {
-	const { isShow, setIsShow, ref } = useOutside(false)
-	const {
-		ref: inViewRefModal,
-		inView,
-		entry
-	} = useInView({
-		/* Optional options */
-		threshold: 0
-	})
+	const { isShow, setIsShow, ref, addRef } = useOutside(false)
+
 	return (
 		<>
 			<div
-				ref={ref}
 				className={styleHeader.menu}
 				onClick={() => {
 					setIsShow(!isShow)
@@ -49,7 +40,6 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 				createPortal(
 					<>
 						<div
-							ref={inViewRefModal}
 							className={cn(
 								`${style.searchMenu}`,
 								isShow ? `${style.openMenu}` : `${style.closeMenu}`
@@ -58,7 +48,12 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 							<div className={`${style.menuWrapper} container-f`}>
 								<div className={style.menuSide}>
 									<span className={style.menuNav}>
-										<Link href={'/'}>
+										<Link
+											onClick={() => {
+												setIsShow(!isShow)
+											}}
+											href={'/'}
+										>
 											<div className='cursor-pointer'>Home</div>
 										</Link>
 									</span>
@@ -66,7 +61,12 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 										<MenuLogo />
 									</div>
 								</div>
-								<div className={style.menuListWrapper}>
+								<div
+									onClick={() => {
+										setIsShow(!isShow)
+									}}
+									className={style.menuListWrapper}
+								>
 									<div className={style.menuList}>
 										<span className={style.menuListName}>Ready setup</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>

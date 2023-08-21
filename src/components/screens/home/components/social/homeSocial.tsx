@@ -2,9 +2,9 @@ import { FC, LegacyRef } from 'react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
-// import required modules
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+// import required modules
 import Button from '@/ui/common/buttons/Button'
 
 import style from './homesocial.module.scss'

@@ -38,7 +38,6 @@ export const useOutside = (
 			document.body.style.overflow = '' // Восстанавливаем прокрутку страницы при размонтировании компонента
 		}
 	}, [isShow])
-
 	return addRefNeeded
 		? { ref, isShow, setIsShow, addRef }
 		: { ref, isShow, setIsShow }

@@ -1,4 +1,5 @@
 import cn from 'clsx'
+import Link from 'next/link'
 import {
 	Dispatch,
 	FC,
@@ -9,6 +10,8 @@ import {
 	useState
 } from 'react'
 import { createPortal } from 'react-dom'
+
+import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 
 import { IProduct } from '@/types/product.interface'
 
@@ -76,11 +79,21 @@ const Search: FC<SearchType> = ({
 									filteredProducts.length > 0 ? (
 										filteredProducts.map(product => (
 											<div key={product.id} className={`${style.searchItem}`}>
-												<img
-													className={style.searchItemImage}
-													src={product.images[0]}
-													alt={product.name}
-												/>
+												<div>
+													<Link
+														onClick={() => {
+															setIsShow(!isShow)
+														}}
+														href={`/products/${product.slug}`}
+													>
+														<img
+															className={style.searchItemImage}
+															src={product.images[0]}
+															alt={product.name}
+														/>
+													</Link>
+												</div>
+
 												<div className={style.searchItemInfo}>
 													<div className='flex flex-col justify-between'>
 														<div className={style.searchItemNameWr}>
@@ -88,13 +101,23 @@ const Search: FC<SearchType> = ({
 																{product.name}
 															</span>
 														</div>
-														<span className={style.addToFav}>
-															Save for later
-														</span>
+
+														<Link
+															onClick={() => {
+																setIsShow(!isShow)
+															}}
+															href={`/products/${product.slug}`}
+														>
+															<span className={style.addToFav}>More info</span>
+														</Link>
 													</div>
 													<div className={style.price}>
-														$7,700
-														<div className={style.addToBag}>add to bag</div>
+														${product.price}
+														<div className={style.addToBag}>
+															<AddToCartButton product={product}>
+																Add to bag
+															</AddToCartButton>
+														</div>
 													</div>
 												</div>
 											</div>

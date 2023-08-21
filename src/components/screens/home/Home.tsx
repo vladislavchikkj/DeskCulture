@@ -1,5 +1,6 @@
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import { FC } from 'react'
+import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { motion } from 'framer-motion'
+import { FC, useRef } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
@@ -28,22 +29,43 @@ const Home: FC<TypeCombinedPagination> = ({
 		inView: inViewIntro,
 		entry
 	} = useInView({
+		initialInView: false,
 		threshold: 0.2
 	})
+	const parallax = useRef<IParallax>(null)
+	const alignEnd = { display: 'flex', alignItems: 'flex-end' }
+	const textAnimation = {
+		hidden: {
+			y: -100,
+			opacity: 0
+		},
+		visible: {
+			y: 0,
+			opacity: 1
+		}
+	}
 	return (
 		<Meta title='Home'>
-			<section className={style.home}>
-				<Parallax pages={4}>
-					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '2' }}>
-						<div ref={inViewRef} className={style.intro}>
+			<motion.section
+				initial='hidden'
+				whileInView='visible'
+				className={style.home}
+			>
+				<Parallax ref={parallax} pages={4} style={{ top: '0', left: '0' }}>
+					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
+						<motion.div
+							variants={textAnimation}
+							ref={inViewRef}
+							className={style.intro}
+						>
 							<ParallaxLayer offset={0} speed={0.5}>
 								<HomeIntro />
 							</ParallaxLayer>
-						</div>
+						</motion.div>
 					</ParallaxLayer>
 					<ParallaxLayer
 						offset={0.55}
-						speed={0.2}
+						speed={0.1}
 						style={{ zIndex: '1', overflow: 'hidden' }}
 					>
 						<HomePlayer />
@@ -71,16 +93,24 @@ const Home: FC<TypeCombinedPagination> = ({
 					</ParallaxLayer>
 					<ParallaxLayer
 						offset={3.1}
-						speed={1.2}
-						style={{ zIndex: '2', top: '-15%' }}
+						speed={1.4}
+						style={{
+							zIndex: '2',
+							top: '-12%',
+							height: '20%'
+						}}
 					>
 						<HomeReviews />
 					</ParallaxLayer>
 					<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
 					<Footer home={true} />
+					<ParallaxLayer sticky={{ start: 0, end: 4 }} style={{ ...alignEnd }}>
+						<div onClick={() => parallax.current?.scrollTo(1.17)}>
+							<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
+						</div>
+					</ParallaxLayer>
 				</Parallax>
-				<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
-			</section>
+			</motion.section>
 		</Meta>
 	)
 }
