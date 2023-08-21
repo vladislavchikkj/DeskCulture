@@ -104,7 +104,11 @@ const Home: FC<TypeCombinedPagination> = ({
 					</ParallaxLayer>
 					<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
 					<Footer home={true} />
-					<ParallaxLayer sticky={{ start: 0, end: 4 }} style={{ ...alignEnd }}>
+					<ParallaxLayer
+						className={!inViewIntro ? `${style.lowbar}` : ''}
+						sticky={{ start: 0, end: 4 }}
+						style={{ ...alignEnd }}
+					>
 						<div onClick={() => parallax.current?.scrollTo(1.17)}>
 							<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
 						</div>
