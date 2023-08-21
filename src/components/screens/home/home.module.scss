@@ -25,5 +25,10 @@
 	color: aqua;
 }
 .lowbar {
-	z-index: -1;
+	animation: darkBg 1s forwards;
+}
+@keyframes darkBg {
+	to {
+		z-index: -1;
+	}
 }
