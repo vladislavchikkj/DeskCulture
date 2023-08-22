@@ -4,6 +4,8 @@ import { FC, useRef } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
+import { useLayout } from '@/components/context/LayoutContext'
+
 import Meta from '@/ui/Meta'
 import Footer from '@/ui/layout/footer/Footer'
 
@@ -44,6 +46,10 @@ const Home: FC<TypeCombinedPagination> = ({
 			opacity: 1
 		}
 	}
+	// Получаем функцию обновления layout из контекста
+	const { layout, updateLayout } = useLayout()
+	// Обновляем test, если inViewIntro истинно
+	updateLayout(!inViewIntro ? false : true)
 	return (
 		<Meta title='Home'>
 			<motion.section
@@ -51,7 +57,7 @@ const Home: FC<TypeCombinedPagination> = ({
 				whileInView='visible'
 				className={style.home}
 			>
-				<Parallax ref={parallax} pages={4} style={{ top: '0', left: '0' }}>
+				<Parallax ref={parallax} pages={4.2} style={{ top: '0', left: '0' }}>
 					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
 						<motion.div
 							variants={textAnimation}
@@ -87,23 +93,24 @@ const Home: FC<TypeCombinedPagination> = ({
 						offset={2.5}
 						speed={1}
 						factor={1.2}
-						style={{ zIndex: '2', top: '-2%' }}
+						style={{ zIndex: '2' }}
 					>
 						<HomeSocial />
 					</ParallaxLayer>
 					<ParallaxLayer
-						offset={3.1}
+						offset={3}
 						speed={1.4}
 						style={{
 							zIndex: '2',
-							top: '-12%',
+							top: '-5%',
 							height: '20%'
 						}}
 					>
 						<HomeReviews />
 					</ParallaxLayer>
-					<ParallaxLayer style={{ zIndex: '2' }}></ParallaxLayer>
-					<Footer home={true} />
+					<ParallaxLayer sticky={{ start: 3.2, end: 4.2 }}>
+						<Footer home={true} />
+					</ParallaxLayer>
 					<ParallaxLayer
 						className={!inViewIntro ? `${style.lowbar}` : ''}
 						sticky={{ start: 0, end: 4 }}

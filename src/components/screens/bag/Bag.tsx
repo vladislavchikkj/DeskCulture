@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, SetStateAction } from 'react'
 
 import CartItem from '@/ui/common/cart/cart-item/CartItem'
 
@@ -19,7 +19,15 @@ const Bag: FC = () => {
 				<div className={style.cartLayout}>
 					<div className={style.cart}>
 						{items.length ? (
-							items.map(item => <CartItem item={item} key={item.product.id} />)
+							items.map(item => (
+								<CartItem
+									item={item}
+									key={item.product.id}
+									setIsShow={function (value: SetStateAction<boolean>): void {
+										throw new Error('Function not implemented.')
+									}}
+								/>
+							))
 						) : (
 							<div>YOUR BAG IS EMPTY</div>
 						)}

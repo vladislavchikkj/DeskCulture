@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { FC } from 'react'
+import Link from 'next/link'
+import { Dispatch, FC, SetStateAction } from 'react'
 
 import { useProfile } from '@/hooks/useProfile'
 
@@ -10,7 +11,12 @@ import { convertPrice } from '@/utils/convertPrice'
 import style from './favoritesItem.module.scss'
 import { UserService } from '@/services/user.service'
 
-const FavoritesItem: FC<{ item: IProduct }> = ({ item }) => {
+type props = {
+	item: IProduct
+	setIsShow: Dispatch<SetStateAction<boolean>>
+	isShow?: Boolean
+}
+const FavoritesItem: FC<props> = ({ item, setIsShow, isShow }) => {
 	const { profile } = useProfile()
 
 	const QueryClient = useQueryClient()
@@ -29,7 +35,15 @@ const FavoritesItem: FC<{ item: IProduct }> = ({ item }) => {
 	const isExist = profile.favorites.some(favorite => favorite.id === item.id)
 	return (
 		<div className={style.wrapper}>
-			<img className={style.image} src={item.images[0]} alt={item.name} />
+			<Link
+				onClick={() => {
+					setIsShow(!isShow)
+				}}
+				href={`/products/${item.slug}`}
+			>
+				<img className={style.image} src={item.images[0]} alt={item.name} />
+			</Link>
+
 			<div className={style.info}>
 				<div>
 					<div className={style.name}>{item.name}</div>

@@ -6,8 +6,7 @@ import { useCart } from '@/hooks/useCart'
 
 import { IProduct } from '@/types/product.interface'
 
-import buttonAdd from './addToCartButton.module.scss'
-import style from './addToCartButton.module.scss'
+import { default as style } from './addToCartButton.module.scss'
 
 type props = {
 	product: IProduct
@@ -22,9 +21,9 @@ const AddToCartButton: FC<props> = ({ product, children }) => {
 		cartItem => cartItem.product.id === product.id
 	)
 	return (
-		<div>
+		<>
 			<button
-				className={buttonAdd.btn}
+				className={style.btn}
 				onClick={() =>
 					currentElement
 						? removeFromCart({
@@ -40,9 +39,11 @@ const AddToCartButton: FC<props> = ({ product, children }) => {
 				<div>
 					{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
 				</div>
-				<span className={style.btn}>{!children ? 'Buy now' : children}</span>
+				<span className={style.btnText}>
+					{!children ? 'Buy now' : children}
+				</span>
 			</button>
-		</div>
+		</>
 	)
 }
 

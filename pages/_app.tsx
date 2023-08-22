@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import { LayoutProvider } from '@/components/context/LayoutContext'
+
 import Layout from '@/ui/layout/Layout'
 
 import AuthProvider from '@/providers/auth-provider/AuthProvider'
@@ -31,9 +33,11 @@ export default function App({
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
 					<AuthProvider Component={{ isOnlyUser: Component.isOnlyUser }}>
-						<Layout>
-							<Component {...pageProps}></Component>
-						</Layout>
+						<LayoutProvider>
+							<Layout>
+								<Component {...pageProps}></Component>
+							</Layout>
+						</LayoutProvider>
 					</AuthProvider>
 				</PersistGate>
 			</Provider>

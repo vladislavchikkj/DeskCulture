@@ -1,4 +1,5 @@
 import cn from 'clsx'
+import Link from 'next/link'
 
 import { NextPageAuth } from '@/providers/auth-provider/auth-page.types'
 
@@ -34,7 +35,12 @@ const Favorite: NextPageAuth = () => {
 				<div className={style.cart}>
 					{profile?.favorites.length ? (
 						profile?.favorites.map(item => (
-							<FavoritesItem key={item.id} item={item} />
+							<FavoritesItem
+								key={item.id}
+								item={item}
+								setIsShow={setIsShow}
+								isShow={isShow}
+							/>
 						))
 					) : (
 						<>
@@ -49,7 +55,9 @@ const Favorite: NextPageAuth = () => {
 
 				<div className={style.totalBtn}>
 					{!profile ? (
-						<AuthButton variant='black'>SIGN IN</AuthButton>
+						<Link href={`/auth`} onClick={() => setIsShow(!isShow)}>
+							<AuthButton variant='black'>SIGN IN</AuthButton>
+						</Link>
 					) : (
 						<AuthButton variant='black'>View my WHISHLIST</AuthButton>
 					)}

@@ -31,6 +31,8 @@ const Cart: FC = () => {
 					{items.length ? (
 						items.map(item => (
 							<CartItem
+								setIsShow={setIsShow}
+								isShowCard={isShow}
 								item={item}
 								key={item.product.id}
 								// isFavotites={item.product.id % 2 == 0}
@@ -45,7 +47,12 @@ const Cart: FC = () => {
 					<div className={style.totalPrice}>{convertPrice(total)}</div>
 				</div>
 				<div className={style.totalBtn}>
-					<Link href={'/cart'}>
+					<Link
+						onClick={() => {
+							setIsShow(!isShow)
+						}}
+						href={'/cart'}
+					>
 						<AuthButton variant='black'>View my Shopping Bag</AuthButton>
 					</Link>
 				</div>
