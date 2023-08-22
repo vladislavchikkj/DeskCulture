@@ -47,14 +47,6 @@ const Header: FC<Props> = ({ inView }) => {
 				<div className={style.leftBtnHeader}>
 					<Menu headerRef={headerRef} />
 					<div className='grid grid-flow-col'>
-						{/* <div className={`${style.headerButton} ${style.hideBtn}`}>
-						<div data-hover='For the client ›' className={style.textBtn}>
-							<div className='flex gap-2'>
-								For the client
-								<div className='rotate-90'>›</div>
-							</div>
-						</div>
-					</div> */}
 						<div className={`${style.headerButton} ${style.hideBtn}`}>
 							<div data-hover='About Us' className={style.textBtn}>
 								<div className='flex gap-2'>About Us</div>
@@ -69,7 +61,7 @@ const Header: FC<Props> = ({ inView }) => {
 						</Link>
 					</div>
 				</div>
-				<div className={style.logoPlace}>
+				<div ref={addRef} className={style.logoPlace}>
 					{!isShow ? (
 						<div className={style.mainLogo}>
 							<Link translate='no' href={`/`}>
@@ -93,7 +85,6 @@ const Header: FC<Props> = ({ inView }) => {
 						allProducts={products}
 						isShow={isShow}
 						setIsShow={setIsShow}
-						closeSearch={ref}
 					/>
 					{!user && (
 						<div className={style.headerButton}>

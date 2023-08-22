@@ -17,9 +17,6 @@ export const useOutside = (
 
 	const handleClickOutside = (event: any) => {
 		if (ref.current && !ref.current.contains(event.target)) {
-			if (addRef.current && addRef.current.contains(event.target)) {
-				return
-			}
 			setIsShow(false)
 		}
 	}

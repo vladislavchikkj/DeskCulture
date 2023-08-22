@@ -26,7 +26,7 @@ type SearchType = {
 	headerRef: MutableRefObject<null | HTMLElement>
 	searchData: string
 	allProducts: IProduct[]
-	closeSearch: LegacyRef<HTMLDivElement> | undefined
+	closeSearch?: LegacyRef<HTMLDivElement> | undefined
 }
 
 const Search: FC<SearchType> = ({
