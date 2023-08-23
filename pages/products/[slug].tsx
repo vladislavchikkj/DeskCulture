@@ -1,5 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
+import { useLayout } from '@/components/context/LayoutContext'
+
 import Meta from '@/ui/Meta'
 import Footer from '@/ui/layout/footer/Footer'
 
@@ -44,6 +46,8 @@ const ProductPage: NextPage<{
 	product: IProduct[]
 }> = ({ product }) => {
 	const [productArr] = product
+	const { layout, updateLayout } = useLayout()
+	updateLayout(false)
 	return (
 		<Meta title={productArr.name}>
 			<Product product={product} />

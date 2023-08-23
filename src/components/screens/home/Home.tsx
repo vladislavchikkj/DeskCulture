@@ -36,15 +36,23 @@ const Home: FC<TypeCombinedPagination> = ({
 	})
 	const parallax = useRef<IParallax>(null)
 	const alignEnd = { display: 'flex', alignItems: 'flex-end' }
-	const textAnimation = {
+	const Animation = {
 		hidden: {
-			y: -100,
-			opacity: 0
+			height: '100vh'
 		},
-		visible: {
+		visible: (custom: number) => ({
+			height: '70vh',
+			transition: { duration: 0.9, delay: custom * 0.1 }
+		})
+	}
+	const LowBarAnimation = {
+		hidden: {
+			y: 300
+		},
+		visible: (custom: number) => ({
 			y: 0,
-			opacity: 1
-		}
+			transition: { duration: 0.9, delay: custom * 0.2 }
+		})
 	}
 	// Получаем функцию обновления layout из контекста
 	const { layout, updateLayout } = useLayout()
@@ -55,12 +63,13 @@ const Home: FC<TypeCombinedPagination> = ({
 			<motion.section
 				initial='hidden'
 				whileInView='visible'
+				viewport={{ once: true }}
 				className={style.home}
 			>
 				<Parallax ref={parallax} pages={4.2} style={{ top: '0', left: '0' }}>
 					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
 						<motion.div
-							variants={textAnimation}
+							variants={Animation}
 							ref={inViewRef}
 							className={style.intro}
 						>
@@ -116,9 +125,13 @@ const Home: FC<TypeCombinedPagination> = ({
 						sticky={{ start: 0, end: 4 }}
 						style={{ ...alignEnd }}
 					>
-						<div onClick={() => parallax.current?.scrollTo(1.17)}>
+						<motion.div
+							custom={1}
+							variants={LowBarAnimation}
+							onClick={() => parallax.current?.scrollTo(1.17)}
+						>
 							<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
-						</div>
+						</motion.div>
 					</ParallaxLayer>
 				</Parallax>
 			</motion.section>

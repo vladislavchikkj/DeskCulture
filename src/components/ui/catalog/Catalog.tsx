@@ -26,39 +26,50 @@ const Catalog: FC<ICatalog> = ({ data, title }) => {
 	const handleClick = (button: 'Categories' | 'Setup' | 'Products') => {
 		setSelectedButton(button)
 	}
-	const textAnimation = {
+	const headingAnimation = {
 		hidden: {
-			y: -100,
+			y: 300,
 			opacity: 0
 		},
-		visible: {
+		visible: (custom: number) => ({
 			y: 0,
-			opacity: 1
-		}
+			opacity: 1,
+			transition: { duration: 0.4, delay: custom * 0.2 }
+		})
 	}
+
 	return (
 		<motion.section
 			initial='hidden'
 			whileInView='visible'
+			viewport={{ once: true }}
 			className={`${catalogStyle.catalog}`}
 		>
 			<div className='container-f'>
-				<motion.div variants={textAnimation}>
-					{title && <Heading variant='catalog'>{title}</Heading>}
-					<ButtonSwitcher
-						selectedButton={selectedButton}
-						handleCategoriesClick={() => handleClick('Categories')}
-						handleSetupClick={() => handleClick('Setup')}
-						handleProductsClick={() => handleClick('Products')}
-					/>
+				<div className='overflow-hidden'>
+					<motion.div variants={headingAnimation}>
+						{title && <Heading variant='catalog'>{title}</Heading>}
+					</motion.div>
+				</div>
+				<div className='overflow-hidden'>
+					<motion.div custom={1.1} variants={headingAnimation}>
+						<ButtonSwitcher
+							selectedButton={selectedButton}
+							handleCategoriesClick={() => handleClick('Categories')}
+							handleSetupClick={() => handleClick('Setup')}
+							handleProductsClick={() => handleClick('Products')}
+						/>
+					</motion.div>
+				</div>
+				<motion.div custom={1} variants={headingAnimation}>
+					{selectedButton === 'Categories' && (
+						<CategoryList categories={data.categories} />
+					)}
+					{selectedButton === 'Setup' && <SetupList setups={data.setups} />}
+					{selectedButton === 'Products' && (
+						<ProductList initialProducts={data.products} />
+					)}
 				</motion.div>
-				{selectedButton === 'Categories' && (
-					<CategoryList categories={data.categories} />
-				)}
-				{selectedButton === 'Setup' && <SetupList setups={data.setups} />}
-				{selectedButton === 'Products' && (
-					<ProductList initialProducts={data.products} />
-				)}
 			</div>
 			<Footer />
 		</motion.section>

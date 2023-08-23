@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
+import { useLayout } from '@/components/context/LayoutContext'
+
 import Meta from '@/ui/Meta'
-import Layout from '@/ui/layout/Layout'
 import Footer from '@/ui/layout/footer/Footer'
 
 import { ICategory } from '@/types/category.interface'
@@ -39,9 +40,11 @@ const CategoryPage: NextPage<{
 	products: IProduct[]
 	category: ICategory
 }> = ({ products, category }) => {
+	const { layout, updateLayout } = useLayout()
+	updateLayout(false)
 	return (
 		<Meta title={category.name}>
-				<Category products={products} category={category} />
+			<Category products={products} category={category} />
 			<Footer />
 		</Meta>
 	)

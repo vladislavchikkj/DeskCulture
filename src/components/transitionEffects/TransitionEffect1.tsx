@@ -25,7 +25,7 @@ const TransitionEffect1: FC<{ children: React.ReactNode }> = ({ children }) => {
 	const { asPath } = useRouter()
 
 	return (
-		<AnimatePresence initial={false} mode='wait'>
+		<AnimatePresence mode='wait'>
 			<motion.div
 				key={asPath}
 				variants={variants}

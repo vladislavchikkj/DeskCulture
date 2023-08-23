@@ -6,11 +6,11 @@ import TransitionEffect1 from '@/components/transitionEffects/TransitionEffect1'
 import Header from './header/Header'
 
 type Props = {
-	children: React.ReactNode
-	inView?: boolean
+	children: React.PromiseLikeOfReactNode
 }
-const Layout: FC<Props> = ({ children, inView }) => {
-	const { layout } = useLayout()
+const Layout: FC<Props> = ({ children }) => {
+	const { layout, updateLayout } = useLayout()
+	updateLayout(false)
 	return (
 		<>
 			<Header inView={layout} />

@@ -4,12 +4,18 @@
 .intro {
 	width: 100vw;
 	height: 35vw;
+	overflow: hidden;
 	img {
 		width: 100%;
-		height: 100%;
+		height: 35vw;
 		object-fit: cover;
 		filter: brightness(60%);
 	}
+}
+.introWrapper {
+	width: 100vw;
+	height: 35vw;
+	overflow: hidden;
 }
 .name {
 	position: absolute;

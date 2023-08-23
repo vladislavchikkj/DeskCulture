@@ -1,5 +1,7 @@
 import { GetStaticProps, NextPage } from 'next'
 
+import { useLayout } from '@/components/context/LayoutContext'
+
 import { TypePaginationСatalog } from '@/types/product.interface'
 
 import CatalogPage from '@/screens/catalog/CatalogPage'
@@ -12,6 +14,8 @@ const Catalog: NextPage<TypePaginationСatalog> = ({
 	categories,
 	setups
 }) => {
+	const { layout, updateLayout } = useLayout()
+	updateLayout(false)
 	return (
 		<CatalogPage products={products} categories={categories} setups={setups} />
 	)

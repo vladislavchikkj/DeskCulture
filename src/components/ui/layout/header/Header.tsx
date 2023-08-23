@@ -1,4 +1,5 @@
 import cn from 'clsx'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 
@@ -38,10 +39,26 @@ const Header: FC<Props> = ({ inView }) => {
 			.then(result => setProducts(result))
 			.catch(err => err)
 	}, [])
+	const headerAnimation = {
+		hidden: {
+			y: -100
+		},
+		visible: {
+			y: 0,
 
+			transition: { duration: 0.6 }
+		}
+	}
 	return (
-		<header className={cn(style.header)} ref={headerRef}>
-			<div
+		<motion.header
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			className={cn(style.header)}
+			ref={headerRef}
+		>
+			<motion.div
+				variants={headerAnimation}
 				className={cn(style.headerWrapper, !inView && `${style.headerWhite}`)}
 			>
 				<div className={style.leftBtnHeader}>
@@ -119,8 +136,8 @@ const Header: FC<Props> = ({ inView }) => {
 					<Favorite />
 					<Cart />
 				</div>
-			</div>
-		</header>
+			</motion.div>
+		</motion.header>
 	)
 }
 
