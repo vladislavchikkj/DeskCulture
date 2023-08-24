@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactElement } from 'react'
 
 import { useLayout } from '@/components/context/LayoutContext'
 import TransitionEffect1 from '@/components/transitionEffects/TransitionEffect1'
@@ -6,7 +6,7 @@ import TransitionEffect1 from '@/components/transitionEffects/TransitionEffect1'
 import Header from './header/Header'
 
 type Props = {
-	children: React.PromiseLikeOfReactNode
+	children: ReactElement
 }
 const Layout: FC<Props> = ({ children }) => {
 	const { layout, updateLayout } = useLayout()

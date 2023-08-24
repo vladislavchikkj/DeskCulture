@@ -11,10 +11,7 @@ import Product from '@/screens/product/Product'
 import { ProductService } from '@/services/product/product.service'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const productsData = await ProductService.getAll({
-		page: 1,
-		perPage: 6
-	})
+	const productsData = await ProductService.getAll()
 	const products = productsData.products || []
 	const paths = products.map((product: { slug: string }) => ({
 		params: { slug: product.slug }

@@ -14,7 +14,7 @@ const Catalog: NextPage<TypePaginationСatalog> = ({
 	categories,
 	setups
 }) => {
-	const { layout, updateLayout } = useLayout()
+	const { updateLayout } = useLayout()
 	updateLayout(false)
 	return (
 		<CatalogPage products={products} categories={categories} setups={setups} />

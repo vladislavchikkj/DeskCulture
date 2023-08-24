@@ -26,11 +26,7 @@ const Home: FC<TypeCombinedPagination> = ({
 	setups,
 	setupsLength
 }) => {
-	const {
-		ref: inViewRef,
-		inView: inViewIntro,
-		entry
-	} = useInView({
+	const { ref: inViewRef, inView: inViewIntro } = useInView({
 		initialInView: false,
 		threshold: 0.2
 	})
