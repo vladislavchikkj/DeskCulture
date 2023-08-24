@@ -38,7 +38,6 @@
 	padding-top: 8vw;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 0.5fr 1fr;
 	gap: 2.5vw;
 }
 .btnWrapper {
@@ -107,37 +106,6 @@
 	font-weight: 500;
 	line-height: 40px; /* 105.263% */
 	letter-spacing: -1.9px;
-}
-
-.setupItems {
-	display: flex;
-	flex-direction: column;
-	grid-column-start: 2;
-	grid-column-end: 2;
-	padding-bottom: 5vh;
-}
-.setupItem {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
-	width: 100%;
-	padding-top: 1.5vh;
-	padding-bottom: 1.5vh;
-	cursor: pointer;
-}
-.prodName {
-	color: #000;
-	font-family: Inter;
-	font-size: 0.7vw;
-	font-style: normal;
-	font-weight: 600;
-	letter-spacing: 1.32px;
-	text-transform: uppercase;
-}
-.arr {
-	transform: rotate(90deg);
-	font-weight: 600;
-	font-size: 1.3vw;
 }
 
 .buttons {

@@ -1,0 +1,36 @@
+.setupItems {
+	display: flex;
+	flex-direction: column;
+	grid-column-start: 2;
+	grid-column-end: 2;
+	padding-bottom: 5vh;
+}
+.setupItem {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+	width: 100%;
+	padding-top: 1.5vh;
+	padding-bottom: 1.5vh;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.setupItem:hover .prodName,
+.arr {
+	color: #bd9f5fde;
+}
+.prodName {
+	color: #000;
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	transition: all 0.5s;
+}
+.arr {
+	transform: rotate(90deg);
+	font-weight: 600;
+	font-size: 1.3vw;
+}

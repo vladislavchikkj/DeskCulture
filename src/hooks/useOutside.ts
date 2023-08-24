@@ -5,6 +5,7 @@ type TypeOut = {
 	isShow: boolean
 	setIsShow: Dispatch<SetStateAction<boolean>>
 	addRef?: any
+	setScrolling: Dispatch<SetStateAction<boolean>>
 }
 
 export const useOutside = (
@@ -14,7 +15,7 @@ export const useOutside = (
 	const [isShow, setIsShow] = useState(initialIsVisible)
 	const ref = useRef<HTMLElement>(null)
 	const addRef = useRef<HTMLElement>(null)
-
+	const [scrolling, setScrolling] = useState(true)
 	const handleClickOutside = (event: any) => {
 		if (ref.current && !ref.current.contains(event.target)) {
 			setIsShow(false)
@@ -24,7 +25,7 @@ export const useOutside = (
 	useEffect(() => {
 		document.addEventListener('click', handleClickOutside, true)
 
-		if (isShow) {
+		if (isShow && scrolling) {
 			document.body.style.overflow = 'hidden' // Запрещаем прокрутку страницы
 		} else {
 			document.body.style.overflow = '' // Восстанавливаем прокрутку страницы
@@ -36,6 +37,6 @@ export const useOutside = (
 		}
 	}, [isShow])
 	return addRefNeeded
-		? { ref, isShow, setIsShow, addRef }
-		: { ref, isShow, setIsShow }
+		? { ref, isShow, setIsShow, addRef, setScrolling }
+		: { ref, isShow, setIsShow, setScrolling }
 }

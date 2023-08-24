@@ -57,7 +57,6 @@ const ProductList: FC<ProductListProps> = ({
 			updateProducts() // edit
 		}
 	}, [sortType])
-	console.log(products)
 	const loadMoreProducts = async () => {
 		setIsLoading(true)
 		try {

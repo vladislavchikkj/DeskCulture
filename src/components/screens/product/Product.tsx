@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { FC, useState } from 'react'
@@ -10,6 +11,7 @@ import { useProfile } from '@/hooks/useProfile'
 
 import { IProduct } from '@/types/product.interface'
 
+import Detail from './details/Detail'
 import style from './product.module.scss'
 
 type props = {
@@ -19,6 +21,11 @@ type props = {
 const Products: FC<props> = ({ product }) => {
 	const { profile } = useProfile()
 	const [productArr] = product
+	const [isVisible, setIsVisible] = useState(false)
+
+	const toggleVisibility = () => {
+		setIsVisible(!isVisible)
+	}
 	const DynamicFavoriteButton = dynamic(
 		() => import('@/ui/catalog/product-item/favoriteButton/FavoriteButton'),
 		{
@@ -30,49 +37,108 @@ const Products: FC<props> = ({ product }) => {
 	const handleImageClick = (index: number) => {
 		setSelectedImageIndex(index)
 	}
+	const breadcrumbsAnimation = {
+		hidden: {
+			y: 100
+		},
+		visible: (custom: number) => ({
+			y: 0,
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
+	}
+	const sliderAnimation = {
+		hidden: {
+			height: 0
+		},
+		visible: (custom: number) => ({
+			height: '40vh',
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
+	}
+	const sliderItemsAnimation = {
+		hidden: {
+			height: 0
+		},
+		visible: (custom: number) => ({
+			height: '10vw',
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
+	}
+	const imageAnimation = {
+		hidden: {
+			scale: 1.2
+		},
+		visible: (custom: number) => ({
+			scale: 1,
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
+	}
 	return (
-		<div className='container-f'>
+		<motion.div
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			className='container-f'
+		>
 			<div className={style.content}>
 				<div className={style.imagesWraper}>
-					<div className={style.breadcrumbs}>
-						<span>
-							<Link href={'/'}>Home</Link>
-						</span>
-						<div className={style.slesh}>/</div>
-						<span>
-							<Link href={'/catalog'}>Categories</Link>
-						</span>
-						<div className={style.slesh}>/</div>
-						<span>
-							<Link href={`/category/${productArr.category.slug}`}>
-								{productArr.category.name}
-							</Link>
-						</span>
-						<div className={style.slesh}>/</div>
-						<span className={style.select}>{productArr.name}</span>
+					<div className={style.breadcrumbsWr}>
+						<motion.div
+							variants={breadcrumbsAnimation}
+							className={style.breadcrumbs}
+						>
+							<span>
+								<Link href={'/'}>Home</Link>
+							</span>
+							<div className={style.slesh}>/</div>
+							<span>
+								<Link href={'/catalog'}>Categories</Link>
+							</span>
+							<div className={style.slesh}>/</div>
+							<span>
+								<Link href={`/category/${productArr.category.slug}`}>
+									{productArr.category.name}
+								</Link>
+							</span>
+							<div className={style.slesh}>/</div>
+							<span className={style.select}>{productArr.name}</span>
+						</motion.div>
 					</div>
 					<div className={style.slider}>
-						<img
-							className={style.image}
-							src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
-							alt={productArr.name}
-						/>
-						<div className={style.sliderItems}>
-							{productArr.images.map((image, index) => (
-								<img
-									key={index}
-									className={`${style.image} ${
-										selectedImageIndex === index ? style.selectedImage : ''
-									}`}
-									src={image}
+						<div className={style.imgHeight}>
+							<motion.div variants={sliderAnimation} className={style.imgWr}>
+								<motion.img
+									variants={imageAnimation}
+									className={style.image}
+									src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
 									alt={productArr.name}
-									onClick={() => handleImageClick(index)} // Step 2: Add click handler
 								/>
-							))}
+							</motion.div>
+						</div>
+						<div className={style.sliderItemsWr}>
+							<motion.div
+								custom={2}
+								variants={sliderItemsAnimation}
+								className='overflow-hidden'
+							>
+								<div className={style.sliderItems}>
+									{productArr.images.map((image, index) => (
+										<img
+											key={index}
+											className={`${style.image} ${
+												selectedImageIndex === index ? style.selectedImage : ''
+											}`}
+											src={image}
+											alt={productArr.name}
+											onClick={() => handleImageClick(index)} // Step 2: Add click handler
+										/>
+									))}
+								</div>
+							</motion.div>
 						</div>
 					</div>
 				</div>
-				<div className={style.info}>
+				<motion.div variants={breadcrumbsAnimation} className={style.info}>
 					<div className={style.name}>{productArr.name}</div>
 					<div className={style.price}>${productArr.price}</div>
 					<div className={style.descr}>{productArr.description}</div>
@@ -91,28 +157,38 @@ const Products: FC<props> = ({ product }) => {
 						)}
 					</div>
 					<div className={style.details}>
-						<div className={style.detail}>
-							<div>Product Details</div>
-							<div>+</div>
-						</div>
-						<div className={style.detail}>
-							<div>Shipping Details</div>
-							<div>+</div>
-						</div>
-						<div className={style.detail}>
-							<div>Payment</div>
-							<div>+</div>
-						</div>
-						<div className={style.detail}>
-							<div>Gifting</div>
-							<div>+</div>
-						</div>
-						<div className={style.detail}>
-							<div>Next Day Pick Up</div>
-							<div>+</div>
-						</div>
+						<Detail
+							title={'Product Details'}
+							content={
+								'The metallic orb, hand finished in polished golden enamel is embellished with gold filigree ribbons inlaid with 2,026 Swarovski crystals. Inside the orb is a matte glass perfume bottle, decorated with an embossed famous fleur-de-lis.'
+							}
+						/>
+						<Detail
+							title={'Shipping Details'}
+							content={
+								'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+							}
+						/>
+						<Detail
+							title={'Payment'}
+							content={
+								'We accept all major credit cards and debit cards, Paypal and Apple Pay.'
+							}
+						/>
+						<Detail
+							title={'Gifting'}
+							content={
+								'Each DeckCulture purchase is accompanied by a coupon for a 10 percent discount on the next purchase.'
+							}
+						/>
+						<Detail
+							title={'Next Day Pick Up'}
+							content={
+								'Next day delivery is only available at our local DeckCulture store'
+							}
+						/>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 			<div className={style.intrestedWrap}>
 				<div className={style.intrested}>
@@ -132,7 +208,7 @@ const Products: FC<props> = ({ product }) => {
 					loadMoreBtnOff={true}
 				/>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

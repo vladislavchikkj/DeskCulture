@@ -1,0 +1,40 @@
+.detail {
+	overflow: hidden;
+	color: #000;
+	font-family: Inter;
+	font-size: 0.6vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-top: 1.5vh;
+	padding-bottom: 1.5vh;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+.detail:hover {
+	color: #bda05f;
+}
+
+.detail:not(:last-child) {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.detailButton {
+	display: flex;
+	justify-content: space-between;
+}
+.detailButton {
+	display: flex;
+	justify-content: space-between;
+}
+.detaiInfo {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.6vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px; /* 163.637% */
+	letter-spacing: 0.26px;
+	transition: all 0.5s;
+}

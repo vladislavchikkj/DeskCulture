@@ -8,6 +8,7 @@ import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
 import style from './setup.module.scss'
+import SetupProductItem from './setupProductItem/SetupProductItem'
 
 type props = {
 	products: IProduct[]
@@ -16,6 +17,7 @@ type props = {
 }
 
 const Setup: FC<props> = ({ products, setups, allSetups }) => {
+	console.log(products)
 	const introAnimation = {
 		hidden: {
 			height: 0
@@ -76,24 +78,7 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 						<h3>{setups.description}</h3>
 					</div>
 
-					<div className={style.setupItems}>
-						<div className={style.setupItem}>
-							<div className={style.prodName}>product 1</div>
-							<div className={style.arr}>›</div>
-						</div>
-						<div className={style.setupItem}>
-							<div className={style.prodName}>product 2</div>
-							<div className={style.arr}>›</div>
-						</div>
-						<div className={style.setupItem}>
-							<div className={style.prodName}>product 3</div>
-							<div className={style.arr}>›</div>
-						</div>
-						<div className={style.setupItem}>
-							<div className={style.prodName}>product 4</div>
-							<div className={style.arr}>›</div>
-						</div>
-					</div>
+					<SetupProductItem products={products} />
 				</div>
 				<div>
 					<div className={style.buttons}>
