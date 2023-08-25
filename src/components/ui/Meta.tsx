@@ -9,7 +9,7 @@ interface ISeo {
 	// siteName?: string
 }
 
-export const titleMerge = (title: string) => `${title} | DescCulture`
+export const titleMerge = (title: string) => `${title} | DeskCulture`
 
 const Meta: FC<PropsWithChildren<ISeo>> = ({
 	title,
