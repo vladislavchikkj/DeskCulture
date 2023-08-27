@@ -17,6 +17,7 @@ import { IEmailPassword } from '@/store/user/user.interface'
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
+import style from './auth.module.scss'
 import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
 import AuthButton from '@/screens/auth/authButton/authButton'
@@ -27,6 +28,7 @@ const Auth: FC = () => {
 	const { login, register } = useActions()
 
 	const [type, setType] = useState<welcomeMessage>(welcomeLogin)
+	const [showUsername, setShowUsername] = useState<boolean>(false) // New state
 	const {
 		register: formRegister,
 		handleSubmit,
@@ -35,21 +37,29 @@ const Auth: FC = () => {
 	} = useForm<IEmailPassword>({
 		mode: 'onChange'
 	})
-	const onSubmit: SubmitHandler<IEmailPassword> = data => {
-		if (type === welcomeLogin) login(data)
-		else register(data)
+	const onSubmit: SubmitHandler<IEmailPassword> = async data => {
+		if (type === welcomeLogin) {
+			login(data)
+		} else {
+			const registrationData = showUsername
+				? { ...data, name: data.name }
+				: data
+			register(registrationData)
+		}
 
 		reset()
 	}
-	const swithRegisterLogin = () =>
-		setType(type === welcomeLogin ? welcomeRegister : welcomeLogin)
 
+	const switchRegisterLogin = () => {
+		setType(type === welcomeLogin ? welcomeRegister : welcomeLogin)
+		setShowUsername(type === welcomeLogin) // Show username field only for registration
+	}
 	return (
 		<Meta title='Auth'>
-			<section className='flex h-screen'>
+			<section className='flex h-screen container-f'>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className='rounded-lg bg-white p-10 m-auto'
+					className={`'rounded-lg bg-white  m-auto w-full', ${style.form}`}
 				>
 					<Heading variant='auth'>{type}</Heading>
 
@@ -57,6 +67,18 @@ const Auth: FC = () => {
 						<Loader />
 					) : (
 						<>
+							{showUsername && ( // Show username field conditionally
+								<>
+									<Field
+										className='pb-4'
+										{...formRegister('name', {
+											required: 'Username is required'
+										})}
+										placeholder='your name'
+										error={errors.name?.message}
+									/>
+								</>
+							)}
 							<Field
 								{...formRegister('email', {
 									required: 'Email is required',
@@ -67,27 +89,27 @@ const Auth: FC = () => {
 								})}
 								placeholder='E-mail'
 								error={errors.email?.message}
-							></Field>
+							/>
 							<Field
 								{...formRegister('password', {
 									required: 'Password is required',
 									minLength: {
 										value: 6,
-										message: 'Min length shold more 6 symbols'
+										message: 'Min length should be at least 6 symbols'
 									}
 								})}
 								type='password'
 								placeholder='Password'
 								error={errors.password?.message}
-							></Field>
+							/>
 							<AuthButton variant='grey'>
 								{type === welcomeLogin ? 'Sign In' : 'Register'}
-							</AuthButton>{' '}
+							</AuthButton>
 							<AuthButton
 								type='button'
 								variant='authChanger'
 								className='block mt-3 text-center mx-auto'
-								onClick={swithRegisterLogin}
+								onClick={switchRegisterLogin}
 							>
 								{type === welcomeLogin
 									? 'Create an account'

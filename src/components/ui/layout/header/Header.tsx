@@ -106,8 +106,8 @@ const Header: FC<Props> = ({ inView }) => {
 					{!user && (
 						<div className={style.headerButton}>
 							<span className='pl-6 pr-6'>
-								<div data-hover='Sign Up' className={style.textBtn}>
-									<div>Sign Up</div>
+								<div data-hover='Register' className={style.textBtn}>
+									<div>Register</div>
 								</div>
 							</span>
 						</div>
