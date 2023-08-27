@@ -9,21 +9,6 @@ type props = {
 	products: IProduct[]
 }
 const SetupProductItem: FC<props> = ({ products }) => {
-	const ItemAnimation = {
-		hidden: {
-			height: 0,
-			opacity: 0,
-			paddingTop: 0,
-			transition: { duration: 0.4 }
-		},
-		visible: (custom: number) => ({
-			opacity: 1,
-			height: '15vh',
-			paddingTop: '1.5vh',
-			transition: { duration: 0.4, delay: custom * 0.2 }
-		})
-	}
-
 	return (
 		<div className={style.setupItems}>
 			{products.map(product => (
