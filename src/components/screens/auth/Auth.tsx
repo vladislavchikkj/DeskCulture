@@ -39,12 +39,17 @@ const Auth: FC = () => {
 	})
 	const onSubmit: SubmitHandler<IEmailPassword> = async data => {
 		if (type === welcomeLogin) {
-			login(data)
+			const loginData = {
+				email: data.email,
+				password: data.password
+			}
+			login(loginData) // Send only email and password for login
 		} else {
-			const registrationData = showUsername
-				? { ...data, name: data.name }
-				: data
-			register(registrationData)
+			const registrationData = {
+				...data,
+				name: data.name // Make sure to pass the name from the form data
+			}
+			register(registrationData) // Send email, password, and name for registration
 		}
 
 		reset()

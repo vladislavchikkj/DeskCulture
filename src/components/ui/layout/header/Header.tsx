@@ -114,13 +114,15 @@ const Header: FC<Props> = ({ inView }) => {
 					)}
 					<div>
 						{!!user ? (
-							<button className={style.headerButton} onClick={() => logout()}>
-								<span className='pl-6 pr-6'>
-									<div data-hover={profile?.name} className={style.textBtn}>
-										<div>{profile?.name}</div>
-									</div>
-								</span>
-							</button>
+							<Link href={`/account/my-orders`}>
+								<button className={style.headerButton}>
+									<span className='pl-6 pr-6'>
+										<div data-hover={profile?.name} className={style.textBtn}>
+											<div>{profile?.name}</div>
+										</div>
+									</span>
+								</button>
+							</Link>
 						) : (
 							<Link href={`/auth`}>
 								<span className={style.headerButton}>
