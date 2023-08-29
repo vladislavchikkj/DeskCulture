@@ -9,7 +9,6 @@ import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
 import Setup from '@/screens/setup/Setup'
-import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -31,9 +30,7 @@ export const getAllSetups = async (excludeId: number) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const { data: products } = await ProductService.getBySetupsId(
-		String(params?.id)
-	)
+	const { data: products } = await SetupsService.getBySetups(String(params?.id))
 	const { data: setups } = await SetupsService.getById(String(params?.id))
 	const allSetups = await getAllSetups(setups.id) // Исключаем текущий setup
 	return {

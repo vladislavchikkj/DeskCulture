@@ -18,6 +18,12 @@ export const SetupsService = {
 			method: 'GET'
 		})
 	},
+	async getBySetups(id: string | number) {
+		return instance<ISetups>({
+			url: `${SETUPS}/${id}/products`,
+			method: 'GET'
+		})
+	},
 	async create() {
 		return instance<ISetups>({
 			url: SETUPS,
