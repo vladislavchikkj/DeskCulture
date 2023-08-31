@@ -1,5 +1,5 @@
 export interface ISetups {
-	id: number
+	id: number | number
 	name: string
 	description: string
 	image: string

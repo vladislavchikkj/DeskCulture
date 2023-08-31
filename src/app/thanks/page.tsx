@@ -1,3 +1,4 @@
+'use client'
 import { useLayout } from '@/components/context/LayoutContext'
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { Metadata } from 'next'

@@ -1,3 +1,4 @@
+'use client'
 import { FC, SetStateAction } from 'react'
 
 import CartItem from '@/ui/common/cart/cart-item/CartItem'

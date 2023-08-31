@@ -1,6 +1,7 @@
 import { ISetups } from '@/types/setups.interface'
 
 import { axiosClassic, instance } from '@/api/api.interceptor'
+import { IProduct } from '@/types/product.interface'
 
 const SETUPS = 'setups'
 
@@ -19,7 +20,7 @@ export const SetupsService = {
 		})
 	},
 	async getBySetups(id: string | number) {
-		return instance<ISetups>({
+		return instance<IProduct[]>({
 			url: `${SETUPS}/${id}/products`,
 			method: 'GET'
 		})

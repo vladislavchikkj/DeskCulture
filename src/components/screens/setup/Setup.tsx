@@ -1,3 +1,4 @@
+'use client'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 
@@ -17,7 +18,6 @@ type props = {
 }
 
 const Setup: FC<props> = ({ products, setups, allSetups }) => {
-	console.log(products)
 	const introAnimation = {
 		hidden: {
 			height: 0

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import { errorCatch, getContentType } from './api.helper'
 import { getAccessToken, removeFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
+import { errorCatch, getContentType } from './api.helper'
 
 const axiosOptions = {
 	baseURL: process.env.SERVER_URL,

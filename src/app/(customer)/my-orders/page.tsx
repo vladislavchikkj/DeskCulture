@@ -1,4 +1,4 @@
-import MyOrders from '@/../pages/account/my-orders'
+import MyOrders from '@/no-need/account/my-orders'
 import { useLayout } from '@/components/context/LayoutContext'
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { Metadata } from 'next'
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function MyOrdersPage() {
-	const { updateLayout } = useLayout()
-	updateLayout(false)
+	// const { updateLayout } = useLayout()
+	// updateLayout(false)
 	return <MyOrders />
 }

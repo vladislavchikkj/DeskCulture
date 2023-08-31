@@ -24,7 +24,7 @@ export const ProductService = {
 		})
 	},
 	async getBySlug(slug: string) {
-		return axiosClassic<IProduct>({
+		return axiosClassic<IProduct[]>({
 			url: `${PRODUCTS}/by-slug/${slug}`,
 			method: 'GET'
 		})

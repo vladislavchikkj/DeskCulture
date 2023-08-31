@@ -1,4 +1,3 @@
-import { useLayout } from '@/components/context/LayoutContext'
 import Category from '@/screens/category/Category'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
@@ -11,7 +10,7 @@ export const revalidate = 60
 export async function generateStaticParams() {
 	const categories = await CategoryService.getAll()
 
-	const paths = categories.map(category => {
+	const paths = categories.map((category: { slug: any }) => {
 		return {
 			params: { slug: category.slug }
 		}
@@ -46,8 +45,8 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPage({ params }: IPageSlugParam) {
-	const { updateLayout } = useLayout()
-	updateLayout(false)
+	// const { updateLayout } = useLayout()
+	// updateLayout(false)
 
 	const data = await getProducts(params)
 	return (

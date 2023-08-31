@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 }
 
 export default function AuthPage() {
-	const { updateLayout } = useLayout()
-	updateLayout(false)
+	// const { updateLayout } = useLayout()
+	// updateLayout(false)
 	return (
 		<div>
 			<Auth />
