@@ -11,7 +11,7 @@ import { convertPrice } from '@/utils/convertPrice'
 
 import CartItem from './cart-item/CartItem'
 import style from './cart.module.scss'
-import AuthButton from '@/screens/auth/authButton/authButton'
+import AuthButton from '@/app/auth/authButton/authButton'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)

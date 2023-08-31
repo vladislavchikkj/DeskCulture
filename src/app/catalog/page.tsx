@@ -1,24 +1,15 @@
-import { GetStaticProps, NextPage } from 'next'
-
 import { useLayout } from '@/components/context/LayoutContext'
-
-import { TypePaginationСatalog } from '@/types/product.interface'
-
+import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import CatalogPage from '@/screens/catalog/CatalogPage'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
+import { TypePaginationСatalog } from '@/types/product.interface'
+import { GetStaticProps, Metadata, NextPage } from 'next'
 
-const Catalog: NextPage<TypePaginationСatalog> = ({
-	products,
-	categories,
-	setups
-}) => {
-	const { updateLayout } = useLayout()
-	updateLayout(false)
-	return (
-		<CatalogPage products={products} categories={categories} setups={setups} />
-	)
+export const metadata: Metadata = {
+	title: 'Auth',
+	...NO_INDEX_PAGE
 }
 
 export const getStaticProps: GetStaticProps<
@@ -40,6 +31,18 @@ export const getStaticProps: GetStaticProps<
 	return {
 		props: obj
 	}
+}
+
+const Catalog: NextPage<TypePaginationСatalog> = ({
+	products,
+	categories,
+	setups
+}) => {
+	const { updateLayout } = useLayout()
+	updateLayout(false)
+	return (
+		<CatalogPage products={products} categories={categories} setups={setups} />
+	)
 }
 
 export default Catalog

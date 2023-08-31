@@ -29,11 +29,11 @@ export type TypePaginationProducts = {
 }
 
 export type TypePaginationCategories = {
-	categoriesLength: number
+	categoriesLength?: number
 	categories: ICategory[]
 }
 export type TypePaginationSetup = {
-	setupsLength: number
+	setupsLength?: number
 	setups: ISetups[]
 }
 

@@ -1,6 +1,6 @@
+'use client'
 import { FC } from 'react'
 
-import Meta from '@/ui/Meta'
 import Catalog from '@/ui/catalog/Catalog'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
@@ -10,11 +10,7 @@ const CatalogPage: FC<TypePaginationСatalog> = ({
 	categories,
 	setups
 }) => {
-	return (
-		<Meta title='Catalog'>
-			<Catalog title='Catalog' data={{ products, categories, setups }} />
-		</Meta>
-	)
+	return <Catalog title='Catalog' data={{ products, categories, setups }} />
 }
 
 export default CatalogPage

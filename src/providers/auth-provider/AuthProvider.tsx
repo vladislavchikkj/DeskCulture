@@ -1,24 +1,22 @@
+'use client'
 import Cookies from 'js-cookie'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 import { FC, PropsWithChildren, useEffect } from 'react'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
-import { TypeComponentAuthFields } from './auth-page.types'
+import NotFound from '@/app/not-found'
+import { ADMIN_PANEL_URL } from '@/config/url.config'
+import { REFRESH_TOKEN } from '@/constants/token.constants'
 import { getAccessToken } from '@/services/auth/auth.helper'
+import { usePathname, useRouter } from 'next/navigation'
+import { protectedRoutes } from './protected-routes.data'
 
-const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false })
-
-const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
-	Component: { isOnlyUser },
-	children
-}) => {
+const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const { user } = useAuth()
 	const { checkAuth, logout } = useActions()
 
-	const { pathname } = useRouter()
+	const pathname = usePathname()
 
 	useEffect(() => {
 		const accessToken = getAccessToken()
@@ -26,15 +24,27 @@ const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
 	}, [])
 
 	useEffect(() => {
-		const refreshToken = Cookies.get('refreshToken')
+		const refreshToken = Cookies.get(REFRESH_TOKEN)
 		if (!refreshToken && user) logout()
 	}, [pathname])
 
-	return isOnlyUser ? (
-		<DynamicCheckRole Component={{ isOnlyUser }}>{children}</DynamicCheckRole>
-	) : (
-		<>{children}</>
+	const router = useRouter()
+
+	const isProtectedRoute = protectedRoutes.some(
+		route => pathname?.startsWith(route)
 	)
+
+	const isAdminRoute = pathname?.startsWith(ADMIN_PANEL_URL)
+
+	if (!isProtectedRoute && !isAdminRoute) return <>{children}</>
+
+	if (user?.isAdmin) return <>{children}</>
+	if (user && isProtectedRoute) return <>{children}</>
+
+	if (user && isAdminRoute) return <NotFound />
+
+	pathname != './auth' && router.replace('./auth')
+	return null
 }
 
 export default AuthProvider

@@ -1,17 +1,16 @@
 import cn from 'clsx'
 import Link from 'next/link'
 
-import { NextPageAuth } from '@/providers/auth-provider/auth-page.types'
-
 import { useOutside } from '@/hooks/useOutside'
 import { useProfile } from '@/hooks/useProfile'
 
+import AuthButton from '@/app/auth/authButton/authButton'
+import { FC } from 'react'
 import style from './favorite.module.scss'
 import FavoritesItem from './favoriteItem/favoriteItem'
 import FavoriteBtn from './svg/Heart.svg.svg'
-import AuthButton from '@/screens/auth/authButton/authButton'
 
-const Favorite: NextPageAuth = () => {
+const Favorite: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 
 	const { profile } = useProfile()
@@ -75,7 +74,5 @@ const Favorite: NextPageAuth = () => {
 		</div>
 	)
 }
-
-Favorite.isOnlyUser = true
 
 export default Favorite

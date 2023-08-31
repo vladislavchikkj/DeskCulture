@@ -1,13 +1,13 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
-import Meta from '@/ui/Meta'
 import Footer from '@/ui/layout/footer/Footer'
+import Meta from '@/ui/Meta'
 
+import Account from '@/screens/account/Account'
 import AccountSettingsPage from './account-settings'
 import ChangePasswordPage from './change-password'
 import MyOrdersPage from './my-orders'
-import Account from '@/screens/account/Account'
 
 const AccountTab: NextPage = () => {
 	const router = useRouter()
