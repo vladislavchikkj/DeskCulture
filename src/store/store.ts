@@ -1,29 +1,42 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import {
+	AnyAction,
+	CombinedState,
+	combineReducers,
+	configureStore,
+	Reducer
+} from '@reduxjs/toolkit'
 import {
 	FLUSH,
 	PAUSE,
 	PERSIST,
+	persistReducer,
 	persistStore,
 	PURGE,
 	REGISTER,
 	REHYDRATE
 } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import { cartSlice } from './cart/cart.slice'
+import { ICartInitialState } from './cart/cart.types'
+import { IInitialState } from './user/user.interface'
 import { userSlice } from './user/user.slice'
 
-const isClient = typeof window != 'undefined'
+const isClient = typeof window !== 'undefined'
 
 const combinedReducers = combineReducers({
 	cart: cartSlice.reducer,
 	user: userSlice.reducer
 })
 
-let mainReducer = combinedReducers
+let mainReducer: Reducer<
+	CombinedState<{
+		cart: ICartInitialState
+		user: IInitialState
+	}>,
+	AnyAction
+> = combinedReducers
 
 if (isClient) {
-	const { persistReducer } = require('redux-persist')
-	const storage = require('redux-persist/lib/storage')
-
 	const persistConfig = {
 		key: 'descculture',
 		storage,
@@ -45,4 +58,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store)
 
-export type TypeRootState = ReturnType<typeof mainReducer>
+export type TypeRootState = ReturnType<typeof combinedReducers>
