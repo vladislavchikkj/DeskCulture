@@ -8,7 +8,6 @@ import {
 	REGISTER,
 	REHYDRATE
 } from 'redux-persist'
-
 import { cartSlice } from './cart/cart.slice'
 import { userSlice } from './user/user.slice'
 
