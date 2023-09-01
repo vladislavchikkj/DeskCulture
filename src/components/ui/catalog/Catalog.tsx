@@ -1,12 +1,14 @@
 // ... other imports
+'use client'
 import { motion } from 'framer-motion'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
 
 import Heading from '../common/heading/Heading'
 import Footer from '../layout/footer/Footer'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import ButtonSwitcher from './buttonSwitcher/ButtonSwitcher'
 import catalogStyle from './catalog.module.scss'
 import CategoryList from './categoryList/CategoryList'
@@ -19,6 +21,12 @@ interface ICatalog {
 }
 
 const Catalog: FC<ICatalog> = ({ data, title }) => {
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
+
 	const [selectedButton, setSelectedButton] = useState<
 		'Categories' | 'Setup' | 'Products'
 	>('Categories')

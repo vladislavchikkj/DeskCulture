@@ -1,42 +1,63 @@
-import { NextPage } from 'next'
-import Link from 'next/link'
-import { ReactNode } from 'react'
+'use client'
 
 import { useActions } from '@/hooks/useActions'
-import { useProfile } from '@/hooks/useProfile'
 
+import { FC } from 'react'
 import style from './account.module.scss'
 
-type AccountProps = {
-	children: ReactNode
+type props = {
+	tag?: string | string[] | undefined[]
 }
 
-const Account: NextPage<AccountProps> = ({ children }) => {
-	const { profile } = useProfile()
+const Account: FC<props> = tag => {
 	const { logout } = useActions()
 
+	let content
+
+	if (tag === 'my-orders') {
+		content = (
+			<div>
+				<h1>MY ORDERS</h1>
+				Здесь отображаете информацию о заказах
+			</div>
+		)
+	} else if (tag === 'account-settings') {
+		content = (
+			<div>
+				<h1>ACCOUNT SETTINGS</h1>
+				Здесь отображаете информацию о настройках аккаунта
+			</div>
+		)
+	} else if (tag === 'change-password') {
+		content = (
+			<div>
+				<h1>CHANGE PASSWORD</h1>
+				Здесь отображаете форму изменения пароля
+			</div>
+		)
+	} else {
+		content = (
+			<div>
+				<h1>Unknown Page</h1>
+				Отобразите сообщение об ошибке или что-то по умолчанию
+			</div>
+		)
+	}
+
 	return (
-		<>
+		<div>
 			<div className={`${style.wrapper} container-f`}>
 				<div className={style.asideMenu}>
-					<Link href='/account/my-orders'>
-						<div className={style.myOrders}>MY ORDERS</div>
-					</Link>
-					<Link href='/account/account-settings'>
-						<div className={style.settings}>ACCOUNT SETTINGS</div>
-					</Link>
-					<Link href='/account/change-password'>
-						<div className={style.password}>CHANGE PASSWORD</div>
-					</Link>
-					<Link href='/auth'>
-						<div className={style.logout} onClick={() => logout()}>
-							LOG OUT
-						</div>
-					</Link>
+					<a href='/account/my-orders'>MY ORDERS</a>
+					<a href='/account/account-settings'>ACCOUNT SETTINGS</a>
+					<a href='/account/change-password'>CHANGE PASSWORD</a>
+					<a href='/auth' onClick={() => logout()}>
+						LOG OUT
+					</a>
 				</div>
-				<div className={style.leading}>{children}</div>
+				<div className={style.leading}>{content}</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import ProductList from '@/ui/catalog/productsList/ProductList'
@@ -12,6 +12,7 @@ import { useProfile } from '@/hooks/useProfile'
 
 import { IProduct } from '@/types/product.interface'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import Detail from './details/Detail'
 import style from './product.module.scss'
 
@@ -20,6 +21,12 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
+
 	const { profile } = useProfile()
 	const [productArr] = product
 	const [isVisible, setIsVisible] = useState(false)

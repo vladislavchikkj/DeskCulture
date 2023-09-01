@@ -5,8 +5,11 @@ import Footer from '@/ui/layout/footer/Footer'
 import Account from '@/screens/account/Account'
 
 const AccountPage: NextPage = () => {
-	// const { layout, updateLayout } = useLayout()
-	// updateLayout(false)
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
 	return (
 		<>
 			<Account children={undefined} />

@@ -1,3 +1,4 @@
+'use client'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -17,35 +18,33 @@ interface CategoryProps {
 	categories: ICategory[]
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const categories = await CategoryService.getAll()
-
-	const paths = categories.map(category => {
-		return {
-			params: { slug: category.slug }
-		}
-	})
-	return { paths, fallback: false }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const { data: products } = await ProductService.getByCategory(
-		params?.slug as string
-	)
-	const { data: category } = await CategoryService.getBySlug(
-		params?.slug as string
-	)
-	return {
-		props: {
-			products,
-			category
-		}
-	}
-}
-
 const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 	const [isLoading, setIsLoading] = useState(false) // Добавляем стейт для загрузки
+	const getStaticPaths: GetStaticPaths = async () => {
+		const categories = await CategoryService.getAll()
 
+		const paths = categories.map(category => {
+			return {
+				params: { slug: category.slug }
+			}
+		})
+		return { paths, fallback: false }
+	}
+
+	const getStaticProps: GetStaticProps = async ({ params }) => {
+		const { data: products } = await ProductService.getByCategory(
+			params?.slug as string
+		)
+		const { data: category } = await CategoryService.getBySlug(
+			params?.slug as string
+		)
+		return {
+			props: {
+				products,
+				category
+			}
+		}
+	}
 	return (
 		<div className={setupStyle.itemWrapper}>
 			{isLoading ? ( // Если isLoading === true, показываем лоадер

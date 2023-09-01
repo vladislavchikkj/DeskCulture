@@ -2,7 +2,7 @@
 
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
-import { FC, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
@@ -51,10 +51,14 @@ const Home: FC<TypeCombinedPagination> = ({
 			transition: { duration: 0.9, delay: custom * 0.2 }
 		})
 	}
+
 	// Получаем функцию обновления layout из контекста
 	const { layout, updateLayout } = useLayout()
 	// Обновляем test, если inViewIntro истинно
-	updateLayout(!inViewIntro ? false : true)
+	useEffect(() => {
+		updateLayout(!inViewIntro ? false : true)
+	}, [inViewIntro])
+	
 	return (
 		<motion.section
 			initial='hidden'

@@ -1,12 +1,13 @@
 'use client'
 import { motion } from 'framer-motion'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import ProductList from '@/ui/catalog/productsList/ProductList'
 
 import { ICategory } from '@/types/category.interface'
 import { IProduct } from '@/types/product.interface'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import style from './category.module.scss'
 
 type props = {
@@ -15,6 +16,11 @@ type props = {
 }
 
 const Category: FC<props> = ({ products, category }) => {
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
 	const introAnimation = {
 		hidden: {
 			height: 0

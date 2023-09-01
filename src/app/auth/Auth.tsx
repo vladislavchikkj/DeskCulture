@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import {
@@ -19,11 +19,17 @@ import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
 import AuthButton from '@/app/auth/authButton/authButton'
+import { useLayout } from '@/components/context/LayoutContext'
 import style from './auth.module.scss'
 import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
 
 const Auth: FC = () => {
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
 	useAuthRedirect()
 	const { isLoading } = useAuth()
 	const { login, register } = useActions()

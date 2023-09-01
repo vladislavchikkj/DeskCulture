@@ -4,7 +4,8 @@ import { SetupsService } from '@/services/setups.service'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	description: 'DeckCulture'
+	description: 'DeskCulture',
+	title: 'Home | DeskCulture'
 }
 
 export const revalidate = 60

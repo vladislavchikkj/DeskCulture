@@ -1,5 +1,5 @@
 'use client'
-import { FC, SetStateAction } from 'react'
+import { FC, SetStateAction, useEffect } from 'react'
 
 import CartItem from '@/ui/common/cart/cart-item/CartItem'
 
@@ -9,10 +9,18 @@ import { convertPrice } from '@/utils/convertPrice'
 
 import AuthButton from '../../../app/auth/authButton/authButton'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import style from './bag.module.scss'
 
 const Bag: FC = () => {
 	const { items, total } = useCart()
+
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
+
 	return (
 		<div className='container-f'>
 			<div className={style.wrapper}>

@@ -114,7 +114,7 @@ const Header: FC<Props> = ({ inView }) => {
 					)}
 					<div>
 						{!!user ? (
-							<Link href={`/account/my-orders`}>
+							<Link href={`/account`}>
 								<button className={style.headerButton}>
 									<span className='pl-6 pr-6'>
 										<div data-hover={profile?.name} className={style.textBtn}>

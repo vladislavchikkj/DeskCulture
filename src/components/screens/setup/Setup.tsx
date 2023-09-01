@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import SetupList from '@/ui/catalog/setupsList/SetupsList'
 import Button from '@/ui/common/buttons/Button'
@@ -8,6 +8,7 @@ import Button from '@/ui/common/buttons/Button'
 import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import style from './setup.module.scss'
 import SetupProductItem from './setupProductItem/SetupProductItem'
 
@@ -18,6 +19,12 @@ type props = {
 }
 
 const Setup: FC<props> = ({ products, setups, allSetups }) => {
+	//решить проблему с дублирование
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(false)
+	}, [])
+
 	const introAnimation = {
 		hidden: {
 			height: 0
