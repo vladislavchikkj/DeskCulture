@@ -1,0 +1,123 @@
+// VARIABLES // ============================== //
+$bg-color: #424242;
+$hl-color: #a08750;
+$muted-color: mix(rgb(0, 0, 0), $bg-color, 70%);
+$trans-time: 300ms;
+$width: 320px;
+.info {
+	padding-top: 2vh;
+	padding-bottom: 15vh;
+}
+.group {
+	position: relative;
+	margin: 45px 0;
+}
+
+// INPUTS // ============================== //
+.textarea {
+	resize: none;
+}
+
+.input,
+.textarea {
+	background: none;
+	color: $muted-color;
+	font-size: 0.9vw;
+	padding: 10px 10px 10px 5px;
+	display: block;
+	width: $width;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid $muted-color;
+	&:focus {
+		outline: none;
+	}
+	&:focus ~ .label,
+	&:valid ~ .label {
+		top: -14px;
+		font-size: 12px;
+		color: $hl-color;
+	}
+	&:focus ~ .bar:before {
+		width: $width;
+	}
+}
+.input:focus,
+.textarea:focus {
+	outline: none;
+}
+.input:focus ~ .label,
+.input:valid ~ .label,
+.textarea:focus ~ .label,
+.textarea:valid ~ .label {
+	top: -14px;
+	font-size: 12px;
+	color: #2196f3;
+}
+.input:focus ~ .bar:before,
+.textarea:focus ~ .bar:before {
+	width: 320px;
+}
+
+.input[type='password'] {
+	letter-spacing: 0.3em;
+}
+
+.label {
+	color: $muted-color;
+	font-size: 0.8vw;
+	font-weight: normal;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: $trans-time ease all;
+	color: #858585;
+}
+
+.bar {
+	position: relative;
+	display: block;
+	width: $width;
+	&:before {
+		content: '';
+		height: 2px;
+		width: 0;
+		bottom: 0px;
+		position: absolute;
+		background: $hl-color;
+		transition: $trans-time ease all;
+		left: 0%;
+	}
+}
+
+// BUTTONS // ============================== //
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+	font-family: Inter;
+	font-size: 0.5vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 180% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	width: 10vw;
+	height: 2.5vw;
+	background: #000;
+	margin-top: 5vh;
+	transition: all 0.5s;
+	cursor: pointer;
+	&:hover {
+		background: $hl-color;
+	}
+}
+
+.notActive {
+	background: rgb(104, 104, 104);
+}
+.empty {
+	border-color: red;
+}

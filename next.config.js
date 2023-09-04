@@ -34,6 +34,16 @@ const nextConfig = {
 		)
 		fileLoaderRule.exclude = /\.svg$/i
 		return config
+	},
+	async redirects() {
+		return [
+			{
+				source: '/account',
+				destination: '/account/my-orders',
+				permanent: false // Используйте true для постоянного и false для временного перенаправления
+			}
+			// Ваши другие перенаправления (если есть)
+		]
 	}
 }
 

@@ -19,10 +19,10 @@
 	letter-spacing: 1.32px;
 	text-transform: uppercase;
 }
-.asideMenu div {
-	transition: all 0.5s;
+.asideMenu a {
+	transition: all 0.3s;
 }
-.asideMenu div:hover {
+.asideMenu a:hover {
 	cursor: pointer;
 	color: #a08750;
 }
@@ -41,7 +41,7 @@
 	letter-spacing: 3.24px;
 	text-transform: uppercase;
 }
-.orders {
+.subtitle {
 	padding-top: 5vh;
 	color: #000;
 	font-family: Inter;
@@ -61,6 +61,7 @@
 	font-weight: 500;
 	line-height: 12px; /* 133.333% */
 	letter-spacing: 0.44px;
+	transition: all 0.5s;
 }
 .btn {
 	display: flex;
@@ -84,4 +85,8 @@
 .logout {
 	padding-top: 4vh;
 	border-top: 1px solid rgba(25, 27, 29, 0.1);
+}
+.active {
+	font-weight: bold;
+	color: #a08750;
 }

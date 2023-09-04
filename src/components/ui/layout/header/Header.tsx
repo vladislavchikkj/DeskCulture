@@ -1,3 +1,4 @@
+'Use client'
 import cn from 'clsx'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -15,9 +16,9 @@ import { IProduct } from '@/types/product.interface'
 
 import Cart from '../../common/cart/Cart'
 
+import { ProductService } from '@/services/product/product.service'
 import style from './header.module.scss'
 import Menu from './menu/Menu'
-import { ProductService } from '@/services/product/product.service'
 
 type Props = {
 	inView?: boolean
