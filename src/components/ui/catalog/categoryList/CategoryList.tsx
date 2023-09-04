@@ -53,7 +53,7 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 				categories.map(category => (
 					<div key={category.id} className={setupStyle.item}>
 						<div className={setupStyle.imageWrapper}>
-							<Link href={`/catalog/category/${category.slug}`}>
+							<Link href={`/catalog/categories/${category.slug}`}>
 								<img
 									src={category.image}
 									alt={category.name}

@@ -17,6 +17,7 @@ import { IProduct } from '@/types/product.interface'
 
 import styleHeader from '../header.module.scss'
 
+import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 
@@ -53,12 +54,23 @@ const Search: FC<SearchType> = ({
 	useEffect(() => {
 		filterProducts()
 	}, [searchData])
+
+	const clickHandler = () => {
+		setIsShow(false)
+	}
+	useEffect(() => {
+		document.addEventListener('clickMenuhOpener', clickHandler)
+		return () => {
+			document.removeEventListener('clickMenuhOpener', clickHandler)
+		}
+	}, [])
 	return (
 		<div className={styleHeader.search}>
 			<div
 				className={style.searchBtn}
 				onClick={() => {
 					setIsShow(!isShow)
+					emitCustomEvent('clickSearchOpener')
 				}}
 			>
 				<SearchIcon />
@@ -84,7 +96,7 @@ const Search: FC<SearchType> = ({
 														onClick={() => {
 															setIsShow(!isShow)
 														}}
-														href={`/products/${product.slug}`}
+														href={`/catalog/products/${product.slug}`}
 													>
 														<img
 															className={style.searchItemImage}

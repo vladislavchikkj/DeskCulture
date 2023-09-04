@@ -1,7 +1,6 @@
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { CategoryService } from '@/services/category.service'
 import Catalog from '@/ui/catalog/Catalog'
-import CatalogMenu from '@/ui/catalog/catalogMenu/catalogMenu'
 import CategoryList from '@/ui/catalog/categoryList/CategoryList'
 import { Metadata } from 'next'
 

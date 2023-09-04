@@ -16,7 +16,11 @@ export const useOutside = (
 	const ref = useRef<HTMLElement>(null)
 	const addRef = useRef<HTMLElement>(null)
 	const [scrolling, setScrolling] = useState(true)
+
 	const handleClickOutside = (event: any) => {
+		if (addRef.current && addRef.current.contains(event.target)) {
+			return
+		}
 		if (ref.current && !ref.current.contains(event.target)) {
 			setIsShow(false)
 		}
@@ -36,6 +40,7 @@ export const useOutside = (
 			document.body.style.overflow = '' // Восстанавливаем прокрутку страницы при размонтировании компонента
 		}
 	}, [isShow])
+
 	return addRefNeeded
 		? { ref, isShow, setIsShow, addRef, setScrolling }
 		: { ref, isShow, setIsShow, setScrolling }

@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, MutableRefObject } from 'react'
+import { FC, MutableRefObject, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import Button from '@/ui/common/buttons/Button'
@@ -9,6 +9,7 @@ import { useOutside } from '@/hooks/useOutside'
 
 import styleHeader from '../header.module.scss'
 
+import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './menu.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
 import MenuLogo from './svg/menu.svg'
@@ -18,13 +19,22 @@ type MenuType = {
 }
 const Menu: FC<MenuType> = ({ headerRef }) => {
 	const { isShow, setIsShow, ref, addRef } = useOutside(false)
-
+	const clickHandler = () => {
+		setIsShow(false)
+	}
+	useEffect(() => {
+		document.addEventListener('clickSearchOpener', clickHandler)
+		return () => {
+			document.removeEventListener('clickSearchOpener', clickHandler)
+		}
+	}, [])
 	return (
 		<>
 			<div
 				className={styleHeader.menu}
 				onClick={() => {
 					setIsShow(!isShow)
+					emitCustomEvent('clickMenuhOpener')
 				}}
 			>
 				<div>
