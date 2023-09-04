@@ -41,6 +41,11 @@ const nextConfig = {
 				source: '/account',
 				destination: '/account/my-orders',
 				permanent: false // Используйте true для постоянного и false для временного перенаправления
+			},
+			{
+				source: '/catalog',
+				destination: '/catalog/categories',
+				permanent: false // Используйте true для постоянного и false для временного перенаправления
 			}
 			// Ваши другие перенаправления (если есть)
 		]

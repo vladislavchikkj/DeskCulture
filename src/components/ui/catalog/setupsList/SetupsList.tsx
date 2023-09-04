@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -21,7 +22,7 @@ const SetupList: React.FC<SetupProps> = ({ setups }) => {
 				setups.map(setup => (
 					<div key={setup.id} className={setupStyle.item}>
 						<div className={setupStyle.imageWrapper}>
-							<Link href={`/setups/${setup.id}`}>
+							<Link href={`/catalog/setups/${setup.id}`}>
 								<img
 									src={setup.image}
 									alt={setup.name}
