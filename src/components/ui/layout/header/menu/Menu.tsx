@@ -9,6 +9,7 @@ import { useOutside } from '@/hooks/useOutside'
 
 import styleHeader from '../header.module.scss'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './menu.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
@@ -28,6 +29,10 @@ const Menu: FC<MenuType> = ({ headerRef }) => {
 			document.removeEventListener('clickSearchOpener', clickHandler)
 		}
 	}, [])
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(!isShow)
+	}, [isShow])
 	return (
 		<>
 			<div

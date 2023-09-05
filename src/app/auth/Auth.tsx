@@ -20,6 +20,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import AuthButton from '@/app/auth/authButton/authButton'
 import { useLayout } from '@/components/context/LayoutContext'
+import Link from 'next/link'
 import style from './auth.module.scss'
 import { useAuthRedirect } from './useAuthRedirect'
 import { validEmail } from './valid-email'
@@ -126,6 +127,9 @@ const Auth: FC = () => {
 								? 'Create an account'
 								: 'Already have an account? Sign In'}
 						</AuthButton>
+						<Link className={style.text} href={'/auth/recovery'}>
+							forgot your password?
+						</Link>
 					</>
 				)}
 			</form>

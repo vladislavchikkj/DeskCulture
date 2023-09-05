@@ -17,6 +17,7 @@ import { IProduct } from '@/types/product.interface'
 
 import styleHeader from '../header.module.scss'
 
+import { useLayout } from '@/components/context/LayoutContext'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
@@ -64,6 +65,10 @@ const Search: FC<SearchType> = ({
 			document.removeEventListener('clickMenuhOpener', clickHandler)
 		}
 	}, [])
+	const { updateLayout } = useLayout()
+	useEffect(() => {
+		updateLayout(!isShow)
+	}, [isShow])
 	return (
 		<div className={styleHeader.search}>
 			<div

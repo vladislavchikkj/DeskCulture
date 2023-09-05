@@ -1,4 +1,4 @@
-import Product from '@/screens/product/Product'
+import Product from '@/app/catalog/(dynamic)/products/product/Product'
 import { ProductService } from '@/services/product/product.service'
 import { IPageSlugParam, TypeParamSlug } from '@/types/page-params'
 import Footer from '@/ui/layout/footer/Footer'

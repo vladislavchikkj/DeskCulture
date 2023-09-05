@@ -21,6 +21,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
+				{/* @ts-ignore */}
 				<PersistGate loading={null} persistor={persistor}>
 					<AuthProvider>
 						<LayoutProvider>

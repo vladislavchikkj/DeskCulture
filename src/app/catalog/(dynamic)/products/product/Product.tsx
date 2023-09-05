@@ -1,6 +1,5 @@
 'use client'
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
 
@@ -13,6 +12,7 @@ import { useProfile } from '@/hooks/useProfile'
 import { IProduct } from '@/types/product.interface'
 
 import { useLayout } from '@/components/context/LayoutContext'
+import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
 import Detail from './details/Detail'
 import style from './product.module.scss'
 
@@ -34,12 +34,7 @@ const Products: FC<props> = ({ product }) => {
 	const toggleVisibility = () => {
 		setIsVisible(!isVisible)
 	}
-	const DynamicFavoriteButton = dynamic(
-		() => import('@/ui/catalog/product-item/favoriteButton/FavoriteButton'),
-		{
-			ssr: false
-		}
-	)
+
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0) // Step 1: State variable for selected image index
 
 	const handleImageClick = (index: number) => {
@@ -59,7 +54,7 @@ const Products: FC<props> = ({ product }) => {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: '40vh',
+			height: '60vh',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
@@ -95,19 +90,17 @@ const Products: FC<props> = ({ product }) => {
 							variants={breadcrumbsAnimation}
 							className={style.breadcrumbs}
 						>
-							<span>
-								<Link href={'/'}>Home</Link>
-							</span>
+							<Link href={'/'}>
+								<span>Home</span>
+							</Link>
 							<div className={style.slesh}>/</div>
-							<span>
-								<Link href={'/catalog'}>Categories</Link>
-							</span>
+							<Link href={'/catalog'}>
+								<span>Categories</span>
+							</Link>
 							<div className={style.slesh}>/</div>
-							<span>
-								<Link href={`/catalog/categories/${productArr.category.slug}`}>
-									{productArr.category.name}
-								</Link>
-							</span>
+							<Link href={`/catalog/categories/${productArr.category.slug}`}>
+								<span>{productArr.category.name}</span>
+							</Link>
 							<div className={style.slesh}>/</div>
 							<span className={style.select}>{productArr.name}</span>
 						</motion.div>
@@ -157,10 +150,7 @@ const Products: FC<props> = ({ product }) => {
 						</div>
 						{!!profile && (
 							<div className={style.favoriteButton}>
-								<DynamicFavoriteButton
-									productId={productArr.id}
-									variant='default'
-								/>
+								<FavoriteButton productId={productArr.id} variant='default' />
 							</div>
 						)}
 					</div>

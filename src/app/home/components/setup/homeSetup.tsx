@@ -38,7 +38,7 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 					{firstTwoSetups.map(setup => (
 						<div key={setup.id} className={style.item}>
 							<div className={style.imageWrapper}>
-								<Link href={`/setups/${setup.id}`}>
+								<Link href={`/catalog/setups/${setup.id}`}>
 									<img
 										src={setup.image}
 										alt={setup.name}

@@ -1,5 +1,5 @@
 import { useLayout } from '@/components/context/LayoutContext'
-import Setup from '@/screens/setup/Setup'
+import Setup from '@/app/catalog/(dynamic)/setups/setup/Setup'
 import { SetupsService } from '@/services/setups.service'
 import { IPageIdParam, TypeParamId } from '@/types/page-params'
 import Footer from '@/ui/layout/footer/Footer'

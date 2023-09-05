@@ -1,4 +1,4 @@
-import Category from '@/screens/category/Category'
+import Category from '@/app/catalog/(dynamic)/categories/category/Category'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { IPageSlugParam, TypeParamSlug } from '@/types/page-params'

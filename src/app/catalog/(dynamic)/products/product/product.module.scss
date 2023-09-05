@@ -2,7 +2,6 @@
 	display: grid;
 	grid-template-columns: 1fr 0.5fr;
 	padding-top: 15vh;
-	gap: 10vw;
 }
 .imagesWraper {
 	display: flex;
@@ -29,13 +28,13 @@
 		color: #bda05f;
 		cursor: default;
 	}
-	span:hover:not(:last-child) {
+	a:hover:not(:last-child) {
 		color: #bd9f5f9f;
 	}
 }
 .breadcrumbsWr {
 	overflow: hidden;
-	margin-bottom: 10vh;
+	margin-bottom: 5vh;
 }
 .slesh {
 	color: rgba(0, 0, 0, 0.15);
@@ -48,14 +47,16 @@
 }
 .slider {
 	img {
-		width: 100%;
-		height: 100%;
+		// width: 100%;
+		// height: 100%;
 		object-fit: cover;
-		height: 40vh;
+		height: 60vh;
+		padding-bottom: 1.5vw;
+		border-bottom: 1px solid #ccccccad;
 	}
 }
 .imgHeight {
-	height: 40vh;
+	height: 60vh;
 }
 .imgWr {
 	overflow: hidden;
@@ -65,15 +66,20 @@
 }
 .sliderItems {
 	display: flex;
-	gap: 2vw;
+	gap: 1vw;
 	width: 100%;
-	padding: 2vw 0;
+	padding: 1.5vw 0;
 	overflow: hidden;
 	img {
+		padding: 0;
 		object-fit: cover;
-		width: 6vw;
-		height: 6vw;
+		width: 4vw;
+		height: 4vw;
 	}
+}
+.selectedImage {
+	border: 1px solid #888888ad;
+	border-radius: 3px;
 }
 .name {
 	white-space: nowrap;

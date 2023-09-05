@@ -51,7 +51,7 @@ const Account: FC<props> = ({ children }) => {
 						CHANGE PASSWORD
 					</Link>
 					<Link href='/auth' onClick={() => logout()}>
-						LOG OUT
+						<div className={style.logout}>LOG OUT</div>
 					</Link>
 				</div>
 				<div className={style.leading}>{children}</div>

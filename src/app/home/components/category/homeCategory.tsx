@@ -35,7 +35,7 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 					{firstTwoSetups.map(categories => (
 						<div key={categories.id} className={style.item}>
 							<div className={style.imageWrapper}>
-								<Link href={`/category/${categories.slug}`}>
+								<Link href={`/catalog/categories/${categories.slug}`}>
 									<img
 										src={categories.image}
 										alt={categories.name}

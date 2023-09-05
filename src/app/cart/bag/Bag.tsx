@@ -7,7 +7,7 @@ import { useCart } from '@/hooks/useCart'
 
 import { convertPrice } from '@/utils/convertPrice'
 
-import AuthButton from '../../../app/auth/authButton/authButton'
+import AuthButton from '../../auth/authButton/authButton'
 
 import { useLayout } from '@/components/context/LayoutContext'
 import style from './bag.module.scss'
