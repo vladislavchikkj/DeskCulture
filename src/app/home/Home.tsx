@@ -58,7 +58,7 @@ const Home: FC<TypeCombinedPagination> = ({
 	useEffect(() => {
 		updateLayout(!inViewIntro ? false : true)
 	}, [inViewIntro])
-	
+
 	return (
 		<motion.section
 			initial='hidden'
@@ -95,7 +95,6 @@ const Home: FC<TypeCombinedPagination> = ({
 					speed={0.8}
 					style={{ zIndex: '2', top: '-18%' }}
 				>
-					<LowBar>Select a ready setup</LowBar>
 					<HomeCategory categories={categories} categoriesLength={2} />
 				</ParallaxLayer>
 				<ParallaxLayer
