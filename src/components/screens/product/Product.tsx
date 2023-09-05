@@ -104,7 +104,7 @@ const Products: FC<props> = ({ product }) => {
 							</span>
 							<div className={style.slesh}>/</div>
 							<span>
-								<Link href={`/category/${productArr.category.slug}`}>
+								<Link href={`/catalog/categories/${productArr.category.slug}`}>
 									{productArr.category.name}
 								</Link>
 							</span>

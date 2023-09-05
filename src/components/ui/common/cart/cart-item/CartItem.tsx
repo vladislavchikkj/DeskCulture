@@ -20,7 +20,7 @@ const CartItem: FC<props> = ({ item, isShowCard, setIsShow }) => {
 				onClick={() => {
 					isShowCard && setIsShow(!isShowCard)
 				}}
-				href={`/products/${item.product.slug}`}
+				href={`/catalog/products/${item.product.slug}`}
 			>
 				<img
 					className={style.image}

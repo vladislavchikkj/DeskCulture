@@ -13,7 +13,7 @@ const SetupProductItem: FC<props> = ({ products }) => {
 		<div className={style.setupItems}>
 			{products.map(product => (
 				<div key={product.id} className={`${style.searchItem}`}>
-					<Link href={`/products/${product.slug}`}>
+					<Link href={`/catalog/products/${product.slug}`}>
 						<div className={style.setupItem}>
 							<div className={style.prodName}>{product.name}</div>
 							<div className={style.arr}>+</div>

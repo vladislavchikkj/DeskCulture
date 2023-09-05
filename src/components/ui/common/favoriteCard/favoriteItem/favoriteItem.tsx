@@ -8,8 +8,8 @@ import { IProduct } from '@/types/product.interface'
 
 import { convertPrice } from '@/utils/convertPrice'
 
-import style from './favoritesItem.module.scss'
 import { UserService } from '@/services/user.service'
+import style from './favoritesItem.module.scss'
 
 type props = {
 	item: IProduct
@@ -39,7 +39,7 @@ const FavoritesItem: FC<props> = ({ item, setIsShow, isShow }) => {
 				onClick={() => {
 					setIsShow(!isShow)
 				}}
-				href={`/products/${item.slug}`}
+				href={`/catalog/products/${item.slug}`}
 			>
 				<img className={style.image} src={item.images[0]} alt={item.name} />
 			</Link>

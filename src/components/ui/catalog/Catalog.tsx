@@ -26,9 +26,6 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 		'Categories' | 'Setup' | 'Products'
 	>('Categories')
 
-	const handleClick = (button: 'Categories' | 'Setup' | 'Products') => {
-		setSelectedButton(button)
-	}
 	const headingAnimation = {
 		hidden: {
 			y: 300,
@@ -49,16 +46,19 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 			className={`${catalogStyle.catalog}`}
 		>
 			<div className='container-f'>
-				<div className='overflow-hidden'>
-					<motion.div variants={headingAnimation}>
-						{title && <Heading variant='catalog'>{title}</Heading>}
-					</motion.div>
-				</div>
-				<div className='overflow-hidden'>
-					<motion.div custom={1.1} variants={headingAnimation}>
-						<ButtonSwitcher />
-					</motion.div>
-				</div>
+				<>
+					<div className='overflow-hidden'>
+						<motion.div variants={headingAnimation}>
+							{title && <Heading variant='catalog'>{title}</Heading>}
+						</motion.div>
+					</div>
+					<div className='overflow-hidden'>
+						<motion.div custom={1.1} variants={headingAnimation}>
+							<ButtonSwitcher />
+						</motion.div>
+					</div>
+				</>
+
 				<motion.div custom={1.2} variants={headingAnimation}>
 					{selectedButton === 'Categories' && <>{children}</>}
 					{selectedButton === 'Setup' && <>{children}</>}

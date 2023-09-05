@@ -1,4 +1,3 @@
-import { useLayout } from '@/components/context/LayoutContext'
 import Product from '@/screens/product/Product'
 import { ProductService } from '@/services/product/product.service'
 import { IPageSlugParam, TypeParamSlug } from '@/types/page-params'

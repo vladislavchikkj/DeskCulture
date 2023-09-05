@@ -1,13 +1,9 @@
-import Catalog from '@/ui/catalog/Catalog'
+import CatalogMenu from '@/ui/catalog/catalogMenu/catalogMenu'
 
 export default function CatalogLayout({
 	children
 }: {
 	children: React.ReactNode
 }) {
-	return (
-		<>
-			<Catalog title='Catalog'>{children}</Catalog>
-		</>
-	)
+	return <>{children}</>
 }
