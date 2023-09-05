@@ -1,6 +1,7 @@
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { CategoryService } from '@/services/category.service'
 import Catalog from '@/ui/catalog/Catalog'
+import CatalogMenu from '@/ui/catalog/catalogMenu/catalogMenu'
 import CategoryList from '@/ui/catalog/categoryList/CategoryList'
 import { Metadata } from 'next'
 
@@ -26,9 +27,7 @@ export default async function AllCategoryPage() {
 
 	return (
 		<>
-			<Catalog title='Catalog'>
-				<CategoryList categories={data.props.categories} />
-			</Catalog>
+			<CategoryList categories={data.props.categories} />
 		</>
 	)
 }

@@ -1,4 +1,4 @@
-import CatalogMenu from '@/ui/catalog/catalogMenu/catalogMenu'
+import Catalog from '@/ui/catalog/Catalog'
 
 export default function CatalogLayout({
 	children
@@ -7,8 +7,7 @@ export default function CatalogLayout({
 }) {
 	return (
 		<>
-			<CatalogMenu title={'Catalog'} />
-			{children}
+			<Catalog title='Catalog'>{children}</Catalog>
 		</>
 	)
 }

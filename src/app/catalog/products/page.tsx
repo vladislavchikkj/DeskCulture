@@ -30,9 +30,7 @@ export default async function AllProductPage() {
 
 	return (
 		<>
-			<Catalog title='Catalog'>
-				<ProductList initialProducts={data.props.products} />
-			</Catalog>
+			<ProductList initialProducts={data.props.products} />
 		</>
 	)
 }
