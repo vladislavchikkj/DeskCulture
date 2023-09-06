@@ -63,7 +63,7 @@ const Products: FC<props> = ({ product }) => {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: '10vw',
+			height: '60vh',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
@@ -106,16 +106,6 @@ const Products: FC<props> = ({ product }) => {
 						</motion.div>
 					</div>
 					<div className={style.slider}>
-						<div className={style.imgHeight}>
-							<motion.div variants={sliderAnimation} className={style.imgWr}>
-								<motion.img
-									variants={imageAnimation}
-									className={style.image}
-									src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
-									alt={productArr.name}
-								/>
-							</motion.div>
-						</div>
 						<div className={style.sliderItemsWr}>
 							<motion.div
 								custom={2}
@@ -135,6 +125,16 @@ const Products: FC<props> = ({ product }) => {
 										/>
 									))}
 								</div>
+							</motion.div>
+						</div>
+						<div className={style.imgHeight}>
+							<motion.div variants={sliderAnimation} className={style.imgWr}>
+								<motion.img
+									variants={imageAnimation}
+									className={style.image}
+									src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
+									alt={productArr.name}
+								/>
 							</motion.div>
 						</div>
 					</div>

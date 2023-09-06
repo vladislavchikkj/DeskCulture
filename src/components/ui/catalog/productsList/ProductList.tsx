@@ -7,11 +7,11 @@ import Loader from '@/ui/common/loader/Loader'
 import { TypePaginationСatalog } from '@/types/product.interface'
 
 import catalogStyle from '../catalog.module.scss'
-import ProductItem from '../product-item/ProductItem'
-import SortDropdown from '../product-item/sortDropdown/SortDropdown'
 
 import { ProductService } from '@/services/product/product.service'
 import { EnumProductSort } from '@/services/product/product.types'
+import ProductItem from '../product-item/ProductItem'
+import SortDropdown from '../product-item/sortDropdown/SortDropdown'
 
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
@@ -88,9 +88,9 @@ const ProductList: FC<ProductListProps> = ({
 			{!DropdownOff && (
 				<SortDropdown sortType={sortType} setSortType={setSortType} />
 			)}
-			{isLoading ? ( // Если isLoading === true, показываем лоадер
+			{isLoading ? (
 				<Loader />
-			) : products.length > 0 ? ( // Если isLoading === false и есть продукты, показываем продукты
+			) : products.length > 0 ? (
 				<>
 					<div className={catalogStyle.items}>
 						{products.map(product => (
@@ -117,7 +117,6 @@ const ProductList: FC<ProductListProps> = ({
 					)}
 				</>
 			) : (
-				// Если isLoading === false и нет продуктов, показываем сообщение об отсутствии продуктов
 				<div>There are no products</div>
 			)}
 		</div>
