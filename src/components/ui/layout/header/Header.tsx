@@ -28,6 +28,7 @@ const Header: FC<Props> = ({ inView }) => {
 	const { logout } = useActions()
 	const { isShow, setIsShow, ref, addRef } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
+	const wrapperRef = useRef<HTMLDivElement | null>(null)
 	const [searchData, setSearchData] = useState('')
 	const [products, setProducts] = useState<IProduct[]>([])
 	const { profile } = useProfile()
@@ -59,11 +60,12 @@ const Header: FC<Props> = ({ inView }) => {
 			ref={headerRef}
 		>
 			<motion.div
+				ref={wrapperRef}
 				variants={headerAnimation}
 				className={cn(style.headerWrapper, !inView && `${style.headerWhite}`)}
 			>
 				<div className={style.leftBtnHeader}>
-					<Menu headerRef={headerRef} />
+					<Menu headerRef={headerRef} wrapperRef={wrapperRef} />
 					<div className='grid grid-flow-col'>
 						<div className={`${style.headerButton} ${style.hideBtn}`}>
 							<div data-hover='About Us' className={style.textBtn}>
@@ -103,6 +105,7 @@ const Header: FC<Props> = ({ inView }) => {
 						allProducts={products}
 						isShow={isShow}
 						setIsShow={setIsShow}
+						wrapperRef={wrapperRef}
 					/>
 					{!user && (
 						<div className={style.headerButton}>

@@ -17,7 +17,6 @@ import { IProduct } from '@/types/product.interface'
 
 import styleHeader from '../header.module.scss'
 
-import { useLayout } from '@/components/context/LayoutContext'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
@@ -29,6 +28,7 @@ type SearchType = {
 	searchData: string
 	allProducts: IProduct[]
 	closeSearch?: LegacyRef<HTMLDivElement> | undefined
+	wrapperRef?: MutableRefObject<null | HTMLElement>
 }
 
 const Search: FC<SearchType> = ({
@@ -37,7 +37,8 @@ const Search: FC<SearchType> = ({
 	headerRef,
 	searchData,
 	allProducts,
-	closeSearch
+	closeSearch,
+	wrapperRef
 }) => {
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
@@ -65,10 +66,15 @@ const Search: FC<SearchType> = ({
 			document.removeEventListener('clickMenuhOpener', clickHandler)
 		}
 	}, [])
-	const { updateLayout } = useLayout()
-	useEffect(() => {
-		updateLayout(!isShow)
-	}, [isShow])
+	if (isShow) {
+		if (wrapperRef && wrapperRef.current) {
+			wrapperRef.current.style.backgroundColor = 'white'
+		}
+	} else {
+		if (wrapperRef && wrapperRef.current) {
+			wrapperRef.current.style.backgroundColor = ''
+		}
+	}
 	return (
 		<div className={styleHeader.search}>
 			<div

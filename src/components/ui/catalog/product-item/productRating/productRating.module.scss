@@ -1,6 +1,5 @@
 .ratingWrapper {
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
 }
 .rating {
@@ -9,25 +8,27 @@
 	font-family: Inter;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 16px;
+	line-height: 1rem;
 	letter-spacing: -0.56px;
 	padding-right: 10px;
 }
 
 .grade {
 	color: #bda05f;
-	font-size: 0.7vw;
+	font-size: 0.8rem;
 	font-family: Inter;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 16px;
 	letter-spacing: -0.56px;
+	padding-left: 0.5vw;
+	margin-top: 1vh;
 }
 
 .star {
 	// margin-bottom: 5px;
+	color: #000;
 }
 .starPos {
 	display: flex;
-	align-items: center;
 }

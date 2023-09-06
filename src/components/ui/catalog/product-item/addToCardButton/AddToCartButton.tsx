@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { RiShoppingCartFill, RiShoppingCartLine } from 'react-icons/ri'
 
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
@@ -7,13 +6,15 @@ import { useCart } from '@/hooks/useCart'
 import { IProduct } from '@/types/product.interface'
 
 import { default as style } from './addToCartButton.module.scss'
-
+import BagSvgEmpty from './svg/bag-empty.svg'
+import BagSvgFilled from './svg/bag-filled.svg'
 type props = {
 	product: IProduct
 	children?: React.ReactNode
+	variatn?: boolean
 }
 
-const AddToCartButton: FC<props> = ({ product, children }) => {
+const AddToCartButton: FC<props> = ({ product, children, variatn }) => {
 	const { addToCart, removeFromCart } = useActions()
 	const { items } = useCart()
 
@@ -36,12 +37,8 @@ const AddToCartButton: FC<props> = ({ product, children }) => {
 						  })
 				}
 			>
-				<div>
-					{currentElement ? <RiShoppingCartFill /> : <RiShoppingCartLine />}
-				</div>
-				<span className={style.btnText}>
-					{!children ? 'Buy now' : children}
-				</span>
+				<div>{currentElement ? <BagSvgFilled /> : <BagSvgEmpty />}</div>
+				{children && <span className={style.btnText}>{children}</span>}
 			</button>
 		</>
 	)

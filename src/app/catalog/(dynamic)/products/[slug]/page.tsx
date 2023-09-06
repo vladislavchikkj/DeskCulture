@@ -31,10 +31,10 @@ export async function generateMetadata({
 	return {
 		title: products[0].name,
 
-		description: `Random description about ${products[0].name}`,
+		description: `Random description about`,
 		openGraph: {
 			images: products[0].images,
-			description: `Random description about ${products[0].name}`
+			description: `Random description about`
 		}
 	}
 }

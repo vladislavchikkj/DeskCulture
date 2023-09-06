@@ -15,25 +15,24 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div className={style.ratingWrapper}>
 			<div className={style.starPos}>
-				<span className={style.rating}>Rating:</span>
 				{!!product.reviews.length && (
-					<span className={style.star}>
-						<Rating
-							readonly
-							initialValue={rating}
-							SVGstyle={{
-								display: 'inline-block'
-							}}
-							size={15}
-							allowFraction
-							transition
-						/>
-					</span>
+					<>
+						<span className={style.star}>
+							<Rating
+								readonly
+								initialValue={rating}
+								SVGstyle={{
+									display: 'inline-block'
+								}}
+								size={15}
+								allowFraction
+								transition
+							/>
+						</span>
+						<span className={style.grade}>{rating}</span>
+					</>
 				)}
 			</div>
-			<span className={style.grade}>
-				{rating}({product.reviews.length} reviews)
-			</span>
 		</div>
 	)
 }

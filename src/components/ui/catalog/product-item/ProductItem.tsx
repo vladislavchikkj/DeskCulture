@@ -7,21 +7,18 @@ import { convertPrice } from '@/utils/convertPrice'
 
 import AddToCartButton from './addToCardButton/AddToCartButton'
 import FavoriteButton from './favoriteButton/FavoriteButton'
-import itemStyle from './product-item.module.scss'
+import style from './product-item.module.scss'
 import ProductRating from './productRating/ProductRating'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
-		<div className={itemStyle.item}>
+		<div className={style.item}>
 			<div>
-				<div className={itemStyle.imageBox}>
-					<div className={itemStyle.favoriteButton}>
-						<FavoriteButton productId={product.id} />
-					</div>
+				<div className={style.imageBox}>
 					<Link href={`/catalog/products/${product.slug}`}>
-						<div className={itemStyle.imageWrapper}>
+						<div className={style.imageWrapper}>
 							<img
-								className={itemStyle.image}
+								className={style.image}
 								src={product.images[0]}
 								alt={product.name}
 							/>
@@ -29,24 +26,34 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 					</Link>
 				</div>
 			</div>
-			<div className={itemStyle.itemInfo}>
-				<Link href={`/catalog/products/${product.slug}`}>
-					<h3 className={itemStyle.itemTitle}>{product.name}</h3>
-				</Link>
-
-				<Link
-					className={itemStyle.itemSlug}
-					href={`/catalog/categories/${product.category.slug}`}
-				>
-					{product.category.name}
-				</Link>
-				<ProductRating product={product} />
-				<div className={itemStyle.priceText}>
-					Price:
-					<div className={itemStyle.price}>{convertPrice(product.price)}</div>
+			<div className={style.itemInfo}>
+				<div className={style.nameWrapper}>
+					<Link href={`/catalog/products/${product.slug}`}>
+						<h3 className={style.itemTitle}>{product.name}</h3>
+					</Link>
+					<div className={style.btn}>
+						<div className={style.favoriteButton}>
+							<FavoriteButton variant='default' productId={product.id} />
+							<AddToCartButton product={product}> </AddToCartButton>
+						</div>
+					</div>
 				</div>
-				<div className={itemStyle.addToCart}>
-					<AddToCartButton product={product} />
+				<div className={style.descr}>{product.description} ...</div>
+
+				<div className={style.infoWrapper}>
+					<div className={style.priceText}>
+						<div className='flex gap-2'>
+							<div className={style.price}>{convertPrice(product.price)}</div>
+							<Link
+								className={style.itemSlug}
+								href={`/catalog/categories/${product.category.slug}`}
+							>
+								{product.category.name}
+							</Link>
+						</div>
+						<div className={style.available}>Available in 3 variants.</div>
+					</div>
+					<ProductRating product={product} />
 				</div>
 			</div>
 		</div>

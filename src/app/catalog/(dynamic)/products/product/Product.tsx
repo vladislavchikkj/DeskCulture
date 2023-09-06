@@ -146,7 +146,7 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
-							<AddToCartButton product={productArr} />
+							<AddToCartButton product={productArr}>Buy now</AddToCartButton>
 						</div>
 						{!!profile && (
 							<div className={style.favoriteButton}>
