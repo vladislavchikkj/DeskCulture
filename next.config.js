@@ -12,7 +12,8 @@ const nextConfig = {
 			'picsum.photos',
 			'i.pinimg.com',
 			'i.ytimg.com',
-			'blog-imgs-110.fc2.com'
+			'blog-imgs-110.fc2.com',
+			'localhost'
 		]
 	},
 	webpack(config) {

@@ -1,7 +1,9 @@
+'use client'
 import type { FC, PropsWithChildren } from 'react'
 import { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { RiCloseFill } from 'react-icons/ri'
+import style from './modal.module.scss'
 interface IModal {
 	isOpen: boolean
 	closeModal: () => void
@@ -19,9 +21,9 @@ const Modal: FC<PropsWithChildren<IModal>> = ({
 	}
 
 	return ReactDOM.createPortal(
-		<div>
-			<div>
-				<button>
+		<div className={style.overlay}>
+			<div className={style.window}>
+				<button onClick={closeModal}>
 					<RiCloseFill />
 				</button>
 				{children}

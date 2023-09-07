@@ -17,7 +17,6 @@ export default function ProductReviews({
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
 
-	if (!reviews.length) return null
 	return (
 		<section id='reviews' className=''>
 			<div>
@@ -37,6 +36,7 @@ export default function ProductReviews({
 				{reviews.map(review => (
 					<ReviewItem key={review.id} review={review} />
 				))}
+				отзывы
 			</div>
 		</section>
 	)

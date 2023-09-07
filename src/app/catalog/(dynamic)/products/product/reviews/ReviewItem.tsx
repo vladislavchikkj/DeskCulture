@@ -9,7 +9,7 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 			<div>
 				<Image
 					alt={review.user.name}
-					src={review.user.avatarPath}
+					src={'http://localhost:4200/uploads/default-avatar.png'}
 					width={40}
 					height={40}
 					className=''

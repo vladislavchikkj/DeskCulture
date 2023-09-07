@@ -24,7 +24,6 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 	})
 
 	const queryClient = useQueryClient()
-
 	const { mutate, isSuccess, isLoading } = useMutation(
 		['leave review'],
 		(data: IReviewFields) => ReviewService.leave(productId, data),
@@ -84,7 +83,9 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 							</ul>
 						)}
 						<div>
-							<Button variant={'black'}>Leave</Button>
+							<Button type='submit' variant={'black'}>
+								Leave
+							</Button>
 						</div>
 					</div>
 				)}
