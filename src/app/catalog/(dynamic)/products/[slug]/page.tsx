@@ -40,9 +40,6 @@ export async function generateMetadata({
 }
 
 export default async function ProductsPage({ params }: IPageSlugParam) {
-	// const { updateLayout } = useLayout()
-	// updateLayout(false)
-
 	const data = await getProducts(params)
 	return (
 		<>

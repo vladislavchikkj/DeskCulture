@@ -22,7 +22,7 @@ export const ReviewService = {
 			method: 'GET'
 		})
 	},
-	async leave(productId: string | number, name: string, data: TypeData) {
+	async leave(productId: string | number, data: TypeData) {
 		return instance<IReview>({
 			url: `${REVIEWS}/leave/${productId}`,
 			method: 'POST',

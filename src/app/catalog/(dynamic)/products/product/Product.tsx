@@ -15,6 +15,7 @@ import { useLayout } from '@/components/context/LayoutContext'
 import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
 import Detail from './details/Detail'
 import style from './product.module.scss'
+import ProductReviews from './reviews/ProductReviews'
 
 type props = {
 	product: IProduct[]
@@ -110,7 +111,7 @@ const Products: FC<props> = ({ product }) => {
 							<motion.div
 								custom={2}
 								variants={sliderItemsAnimation}
-								className='overflow-hidden'
+								className='overflow-scroll'
 							>
 								<div className={style.sliderItems}>
 									{productArr.images.map((image, index) => (
@@ -192,6 +193,21 @@ const Products: FC<props> = ({ product }) => {
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
+						<Button data-hover='Reviews' variant='grey'>
+							Reviews
+						</Button>
+					</div>
+					<div className={style.title}>Reviews</div>
+				</div>
+				<ProductReviews
+					reviews={productArr.reviews}
+					productId={productArr.id}
+				/>
+			</div>
+			<div className={style.intrestedWrap}>
+				<div className={style.intrested}>
+					<div className={style.btnWrapper}>
+						<span className={style.numdot}>02</span>
 						<Button data-hover='Learn More' variant='grey'>
 							Learn More
 						</Button>

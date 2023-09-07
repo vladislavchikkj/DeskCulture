@@ -41,7 +41,7 @@ const ProductList: FC<ProductListProps> = ({
 			try {
 				const response = await ProductService.getAll({
 					page: 1,
-					perPage: 6,
+					perPage: 8,
 					sort: sortType
 				})
 				setProducts(response.products)
