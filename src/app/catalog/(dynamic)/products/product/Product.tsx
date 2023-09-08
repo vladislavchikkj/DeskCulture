@@ -35,7 +35,6 @@ const Products: FC<props> = ({ product }) => {
 	const toggleVisibility = () => {
 		setIsVisible(!isVisible)
 	}
-
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0) // Step 1: State variable for selected image index
 
 	const handleImageClick = (index: number) => {

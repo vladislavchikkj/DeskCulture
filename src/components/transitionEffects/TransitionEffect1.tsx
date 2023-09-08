@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 
 const variants = {
@@ -22,17 +21,9 @@ const variants = {
 }
 
 const TransitionEffect1: FC<{ children: React.ReactNode }> = ({ children }) => {
-	const { asPath } = useRouter()
-
 	return (
 		<AnimatePresence mode='wait'>
-			<motion.div
-				key={asPath}
-				variants={variants}
-				animate='in'
-				initial='out'
-				exit='out'
-			>
+			<motion.div variants={variants} animate='in' initial='out' exit='out'>
 				{children}
 			</motion.div>
 		</AnimatePresence>

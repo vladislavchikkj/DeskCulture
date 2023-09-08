@@ -25,7 +25,8 @@ const Home: FC<TypeCombinedPagination> = ({
 	categories,
 	categoriesLength,
 	setups,
-	setupsLength
+	setupsLength,
+	products
 }) => {
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
 		initialInView: false,
@@ -114,9 +115,9 @@ const Home: FC<TypeCombinedPagination> = ({
 						height: '20%'
 					}}
 				>
-					<HomeReviews />
+					<HomeReviews products={products} />
 				</ParallaxLayer>
-				<ParallaxLayer sticky={{ start: 3.2, end: 4.2 }}>
+				<ParallaxLayer offset={3.2}>
 					<Footer home={true} />
 				</ParallaxLayer>
 				<ParallaxLayer

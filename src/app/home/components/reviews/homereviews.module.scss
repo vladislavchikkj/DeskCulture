@@ -1,6 +1,7 @@
 .reviews {
 	position: relative;
 	background: rgb(255, 255, 255);
+	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -27,6 +28,7 @@
 .reviews__items {
 	display: flex;
 	justify-content: space-between;
+	background: rgb(255, 255, 255);
 }
 .reviews__title {
 	color: #191b1d;

@@ -1,12 +1,12 @@
 import { ReviewService } from '@/services/review.service'
 import Button from '@/ui/common/buttons/Button'
-import Heading from '@/ui/common/heading/Heading'
 import Loader from '@/ui/common/loader/Loader'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { FC } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
 import { IReviewFields } from './review-fields.interface'
+import style from './reviews.module.scss'
 
 type props = {
 	productId: number
@@ -43,7 +43,7 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Heading>Leave a review</Heading>
+				<div className={style.modalName}>Leave a review</div>
 
 				{isLoading ? (
 					<Loader />
@@ -72,7 +72,7 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 								required: 'Text is required'
 							})}
 							placeholder='Your text here...'
-							className=''
+							className={style.modalTextArea}
 						/>
 
 						{Object.entries(errors) && (
@@ -82,9 +82,9 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 								))}
 							</ul>
 						)}
-						<div>
-							<Button type='submit' variant={'black'}>
-								Leave
+						<div className={style.leaveModalBtn}>
+							<Button data-hover='Send' type='submit' variant={'black'}>
+								Send
 							</Button>
 						</div>
 					</div>

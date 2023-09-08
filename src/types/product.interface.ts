@@ -24,7 +24,7 @@ export type TypeProducts = {
 
 export type TypePaginationProducts = {
 	[x: string]: any
-	length: number
+	length?: number
 	products: IProduct[]
 }
 
@@ -38,7 +38,8 @@ export type TypePaginationSetup = {
 }
 
 export type TypeCombinedPagination = TypePaginationCategories &
-	TypePaginationSetup
+	TypePaginationSetup &
+	TypePaginationProducts
 
 export type TypePaginationСatalog = {
 	products: IProduct[]

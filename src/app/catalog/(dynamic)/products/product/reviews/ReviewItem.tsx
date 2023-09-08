@@ -1,30 +1,25 @@
 import { IReview } from '@/types/review.interface'
-import Image from 'next/image'
 import { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
+import style from './reviews.module.scss'
 
 const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	return (
-		<div>
+		<div className={style.reviewWrapper}>
 			<div>
-				<Image
-					alt={review.user.name}
-					src={'http://localhost:4200/uploads/default-avatar.png'}
-					width={40}
-					height={40}
-					className=''
+				<div className={style.userName}>
+					<span>{review.user.name}</span>
+				</div>
+				<Rating
+					readonly
+					initialValue={review.rating}
+					SVGstyle={{ display: 'inline-block' }}
+					size={20}
+					allowFraction
+					transition
 				/>
-				<span>{review.user.name}</span>
 			</div>
-			<Rating
-				readonly
-				initialValue={review.rating}
-				SVGstyle={{ display: 'inline-block' }}
-				size={20}
-				allowFraction
-				transition
-			/>
-			<div>{review.text}</div>
+			<div className={style.reviewText}>{review.text}</div>
 		</div>
 	)
 }

@@ -36,12 +36,12 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 				</div>
 				<div className={style.slider}>
 					<div className={style.sliderBtns}>
-						<Button data-hover='←' variant='btnArrow'>
+						{/* <Button data-hover='←' variant='btnArrow'>
 							←
 						</Button>
 						<Button data-hover='→' variant='btnArrow'>
 							→
-						</Button>
+						</Button> */}
 					</div>
 					<div className={style.linksWrap}>
 						<div className={style.linksWrapContainer}>

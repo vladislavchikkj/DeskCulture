@@ -22,9 +22,11 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 				<div className={`${style.setup} container-f`}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
-						<Button data-hover='ready setup' variant='grey'>
-							ready setup
-						</Button>
+						<Link href={'/catalog/setups'}>
+							<Button data-hover='ready setup' variant='grey'>
+								ready setup
+							</Button>
+						</Link>
 					</div>
 					<div className={style.categoryName}>
 						<h2>Ready setup</h2>
