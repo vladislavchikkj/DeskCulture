@@ -12,6 +12,11 @@ import Footer from '@/ui/layout/footer/Footer'
 
 import { TypeCombinedPagination } from '@/types/product.interface'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
+import {
+	homeAnimation,
+	LowBarAnimation
+} from '@/components/animations/homeAnimation'
 import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
@@ -34,24 +39,6 @@ const Home: FC<TypeCombinedPagination> = ({
 	})
 	const parallax = useRef<IParallax>(null)
 	const alignEnd = { display: 'flex', alignItems: 'flex-end' }
-	const Animation = {
-		hidden: {
-			height: '100vh'
-		},
-		visible: (custom: number) => ({
-			height: '70vh',
-			transition: { duration: 0.9, delay: custom * 0.1 }
-		})
-	}
-	const LowBarAnimation = {
-		hidden: {
-			y: 300
-		},
-		visible: (custom: number) => ({
-			y: 0,
-			transition: { duration: 0.9, delay: custom * 0.2 }
-		})
-	}
 
 	// Получаем функцию обновления layout из контекста
 	const { layout, updateLayout } = useLayout()
@@ -66,11 +53,12 @@ const Home: FC<TypeCombinedPagination> = ({
 			whileInView='visible'
 			viewport={{ once: true }}
 			className={style.home}
+			variants={baseAnimation}
 		>
 			<Parallax ref={parallax} pages={4.2} style={{ top: '0', left: '0' }}>
 				<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
 					<motion.div
-						variants={Animation}
+						variants={homeAnimation}
 						ref={inViewRef}
 						className={style.intro}
 					>

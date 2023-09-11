@@ -8,7 +8,6 @@ import Link from 'next/link'
 import style from './homereviews.module.scss'
 
 const HomeReviews: FC<{ products: IProduct[] }> = products => {
-	console.log(products.products)
 	return (
 		<>
 			<div className={`${style.reviews}  container-f`}>
@@ -26,6 +25,7 @@ const HomeReviews: FC<{ products: IProduct[] }> = products => {
 						needToUpdate={false}
 						loadMoreBtnOff
 						DropdownOff
+						descr
 					/>
 				</div>
 			</div>

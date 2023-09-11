@@ -5,19 +5,27 @@
 	height: 100vh;
 }
 .items {
+	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	justify-content: center;
 	padding-top: 6vh;
 	column-gap: 2vw;
 	row-gap: 3.5vw;
+	padding-left: 0.2vw;
+	padding-right: 0.2vw;
 	padding-bottom: 2vh;
+	min-height: 40vh;
 }
 
 .btnWrapper {
 	display: flex;
 	gap: 0.5rem;
 	padding-top: 10vw;
+}
+
+.itemsWrapper {
+	position: relative;
 }
 
 @media (max-width: 1350px) {

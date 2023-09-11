@@ -10,8 +10,6 @@ type Props = {
 }
 const Layout: FC<Props> = ({ children }) => {
 	const { layout, updateLayout } = useLayout()
-
-	// Вызываем функцию updateLayout(false) после завершения рендеринга компонента.
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
@@ -19,9 +17,9 @@ const Layout: FC<Props> = ({ children }) => {
 	return (
 		<>
 			<Header inView={layout} />
-			<TransitionEffect1>
-				<main>{children}</main>
-			</TransitionEffect1>
+			<main>
+				<TransitionEffect1>{children}</TransitionEffect1>
+			</main>
 		</>
 	)
 }

@@ -1,10 +1,11 @@
-// ... other imports
 'use client'
 import { motion } from 'framer-motion'
 import { FC, ReactNode, useEffect, useState } from 'react'
 
 import Footer from '../layout/footer/Footer'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
+import { headingAnimation } from '@/components/animations/headingAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import Heading from '../common/heading/Heading'
 import ButtonSwitcher from './buttonSwitcher/ButtonSwitcher'
@@ -26,24 +27,13 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 		'Categories' | 'Setup' | 'Products'
 	>('Categories')
 
-	const headingAnimation = {
-		hidden: {
-			y: 300,
-			opacity: 0
-		},
-		visible: (custom: number) => ({
-			y: 0,
-			opacity: 1,
-			transition: { duration: 0.4, delay: custom * 0.2 }
-		})
-	}
-
 	return (
 		<motion.section
 			initial='hidden'
 			whileInView='visible'
 			viewport={{ once: true }}
 			className={`${catalogStyle.catalog}`}
+			variants={baseAnimation}
 		>
 			<div className='container-f'>
 				<>
@@ -58,7 +48,6 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 						</motion.div>
 					</div>
 				</>
-
 				<motion.div custom={1.2} variants={headingAnimation}>
 					{selectedButton === 'Categories' && <>{children}</>}
 					{selectedButton === 'Setup' && <>{children}</>}

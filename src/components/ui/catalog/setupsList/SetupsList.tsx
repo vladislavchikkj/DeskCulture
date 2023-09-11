@@ -6,6 +6,8 @@ import Loader from '@/ui/common/loader/Loader'
 
 import { ISetups } from '@/types/setups.interface'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
+import { motion } from 'framer-motion'
 import setupStyle from '../catalogSetups.module.scss'
 
 interface SetupProps {
@@ -15,7 +17,13 @@ interface SetupProps {
 const SetupList: React.FC<SetupProps> = ({ setups }) => {
 	const [isLoading, setIsLoading] = useState(false) // Добавляем стейт для загрузки
 	return (
-		<div className={setupStyle.itemWrapper}>
+		<motion.div
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			variants={baseAnimation}
+			className={setupStyle.itemWrapper}
+		>
 			{isLoading ? ( // Если isLoading === true, показываем лоадер
 				<Loader />
 			) : (
@@ -37,7 +45,7 @@ const SetupList: React.FC<SetupProps> = ({ setups }) => {
 					</div>
 				))
 			)}
-		</div>
+		</motion.div>
 	)
 }
 

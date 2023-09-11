@@ -22,7 +22,7 @@ const variants = {
 
 const TransitionEffect1: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
-		<AnimatePresence mode='wait'>
+		<AnimatePresence>
 			<motion.div variants={variants} animate='in' initial='out' exit='out'>
 				{children}
 			</motion.div>

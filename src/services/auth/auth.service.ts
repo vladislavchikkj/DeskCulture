@@ -28,5 +28,23 @@ export const AuthService = {
 
 		if (response.data.accessToken) saveToStorage(response.data)
 		return response
+	},
+	async changePassword(changePasswordData: {
+		oldPassword: string
+		newPassword: string
+	}) {
+		try {
+			const response = await axiosClassic<IAuthResponse>({
+				url: 'auth/change-password',
+				method: 'PATCH',
+				data: changePasswordData
+			})
+
+			if (response.data.accessToken) {
+				saveToStorage(response.data)
+			}
+		} catch (error) {
+			throw error
+		}
 	}
 }

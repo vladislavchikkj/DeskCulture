@@ -9,7 +9,9 @@ import { convertPrice } from '@/utils/convertPrice'
 
 import AuthButton from '../../auth/authButton/authButton'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
+import { motion } from 'framer-motion'
 import style from './bag.module.scss'
 
 const Bag: FC = () => {
@@ -22,7 +24,12 @@ const Bag: FC = () => {
 	}, [])
 
 	return (
-		<div className='container-f'>
+		<motion.div
+			initial='hidden'
+			whileInView='visible'
+			variants={baseAnimation}
+			className='container-f'
+		>
 			<div className={style.wrapper}>
 				<div className={style.title}>Shopping bag</div>
 				<div className={style.cartLayout}>
@@ -68,7 +75,7 @@ const Bag: FC = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

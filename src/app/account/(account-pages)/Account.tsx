@@ -1,8 +1,10 @@
 'use client'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import { useActions } from '@/hooks/useActions'
 import cn from 'classnames'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -21,9 +23,12 @@ const Account: FC<props> = ({ children }) => {
 	}, [])
 	const { logout } = useActions()
 	const pathname = usePathname()
-
 	return (
-		<div>
+		<motion.div
+			viewport={{ once: true }}
+			initial='hidden'
+			whileInView='visible'
+		>
 			<div className={`${style.wrapper} container-f`}>
 				<div className={style.asideMenu}>
 					<Link
@@ -54,9 +59,17 @@ const Account: FC<props> = ({ children }) => {
 						<div className={style.logout}>LOG OUT</div>
 					</Link>
 				</div>
-				<div className={style.leading}>{children}</div>
+				<motion.div
+					viewport={{ once: true }}
+					initial='hidden'
+					whileInView='visible'
+					variants={baseAnimation}
+					className={style.leading}
+				>
+					{children}
+				</motion.div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

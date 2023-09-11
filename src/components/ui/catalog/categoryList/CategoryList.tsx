@@ -9,8 +9,10 @@ import { ICategory } from '@/types/category.interface'
 
 import setupStyle from '../catalogSetups.module.scss'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
+import { motion } from 'framer-motion'
 
 // Подключите компонент лоадера
 
@@ -46,7 +48,13 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 		}
 	}
 	return (
-		<div className={setupStyle.itemWrapper}>
+		<motion.div
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			variants={baseAnimation}
+			className={setupStyle.itemWrapper}
+		>
 			{isLoading ? ( // Если isLoading === true, показываем лоадер
 				<Loader />
 			) : (
@@ -68,7 +76,7 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 					</div>
 				))
 			)}
-		</div>
+		</motion.div>
 	)
 }
 

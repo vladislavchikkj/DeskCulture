@@ -10,7 +10,10 @@ import FavoriteButton from './favoriteButton/FavoriteButton'
 import style from './product-item.module.scss'
 import ProductRating from './productRating/ProductRating'
 
-const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
+const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
+	product,
+	descr
+}) => {
 	return (
 		<div className={style.item}>
 			<div>
@@ -38,7 +41,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						</div>
 					</div>
 				</div>
-				<div className={style.descr}>{product.description} ...</div>
+				{!descr && <div className={style.descr}>{product.description} ...</div>}
 
 				<div className={style.infoWrapper}>
 					<div className={style.priceText}>

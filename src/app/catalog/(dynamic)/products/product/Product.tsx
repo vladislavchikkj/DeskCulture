@@ -11,6 +11,13 @@ import { useProfile } from '@/hooks/useProfile'
 
 import { IProduct } from '@/types/product.interface'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
+import {
+	breadcrumbsAnimation,
+	imageAnimation,
+	sliderAnimation,
+	sliderItemsAnimation
+} from '@/components/animations/productAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
 import Detail from './details/Detail'
@@ -40,48 +47,14 @@ const Products: FC<props> = ({ product }) => {
 	const handleImageClick = (index: number) => {
 		setSelectedImageIndex(index)
 	}
-	const breadcrumbsAnimation = {
-		hidden: {
-			y: 100
-		},
-		visible: (custom: number) => ({
-			y: 0,
-			transition: { duration: 0.8, delay: custom * 0.2 }
-		})
-	}
-	const sliderAnimation = {
-		hidden: {
-			height: 0
-		},
-		visible: (custom: number) => ({
-			height: '60vh',
-			transition: { duration: 0.8, delay: custom * 0.2 }
-		})
-	}
-	const sliderItemsAnimation = {
-		hidden: {
-			height: 0
-		},
-		visible: (custom: number) => ({
-			height: '60vh',
-			transition: { duration: 0.8, delay: custom * 0.2 }
-		})
-	}
-	const imageAnimation = {
-		hidden: {
-			scale: 1.2
-		},
-		visible: (custom: number) => ({
-			scale: 1,
-			transition: { duration: 0.8, delay: custom * 0.2 }
-		})
-	}
+
 	return (
 		<motion.div
 			initial='hidden'
 			whileInView='visible'
 			viewport={{ once: true }}
 			className='container-f'
+			variants={baseAnimation}
 		>
 			<div className={style.content}>
 				<div className={style.imagesWraper}>

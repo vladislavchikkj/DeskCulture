@@ -1,4 +1,5 @@
 'use client'
+import { AuthService } from '@/services/auth/auth.service'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Account from '../Account'
@@ -19,9 +20,18 @@ const ChangePasswordPage: FC = () => {
 		watch
 	} = useForm<PasswordFormData>()
 
-	const onSubmit: SubmitHandler<PasswordFormData> = data => {
-		// Здесь вы можете добавить логику для обработки изменения пароля.
-		console.log(data)
+	const onSubmit: SubmitHandler<PasswordFormData> = async data => {
+		try {
+			// Вызываем метод изменения пароля с использованием сервиса аутентификации
+			await AuthService.changePassword({
+				oldPassword: data.currentPassword,
+				newPassword: data.newPassword
+			})
+
+			// Пароль успешно изменен, выполните необходимые действия
+		} catch (error) {
+			// Обработка ошибок при изменении пароля
+		}
 	}
 
 	return (

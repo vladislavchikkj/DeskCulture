@@ -2,7 +2,6 @@
 import { FC, useEffect, useState } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
-import Loader from '@/ui/common/loader/Loader'
 
 import { TypePaginationСatalog } from '@/types/product.interface'
 
@@ -10,8 +9,11 @@ import catalogStyle from '../catalog.module.scss'
 
 import { ProductService } from '@/services/product/product.service'
 import { EnumProductSort } from '@/services/product/product.types'
+import Loader from '@/ui/common/loader/Loader'
+import { motion } from 'framer-motion'
 import ProductItem from '../product-item/ProductItem'
 import SortDropdown from '../product-item/sortDropdown/SortDropdown'
+import { baseAnimation } from '@/components/animations/baseAnimation'
 
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
@@ -19,6 +21,7 @@ interface ProductListProps {
 	DropdownOff?: boolean
 	loadMoreBtnOff?: boolean
 	needToUpdate?: boolean
+	descr?: boolean
 }
 
 const ProductList: FC<ProductListProps> = ({
@@ -26,7 +29,8 @@ const ProductList: FC<ProductListProps> = ({
 	slug,
 	DropdownOff,
 	loadMoreBtnOff,
-	needToUpdate = true
+	needToUpdate = true,
+	descr
 }) => {
 	const [page, setPage] = useState(1)
 	const [sortType, setSortType] = useState<EnumProductSort>(
@@ -82,19 +86,22 @@ const ProductList: FC<ProductListProps> = ({
 			setIsLoading(false)
 		}
 	}
-
 	return (
-		<div>
+		<motion.div
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			variants={baseAnimation}
+		>
 			{!DropdownOff && (
 				<SortDropdown sortType={sortType} setSortType={setSortType} />
 			)}
-			{isLoading ? (
-				<Loader />
-			) : products.length > 0 ? (
+			{products.length > 0 ? (
 				<>
 					<div className={catalogStyle.items}>
+						{isLoading && <Loader />}
 						{products.map(product => (
-							<ProductItem key={product.id} product={product} />
+							<ProductItem key={product.id} product={product} descr={descr} />
 						))}
 					</div>
 					{!allProductsLoaded ? (
@@ -119,7 +126,7 @@ const ProductList: FC<ProductListProps> = ({
 			) : (
 				<div>There are no products</div>
 			)}
-		</div>
+		</motion.div>
 	)
 }
 
