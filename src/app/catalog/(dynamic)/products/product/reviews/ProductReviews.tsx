@@ -19,23 +19,36 @@ export default function ProductReviews({
 }: IProductReviews) {
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
+
+	// Add a new state for the list of reviews
+	const [reviewsList, setReviewsList] = useState(reviews)
+
+	// Add this function to handle loading a new review after success
+	const handleNewReview = (review: IReview) => {
+		setReviewsList([review, ...reviewsList])
+	}
+
 	return (
 		<section id='reviews' className=''>
 			{user && (
 				<Modal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
-					<LeaveReviewForm productId={productId} />
+					<LeaveReviewForm
+						productId={productId}
+						onSuccess={handleNewReview} // Pass handleNewReview to update the reviewsList upon success
+					/>
 				</Modal>
 			)}
 
 			<div className={style.reviews}>
-				{reviews.length > 0 ? (
+				{reviewsList.length > 0 ? (
 					<Swiper
-						key={reviews.length}
+						key={reviewsList.length}
+						// @ts-ignore
 						slidesPerView={3}
 						spaceBetween={30}
 						className={style.swiper}
 					>
-						{reviews.map(review => (
+						{reviewsList.map(review => (
 							<SwiperSlide className='flex' key={review.id}>
 								<ReviewItem review={review} />
 							</SwiperSlide>

@@ -8,7 +8,7 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 		<div className={style.reviewWrapper}>
 			<div>
 				<div className={style.userName}>
-					<span>{review.user.name}</span>
+					<span>{review.user?.name}</span>
 				</div>
 				<Rating
 					readonly

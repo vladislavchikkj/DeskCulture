@@ -36,7 +36,6 @@ const Products: FC<props> = ({ product }) => {
 	}, [])
 
 	const { profile } = useProfile()
-	const [productArr] = product
 	const [isVisible, setIsVisible] = useState(false)
 
 	const toggleVisibility = () => {
@@ -71,11 +70,11 @@ const Products: FC<props> = ({ product }) => {
 								<span>Categories</span>
 							</Link>
 							<div className={style.slesh}>/</div>
-							<Link href={`/catalog/categories/${productArr.category.slug}`}>
-								<span>{productArr.category.name}</span>
+							<Link href={`/catalog/categories/${product[0].category.slug}`}>
+								<span>{product[0].category.name}</span>
 							</Link>
 							<div className={style.slesh}>/</div>
-							<span className={style.select}>{productArr.name}</span>
+							<span className={style.select}>{product[0].name}</span>
 						</motion.div>
 					</div>
 					<div className={style.slider}>
@@ -86,14 +85,14 @@ const Products: FC<props> = ({ product }) => {
 								className='overflow-scroll'
 							>
 								<div className={style.sliderItems}>
-									{productArr.images.map((image, index) => (
+									{product[0].images.map((image, index) => (
 										<img
 											key={index}
 											className={`${style.image} ${
 												selectedImageIndex === index ? style.selectedImage : ''
 											}`}
 											src={image}
-											alt={productArr.name}
+											alt={product[0].name}
 											onClick={() => handleImageClick(index)} // Step 2: Add click handler
 										/>
 									))}
@@ -105,32 +104,32 @@ const Products: FC<props> = ({ product }) => {
 								<motion.img
 									variants={imageAnimation}
 									className={style.image}
-									src={productArr.images[selectedImageIndex]} // Step 3: Use selected image index to update src
-									alt={productArr.name}
+									src={product[0].images[selectedImageIndex]} // Step 3: Use selected image index to update src
+									alt={product[0].name}
 								/>
 							</motion.div>
 						</div>
 					</div>
 				</div>
 				<motion.div variants={breadcrumbsAnimation} className={style.info}>
-					<div className={style.name}>{productArr.name}</div>
-					<div className={style.price}>${productArr.price}</div>
-					<div className={style.descr}>{productArr.description}</div>
+					<div className={style.name}>{product[0].name}</div>
+					<div className={style.price}>${product[0].price}</div>
+					<div className={style.descr}>{product[0].description}</div>
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
-							<AddToCartButton product={productArr}>Buy now</AddToCartButton>
+							<AddToCartButton product={product[0]}>Buy now</AddToCartButton>
 						</div>
 						{!!profile && (
 							<div className={style.favoriteButton}>
-								<FavoriteButton productId={productArr.id} variant='default' />
+								<FavoriteButton productId={product[0].id} variant='default' />
 							</div>
 						)}
 					</div>
 					<div className={style.details}>
 						<Detail
 							title={'Product Details'}
-							content={productArr.description}
+							content={product[0].description}
 						/>
 						<Detail
 							title={'Shipping Details'}
@@ -170,8 +169,8 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.title}>Reviews</div>
 				</div>
 				<ProductReviews
-					reviews={productArr.reviews}
-					productId={productArr.id}
+					reviews={product[0].reviews}
+					productId={product[0].id}
 				/>
 			</div>
 			<div className={style.intrestedWrap}>

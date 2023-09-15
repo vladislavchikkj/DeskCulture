@@ -1,4 +1,5 @@
 import { ReviewService } from '@/services/review.service'
+import { IReview } from '@/types/review.interface'
 import Button from '@/ui/common/buttons/Button'
 import Loader from '@/ui/common/loader/Loader'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -10,9 +11,10 @@ import style from './reviews.module.scss'
 
 type props = {
 	productId: number
+	onSuccess?: (review: IReview) => void // Add this line
 }
 
-const LeaveReviewForm: FC<props> = ({ productId }) => {
+const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 	const {
 		register: formRegister,
 		handleSubmit,
@@ -28,8 +30,11 @@ const LeaveReviewForm: FC<props> = ({ productId }) => {
 		['leave review'],
 		(data: IReviewFields) => ReviewService.leave(productId, data),
 		{
-			onSuccess() {
+			onSuccess(data) {
 				queryClient.refetchQueries(['get product', productId])
+				if (onSuccess) {
+					onSuccess(data.data) // Make sure to pass `data.data` here
+				}
 			}
 		}
 	)
