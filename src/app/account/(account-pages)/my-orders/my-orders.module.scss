@@ -1,0 +1,45 @@
+.orders {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+	width: 30vw;
+}
+
+.order {
+	display: flex;
+	flex-direction: column;
+	gap: 1vw;
+	padding: 1vw;
+	border: 1px solid #b7b7b7;
+}
+
+.title {
+	color: rgb(99, 99, 99);
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.orderHeader {
+	display: flex;
+	justify-content: space-between;
+}
+.orderImage {
+	width: 5vh;
+	border-radius: 4px;
+}
+.products {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+}
+
+.product {
+	display: flex;
+	gap: 1vw;
+}

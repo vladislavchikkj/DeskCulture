@@ -3,6 +3,7 @@ import { useLayout } from '@/components/context/LayoutContext'
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { Metadata } from 'next'
 import { useEffect } from 'react'
+import style from './thanks.module.scss'
 
 export const metadata: Metadata = {
 	title: 'Thanks',
@@ -15,5 +16,9 @@ export default function ThanksPage() {
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
-	return <div>Thanks</div>
+	return (
+		<div className='container-f'>
+			<div className={style.title}>Thanks for pay!</div>
+		</div>
+	)
 }

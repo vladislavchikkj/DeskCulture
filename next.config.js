@@ -13,7 +13,8 @@ const nextConfig = {
 			'i.pinimg.com',
 			'i.ytimg.com',
 			'blog-imgs-110.fc2.com',
-			'localhost'
+			'localhost',
+			's.alicdn.com'
 		]
 	},
 	webpack(config) {

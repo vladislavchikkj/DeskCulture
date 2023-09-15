@@ -1,5 +1,4 @@
 import { instance } from '@/api/api.interceptor'
-import { ICartItem } from '@/types/cart.interface'
 
 import { IOrder } from './order.interface'
 
@@ -14,18 +13,23 @@ enum EnumOrderStatus {
 
 type TypeData = {
 	status?: EnumOrderStatus
-	items: Pick<ICartItem, 'price' | 'quantity'> & { productId: number }
+	items: {
+		quantity: number
+		price: number
+		productId: number
+		productName?: string
+	}[]
 }
 
 export const OrderService = {
 	async getAll() {
 		return instance<IOrder[]>({
-			url: ORDERS,
+			url: `${ORDERS}/by-user`,
 			method: 'GET'
 		})
 	},
 	async place(data: TypeData) {
-		return instance<{ confirmation: { confirmationUrl: string } }>({
+		return instance<{ confirmationUrl: { confirmationUrl: string } }>({
 			url: ORDERS,
 			method: 'POST',
 			data

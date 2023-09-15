@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
 import { useOutside } from '@/hooks/useOutside'
 
@@ -7,7 +7,7 @@ import style from './detail.module.scss'
 
 type props = {
 	title: string
-	content: string
+	content: ReactNode
 }
 const Detail: FC<props> = ({ title, content }) => {
 	const { isShow, setIsShow, ref, setScrolling } = useOutside(false)

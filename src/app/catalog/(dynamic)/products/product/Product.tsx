@@ -130,9 +130,7 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.details}>
 						<Detail
 							title={'Product Details'}
-							content={
-								'The metallic orb, hand finished in polished golden enamel is embellished with gold filigree ribbons inlaid with 2,026 Swarovski crystals. Inside the orb is a matte glass perfume bottle, decorated with an embossed famous fleur-de-lis.'
-							}
+							content={productArr.description}
 						/>
 						<Detail
 							title={'Shipping Details'}
