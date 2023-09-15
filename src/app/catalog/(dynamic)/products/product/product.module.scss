@@ -86,8 +86,8 @@
 	border-bottom: 3px solid #bda05f;
 	border-radius: 3px;
 }
+
 .name {
-	white-space: nowrap;
 	color: #000;
 	font-family: Inter;
 	font-size: 1.2vw;
@@ -96,6 +96,7 @@
 	letter-spacing: 3.24px;
 	text-transform: uppercase;
 	padding-bottom: 1.5vh;
+	line-height: 2.8vh; /* 180.001% */
 }
 .price {
 	color: #bda05f;

@@ -3,6 +3,7 @@ import { useProfile } from '@/hooks/useProfile'
 import { OrderService } from '@/services/order.service'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
 import Account from '../Account'
 import accountStyle from '../account.module.scss'
@@ -25,27 +26,41 @@ const MyOrdersPage: FC = () => {
 					<div className={style.orders}>
 						{orders.map(order => (
 							<div key={order.id} className={style.order}>
-								<div className={style.orderHeader}>
-									<span>Order : {order.id}</span>
-									<span>Status: {order.status}</span>
-									<span>
-										Date: {new Date(order.createdAt).toLocaleDateString()}
+								<div className={style.orderCard}>
+									<span className={style.orderDate}>
+										{new Intl.DateTimeFormat('en-US', {
+											weekday: 'long',
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric'
+										}).format(new Date(order.createdAt))}
 									</span>
-									<span>Total price: {order.total}</span>
+									<div className={style.orderHeader}>
+										<span className={style.orderTitle}>ORDER #{order.id}</span>
+										<span className={style.orderItemsLength}>
+											{order.items.length} items
+										</span>
+									</div>
 								</div>
 								<div className={style.products}>
 									{order.items.map(item => (
-										<div className={style.product}>
-											<Image
-												width={150}
-												height={150}
-												className={style.orderImage}
-												src={item.product.images[0]}
-												alt={item.product.name}
-											></Image>
-											<div key={item.product.id}>{item.product.name}</div>
-										</div>
+										<Link href={`/catalog/products/${item.product.slug}`}>
+											<div className={style.product}>
+												<Image
+													width={200}
+													height={200}
+													className={style.orderImage}
+													src={item.product.images[0]}
+													alt={item.product.name}
+												></Image>
+											</div>
+										</Link>
 									))}
+								</div>
+								<div className={style.orderInfo}>
+									<span className={style.showDetailBtn}>SHOW DETAILS</span>
+									<span className={style.status}>Status: {order.status}</span>
+									<span className={style.total}>${order.total}</span>
 								</div>
 							</div>
 						))}

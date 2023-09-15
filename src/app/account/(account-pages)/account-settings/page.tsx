@@ -41,11 +41,10 @@ const AccountSettingsPage: FC = () => {
 			}
 
 			await UserService.updateProfile(data)
-			alert('Профиль успешно обновлен!')
-			// Обновляем страницу после успешного сохранения профиля
+			alert('The profile has been successfully updated!')
 			window.location.reload()
 		} catch (error) {
-			console.error('Ошибка при обновлении профиля:', error)
+			console.error('Error updating profile:', error)
 		}
 	}
 
