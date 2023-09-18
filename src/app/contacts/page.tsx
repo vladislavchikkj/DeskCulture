@@ -1,12 +1,16 @@
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import { Metadata } from 'next'
-import MyOrders from './MyOrders'
+import Contacts from './Contacts'
 
 export const metadata: Metadata = {
-	title: 'My orders',
+	title: 'Contacts',
 	...NO_INDEX_PAGE
 }
 
-export default function MyOrdersPage() {
-	return <MyOrders />
+export default function ContactsPage() {
+	return (
+		<>
+			<Contacts />
+		</>
+	)
 }

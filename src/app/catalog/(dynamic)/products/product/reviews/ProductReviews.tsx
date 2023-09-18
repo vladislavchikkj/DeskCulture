@@ -20,10 +20,8 @@ export default function ProductReviews({
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
 
-	// Add a new state for the list of reviews
 	const [reviewsList, setReviewsList] = useState(reviews)
 
-	// Add this function to handle loading a new review after success
 	const handleNewReview = (review: IReview) => {
 		setReviewsList([review, ...reviewsList])
 	}
@@ -32,10 +30,7 @@ export default function ProductReviews({
 		<section id='reviews' className=''>
 			{user && (
 				<Modal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
-					<LeaveReviewForm
-						productId={productId}
-						onSuccess={handleNewReview} // Pass handleNewReview to update the reviewsList upon success
-					/>
+					<LeaveReviewForm productId={productId} onSuccess={handleNewReview} />
 				</Modal>
 			)}
 

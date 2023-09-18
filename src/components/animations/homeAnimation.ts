@@ -16,3 +16,15 @@ export const LowBarAnimation = {
 		transition: { duration: 0.9, delay: custom * 0.2 }
 	})
 }
+
+export const textAnimation = {
+	hidden: {
+		y: 300,
+		opacity: 0
+	},
+	visible: (custom: number) => ({
+		y: 0,
+		opacity: 1,
+		transition: { duration: 0.6, delay: custom * 0.2 }
+	})
+}

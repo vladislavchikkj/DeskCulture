@@ -43,8 +43,11 @@ const MyOrdersPage: FC = () => {
 									</div>
 								</div>
 								<div className={style.products}>
-									{order.items.map(item => (
-										<Link href={`/catalog/products/${item.product.slug}`}>
+									{order.items.map((item, index) => (
+										<Link
+											key={index}
+											href={`/catalog/products/${item.product.slug}`}
+										>
 											<div className={style.product}>
 												<Image
 													width={200}

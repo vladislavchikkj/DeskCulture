@@ -67,11 +67,13 @@ const Header: FC<Props> = ({ inView }) => {
 				<div className={style.leftBtnHeader}>
 					<Menu headerRef={headerRef} wrapperRef={wrapperRef} />
 					<div className='grid grid-flow-col'>
-						<div className={`${style.headerButton} ${style.hideBtn}`}>
-							<div data-hover='About Us' className={style.textBtn}>
-								<div className='flex gap-2'>About Us</div>
+						<Link href={`/contacts`}>
+							<div className={`${style.headerButton} ${style.hideBtn}`}>
+								<div data-hover='Contacts' className={style.textBtn}>
+									<div className='flex gap-2'>Contacts</div>
+								</div>
 							</div>
-						</div>
+						</Link>
 						<Link href={`/catalog`}>
 							<div className={`${style.headerButton} ${style.hideBtn}`}>
 								<div data-hover='Catalog' className={style.textBtn}>
@@ -108,13 +110,15 @@ const Header: FC<Props> = ({ inView }) => {
 						wrapperRef={wrapperRef}
 					/>
 					{!user && (
-						<div className={style.headerButton}>
-							<span className='pl-6 pr-6'>
-								<div data-hover='Register' className={style.textBtn}>
-									<div>Register</div>
-								</div>
-							</span>
-						</div>
+						<Link href={`/auth`}>
+							<div className={style.headerButton}>
+								<span className='pl-6 pr-6'>
+									<div data-hover='Register' className={style.textBtn}>
+										<div>Register</div>
+									</div>
+								</span>
+							</div>
+						</Link>
 					)}
 					<div>
 						{!!user ? (

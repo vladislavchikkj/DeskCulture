@@ -3,6 +3,7 @@ import { IUser } from '@/types/user.interface'
 export interface IUserState {
 	email: string
 	isAdmin: boolean
+	user?: IUser | null
 }
 
 export interface ITokens {

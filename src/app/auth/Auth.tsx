@@ -19,7 +19,9 @@ import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 
 import AuthButton from '@/app/auth/authButton/authButton'
+import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import style from './auth.module.scss'
 import { useAuthRedirect } from './useAuthRedirect'
@@ -68,12 +70,18 @@ const Auth: FC = () => {
 		setShowUsername(type === welcomeLogin) // Show username field only for registration
 	}
 	return (
-		<section className='flex h-screen container-f'>
+		<motion.section
+			initial='hidden'
+			whileInView='visible'
+			viewport={{ once: true }}
+			variants={baseAnimation}
+			className='flex h-screen container-f relative justify-center align-middle'
+		>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className={`'rounded-lg bg-white  m-auto w-full', ${style.form}`}
 			>
-				<Heading variant='auth'>{type}</Heading>
+				{isLoading && <Heading variant='auth'>{type}</Heading>}
 
 				{isLoading ? (
 					<Loader />
@@ -133,7 +141,7 @@ const Auth: FC = () => {
 					</>
 				)}
 			</form>
-		</section>
+		</motion.section>
 	)
 }
 

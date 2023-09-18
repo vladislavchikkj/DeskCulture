@@ -1,3 +1,4 @@
+import { textAnimation } from '@/components/animations/homeAnimation'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 
@@ -5,17 +6,6 @@ import style from './homeintro.module.scss'
 import Logo from './svg/newlogo.svg'
 
 const HomeIntro: FC = () => {
-	const textAnimation = {
-		hidden: {
-			y: 300,
-			opacity: 0
-		},
-		visible: (custom: number) => ({
-			y: 0,
-			opacity: 1,
-			transition: { duration: 0.6, delay: custom * 0.2 }
-		})
-	}
 	return (
 		<>
 			<motion.div

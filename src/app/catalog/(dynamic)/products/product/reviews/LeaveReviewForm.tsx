@@ -33,7 +33,8 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 			onSuccess(data) {
 				queryClient.refetchQueries(['get product', productId])
 				if (onSuccess) {
-					onSuccess(data.data) // Make sure to pass `data.data` here
+					const reviewWithUser = { ...data.data }
+					onSuccess(reviewWithUser)
 				}
 			}
 		}
@@ -82,8 +83,8 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 
 						{Object.entries(errors) && (
 							<ul className=''>
-								{Object.entries(errors).map(([_, error]) => (
-									<li>{error?.message}</li>
+								{Object.entries(errors).map(([_, error], index) => (
+									<li key={index}>{error?.message}</li>
 								))}
 							</ul>
 						)}
