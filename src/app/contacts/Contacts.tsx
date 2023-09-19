@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import 'react-html5video/dist/styles.css'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
@@ -10,7 +10,7 @@ import { textAnimation } from '@/components/animations/homeAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import Button from '@/ui/common/buttons/Button'
 import Footer from '@/ui/layout/footer/Footer'
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useForm } from 'react-hook-form'
 import style from './contacts.module.scss'
 
@@ -19,6 +19,7 @@ const Contacts: FC = () => {
 	useEffect(() => {
 		updateLayout(true)
 	})
+	const parallax = useRef<IParallax>(null)
 	const [isNameEmpty, setIsNameEmpty] = useState(false)
 	const [isEmailEmpty, setIsEmailEmpty] = useState(false)
 	const {
@@ -35,7 +36,7 @@ const Contacts: FC = () => {
 			variants={baseAnimation}
 			className={style.contacts}
 		>
-			<Parallax pages={2.2} style={{ top: '0', left: '0' }}>
+			<Parallax ref={parallax} pages={2.2} style={{ top: '0', left: '0' }}>
 				<ParallaxLayer speed={0.2} style={{ background: '#cdcecf' }}>
 					<div className={`container-f ${style.preview}`}>
 						<div className={style.title}>
@@ -54,7 +55,11 @@ const Contacts: FC = () => {
 								</div>
 							</h1>
 							<div className={style.btn}>
-								<Button data-hover='↓' variant={'btnArrowMenu'}>
+								<Button
+									data-hover='↓'
+									variant={'btnArrowMenu'}
+									onClick={() => parallax.current?.scrollTo(0.75)}
+								>
 									↓
 								</Button>
 							</div>
@@ -136,9 +141,10 @@ const Contacts: FC = () => {
 										<span className={style.highlight}></span>
 										<span className={style.bar}></span>
 									</div>
-									<span>
-										By clicking the Submit button you agree to our Privacy
-										Policy terms
+									<span className={style.policy}>
+										By clicking the Submit button you agree to our{' '}
+										<b className='cursor-pointer'>Privacy Policy </b>
+										terms
 									</span>
 									<button className={style.btnForm} type='submit'>
 										SAVE CHANGES

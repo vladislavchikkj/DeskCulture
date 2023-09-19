@@ -26,13 +26,7 @@ import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 
-const Home: FC<TypeCombinedPagination> = ({
-	categories,
-	categoriesLength,
-	setups,
-	setupsLength,
-	products
-}) => {
+const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
 		initialInView: false,
 		threshold: 0.2
@@ -40,9 +34,7 @@ const Home: FC<TypeCombinedPagination> = ({
 	const parallax = useRef<IParallax>(null)
 	const alignEnd = { display: 'flex', alignItems: 'flex-end' }
 
-	// Получаем функцию обновления layout из контекста
-	const { layout, updateLayout } = useLayout()
-	// Обновляем test, если inViewIntro истинно
+	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(!inViewIntro ? false : true)
 	}, [inViewIntro])
