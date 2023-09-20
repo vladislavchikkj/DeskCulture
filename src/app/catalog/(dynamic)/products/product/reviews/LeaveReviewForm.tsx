@@ -35,6 +35,7 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 				if (onSuccess) {
 					const reviewWithUser = { ...data.data }
 					onSuccess(reviewWithUser)
+					console.log(data)
 				}
 			}
 		}

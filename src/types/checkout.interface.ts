@@ -7,8 +7,13 @@ export interface iAddress {
 export interface IShippingField {
 	firstName: string
 	lastName: string
-	adress: iAddress
+	address: iAddress
 	email: string
 	phoneCode: string
 	phone: number
+}
+
+export interface IOptions {
+	value: string
+	label: string
 }

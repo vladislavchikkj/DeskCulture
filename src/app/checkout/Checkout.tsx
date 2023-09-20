@@ -5,18 +5,19 @@ import 'react-html5video/dist/styles.css'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { motion } from 'framer-motion'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { OrderService } from '@/services/order.service'
-import { IShippingField } from '@/types/checkout.interface'
+import { IOptions, IShippingField } from '@/types/checkout.interface'
 import Field from '@/ui/common/input/Field'
 import { convertPrice } from '@/utils/convertPrice'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
+import ReactSelect from 'react-select'
 import AuthButton from '../auth/authButton/authButton'
 import style from './checkout.module.scss'
 const Checkout: FC = () => {
@@ -52,14 +53,33 @@ const Checkout: FC = () => {
 		register: checkout,
 		handleSubmit,
 		reset: resetForm,
-		formState: { errors }
+		formState: { errors },
+		setValue,
+		control
 	} = useForm<IShippingField>({
 		mode: 'onChange'
 	})
 	const onSubmit: SubmitHandler<IShippingField> = data => {
+		console.log(data)
 		resetForm()
 		reset()
 	}
+	const options: IOptions[] = [
+		{
+			value: 'united states',
+			label: 'United States'
+		},
+		{
+			value: 'usa',
+			label: 'USA'
+		},
+		{
+			value: 'canada',
+			label: 'Canada'
+		}
+	]
+	const getValue = (value: string) =>
+		value ? options.find(option => option.value === value) : ''
 	return (
 		<>
 			<Parallax pages={1.3} style={{ top: '0', left: '0' }}>
@@ -96,8 +116,43 @@ const Checkout: FC = () => {
 													error={errors.lastName?.message}
 												/>
 											</div>
-											<Field className=' w-full' placeholder='Country *' />
-											<Field className=' w-full' placeholder='State/Province' />
+											<Controller
+												control={control}
+												name='address.country'
+												rules={{ required: 'Country is required!' }}
+												render={({
+													field: { onChange, value },
+													fieldState: { error }
+												}) => (
+													<div>
+														<ReactSelect
+															className='mb-5'
+															options={options}
+															placeholder='Country'
+															value={getValue(value)}
+															onChange={newValue =>
+																onChange(newValue as IOptions, value)
+															}
+															theme={theme => ({
+																...theme,
+																borderRadius: 0,
+																colors: {
+																	...theme.colors,
+																	primary25: '#bd9f5f3b',
+																	primary: '#00000050'
+																}
+															})}
+														/>
+														{errors?.address?.country && (
+															<div className='text-red mt-1 text-sm'>
+																{errors.address?.country?.message}
+															</div>
+														)}
+													</div>
+												)}
+											/>
+
+											<Field className='w-full' placeholder='State/Province' />
 											<div className='flex gap-5 justify-between'>
 												<Field className=' w-full' placeholder='City *' />
 												<Field className=' w-full' placeholder='Postcode *' />
