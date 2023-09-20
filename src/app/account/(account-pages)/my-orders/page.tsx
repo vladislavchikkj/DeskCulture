@@ -62,7 +62,14 @@ const MyOrdersPage: FC = () => {
 								</div>
 								<div className={style.orderInfo}>
 									<span className={style.showDetailBtn}>SHOW DETAILS</span>
-									<span className={style.status}>Status: {order.status}</span>
+									<span className={style.status}>
+										Status: {order.status}
+										{order.status === 'PENDING' && (
+											<span className='text-darkBlue cursor-pointer'>
+												Сontinue payment
+											</span>
+										)}
+									</span>
 									<span className={style.total}>${order.total}</span>
 								</div>
 							</div>

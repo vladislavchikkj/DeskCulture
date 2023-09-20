@@ -6,6 +6,7 @@ import 'react-html5video/dist/styles.css'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 
+import { headingAnimation } from '@/components/animations/headingAnimation'
 import { textAnimation } from '@/components/animations/homeAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import Button from '@/ui/common/buttons/Button'
@@ -63,7 +64,11 @@ const Contacts: FC = () => {
 									↓
 								</Button>
 							</div>
-							<div className={style.social}>
+							<motion.div
+								custom={1.2}
+								variants={headingAnimation}
+								className={style.social}
+							>
 								<span>Social links : </span>
 								<div className={style.links}>
 									<span className='text-black'>Facebook</span>
@@ -71,7 +76,7 @@ const Contacts: FC = () => {
 									<span>Behance</span>
 									<span>Dribbble</span>
 								</div>
-							</div>
+							</motion.div>
 						</div>
 					</div>
 				</ParallaxLayer>

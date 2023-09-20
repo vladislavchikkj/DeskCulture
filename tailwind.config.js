@@ -10,7 +10,8 @@ const colors = {
 	greySub: '#00000080',
 	primary: '#0000004D',
 	secondary: '#A08750',
-	red: twColors.red[400]
+	red: twColors.red[400],
+	darkBlue: '#203c70'
 }
 
 module.exports = {

@@ -12,48 +12,20 @@ import AuthButton from '../../auth/authButton/authButton'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import { useActions } from '@/hooks/useActions'
-import { OrderService } from '@/services/order.service'
-import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
+import Detail from '@/app/catalog/(dynamic)/products/product/details/Detail'
+import Link from 'next/link'
 import style from './bag.module.scss'
 
 const Bag: FC = () => {
-	const pathname = usePathname()
-	const searchParams = useSearchParams()
-
 	const { items, total } = useCart()
-	const { reset } = useActions()
-	const { push } = useRouter()
-
 	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
-	useEffect(() => {
-		if (pathname.startsWith('/confirmation-url/')) {
-			reset()
-		}
-	}, [pathname, reset])
-	const { mutate } = useMutation(
-		['create order and payment'],
-		() =>
-			OrderService.place({
-				items: items.map(item => ({
-					price: item.price,
-					quantity: item.quantity,
-					productId: item.product.id
-				}))
-			}),
-		{
-			onSuccess({ data }) {
-				//  @ts-ignore
-				push(data.confirmationUrl.confirmationUrl.url)
-			}
-		}
-	)
 
 	return (
 		<motion.div
@@ -68,13 +40,15 @@ const Bag: FC = () => {
 					<div className={style.cart}>
 						{items.length ? (
 							items.map(item => (
-								<CartItem
-									item={item}
-									key={item.product.id}
-									setIsShow={function (value: SetStateAction<boolean>): void {
-										throw new Error('Function not implemented.')
-									}}
-								/>
+								<div className={style.item}>
+									<CartItem
+										item={item}
+										key={item.product.id}
+										setIsShow={function (value: SetStateAction<boolean>): void {
+											throw new Error('Function not implemented.')
+										}}
+									/>
+								</div>
 							))
 						) : (
 							<div>YOUR BAG IS EMPTY</div>
@@ -93,18 +67,22 @@ const Bag: FC = () => {
 							<div>Total (incl. sales tax)</div>
 							<div className={style.totalPrice}>{convertPrice(total + 10)}</div>
 						</div>
-						<AuthButton onClick={() => mutate()} variant={'black'}>
-							checkout
-						</AuthButton>
+						<Link href={'./checkout'}>
+							<AuthButton variant={'black'}>checkout</AuthButton>
+						</Link>
 						<div className={style.otherInfo}>
-							<div className={style.otherInfoList}>
-								<span>SHIPPING FEES & TIMING</span>
-								<span>{'›'}</span>
-							</div>
-							<div className={style.otherInfoList}>
-								<span>RETURNS & EXCHANGES</span>
-								<span>{'›'}</span>
-							</div>
+							<Detail
+								title={'SHIPPING FEES & TIMING'}
+								content={
+									'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+								}
+							/>
+							<Detail
+								title={'RETURNS & EXCHANGES'}
+								content={
+									'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+								}
+							/>
 						</div>
 					</div>
 				</div>

@@ -86,6 +86,7 @@
 	justify-content: space-between;
 }
 .showDetailBtn {
+	color: #203c70;
 	color: #000;
 	font-family: Inter;
 	font-size: 0.7rem;
@@ -97,6 +98,8 @@
 	cursor: pointer;
 }
 .status {
+	display: flex;
+	flex-direction: column;
 	color: rgba(0, 0, 0, 0.5);
 	font-family: Inter;
 	font-size: 0.7rem;
