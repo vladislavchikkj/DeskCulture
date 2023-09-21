@@ -7,15 +7,21 @@ import { baseAnimation } from '@/components/animations/baseAnimation'
 import { motion } from 'framer-motion'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
+import {
+	customStyles,
+	options,
+	phoneCodes
+} from '@/constants/checkout.constants'
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
-import { OrderService } from '@/services/order.service'
+import { OrderService, TypeData } from '@/services/order.service'
 import { IOptions, IShippingField } from '@/types/checkout.interface'
 import Field from '@/ui/common/input/Field'
 import { convertPrice } from '@/utils/convertPrice'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import ReactSelect from 'react-select'
 import AuthButton from '../auth/authButton/authButton'
@@ -38,6 +44,7 @@ const Checkout: FC = () => {
 			}),
 		{
 			onSuccess({ data }) {
+				console.log(data)
 				//  @ts-ignore
 				push(data.confirmationUrl.confirmationUrl.url)
 			}
@@ -54,30 +61,32 @@ const Checkout: FC = () => {
 		handleSubmit,
 		reset: resetForm,
 		formState: { errors },
-		setValue,
 		control
 	} = useForm<IShippingField>({
 		mode: 'onChange'
 	})
-	const onSubmit: SubmitHandler<IShippingField> = data => {
-		console.log(data)
-		resetForm()
-		reset()
-	}
-	const options: IOptions[] = [
-		{
-			value: 'united states',
-			label: 'United States'
-		},
-		{
-			value: 'usa',
-			label: 'USA'
-		},
-		{
-			value: 'canada',
-			label: 'Canada'
+	const onSubmit: SubmitHandler<IShippingField> = async (
+		data: IShippingField
+	) => {
+		try {
+			const postData: TypeData = {
+				items: items.map(item => ({
+					price: item.price,
+					quantity: item.quantity,
+					productId: item.product.id
+				}))
+			}
+
+			const response = await OrderService.place(postData)
+			console.log('Data was sent successfully: ', response)
+			resetForm() // Сброс формы после успешного отправления
+			reset() // Очистка корзины после успешного отправления
+			push(response.data.confirmationUrl.confirmationUrl)
+		} catch (error) {
+			console.error('Error sending data: ', error)
 		}
-	]
+	}
+
 	const getValue = (value: string) =>
 		value ? options.find(option => option.value === value) : ''
 	return (
@@ -118,7 +127,7 @@ const Checkout: FC = () => {
 											</div>
 											<Controller
 												control={control}
-												name='address.country'
+												name='country'
 												rules={{ required: 'Country is required!' }}
 												render={({
 													field: { onChange, value },
@@ -129,6 +138,7 @@ const Checkout: FC = () => {
 															className='mb-5'
 															options={options}
 															placeholder='Country'
+															styles={customStyles}
 															value={getValue(value)}
 															onChange={newValue =>
 																onChange(newValue as IOptions, value)
@@ -143,32 +153,112 @@ const Checkout: FC = () => {
 																}
 															})}
 														/>
-														{errors?.address?.country && (
-															<div className='text-red mt-1 text-sm'>
-																{errors.address?.country?.message}
+														{errors?.country && (
+															<div className='text-red mt-1 mb-3 text-sm'>
+																{errors.country?.message}
 															</div>
 														)}
 													</div>
 												)}
 											/>
 
-											<Field className='w-full' placeholder='State/Province' />
+											<Field
+												{...checkout('state', {
+													required: 'State is required'
+												})}
+												className='w-full'
+												placeholder='State/Province'
+												error={errors.state?.message}
+											/>
 											<div className='flex gap-5 justify-between'>
-												<Field className=' w-full' placeholder='City *' />
-												<Field className=' w-full' placeholder='Postcode *' />
+												<Field
+													{...checkout('city', {
+														required: 'City is required'
+													})}
+													className=' w-full'
+													placeholder='City *'
+													error={errors.city?.message}
+												/>
+												<Field
+													{...checkout('postCode', {
+														required: 'Postcode is required'
+													})}
+													className=' w-full'
+													placeholder='Postcode *'
+													error={errors.postCode?.message}
+												/>
 											</div>
 											<div>
 												<Field
+													{...checkout('street', {
+														required: 'Street address is required'
+													})}
+													error={errors.street?.message}
 													className=' w-full'
 													placeholder='Street address *'
 												/>
-												<Field className=' w-full' placeholder='House *' />
+												<Field
+													{...checkout('house', {
+														required: 'House is required'
+													})}
+													error={errors.house?.message}
+													className=' w-full'
+													placeholder='House *'
+												/>
 											</div>
 											<div className='flex gap-5 justify-between'>
-												<Field className=' w-full' placeholder='Code' />
-												<Field className=' w-full' placeholder='Phone number' />
+												<Controller
+													control={control}
+													name='phoneCode'
+													rules={{ required: 'Code number is required!' }}
+													render={({
+														field: { onChange, value },
+														fieldState: { error }
+													}) => (
+														<div className='w-full'>
+															<ReactSelect
+																className='mb-5 w-full'
+																options={phoneCodes}
+																placeholder='Code *'
+																styles={customStyles}
+																value={getValue(value)}
+																onChange={newValue =>
+																	onChange(newValue as IOptions, value)
+																}
+																theme={theme => ({
+																	...theme,
+																	borderRadius: 0,
+																	colors: {
+																		...theme.colors,
+																		primary25: '#bd9f5f3b',
+																		primary: '#00000050'
+																	}
+																})}
+																menuPlacement='top'
+															/>
+															{error && (
+																<div className='text-red mt-1 text-sm'>
+																	{error.message}
+																</div>
+															)}
+														</div>
+													)}
+												/>
+												<Field
+													type='tel'
+													{...checkout('phone', {
+														required: 'Phone is required',
+														pattern: {
+															value: /^[+\d]?[\d- ]{4,}$/,
+															message: 'Invalid phone number'
+														}
+													})}
+													error={errors.phone?.message}
+													className=' w-full'
+													placeholder='Phone number'
+												/>
 											</div>
-											<div className='flex gap-2'>
+											<div className='flex gap-2 mt-5'>
 												<input type='checkbox' name='' id='' />
 												<span>Save this address for billing?</span>
 											</div>
@@ -189,11 +279,13 @@ const Checkout: FC = () => {
 										<div className={style.itemQuantity}>
 											{items.length} Items
 										</div>
-										<div className={style.edit}>edit</div>
+										<Link href={'/cart'}>
+											<div className={style.edit}>edit</div>
+										</Link>
 									</div>
 									<div className={style.itemsImageWrapper}>
 										{items.map(item => (
-											<div className={style.items}>
+											<div key={item.id} className={style.items}>
 												<div className={style.itemImageWrapper}>
 													<Image
 														width={100}

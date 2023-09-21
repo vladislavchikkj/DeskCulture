@@ -11,9 +11,7 @@ import AuthButton from '../../auth/authButton/authButton'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
-import { useActions } from '@/hooks/useActions'
 import { motion } from 'framer-motion'
-import { usePathname, useRouter } from 'next/navigation'
 
 import Detail from '@/app/catalog/(dynamic)/products/product/details/Detail'
 import Link from 'next/link'
@@ -40,7 +38,7 @@ const Bag: FC = () => {
 					<div className={style.cart}>
 						{items.length ? (
 							items.map(item => (
-								<div className={style.item}>
+								<div key={item.id} className={style.item}>
 									<CartItem
 										item={item}
 										key={item.product.id}

@@ -11,7 +11,7 @@ enum EnumOrderStatus {
 	DELIVERED = 'DELIVERED'
 }
 
-type TypeData = {
+export type TypeData = {
 	status?: EnumOrderStatus
 	items: {
 		quantity: number
