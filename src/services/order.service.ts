@@ -11,14 +11,23 @@ enum EnumOrderStatus {
 	DELIVERED = 'DELIVERED'
 }
 
-export type TypeData = {
+export type PlaceOrderData = {
 	status?: EnumOrderStatus
 	items: {
 		quantity: number
 		price: number
 		productId: number
-		productName?: string
 	}[]
+	firstName: string
+	lastName: string
+	country: string
+	state: string
+	city: string
+	postCode: string
+	street: string
+	house: string
+	phoneCode: string
+	phone: string
 }
 
 export const OrderService = {
@@ -28,7 +37,7 @@ export const OrderService = {
 			method: 'GET'
 		})
 	},
-	async place(data: TypeData) {
+	async place(data: PlaceOrderData) {
 		return instance<{ confirmationUrl: { confirmationUrl: string } }>({
 			url: ORDERS,
 			method: 'POST',

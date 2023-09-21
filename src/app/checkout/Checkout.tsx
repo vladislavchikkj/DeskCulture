@@ -1,6 +1,5 @@
 'use client'
-
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import 'react-html5video/dist/styles.css'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
@@ -14,7 +13,7 @@ import {
 } from '@/constants/checkout.constants'
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
-import { OrderService, TypeData } from '@/services/order.service'
+import { OrderService, PlaceOrderData } from '@/services/order.service'
 import { IOptions, IShippingField } from '@/types/checkout.interface'
 import Field from '@/ui/common/input/Field'
 import { convertPrice } from '@/utils/convertPrice'
@@ -22,39 +21,36 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
 import ReactSelect from 'react-select'
 import AuthButton from '../auth/authButton/authButton'
 import style from './checkout.module.scss'
+interface OrderResponse {
+	confirmationUrl: {
+		confirmationUrl: string
+	}
+}
 const Checkout: FC = () => {
-	const pathname = usePathname()
-
 	const { reset } = useActions()
-	const { push } = useRouter()
 	const { items, total } = useCart()
-	const { mutate } = useMutation(
-		['create order and payment'],
-		() =>
-			OrderService.place({
-				items: items.map(item => ({
-					price: item.price,
-					quantity: item.quantity,
-					productId: item.product.id
-				}))
-			}),
-		{
-			onSuccess({ data }) {
-				console.log(data)
-				//  @ts-ignore
-				push(data.confirmationUrl.confirmationUrl.url)
+	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
+
+	const mutation = useMutation(OrderService.place, {
+		onSuccess: data => {
+			console.log('Received data:', data)
+			setResponseData(data.data)
+		}
+	})
+	useEffect(() => {
+		if (responseData && responseData.confirmationUrl) {
+			reset()
+			const url = responseData.confirmationUrl
+			if (url) {
+				window.location.href = url
+			} else {
+				console.error('Received confirmationUrl is undefined or empty')
 			}
 		}
-	)
-	useEffect(() => {
-		if (pathname.startsWith('/confirmation-url/')) {
-			reset()
-		}
-	}, [pathname, reset])
+	}, [responseData, reset])
 
 	const {
 		register: checkout,
@@ -65,23 +61,30 @@ const Checkout: FC = () => {
 	} = useForm<IShippingField>({
 		mode: 'onChange'
 	})
+
 	const onSubmit: SubmitHandler<IShippingField> = async (
 		data: IShippingField
 	) => {
 		try {
-			const postData: TypeData = {
+			const postData: PlaceOrderData = {
 				items: items.map(item => ({
 					price: item.price,
 					quantity: item.quantity,
 					productId: item.product.id
-				}))
+				})),
+				firstName: data.firstName,
+				lastName: data.lastName,
+				country: data.country.value,
+				state: data.state,
+				city: data.city,
+				postCode: data.postCode,
+				street: data.street,
+				house: data.house,
+				phoneCode: data.phoneCode.value,
+				phone: data.phone
 			}
-
-			const response = await OrderService.place(postData)
-			console.log('Data was sent successfully: ', response)
-			resetForm() // Сброс формы после успешного отправления
-			reset() // Очистка корзины после успешного отправления
-			push(response.data.confirmationUrl.confirmationUrl)
+			console.log(postData)
+			mutation.mutate(postData)
 		} catch (error) {
 			console.error('Error sending data: ', error)
 		}
@@ -89,6 +92,7 @@ const Checkout: FC = () => {
 
 	const getValue = (value: string) =>
 		value ? options.find(option => option.value === value) : ''
+
 	return (
 		<>
 			<Parallax pages={1.3} style={{ top: '0', left: '0' }}>
@@ -139,7 +143,7 @@ const Checkout: FC = () => {
 															options={options}
 															placeholder='Country'
 															styles={customStyles}
-															value={getValue(value)}
+															value={getValue(value?.value)}
 															onChange={newValue =>
 																onChange(newValue as IOptions, value)
 															}
@@ -221,7 +225,7 @@ const Checkout: FC = () => {
 																options={phoneCodes}
 																placeholder='Code *'
 																styles={customStyles}
-																value={getValue(value)}
+																value={getValue(value?.value)}
 																onChange={newValue =>
 																	onChange(newValue as IOptions, value)
 																}
@@ -264,9 +268,9 @@ const Checkout: FC = () => {
 											</div>
 											<div className={style.formBtn}>
 												<AuthButton
-													// onClick={() => mutate()}
 													variant='grey'
 													className='block mt-5 text-center mx-auto'
+													type='submit'
 												>
 													next
 												</AuthButton>

@@ -3,13 +3,13 @@ import { CSSProperties } from 'react'
 export interface IShippingField {
 	firstName: string
 	lastName: string
-	country: string
+	country: IOptions
 	state: string
 	city: string
 	postCode: string
 	street: string
 	house: string
-	phoneCode: string
+	phoneCode: IOptions
 	phone: string
 }
 
