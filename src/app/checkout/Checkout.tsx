@@ -25,9 +25,7 @@ import ReactSelect from 'react-select'
 import AuthButton from '../auth/authButton/authButton'
 import style from './checkout.module.scss'
 interface OrderResponse {
-	confirmationUrl: {
-		confirmationUrl: string
-	}
+	url: string
 }
 const Checkout: FC = () => {
 	const { reset } = useActions()
@@ -37,17 +35,16 @@ const Checkout: FC = () => {
 	const mutation = useMutation(OrderService.place, {
 		onSuccess: data => {
 			console.log('Received data:', data)
-			setResponseData(data.data)
+			setResponseData({ url: data?.data?.orderResponse?.url || '' })
 		}
 	})
 	useEffect(() => {
-		if (responseData && responseData.confirmationUrl) {
+		if (responseData && responseData.url) {
 			reset()
-			const url = responseData.confirmationUrl
-			if (url) {
-				window.location.href = url
+			if (responseData.url) {
+				window.location.href = responseData.url
 			} else {
-				console.error('Received confirmationUrl is undefined or empty')
+				console.error('Received responseData.url is undefined or empty')
 			}
 		}
 	}, [responseData, reset])
@@ -81,7 +78,8 @@ const Checkout: FC = () => {
 				street: data.street,
 				house: data.house,
 				phoneCode: data.phoneCode.value,
-				phone: data.phone
+				phone: data.phone,
+				email: data.email
 			}
 			console.log(postData)
 			mutation.mutate(postData)
@@ -210,6 +208,18 @@ const Checkout: FC = () => {
 													placeholder='House *'
 												/>
 											</div>
+											<Field
+												{...checkout('email', {
+													required: 'Email is required',
+													pattern: {
+														value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+														message: 'invalid email address'
+													}
+												})}
+												className='w-full'
+												placeholder='Email *'
+												error={errors.email?.message}
+											/>
 											<div className='flex gap-5 justify-between'>
 												<Controller
 													control={control}

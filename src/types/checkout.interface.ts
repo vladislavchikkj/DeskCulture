@@ -11,6 +11,7 @@ export interface IShippingField {
 	house: string
 	phoneCode: IOptions
 	phone: string
+	email: string
 }
 
 export interface IOptions {

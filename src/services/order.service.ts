@@ -28,6 +28,7 @@ export type PlaceOrderData = {
 	house: string
 	phoneCode: string
 	phone: string
+	email: string
 }
 
 export const OrderService = {
@@ -38,7 +39,7 @@ export const OrderService = {
 		})
 	},
 	async place(data: PlaceOrderData) {
-		return instance<{ confirmationUrl: { confirmationUrl: string } }>({
+		return instance<{ orderResponse: { url: string } }>({
 			url: ORDERS,
 			method: 'POST',
 			data
