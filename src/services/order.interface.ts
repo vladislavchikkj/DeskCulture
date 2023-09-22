@@ -15,4 +15,5 @@ export interface IOrder {
 	status: EnumOrderStatus
 	user: IUser
 	total: number
+	paymentUrl: string
 }

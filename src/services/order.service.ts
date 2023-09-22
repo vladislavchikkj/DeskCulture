@@ -29,6 +29,7 @@ export type PlaceOrderData = {
 	phoneCode: string
 	phone: string
 	email: string
+	userId?: number
 }
 
 export const OrderService = {
@@ -38,7 +39,7 @@ export const OrderService = {
 			method: 'GET'
 		})
 	},
-	async place(data: PlaceOrderData) {
+	async place(data: PlaceOrderData, userId?: number) {
 		return instance<{ orderResponse: { url: string } }>({
 			url: ORDERS,
 			method: 'POST',

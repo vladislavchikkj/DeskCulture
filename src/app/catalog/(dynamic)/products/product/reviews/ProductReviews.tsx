@@ -19,7 +19,6 @@ export default function ProductReviews({
 }: IProductReviews) {
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
-
 	const [reviewsList, setReviewsList] = useState(reviews)
 
 	const handleNewReview = (review: IReview) => {

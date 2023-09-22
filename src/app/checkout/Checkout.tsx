@@ -13,6 +13,7 @@ import {
 } from '@/constants/checkout.constants'
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
+import { useProfile } from '@/hooks/useProfile'
 import { OrderService, PlaceOrderData } from '@/services/order.service'
 import { IOptions, IShippingField } from '@/types/checkout.interface'
 import Field from '@/ui/common/input/Field'
@@ -29,12 +30,11 @@ interface OrderResponse {
 }
 const Checkout: FC = () => {
 	const { reset } = useActions()
+	const profile = useProfile()
 	const { items, total } = useCart()
 	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
-
 	const mutation = useMutation(OrderService.place, {
 		onSuccess: data => {
-			console.log('Received data:', data)
 			setResponseData({ url: data?.data?.orderResponse?.url || '' })
 		}
 	})
@@ -79,9 +79,9 @@ const Checkout: FC = () => {
 				house: data.house,
 				phoneCode: data.phoneCode.value,
 				phone: data.phone,
-				email: data.email
+				email: data.email,
+				userId: profile?.profile?.id
 			}
-			console.log(postData)
 			mutation.mutate(postData)
 		} catch (error) {
 			console.error('Error sending data: ', error)

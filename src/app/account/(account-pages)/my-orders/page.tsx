@@ -65,9 +65,11 @@ const MyOrdersPage: FC = () => {
 									<span className={style.status}>
 										Status: {order.status}
 										{order.status === 'PENDING' && (
-											<span className='text-darkBlue cursor-pointer'>
-												Сontinue payment
-											</span>
+											<Link href={order.paymentUrl}>
+												<span className='text-darkBlue cursor-pointer'>
+													Сontinue payment
+												</span>
+											</Link>
 										)}
 									</span>
 									<span className={style.total}>${order.total}</span>
