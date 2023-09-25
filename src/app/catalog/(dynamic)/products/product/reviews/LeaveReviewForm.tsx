@@ -3,7 +3,7 @@ import { IReview } from '@/types/review.interface'
 import Button from '@/ui/common/buttons/Button'
 import Loader from '@/ui/common/loader/Loader'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { FC } from 'react'
+import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
 import { IReviewFields } from './review-fields.interface'
@@ -13,8 +13,36 @@ type props = {
 	productId: number
 	onSuccess?: (review: IReview) => void // Add this line
 }
+export interface IReviewFormData extends IReviewFields {
+	image: File
+}
 
 const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
+	const [selectedFile, setSelectedFile] = useState<File | null>(null)
+	const [previewUrl, setPreviewUrl] = useState<string | undefined>(undefined)
+	const fileInputRef = useRef<HTMLInputElement>(null)
+
+	const handleFileInputChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const file = event.target.files?.[0] ?? null
+		if (file) {
+			const reader = new FileReader()
+			setSelectedFile(file)
+
+			reader.onloadend = () => {
+				setPreviewUrl(reader.result?.toString() ?? undefined)
+			}
+
+			reader.readAsDataURL(file)
+		}
+	}
+
+	const onFileInputClick = () => {
+		if (fileInputRef.current) {
+			fileInputRef.current.click()
+		}
+	}
 	const {
 		register: formRegister,
 		handleSubmit,
@@ -28,7 +56,7 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 	const queryClient = useQueryClient()
 	const { mutate, isSuccess, isLoading } = useMutation(
 		['leave review'],
-		(data: IReviewFields) => ReviewService.leave(productId, data),
+		(data: FormData) => ReviewService.leave(productId, data),
 		{
 			onSuccess(data) {
 				queryClient.refetchQueries(['get product', productId])
@@ -37,12 +65,25 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 					onSuccess(reviewWithUser)
 					console.log(data)
 				}
+			},
+			onError(error: any): void {
+				console.error('Error while submitting review:', error.response?.data)
 			}
 		}
 	)
-	const onSubmit: SubmitHandler<IReviewFields> = data => {
-		mutate(data)
-		reset()
+	const onSubmit: SubmitHandler<IReviewFields> = (data: IReviewFields) => {
+		if (selectedFile) {
+			const formData = new FormData()
+			formData.append('rating', data.rating.toString())
+			formData.append('text', data.text)
+			formData.append('image', selectedFile)
+
+			mutate(formData)
+			reset()
+		} else {
+			console.log('файл не выбран')
+			// показать сообщение об ошибке, если файл не выбран
+		}
 	}
 
 	if (isSuccess) return <div>Review successfully published!</div>
@@ -94,6 +135,15 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 								Send
 							</Button>
 						</div>
+						<img src={previewUrl} alt='preview' />
+						<input
+							type='file'
+							accept='image/*'
+							style={{ display: 'none' }}
+							ref={fileInputRef}
+							onChange={handleFileInputChange}
+						/>
+						<button onClick={onFileInputClick}>Загрузить изображение</button>
 					</div>
 				)}
 			</form>

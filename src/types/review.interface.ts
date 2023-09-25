@@ -7,4 +7,5 @@ export interface IReview {
 	createdAt: string
 	text: string
 	rating: number
+	imageUrl: string
 }

@@ -7,6 +7,7 @@ const REVIEWS = 'reviews'
 type TypeData = {
 	rating: number
 	text: string
+	imageUrl: string
 }
 
 export const ReviewService = {
@@ -22,11 +23,14 @@ export const ReviewService = {
 			method: 'GET'
 		})
 	},
-	async leave(productId: string | number, data: TypeData) {
+	async leave(productId: string | number, data: FormData) {
 		return instance<IReview>({
 			url: `${REVIEWS}/leave/${productId}`,
 			method: 'POST',
-			data
+			data: data,
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
 		})
 	}
 }

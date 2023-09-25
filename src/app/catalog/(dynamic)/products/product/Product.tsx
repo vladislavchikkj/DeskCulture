@@ -29,6 +29,7 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	console.log(product)
 	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {

@@ -7,6 +7,7 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	return (
 		<div className={style.reviewWrapper}>
 			<div>
+				<img src={review.imageUrl} alt={String(review.productId)} />
 				<div className={style.userName}>
 					<span>{review.user?.name}</span>
 				</div>

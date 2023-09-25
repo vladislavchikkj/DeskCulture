@@ -24,7 +24,6 @@ export default function ProductReviews({
 	const handleNewReview = (review: IReview) => {
 		setReviewsList([review, ...reviewsList])
 	}
-
 	return (
 		<section id='reviews' className=''>
 			{user && (
