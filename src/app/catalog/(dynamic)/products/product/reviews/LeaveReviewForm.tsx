@@ -6,12 +6,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
+import UploadSVG from './img/upload.svg'
 import { IReviewFields } from './review-fields.interface'
 import style from './reviews.module.scss'
 
 type props = {
 	productId: number
-	onSuccess?: (review: IReview) => void // Add this line
+	onSuccess?: (review: IReview) => void
 }
 export interface IReviewFormData extends IReviewFields {
 	image: File
@@ -19,7 +20,7 @@ export interface IReviewFormData extends IReviewFields {
 
 const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [previewUrl, setPreviewUrl] = useState<string | undefined>(undefined)
+	const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 	const fileInputRef = useRef<HTMLInputElement>(null)
 
 	const handleFileInputChange = (
@@ -31,7 +32,7 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 			setSelectedFile(file)
 
 			reader.onloadend = () => {
-				setPreviewUrl(reader.result?.toString() ?? undefined)
+				setPreviewUrl(reader.result?.toString() ?? null)
 			}
 
 			reader.readAsDataURL(file)
@@ -78,6 +79,10 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 			formData.append('text', data.text)
 			formData.append('image', selectedFile)
 
+			formData.forEach((value, key) => {
+				console.log(`${key}: ${value}`)
+			})
+
 			mutate(formData)
 			reset()
 		} else {
@@ -107,6 +112,7 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 									SVGstyle={{
 										display: 'inline-block'
 									}}
+									fillColor={'black'}
 									size={20}
 									transition
 								/>
@@ -134,16 +140,32 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 							<Button data-hover='Send' type='submit' variant={'black'}>
 								Send
 							</Button>
+							<input
+								type='file'
+								accept='image/*'
+								style={{ display: 'none' }}
+								ref={fileInputRef}
+								onChange={handleFileInputChange}
+							/>
+							<button onClick={onFileInputClick} className={style.upload}>
+								<div className={style.uploadText}>upload image</div>
+								<div>
+									<UploadSVG />
+								</div>
+							</button>
 						</div>
-						<img src={previewUrl} alt='preview' />
-						<input
-							type='file'
-							accept='image/*'
-							style={{ display: 'none' }}
-							ref={fileInputRef}
-							onChange={handleFileInputChange}
-						/>
-						<button onClick={onFileInputClick}>Загрузить изображение</button>
+						{previewUrl ? (
+							<div className={style.uploadImg}>
+								<img className='pt-3' src={previewUrl} alt='preview' />
+								<button
+									onClick={() => {
+										setPreviewUrl(null)
+									}}
+								>
+									🇽
+								</button>
+							</div>
+						) : null}
 					</div>
 				)}
 			</form>

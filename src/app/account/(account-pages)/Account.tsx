@@ -55,6 +55,14 @@ const Account: FC<props> = ({ children }) => {
 					>
 						CHANGE PASSWORD
 					</Link>
+					<Link
+						href='/account/admin-panel'
+						className={cn({
+							[style.active]: pathname === '/account/admin-panel'
+						})}
+					>
+						<div className='mt-10'>ADMIN PANEL</div>
+					</Link>
 					<Link href='/auth' onClick={() => logout()}>
 						<div className={style.logout}>LOG OUT</div>
 					</Link>
