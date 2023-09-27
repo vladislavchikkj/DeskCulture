@@ -7,7 +7,7 @@ const REVIEWS = 'reviews'
 type TypeData = {
 	rating: number
 	text: string
-	imageUrl: string
+	imageUrl?: string
 }
 
 export const ReviewService = {

@@ -31,5 +31,19 @@ export const UserService = {
 			url: `${USERS}/profile/favorites/${productId}`,
 			method: 'PATCH'
 		})
+	},
+
+	// only admin !!!
+	async getAllUsers() {
+		return instance<Array<IUser>>({
+			url: `${USERS}`,
+			method: 'GET'
+		})
+	},
+	async deleteUser(id: number) {
+		return instance({
+			url: `${USERS}/${id}`,
+			method: 'DELETE'
+		})
 	}
 }

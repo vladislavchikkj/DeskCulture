@@ -33,6 +33,8 @@ const Checkout: FC = () => {
 	const profile = useProfile()
 	const { items, total } = useCart()
 	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
+	const [noProductsWarning, setNoProductsWarning] = useState(false)
+
 	const mutation = useMutation(OrderService.place, {
 		onSuccess: data => {
 			setResponseData({ url: data?.data?.orderResponse?.url || '' })
@@ -62,6 +64,10 @@ const Checkout: FC = () => {
 	const onSubmit: SubmitHandler<IShippingField> = async (
 		data: IShippingField
 	) => {
+		if (items.length === 0) {
+			setNoProductsWarning(true)
+			return
+		}
 		try {
 			const postData: PlaceOrderData = {
 				items: items.map(item => ({
@@ -277,6 +283,12 @@ const Checkout: FC = () => {
 												<span>Save this address for billing?</span>
 											</div>
 											<div className={style.formBtn}>
+												{noProductsWarning && (
+													<div className='text-red mt-1 mb-3 text-sm'>
+														No products in the cart. Please add products to the
+														cart.
+													</div>
+												)}
 												<AuthButton
 													variant='grey'
 													className='block mt-5 text-center mx-auto'

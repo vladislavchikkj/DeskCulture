@@ -1,0 +1,17 @@
+.menu {
+	padding-top: 5vh;
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 2vh;
+	border-bottom: 1px solid #a08750;
+	div {
+		cursor: pointer;
+		transition: all 0.5s;
+		&:hover {
+			color: #a08750;
+		}
+	}
+}
+.content {
+	min-height: 50vh;
+}

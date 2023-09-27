@@ -1,0 +1,24 @@
+.dashboard {
+	display: flex;
+	padding: 2vh;
+	gap: 1vw;
+}
+.box {
+	display: flex;
+	gap: 1vw;
+	padding: 2vh;
+	padding-right: 4vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	border: 1px solid rgba(0, 0, 0, 0.178);
+	border-radius: 1vh;
+
+	color: #000;
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}

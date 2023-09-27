@@ -73,22 +73,21 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 		}
 	)
 	const onSubmit: SubmitHandler<IReviewFields> = (data: IReviewFields) => {
+		const formData = new FormData()
+
+		formData.append('rating', data.rating.toString())
+		formData.append('text', data.text)
+
 		if (selectedFile) {
-			const formData = new FormData()
-			formData.append('rating', data.rating.toString())
-			formData.append('text', data.text)
 			formData.append('image', selectedFile)
-
-			formData.forEach((value, key) => {
-				console.log(`${key}: ${value}`)
-			})
-
-			mutate(formData)
-			reset()
-		} else {
-			console.log('файл не выбран')
-			// показать сообщение об ошибке, если файл не выбран
 		}
+
+		formData.forEach((value, key) => {
+			console.log(`${key}: ${value}`)
+		})
+
+		mutate(formData)
+		reset()
 	}
 
 	if (isSuccess) return <div>Review successfully published!</div>
@@ -147,7 +146,11 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 								ref={fileInputRef}
 								onChange={handleFileInputChange}
 							/>
-							<button onClick={onFileInputClick} className={style.upload}>
+							<button
+								type='button'
+								onClick={onFileInputClick}
+								className={style.upload}
+							>
 								<div className={style.uploadText}>upload image</div>
 								<div>
 									<UploadSVG />

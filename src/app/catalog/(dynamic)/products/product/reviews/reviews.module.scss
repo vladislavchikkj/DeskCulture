@@ -28,16 +28,17 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1vh;
-	border: 1px solid #e5e4e1;
+
 	width: 20vw;
 	cursor: pointer;
 }
 .reviewImg {
 	width: 100%;
-	height: 15vh;
+	height: 12vh;
 	overflow: hidden;
 	transition: all 0.5s;
 	filter: brightness(0.9);
+
 	img {
 		width: 100%;
 		transition: all 0.5s;
@@ -56,10 +57,10 @@
 	letter-spacing: -0.56px;
 }
 .reviewInfo {
-	padding: 2vh;
 	display: flex;
 	flex-direction: column;
 	gap: 1vh;
+	border: 1px solid #e5e4e1;
 }
 .swiper {
 	display: flex;
@@ -89,7 +90,7 @@
 	justify-content: space-between;
 	color: #191b1d;
 	font-family: Inter;
-	font-size: 1.3em;
+	font-size: 1.1em;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 25px; /* 113.636% */
