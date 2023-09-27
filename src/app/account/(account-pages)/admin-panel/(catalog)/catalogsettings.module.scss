@@ -1,0 +1,19 @@
+.menu {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 2vh;
+}
+.box {
+	padding: 1vh 3vh 1vh 3vh;
+	border: 1px solid rgba(0, 0, 0, 0.219);
+	border-radius: 1vh;
+	cursor: pointer;
+	transition: all 0.5s;
+	&:hover {
+		color: #a08750;
+	}
+}
+
+.content {
+	padding-top: 2vh;
+}
