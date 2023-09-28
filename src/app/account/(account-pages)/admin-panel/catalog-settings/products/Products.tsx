@@ -5,6 +5,7 @@ import Button from '@/ui/common/buttons/Button'
 import Modal from '@/ui/common/modal/Modal'
 import { FC, useState } from 'react'
 import Edit from '../icon/edit.svg'
+import LeaveProductForm from './LeaveProductForm'
 import style from './products.module.scss'
 
 const ProductsSettings: FC<TypePaginationProducts> = ({ products }) => {
@@ -14,7 +15,7 @@ const ProductsSettings: FC<TypePaginationProducts> = ({ products }) => {
 		<div className={style.catalog}>
 			{user && (
 				<Modal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
-					Some text
+					<LeaveProductForm />
 				</Modal>
 			)}
 			<div className={style.btn}>
