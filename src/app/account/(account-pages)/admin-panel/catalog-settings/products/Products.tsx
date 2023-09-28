@@ -5,7 +5,7 @@ import Button from '@/ui/common/buttons/Button'
 import Modal from '@/ui/common/modal/Modal'
 import { FC, useState } from 'react'
 import Edit from '../icon/edit.svg'
-import LeaveProductForm from './LeaveProductForm'
+import LeaveProductForm from './(leaveProductForm)/LeaveProductForm'
 import style from './products.module.scss'
 
 const ProductsSettings: FC<TypePaginationProducts> = ({ products }) => {

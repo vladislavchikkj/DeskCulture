@@ -1,8 +1,9 @@
 import Button from '@/ui/common/buttons/Button'
+import Field from '@/ui/common/input/Field'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import ReactSelect from 'react-select'
-import style from './products.module.scss'
+import style from './leaveProductForm.module.scss'
 
 export interface IProductFields {
 	name: string
@@ -84,23 +85,23 @@ const LeaveProductForm: FC = () => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className={style.formName}>Leave a product</div>
 
-				<input
+				<Field
 					{...formRegister('name', {
 						required: 'Name is required'
 					})}
 					placeholder='Name *'
+					error={errors.name && errors.name.message}
 				/>
-				{errors.name && <span>{errors.name.message}</span>}
 
-				<input
+				<Field
 					{...formRegister('slug', {
 						required: 'Slug is required'
 					})}
 					placeholder='Slug *'
+					error={errors.slug && errors.slug.message}
 				/>
-				{errors.slug && <span>{errors.slug.message}</span>}
 
-				<input
+				<Field
 					{...formRegister('price', {
 						required: 'Price is required',
 						pattern: {
@@ -109,16 +110,18 @@ const LeaveProductForm: FC = () => {
 						}
 					})}
 					placeholder='Price *'
+					error={errors.price && errors.price.message}
 				/>
-				{errors.price && <span>{errors.price.message}</span>}
-
-				<textarea
-					{...formRegister('description', {
-						required: 'Description is required'
-					})}
-					placeholder='Description *'
-				/>
-				{errors.description && <span>{errors.description.message}</span>}
+				<div>
+					<textarea
+						className={style.textArea}
+						{...formRegister('description', {
+							required: 'Description is required'
+						})}
+						placeholder='Description *'
+					/>
+					{errors.description && <span>{errors.description.message}</span>}
+				</div>
 
 				<input
 					type='file'
