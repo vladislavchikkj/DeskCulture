@@ -48,6 +48,11 @@ const nextConfig = {
 				source: '/catalog',
 				destination: '/catalog/categories',
 				permanent: false // Используйте true для постоянного и false для временного перенаправления
+			},
+			{
+				source: '/account/admin-panel/catalog-settings',
+				destination: '/account/admin-panel/catalog-settings/products',
+				permanent: false // Используйте true для постоянного и false для временного перенаправления
 			}
 			// Ваши другие перенаправления (если есть)
 		]

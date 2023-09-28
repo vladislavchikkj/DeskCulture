@@ -1,6 +1,7 @@
 'use client'
 import { useAdmin } from '@/hooks/useAdmin'
 import { FC } from 'react'
+import accountStyle from '../../account.module.scss'
 import EditSVG from './icon/edit.svg'
 import RemoveSVG from './icon/remove-user.svg'
 import style from './users.module.scss'
@@ -9,6 +10,7 @@ const Users: FC = () => {
 	const { allUsers, deleteUserById } = useAdmin()
 	return (
 		<div className={style.users}>
+			<h1 className={accountStyle.title}>Users</h1>
 			<div className={style.columnsName}>
 				<span>id</span>
 				<span>name</span>

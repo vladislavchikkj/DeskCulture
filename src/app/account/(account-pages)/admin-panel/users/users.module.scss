@@ -10,6 +10,10 @@
 	padding-bottom: 2vh;
 	border: 1px solid rgba(0, 0, 0, 0.281);
 	border-radius: 1vh;
+	transition: all 0.5s;
+	&:hover {
+		background-color: #f0f0f0;
+	}
 }
 .columnsName {
 	display: grid;

@@ -29,6 +29,7 @@
 .leading {
 	display: flex;
 	flex-direction: column;
+	min-height: 60vh;
 }
 
 .title {
@@ -40,6 +41,7 @@
 	line-height: 36px; /* 150% */
 	letter-spacing: 3.24px;
 	text-transform: uppercase;
+	padding-bottom: 2vh;
 }
 .subtitle {
 	padding-top: 5vh;
@@ -89,4 +91,21 @@
 .active {
 	font-weight: bold;
 	color: #a08750;
+}
+
+.submenu {
+	padding-left: 1vw;
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 2vh;
+	flex-direction: column;
+	gap: 0.5vh;
+	span {
+		cursor: pointer;
+		transition: all 0.5s;
+		padding-bottom: 0.5vh;
+		&:hover {
+			color: #a08750;
+		}
+	}
 }

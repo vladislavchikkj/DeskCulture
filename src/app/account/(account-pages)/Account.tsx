@@ -63,6 +63,81 @@ const Account: FC<props> = ({ children }) => {
 					>
 						<div className='mt-10'>ADMIN PANEL</div>
 					</Link>
+					<div className={style.submenu}>
+						<Link
+							href='/account/admin-panel/dashboard'
+							className={cn({
+								[style.active]: pathname === '/account/admin-panel/dashboard'
+							})}
+						>
+							<span>Dashboard</span>
+						</Link>
+						<Link
+							href='/account/admin-panel/users'
+							className={cn({
+								[style.active]: pathname === '/account/admin-panel/users'
+							})}
+						>
+							<span>Users</span>
+						</Link>
+						<Link
+							href='/account/admin-panel/catalog-settings'
+							className={cn({
+								[style.active]:
+									pathname === '/account/admin-panel/catalog-settings'
+							})}
+						>
+							<span>
+								Catalog settings
+								<div className='pl-5 pt-1 pb-1 text-greyDark'>
+									<Link
+										href='/account/admin-panel/catalog-settings/products'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/products'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.products}> - Products</span>
+										</div>
+									</Link>
+									<Link
+										href='/account/admin-panel/catalog-settings/categories'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/categories'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.category}> - Categories</span>
+										</div>
+									</Link>
+									<Link
+										href='/account/admin-panel/catalog-settings/setups'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/setups'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.setups}> - Setups</span>
+										</div>
+									</Link>
+								</div>
+							</span>
+						</Link>
+						<Link
+							href='/account/admin-panel/orders'
+							className={cn({
+								[style.active]: pathname === '/account/admin-panel/orders'
+							})}
+						>
+							<span>Orders</span>
+						</Link>
+					</div>
 					<Link href='/auth' onClick={() => logout()}>
 						<div className={style.logout}>LOG OUT</div>
 					</Link>

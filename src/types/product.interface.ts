@@ -12,6 +12,7 @@ export interface IProduct {
 	images: string[]
 	createdAt: string
 	category: ICategory
+	setup?: ISetups
 }
 
 export interface IProductDetails {
