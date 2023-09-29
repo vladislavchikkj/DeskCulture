@@ -165,7 +165,7 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 										setPreviewUrl(null)
 									}}
 								>
-									🇽
+									<div className={style.closeImg}>✕</div>
 								</button>
 							</div>
 						) : null}

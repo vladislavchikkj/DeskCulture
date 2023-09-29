@@ -1,6 +1,6 @@
 'use client'
 import { useAuth } from '@/hooks/useAuth'
-import { TypePaginationProducts } from '@/types/product.interface'
+import { TypeCombinedPagination } from '@/types/product.interface'
 import Button from '@/ui/common/buttons/Button'
 import Modal from '@/ui/common/modal/Modal'
 import { FC, useState } from 'react'
@@ -8,14 +8,22 @@ import Edit from '../icon/edit.svg'
 import LeaveProductForm from './(leaveProductForm)/LeaveProductForm'
 import style from './products.module.scss'
 
-const ProductsSettings: FC<TypePaginationProducts> = ({ products }) => {
+const ProductsSettings: FC<TypeCombinedPagination> = ({
+	categories,
+	setups,
+	products
+}) => {
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
 	return (
 		<div className={style.catalog}>
 			{user && (
 				<Modal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
-					<LeaveProductForm />
+					<LeaveProductForm
+						categories={categories}
+						setups={setups}
+						products={products}
+					/>
 				</Modal>
 			)}
 			<div className={style.btn}>

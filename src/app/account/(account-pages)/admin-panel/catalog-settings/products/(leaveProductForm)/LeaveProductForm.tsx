@@ -1,8 +1,11 @@
+import { IOptions } from '@/types/checkout.interface'
+import { TypeCombinedPagination } from '@/types/product.interface'
 import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import ReactSelect from 'react-select'
+import ReactSelect, { StylesConfig } from 'react-select'
+import UploadSVG from './icon/upload.svg'
 import style from './leaveProductForm.module.scss'
 
 export interface IProductFields {
@@ -20,42 +23,69 @@ interface ProductCategory {
 	value: string
 }
 
-const productCategories: ProductCategory[] = [
-	{ label: 'Desk', value: 'desk' },
-	{ label: 'Mouse', value: 'mouse' },
-	{ label: 'Keyboards', value: 'keyboards' }
-]
-
 interface Setup {
 	label: string
 	value: string
 }
 
-const productSetups: Setup[] = [
-	{ label: 'White', value: 'white' },
-	{ label: 'Dark', value: 'dark' },
-	{ label: 'Gold', value: 'gold' }
-]
+export const customStyles: StylesConfig<IOptions | string, false> = {
+	control: (provided, state) => ({
+		...provided,
+		width: '100%',
+		border: state.isFocused
+			? '1px solid #00000050'
+			: '1px solid rgba(0, 0, 0, 0.2)',
+		outline: 'none',
+		paddingBottom: '0.3vh',
+		paddingTop: '0.3vh'
+	}),
+	placeholder: provided => ({
+		...provided,
+		display: 'flex',
+		color: 'rgba(0, 0, 0, 0.5)',
+		fontSize: '10px',
+		fontFamily: 'Inter',
+		fontStyle: 'normal',
+		fontWeight: '800',
+		letterSpacing: '1.32px',
+		textTransform: 'uppercase'
+	})
+}
 
-const LeaveProductForm: FC = () => {
-	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+const LeaveProductForm: FC<TypeCombinedPagination> = ({
+	categories,
+	setups,
+	products
+}) => {
+	const [selectedFile, setSelectedFile] = useState<File[] | null>(null)
+	const [previewUrl, setPreviewUrl] = useState<string[] | null>(null)
 	const fileInputRef = useRef<HTMLInputElement>(null)
+
+	const productCategories: ProductCategory[] = categories.map(category => ({
+		label: category.name,
+		value: category.id.toString()
+	}))
+
+	const productSetups: Setup[] = setups.map(setup => ({
+		label: setup.name,
+		value: setup.id.toString()
+	}))
 
 	const handleFileInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
-		const file = event.target.files?.[0] ?? null
-		if (file) {
-			const reader = new FileReader()
-			setSelectedFile(file)
+		const files = event.target.files
+		if (!files) return
 
-			reader.onloadend = () => {
-				setPreviewUrl(reader.result?.toString() ?? null)
-			}
+		const fileArray = Array.from(files)
+		setSelectedFile(prevFiles =>
+			prevFiles ? [...prevFiles, ...fileArray] : fileArray
+		) // добавляем новые файлы к существующим
 
-			reader.readAsDataURL(file)
-		}
+		const fileUrlArray = fileArray.map(file => URL.createObjectURL(file))
+		setPreviewUrl(prevUrls =>
+			prevUrls ? [...prevUrls, ...fileUrlArray] : fileUrlArray
+		) // добавляем новые URL к существующим
 	}
 
 	const onFileInputClick = () => {
@@ -83,7 +113,7 @@ const LeaveProductForm: FC = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={style.formName}>Leave a product</div>
+				<div className={style.formName}>Create a product</div>
 
 				<Field
 					{...formRegister('name', {
@@ -129,72 +159,104 @@ const LeaveProductForm: FC = () => {
 					style={{ display: 'none' }}
 					ref={fileInputRef}
 					onChange={handleFileInputChange}
+					multiple
 				/>
+
+				<div className={style.controllers}>
+					<Controller
+						control={control}
+						name='category'
+						rules={{ required: 'Category is required!' }}
+						render={({ field: { onChange, value }, fieldState: { error } }) => (
+							<div className={style.controller}>
+								<ReactSelect
+									options={productCategories}
+									placeholder='Category'
+									value={productCategories.find(
+										option => option.value === value
+									)}
+									onChange={newValue =>
+										onChange((newValue as ProductCategory).value)
+									}
+									styles={customStyles}
+									theme={theme => ({
+										...theme,
+										borderRadius: 0,
+										colors: {
+											...theme.colors,
+											primary25: '#bd9f5f3b',
+											primary: '#00000050'
+										}
+									})}
+								/>
+								{errors?.category && (
+									<div className='text-red mt-1 mb-3 text-sm'>
+										{errors.category?.message}
+									</div>
+								)}
+							</div>
+						)}
+					/>
+
+					<Controller
+						control={control}
+						name='setup'
+						rules={{ required: 'Setup is required!' }}
+						render={({ field: { onChange, value }, fieldState: { error } }) => (
+							<div className={style.controller}>
+								<ReactSelect
+									options={productSetups}
+									placeholder='Setup'
+									value={productSetups.find(option => option.value === value)}
+									onChange={newValue => onChange((newValue as Setup).value)}
+									styles={customStyles}
+									theme={theme => ({
+										...theme,
+										borderRadius: 0,
+										colors: {
+											...theme.colors,
+											primary25: '#bd9f5f3b',
+											primary: '#00000050'
+										}
+									})}
+								/>
+								{errors?.setup && (
+									<div className='text-red mt-1 mb-3 text-sm'>
+										{errors.setup?.message}
+									</div>
+								)}
+							</div>
+						)}
+					/>
+				</div>
 				<button
 					type='button'
 					onClick={onFileInputClick}
 					className={style.upload}
 				>
-					Upload Image
-				</button>
-
-				{previewUrl && (
-					<div>
-						<img src={previewUrl} alt='preview' />
-						<button
-							onClick={() => {
-								setPreviewUrl(null)
-							}}
-						>
-							🇽
-						</button>
+					<div className={style.uploadBtn}>
+						<div>upload image</div>
+						<UploadSVG />
 					</div>
-				)}
-
-				<Controller
-					control={control}
-					name='category'
-					rules={{ required: 'Category is required!' }}
-					render={({ field: { onChange, value }, fieldState: { error } }) => (
-						<div className='mb-5'>
-							<ReactSelect
-								options={productCategories}
-								placeholder='Category'
-								value={productCategories.find(option => option.value === value)}
-								onChange={newValue =>
-									onChange((newValue as ProductCategory).value)
-								}
-							/>
-							{errors?.category && (
-								<div className='text-red mt-1 mb-3 text-sm'>
-									{errors.category?.message}
-								</div>
-							)}
-						</div>
-					)}
-				/>
-
-				<Controller
-					control={control}
-					name='setup'
-					rules={{ required: 'Setup is required!' }}
-					render={({ field: { onChange, value }, fieldState: { error } }) => (
-						<div>
-							<ReactSelect
-								options={productSetups}
-								placeholder='Setup'
-								value={productSetups.find(option => option.value === value)}
-								onChange={newValue => onChange((newValue as Setup).value)}
-							/>
-							{errors?.setup && (
-								<div className='text-red mt-1 mb-3 text-sm'>
-									{errors.setup?.message}
-								</div>
-							)}
-						</div>
-					)}
-				/>
-
+				</button>
+				<div className={style.previewImg}>
+					{previewUrl &&
+						previewUrl.map((url, index) => (
+							<div className={style.uploadImg} key={index}>
+								<img src={url} alt='preview' />
+								<button
+									onClick={() => {
+										setPreviewUrl(
+											prevUrls =>
+												prevUrls?.filter((_, i) => i !== index) ?? null
+										)
+									}}
+								>
+									<div className={style.closeImg}>✕</div>
+								</button>
+							</div>
+						))}
+				</div>
 				<div>
 					<Button type='submit' variant={'black'}>
 						Create

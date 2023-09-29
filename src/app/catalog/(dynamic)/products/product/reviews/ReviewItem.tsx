@@ -1,3 +1,4 @@
+import { serverAddress } from '@/components/common'
 import { IReview } from '@/types/review.interface'
 import { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
@@ -7,7 +8,7 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	const dateObject = new Date(createdAt)
 	const formattedDate = dateObject.toISOString().split('T')[0]
 	const formattedTime = dateObject.toISOString().split('T')[1].slice(0, 8)
-	const serverAddress = 'http://localhost:4200'
+
 	return (
 		<div className={style.reviewWrapper}>
 			<div className={style.reviewInfo}>

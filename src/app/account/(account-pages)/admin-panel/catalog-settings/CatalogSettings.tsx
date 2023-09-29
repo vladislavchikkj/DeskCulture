@@ -1,7 +1,6 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import { FC } from 'react'
-import accountStyle from '../../account.module.scss'
 import style from './catalogsettings.module.scss'
 type Props = {
 	children?: React.ReactNode

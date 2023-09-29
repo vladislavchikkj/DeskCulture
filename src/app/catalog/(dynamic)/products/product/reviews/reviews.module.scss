@@ -121,15 +121,14 @@
 .uploadImg {
 	display: flex;
 	align-items: flex-start;
-	gap: 0.5vw;
+	gap: 0.2vw;
 	height: 15vh;
 	padding: 2vh;
 
 	font-family: Inter;
-	font-size: 1.2em;
+	font-size: 1rem;
 	font-style: normal;
-	font-weight: 400;
-
+	font-weight: 600;
 	img {
 		height: 100%;
 	}

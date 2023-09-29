@@ -87,48 +87,46 @@ const Account: FC<props> = ({ children }) => {
 									pathname === '/account/admin-panel/catalog-settings'
 							})}
 						>
-							<span>
-								Catalog settings
-								<div className='pl-5 pt-1 pb-1 text-greyDark'>
-									<Link
-										href='/account/admin-panel/catalog-settings/products'
-										className={cn({
-											[style.active]:
-												pathname ===
-												'/account/admin-panel/catalog-settings/products'
-										})}
-									>
-										<div className={style.box}>
-											<span className={style.products}> - Products</span>
-										</div>
-									</Link>
-									<Link
-										href='/account/admin-panel/catalog-settings/categories'
-										className={cn({
-											[style.active]:
-												pathname ===
-												'/account/admin-panel/catalog-settings/categories'
-										})}
-									>
-										<div className={style.box}>
-											<span className={style.category}> - Categories</span>
-										</div>
-									</Link>
-									<Link
-										href='/account/admin-panel/catalog-settings/setups'
-										className={cn({
-											[style.active]:
-												pathname ===
-												'/account/admin-panel/catalog-settings/setups'
-										})}
-									>
-										<div className={style.box}>
-											<span className={style.setups}> - Setups</span>
-										</div>
-									</Link>
-								</div>
-							</span>
+							<span className={style.catalogSettings}>(Catalog settings)</span>
 						</Link>
+						<div className='pl-5 pb-1 text-greyDark'>
+							<Link
+								href='/account/admin-panel/catalog-settings/products'
+								className={cn({
+									[style.active]:
+										pathname ===
+										'/account/admin-panel/catalog-settings/products'
+								})}
+							>
+								<div className={style.box}>
+									<span className={style.products}> - Products</span>
+								</div>
+							</Link>
+							<Link
+								href='/account/admin-panel/catalog-settings/categories'
+								className={cn({
+									[style.active]:
+										pathname ===
+										'/account/admin-panel/catalog-settings/categories'
+								})}
+							>
+								<div className={style.box}>
+									<span className={style.category}> - Categories</span>
+								</div>
+							</Link>
+							<Link
+								href='/account/admin-panel/catalog-settings/setups'
+								className={cn({
+									[style.active]:
+										pathname === '/account/admin-panel/catalog-settings/setups'
+								})}
+							>
+								<div className={style.box}>
+									<span className={style.setups}> - Setups</span>
+								</div>
+							</Link>
+						</div>
+
 						<Link
 							href='/account/admin-panel/orders'
 							className={cn({
