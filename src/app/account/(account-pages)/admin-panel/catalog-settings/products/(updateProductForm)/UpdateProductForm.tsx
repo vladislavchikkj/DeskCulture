@@ -1,7 +1,7 @@
 import { ProductService } from '@/services/product/product.service'
 import { ICategory } from '@/types/category.interface'
 import { IOptions } from '@/types/checkout.interface'
-import { IProduct } from '@/types/product.interface'
+import { IProduct, TypeCombinedPagination } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
@@ -9,9 +9,10 @@ import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import ReactSelect, { StylesConfig } from 'react-select'
 import UploadSVG from './icon/upload.svg'
-import style from './leaveProductForm.module.scss'
+import style from './updateProductForm.module.scss'
 
 export interface IProductFields {
+	id?: number
 	name: string
 	slug: string
 	price: number
@@ -54,7 +55,6 @@ export const customStyles: StylesConfig<IOptions | string, false> = {
 		textTransform: 'uppercase'
 	})
 }
-
 type Props = {
 	categories: ICategory[]
 	setups: ISetups[]
@@ -62,11 +62,11 @@ type Props = {
 	updateProducts: () => Promise<void>
 }
 
-const LeaveProductForm: FC<Props> = ({
+const UpdateProductForm: FC<TypeCombinedPagination> = ({
 	categories,
 	setups,
 	products,
-	updateProducts
+	product
 }) => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const [selectedFile, setSelectedFile] = useState<File[] | null>(null)
@@ -119,13 +119,21 @@ const LeaveProductForm: FC<Props> = ({
 	const onSubmit: SubmitHandler<IProductFields> = async (
 		data: IProductFields
 	) => {
-		// POST запрос на сервер для создания нового продукта здесь
 		try {
+			let updatedProduct: any // Here we will store the updated product
 			if (selectedFile) {
-				console.log(data)
-				await ProductService.create(data, selectedFile)
-				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
-				updateProducts() // вызываем функцию обратного вызова
+				let updatedProduct: any
+				if (product) {
+					updatedProduct = await ProductService.update(
+						product.id,
+						data,
+						selectedFile
+					)
+				} else {
+					updatedProduct = await ProductService.create(data, selectedFile)
+				}
+				setIsSubmitted(true)
+				updatedProduct() // вызываем функцию обратного вызова
 				reset()
 			} else {
 				console.log('No file selected')
@@ -134,11 +142,14 @@ const LeaveProductForm: FC<Props> = ({
 			console.log(err.message) // Обработка ошибок
 		}
 	}
-	if (isSubmitted) return <div>Product successfully create!</div>
+	if (!product) {
+		throw new Error('Product is undefined') // или обработать эту ситуацию любым другим способом
+	}
+	if (isSubmitted) return <div>Product successfully update!</div>
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={style.formName}>Create a product</div>
+				<div className={style.formName}>Update a product</div>
 
 				<Field
 					{...formRegister('name', {
@@ -196,7 +207,9 @@ const LeaveProductForm: FC<Props> = ({
 							<div className={style.controller}>
 								<ReactSelect
 									options={productCategories}
-									placeholder='Category'
+									placeholder={`Category : ${
+										product.category?.name || 'Not selected'
+									}`}
 									value={productCategories.find(
 										option => option.value === value
 									)}
@@ -231,7 +244,9 @@ const LeaveProductForm: FC<Props> = ({
 							<div className={style.controller}>
 								<ReactSelect
 									options={productSetups}
-									placeholder='Setup'
+									placeholder={`Setup : ${
+										product.setups?.name || 'Not selected'
+									} `}
 									value={productSetups.find(option => option.value === value)}
 									onChange={newValue => onChange((newValue as Setup).value)}
 									styles={customStyles}
@@ -292,4 +307,4 @@ const LeaveProductForm: FC<Props> = ({
 	)
 }
 
-export default LeaveProductForm
+export default UpdateProductForm

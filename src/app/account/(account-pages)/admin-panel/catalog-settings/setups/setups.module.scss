@@ -17,7 +17,7 @@
 }
 .columnsName {
 	display: grid;
-	grid-template-columns: 0.2fr 1fr 2fr 0.5fr;
+	grid-template-columns: 0.2fr 1fr 2fr 0.2fr 0.3fr;
 	gap: 2vh;
 	padding-top: 2vh;
 	padding-left: 2vh;
@@ -34,6 +34,7 @@
 		text-transform: uppercase;
 		cursor: pointer;
 		transition: all 0.5s;
+		padding-right: 1vw;
 		&:hover {
 			color: #000000;
 		}
@@ -44,7 +45,7 @@
 }
 .columnsItems {
 	display: grid;
-	grid-template-columns: 0.2fr 1fr 2fr 0.5fr;
+	grid-template-columns: 0.2fr 1fr 2fr 0.2fr 0.3fr;
 	gap: 2vw;
 	color: rgb(10, 10, 10);
 	font-family: Inter;

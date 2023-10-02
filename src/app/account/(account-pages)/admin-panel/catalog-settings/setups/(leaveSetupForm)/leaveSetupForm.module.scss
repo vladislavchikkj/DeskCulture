@@ -1,0 +1,67 @@
+.formName {
+	color: #000;
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 2vh;
+}
+.textArea {
+	width: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 1rem;
+}
+.upload {
+	width: 100%;
+}
+.uploadBtn {
+	display: flex;
+	justify-content: flex-end;
+
+	color: #000;
+	font-family: Inter;
+	font-size: 0.6rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 2vh;
+}
+.controllers {
+	display: flex;
+	margin-bottom: 2vh;
+	margin-top: 2vh;
+	gap: 1vw;
+}
+.controller {
+	width: 100%;
+}
+.uploadImg {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5vw;
+	height: 100px;
+	width: 100px;
+	padding: 1.5vh;
+
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 600;
+	color: rgba(66, 66, 66, 0.829);
+	border-bottom: 1px solid rgb(0, 0, 0);
+	img {
+		height: 100%;
+		padding-top: 1vh;
+	}
+}
+.previewImg {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5vw;
+	padding-bottom: 5vh;
+}

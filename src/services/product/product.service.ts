@@ -2,11 +2,7 @@ import { IProduct, TypePaginationProducts } from '@/types/product.interface'
 
 import { axiosClassic, instance } from '@/api/api.interceptor'
 
-import {
-	PRODUCTS,
-	TypeProductData,
-	TypeProductDataFilters
-} from './product.types'
+import { PRODUCTS, TypeProductDataFilters } from './product.types'
 
 export const ProductService = {
 	async getAll(queryData = {} as TypeProductDataFilters) {
@@ -47,17 +43,32 @@ export const ProductService = {
 			method: 'GET'
 		})
 	},
-	async create() {
-		return instance<IProduct>({
+	async create(productData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(productData).forEach(key => {
+			formData.append(key, productData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: PRODUCTS,
-			method: 'POST'
+			method: 'POST',
+			data: formData
 		})
 	},
-	async update(id: string | number, data: TypeProductData) {
-		return instance<IProduct>({
+	async update(id: number, productData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(productData).forEach(key => {
+			formData.append(key, productData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: `${PRODUCTS}/${id}`,
 			method: 'PUT',
-			data
+			data: formData
 		})
 	},
 	async delete(id: string | number) {

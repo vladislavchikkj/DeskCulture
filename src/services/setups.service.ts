@@ -25,17 +25,32 @@ export const SetupsService = {
 			method: 'GET'
 		})
 	},
-	async create() {
-		return instance<ISetups>({
+	async create(SetupData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(SetupData).forEach(key => {
+			formData.append(key, SetupData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: SETUPS,
-			method: 'POST'
+			method: 'POST',
+			data: formData
 		})
 	},
-	async update(id: string | number, name: string) {
-		return instance<ISetups>({
+	async update(id: number, SetupData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(SetupData).forEach(key => {
+			formData.append(key, SetupData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: `${SETUPS}/${id}`,
 			method: 'PUT',
-			data: { name }
+			data: formData
 		})
 	},
 	async delete(id: string | number) {

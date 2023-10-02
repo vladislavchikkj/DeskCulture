@@ -24,17 +24,32 @@ export const CategoryService = {
 			method: 'GET'
 		})
 	},
-	async create() {
-		return instance<ICategory>({
+	async create(CategoryData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(CategoryData).forEach(key => {
+			formData.append(key, CategoryData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: CATEGORIES,
-			method: 'POST'
+			method: 'POST',
+			data: formData
 		})
 	},
-	async update(id: string | number, name: string) {
-		return instance<ICategory>({
+	async update(id: number, CategoryData: any, images: File[]) {
+		const formData = new FormData()
+		Object.keys(CategoryData).forEach(key => {
+			formData.append(key, CategoryData[key])
+		})
+		images.forEach(image => {
+			formData.append('image', image)
+		})
+		return await instance({
 			url: `${CATEGORIES}/${id}`,
 			method: 'PUT',
-			data: { name }
+			data: formData
 		})
 	},
 	async delete(id: string | number) {

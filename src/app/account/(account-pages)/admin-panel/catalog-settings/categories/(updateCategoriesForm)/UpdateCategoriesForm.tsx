@@ -1,34 +1,19 @@
-import { ProductService } from '@/services/product/product.service'
+import { CategoryService } from '@/services/category.service'
 import { ICategory } from '@/types/category.interface'
 import { IOptions } from '@/types/checkout.interface'
-import { IProduct } from '@/types/product.interface'
-import { ISetups } from '@/types/setups.interface'
 import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
 import { FC, useRef, useState } from 'react'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import ReactSelect, { StylesConfig } from 'react-select'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { StylesConfig } from 'react-select'
 import UploadSVG from './icon/upload.svg'
-import style from './leaveProductForm.module.scss'
+import style from './updateCategoriesForm.module.scss'
 
-export interface IProductFields {
+export interface ICategoryFields {
 	name: string
 	slug: string
-	price: number
 	description: string
 	image: File
-	categoryId: string
-	setupsId: string
-}
-
-interface ProductCategory {
-	label: string
-	value: string
-}
-
-interface Setup {
-	label: string
-	value: string
 }
 
 export const customStyles: StylesConfig<IOptions | string, false> = {
@@ -54,34 +39,21 @@ export const customStyles: StylesConfig<IOptions | string, false> = {
 		textTransform: 'uppercase'
 	})
 }
-
 type Props = {
 	categories: ICategory[]
-	setups: ISetups[]
-	products: IProduct[]
-	updateProducts: () => Promise<void>
+	category: ICategory | null
+	updateCategories: () => void
 }
 
-const LeaveProductForm: FC<Props> = ({
+const UpdateCategoriesForm: FC<Props> = ({
 	categories,
-	setups,
-	products,
-	updateProducts
+	category,
+	updateCategories
 }) => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const [selectedFile, setSelectedFile] = useState<File[] | null>(null)
 	const [previewUrl, setPreviewUrl] = useState<string[] | null>(null)
 	const fileInputRef = useRef<HTMLInputElement>(null)
-
-	const productCategories: ProductCategory[] = categories.map(category => ({
-		label: category.name,
-		value: category.id.toString()
-	}))
-
-	const productSetups: Setup[] = setups.map(setup => ({
-		label: setup.name,
-		value: setup.id.toString()
-	}))
 
 	const handleFileInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -112,21 +84,35 @@ const LeaveProductForm: FC<Props> = ({
 		formState: { errors },
 		reset,
 		control
-	} = useForm<IProductFields>({
+	} = useForm<ICategoryFields>({
 		mode: 'onChange'
 	})
-
-	const onSubmit: SubmitHandler<IProductFields> = async (
-		data: IProductFields
+	if (!category) {
+		throw new Error('Product is undefined') // или обработать эту ситуацию любым другим способом
+	}
+	const onSubmit: SubmitHandler<ICategoryFields> = async (
+		data: ICategoryFields
 	) => {
-		// POST запрос на сервер для создания нового продукта здесь
+		console.log(data)
 		try {
+			let updatedCategory: any // Here we will store the updated product
 			if (selectedFile) {
-				console.log(data)
-				await ProductService.create(data, selectedFile)
+				if (category) {
+					// Если product существует, значит мы обновляем продукт
+					updatedCategory = await CategoryService.update(
+						category.id,
+						data,
+						selectedFile
+					)
+				} else {
+					// Если product не существует, значит мы создаем новый продукт
+					updatedCategory = await CategoryService.create(data, selectedFile)
+				}
 				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
-				updateProducts() // вызываем функцию обратного вызова
 				reset()
+
+				// Тут вызывайте функцию обновления
+				updateCategories()
 			} else {
 				console.log('No file selected')
 			}
@@ -134,11 +120,11 @@ const LeaveProductForm: FC<Props> = ({
 			console.log(err.message) // Обработка ошибок
 		}
 	}
-	if (isSubmitted) return <div>Product successfully create!</div>
+	if (isSubmitted) return <div>Category successfully update!</div>
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={style.formName}>Create a product</div>
+				<div className={style.formName}>Create a category</div>
 
 				<Field
 					{...formRegister('name', {
@@ -156,17 +142,6 @@ const LeaveProductForm: FC<Props> = ({
 					error={errors.slug && errors.slug.message}
 				/>
 
-				<Field
-					{...formRegister('price', {
-						required: 'Price is required',
-						pattern: {
-							value: /^\d+(.\d{1,2})?$/,
-							message: 'Invalid price format'
-						}
-					})}
-					placeholder='Price *'
-					error={errors.price && errors.price.message}
-				/>
 				<div>
 					<textarea
 						className={style.textArea}
@@ -187,73 +162,6 @@ const LeaveProductForm: FC<Props> = ({
 					multiple
 				/>
 
-				<div className={style.controllers}>
-					<Controller
-						control={control}
-						name='categoryId'
-						rules={{ required: 'Category is required!' }}
-						render={({ field: { onChange, value }, fieldState: { error } }) => (
-							<div className={style.controller}>
-								<ReactSelect
-									options={productCategories}
-									placeholder='Category'
-									value={productCategories.find(
-										option => option.value === value
-									)}
-									onChange={newValue =>
-										onChange((newValue as ProductCategory).value)
-									}
-									styles={customStyles}
-									theme={theme => ({
-										...theme,
-										borderRadius: 0,
-										colors: {
-											...theme.colors,
-											primary25: '#bd9f5f3b',
-											primary: '#00000050'
-										}
-									})}
-								/>
-								{errors?.categoryId && (
-									<div className='text-red mt-1 mb-3 text-sm'>
-										{errors.categoryId?.message}
-									</div>
-								)}
-							</div>
-						)}
-					/>
-
-					<Controller
-						control={control}
-						name='setupsId'
-						rules={{ required: 'Setup is required!' }}
-						render={({ field: { onChange, value }, fieldState: { error } }) => (
-							<div className={style.controller}>
-								<ReactSelect
-									options={productSetups}
-									placeholder='Setup'
-									value={productSetups.find(option => option.value === value)}
-									onChange={newValue => onChange((newValue as Setup).value)}
-									styles={customStyles}
-									theme={theme => ({
-										...theme,
-										borderRadius: 0,
-										colors: {
-											...theme.colors,
-											primary25: '#bd9f5f3b',
-											primary: '#00000050'
-										}
-									})}
-								/>
-								{errors?.setupsId && (
-									<div className='text-red mt-1 mb-3 text-sm'>
-										{errors.setupsId?.message}
-									</div>
-								)}
-							</div>
-						)}
-					/>
-				</div>
 				<button
 					type='button'
 					onClick={onFileInputClick}
@@ -292,4 +200,4 @@ const LeaveProductForm: FC<Props> = ({
 	)
 }
 
-export default LeaveProductForm
+export default UpdateCategoriesForm

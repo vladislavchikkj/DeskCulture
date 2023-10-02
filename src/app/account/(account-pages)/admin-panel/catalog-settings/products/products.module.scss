@@ -17,7 +17,7 @@
 }
 .columnsName {
 	display: grid;
-	grid-template-columns: 0.2fr 1.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
+	grid-template-columns: 0.2fr 1.5fr 0.5fr 0.5fr 0.5fr 0.2fr 0.2fr;
 	gap: 2vh;
 	padding-top: 2vh;
 	padding-left: 2vh;
@@ -32,6 +32,7 @@
 		line-height: 18px; /* 200% */
 		letter-spacing: 1.32px;
 		text-transform: uppercase;
+		padding-right: 0.5vw;
 		cursor: pointer;
 		transition: all 0.5s;
 		&:hover {
@@ -44,7 +45,7 @@
 }
 .columnsItems {
 	display: grid;
-	grid-template-columns: 0.2fr 1.6fr 0.5fr 0.5fr 0.5fr 0.2fr;
+	grid-template-columns: 0.2fr 1.6fr 0.5fr 0.5fr 0.5fr 0.1fr 0.2fr;
 	gap: 2vw;
 	color: rgb(10, 10, 10);
 	font-family: Inter;

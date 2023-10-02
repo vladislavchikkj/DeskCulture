@@ -12,7 +12,7 @@ export interface IProduct {
 	images: string[]
 	createdAt: string
 	category: ICategory
-	setup?: ISetups
+	setups?: ISetups
 }
 
 export interface IProductDetails {
@@ -38,7 +38,9 @@ export type TypePaginationSetup = {
 	setups: ISetups[]
 }
 
-export type TypeCombinedPagination = TypePaginationCategories &
+export type TypeCombinedPagination = {
+	product?: IProduct
+} & TypePaginationCategories &
 	TypePaginationSetup &
 	TypePaginationProducts
 
