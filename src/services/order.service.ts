@@ -1,6 +1,6 @@
 import { instance } from '@/api/api.interceptor'
 
-import { IOrder } from './order.interface'
+import { IOrderWithPerson } from './order.interface'
 
 const ORDERS = 'orders'
 
@@ -34,8 +34,14 @@ export type PlaceOrderData = {
 
 export const OrderService = {
 	async getAll() {
-		return instance<IOrder[]>({
+		return instance<IOrderWithPerson[]>({
 			url: `${ORDERS}/by-user`,
+			method: 'GET'
+		})
+	},
+	async getAllOrders() {
+		return instance<IOrderWithPerson[]>({
+			url: `${ORDERS}`,
 			method: 'GET'
 		})
 	},

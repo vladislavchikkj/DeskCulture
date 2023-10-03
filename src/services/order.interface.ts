@@ -1,5 +1,4 @@
 import { ICartItem } from '@/types/cart.interface'
-import { IUser } from '@/types/user.interface'
 
 export enum EnumOrderStatus {
 	PENDING = 'PENDING',
@@ -13,7 +12,24 @@ export interface IOrder {
 	createdAt: string
 	items: ICartItem[]
 	status: EnumOrderStatus
-	user: IUser
+	userId: number
 	total: number
 	paymentUrl: string
+	paymentIntentId: string
+	email: string
 }
+
+export interface IPersonInfo {
+	firstName: string
+	lastName: string
+	country: string
+	state: string
+	city: string
+	postCode: string
+	street: string
+	house: string
+	phoneCode: string
+	phone: string
+}
+
+export interface IOrderWithPerson extends IOrder, IPersonInfo {}

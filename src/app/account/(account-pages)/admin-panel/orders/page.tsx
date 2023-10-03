@@ -1,3 +1,4 @@
+import { OrderService } from '@/services/order.service'
 import type { Metadata } from 'next'
 import Account from '../../Account'
 import OrdersInfo from './OrdersInfo'

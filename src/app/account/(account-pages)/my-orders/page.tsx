@@ -1,15 +1,21 @@
 'use client'
+import { useAuth } from '@/hooks/useAuth'
 import { useProfile } from '@/hooks/useProfile'
+import { IOrderWithPerson } from '@/services/order.interface'
 import { OrderService } from '@/services/order.service'
+import Modal from '@/ui/common/modal/Modal'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Account from '../Account'
 import accountStyle from '../account.module.scss'
+import ShowDelailsModal from './(showDetailsModal)/ShowDelailsModal'
 import style from './my-orders.module.scss'
+
 const MyOrdersPage: FC = () => {
 	const { profile } = useProfile()
+	const { user } = useAuth()
 	const { data: orders } = useQuery(
 		['my orders'],
 		() => OrderService.getAll(),
@@ -17,9 +23,21 @@ const MyOrdersPage: FC = () => {
 			select: ({ data }) => data
 		}
 	)
+
+	const [isModalOpen, setModalOpen] = useState(false)
+	const [selectedOrder, setSelectedOrder] = useState<IOrderWithPerson | null>(
+		null
+	)
+
+	if (!orders) return <div>no active orders</div>
 	return (
 		<Account>
 			<section>
+				{user && (
+					<Modal isOpen={isModalOpen} closeModal={() => setModalOpen(false)}>
+						<ShowDelailsModal order={selectedOrder} />
+					</Modal>
+				)}
 				<h1 className={accountStyle.title}>Welcome, {profile?.name}!</h1>
 				<span className={style.title}>You have {orders?.length} order.</span>
 				{orders?.length ? (
@@ -61,7 +79,15 @@ const MyOrdersPage: FC = () => {
 									))}
 								</div>
 								<div className={style.orderInfo}>
-									<span className={style.showDetailBtn}>SHOW DETAILS</span>
+									<span
+										onClick={() => {
+											setSelectedOrder(order)
+											setModalOpen(true)
+										}}
+										className={style.showDetailBtn}
+									>
+										SHOW DETAILS
+									</span>
 									<span className={style.status}>
 										Status: {order.status}
 										{order.status === 'PENDING' && (

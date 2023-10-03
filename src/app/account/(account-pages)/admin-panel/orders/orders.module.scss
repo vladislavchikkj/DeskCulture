@@ -1,0 +1,127 @@
+.orders {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+	width: 30vw;
+}
+
+.order {
+	display: flex;
+	flex-direction: column;
+	gap: 1vw;
+	padding-bottom: 1vw;
+}
+
+.title {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12px; /* 133.333% */
+	letter-spacing: 0.44px;
+}
+.orderHeader {
+	display: flex;
+	justify-content: space-between;
+}
+.orderImage {
+	width: 9vh;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.5s;
+	&:hover {
+		scale: 1.1;
+	}
+}
+.products {
+	display: flex;
+	gap: 2vh;
+	padding-bottom: 2vh;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product {
+	display: flex;
+	gap: 1vw;
+	overflow: hidden;
+}
+.orderDate {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12px; /* 133.333% */
+	letter-spacing: 0.44px;
+}
+.orderTitle {
+	color: #000;
+	font-family: Inter;
+	font-size: 1.1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 30px; /* 187.5% */
+	letter-spacing: 2.16px;
+	text-transform: uppercase;
+}
+.orderItemsLength {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+.orderHeader {
+	padding-bottom: 2vh;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.orderInfo {
+	display: flex;
+	justify-content: space-between;
+}
+.showDetailBtn {
+	color: #203c70;
+	color: #000;
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 180% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.status {
+	display: flex;
+	flex-direction: column;
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px; /* 180% */
+	letter-spacing: 0.26px;
+}
+.total {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 17px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 30px; /* 176.471% */
+	letter-spacing: 2.16px;
+}
+.textPayed {
+	color: #caa657;
+	font-size: 0.8rem;
+}
+.orderInfo {
+	padding-bottom: 2vh;
+	border-bottom: 1px solid #a08750;
+}
