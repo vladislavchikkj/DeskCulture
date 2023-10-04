@@ -2,20 +2,21 @@ import { NO_INDEX_PAGE } from '@/constants/app.constants'
 import Heading from '@/ui/common/heading/Heading'
 import Footer from '@/ui/layout/footer/Footer'
 import { Metadata } from 'next'
-import Recovery from './Recovery'
+import Reset from './Reset'
+import { useSearchParams } from 'next/navigation'
 
 export const metadata: Metadata = {
-	title: 'Recovery',
+	title: 'Reset',
 	...NO_INDEX_PAGE
 }
 
-export default function RecoveryPage() {
+export default function ResetPage() {
 	return (
 		<>
 			<Heading variant='auth' className='mt-40'>
-				Recovery Password Page
+				Reset your password
 			</Heading>
-			<Recovery />
+			<Reset />
 			<Footer />
 		</>
 	)
