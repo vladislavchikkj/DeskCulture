@@ -22,3 +22,27 @@
 		color: #a08750;
 	}
 }
+.message {
+	text-transform: uppercase;
+	text-align: center;
+	transition: 0.2s;
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12px; /* 133.333% */
+	letter-spacing: 0.44px;
+	padding-top: 2vh;
+	cursor: pointer;
+	padding-bottom: 4vh;
+	border-bottom: 1px solid #a08750;
+	&:hover {
+		color: #a08750;
+	}
+}
+.btn {
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 4vh;
+}

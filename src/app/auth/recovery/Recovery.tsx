@@ -10,6 +10,7 @@ import { IEmailPassword } from '@/store/user/user.interface'
 import AuthButton from '@/app/auth/authButton/authButton'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { AuthService } from '@/services/auth/auth.service'
+import Button from '@/ui/common/buttons/Button'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { validEmail } from '../valid-email'
@@ -48,10 +49,16 @@ const Recovery: FC = () => {
 			variants={baseAnimation}
 			className='flex container-f relative '
 		>
-			{/* Check if email has been sent, if so, display message, if not, render form */}
 			{emailSent ? (
 				<div className={` ${style.form}`}>
-					<p>Successfully sent. Please, check your email.</p>
+					<p className={style.message}>
+						Successfully sent. Please, check your email.
+					</p>
+					<Link className={style.btn} href={'/auth'}>
+						<Button data-hover='Sing In' variant={'grey'}>
+							Sing In
+						</Button>
+					</Link>
 				</div>
 			) : (
 				<form

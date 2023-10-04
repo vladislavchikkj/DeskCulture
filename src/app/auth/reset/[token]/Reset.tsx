@@ -2,6 +2,7 @@
 import AuthButton from '@/app/auth/authButton/authButton'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { AuthService } from '@/services/auth/auth.service'
+import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -62,9 +63,11 @@ const Reset: FC = () => {
 		>
 			{passwordResetStatus ? (
 				<div className={`'rounded-lg bg-white m-auto w-full', ${style.form}`}>
-					<p>{passwordResetStatus}</p>
-					<Link className={style.text} href={'/auth'}>
-						Sing In
+					<p className={style.message}>{passwordResetStatus}</p>
+					<Link className={style.btn} href={'/auth'}>
+						<Button data-hover='Sing In' variant={'grey'}>
+							Sing In
+						</Button>
 					</Link>
 				</div>
 			) : (

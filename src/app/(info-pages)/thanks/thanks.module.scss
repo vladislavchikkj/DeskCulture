@@ -9,3 +9,14 @@
 	letter-spacing: 3.24px;
 	text-transform: uppercase;
 }
+.content {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 10vh;
+}
+.btn {
+	display: flex;
+	justify-content: flex-end;
+	width: 30vw;
+}
