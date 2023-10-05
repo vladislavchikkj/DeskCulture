@@ -30,7 +30,7 @@ const Account: FC<props> = ({ children }) => {
 			whileInView='visible'
 		>
 			<div className={`${style.wrapper} container-f`}>
-				<div className={style.asideMenu}>
+				<aside className={style.asideMenu}>
 					<Link
 						href='/account/my-orders'
 						className={cn({
@@ -137,9 +137,12 @@ const Account: FC<props> = ({ children }) => {
 						</Link>
 					</div>
 					<Link href='/auth' onClick={() => logout()}>
-						<div className={style.logout}>LOG OUT</div>
+						<div className={style.logout}>
+							LOG OUT
+							<div className={style.dot}> &#9675;</div>
+						</div>
 					</Link>
-				</div>
+				</aside>
 				<motion.div
 					viewport={{ once: true }}
 					initial='hidden'
