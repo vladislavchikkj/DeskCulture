@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 
 import { IAuthResponse, IEmailPassword } from '@/store/user/user.interface'
 
-import { axiosClassic } from '@/api/api.interceptor'
+import { axiosClassic, instance } from '@/api/api.interceptor'
 
 import { REFRESH_TOKEN } from '@/constants/token.constants'
 import { saveToStorage } from './auth.helper'
@@ -35,19 +35,16 @@ export const AuthService = {
 		if (response.data.accessToken) saveToStorage(response.data)
 		return response
 	},
-	async changePassword(changePasswordData: {
-		oldPassword: string
-		newPassword: string
-	}) {
+	async changePassword(data: { oldPassword: string; newPassword: string }) {
 		try {
-			const response = await axiosClassic<IAuthResponse>({
+			const response = await instance({
 				url: 'auth/change-password',
 				method: 'PATCH',
-				data: changePasswordData
+				data
 			})
 
-			if (response.data.accessToken) {
-				saveToStorage(response.data)
+			if (response.data.message) {
+				return response.data.message
 			}
 		} catch (error) {
 			throw error

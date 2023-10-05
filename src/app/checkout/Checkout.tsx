@@ -42,14 +42,14 @@ const Checkout: FC = () => {
 	})
 	useEffect(() => {
 		if (responseData && responseData.url) {
-			reset()
+			// reset()
 			if (responseData.url) {
 				window.location.href = responseData.url
 			} else {
 				console.error('Received responseData.url is undefined or empty')
 			}
 		}
-	}, [responseData, reset])
+	}, [responseData])
 
 	const {
 		register: checkout,

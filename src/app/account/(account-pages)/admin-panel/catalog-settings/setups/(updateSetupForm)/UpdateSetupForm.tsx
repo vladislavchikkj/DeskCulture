@@ -87,7 +87,6 @@ const UpdateSetupForm: FC<Props> = ({ setups, setup, updateSetups }) => {
 		throw new Error('Product is undefined') // или обработать эту ситуацию любым другим способом
 	}
 	const onSubmit: SubmitHandler<ISetupFields> = async (data: ISetupFields) => {
-		console.log(data)
 		try {
 			let updatedCategory: any // Here we will store the updated product
 			if (selectedFile) {

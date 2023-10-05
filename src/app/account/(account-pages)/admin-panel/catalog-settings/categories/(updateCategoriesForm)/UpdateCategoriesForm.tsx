@@ -93,7 +93,6 @@ const UpdateCategoriesForm: FC<Props> = ({
 	const onSubmit: SubmitHandler<ICategoryFields> = async (
 		data: ICategoryFields
 	) => {
-		console.log(data)
 		try {
 			let updatedCategory: any // Here we will store the updated product
 			if (selectedFile) {

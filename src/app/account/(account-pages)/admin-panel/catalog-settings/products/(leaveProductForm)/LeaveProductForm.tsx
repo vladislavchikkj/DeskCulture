@@ -122,7 +122,6 @@ const LeaveProductForm: FC<Props> = ({
 		// POST запрос на сервер для создания нового продукта здесь
 		try {
 			if (selectedFile) {
-				console.log(data)
 				await ProductService.create(data, selectedFile)
 				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
 				updateProducts() // вызываем функцию обратного вызова

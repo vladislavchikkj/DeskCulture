@@ -5,12 +5,11 @@ $muted-color: mix(rgb(0, 0, 0), $bg-color, 70%);
 $trans-time: 300ms;
 $width: 320px;
 .info {
-	padding-top: 2vh;
-	padding-bottom: 15vh;
+	padding-bottom: 10vh;
 }
 .group {
 	position: relative;
-	margin: 45px 0;
+	margin: 35px 0;
 }
 
 // INPUTS // ============================== //
@@ -120,4 +119,8 @@ $width: 320px;
 }
 .empty {
 	border-color: red;
+}
+
+.message {
+	color: $hl-color;
 }

@@ -64,7 +64,6 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 				if (onSuccess) {
 					const reviewWithUser = { ...data.data }
 					onSuccess(reviewWithUser)
-					console.log(data)
 				}
 			},
 			onError(error: any): void {
@@ -81,11 +80,6 @@ const LeaveReviewForm: FC<props> = ({ productId, onSuccess }) => {
 		if (selectedFile) {
 			formData.append('image', selectedFile)
 		}
-
-		formData.forEach((value, key) => {
-			console.log(`${key}: ${value}`)
-		})
-
 		mutate(formData)
 		reset()
 	}

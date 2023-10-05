@@ -30,7 +30,7 @@ const Order: FC = () => {
 	const lastOrder = orders && orders[0]
 
 	if (!orders) return <div>The order has not been created</div>
-
+	console.log(orders)
 	return (
 		<div className={style.orders}>
 			{user && (

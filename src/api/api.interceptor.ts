@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+import { ACCESS_TOKEN } from '@/constants/token.constants'
 import { getAccessToken, removeFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
+import Cookies from 'js-cookie'
 import { errorCatch, getContentType } from './api.helper'
 
 const axiosOptions = {
@@ -45,3 +47,12 @@ instance.interceptors.request.use(
 		throw error
 	}
 )
+axiosClassic.interceptors.request.use(config => {
+	const token = Cookies.get(ACCESS_TOKEN)
+
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`
+	}
+
+	return config
+})

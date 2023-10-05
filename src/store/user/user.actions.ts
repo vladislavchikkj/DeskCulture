@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { errorCatch } from '@/api/api.helper'
 
-import { IAuthResponse, IEmailPassword } from './user.interface'
 import { removeFromStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
+import { IAuthResponse, IEmailPassword } from './user.interface'
 
 // register
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
@@ -14,7 +14,8 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
 			const response = await AuthService.main('register', data)
 			return response
 		} catch (error) {
-			return thunkApi.rejectWithValue(error)
+			const message = error instanceof Error ? error.message : 'Unknown error'
+			return thunkApi.rejectWithValue(message)
 		}
 	}
 )
@@ -27,7 +28,8 @@ export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
 			const response = await AuthService.main('login', data)
 			return response
 		} catch (error) {
-			return thunkApi.rejectWithValue(error)
+			const message = error instanceof Error ? error.message : 'Unknown error'
+			return thunkApi.rejectWithValue(message)
 		}
 	}
 )

@@ -1,6 +1,6 @@
 'use client'
 import { AuthService } from '@/services/auth/auth.service'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Account from '../Account'
 import style from '../account-settings/account-settings.module.scss'
@@ -13,6 +13,7 @@ type PasswordFormData = {
 }
 
 const ChangePasswordPage: FC = () => {
+	const [message, setMessage] = useState<string>('')
 	const {
 		register,
 		handleSubmit,
@@ -22,15 +23,16 @@ const ChangePasswordPage: FC = () => {
 
 	const onSubmit: SubmitHandler<PasswordFormData> = async data => {
 		try {
-			// Вызываем метод изменения пароля с использованием сервиса аутентификации
-			await AuthService.changePassword({
+			const response = await AuthService.changePassword({
 				oldPassword: data.currentPassword,
 				newPassword: data.newPassword
 			})
 
-			// Пароль успешно изменен, выполните необходимые действия
+			if (response) {
+				setMessage('Password successfully changed.')
+			}
 		} catch (error) {
-			// Обработка ошибок при изменении пароля
+			setMessage('Current password is incorrect.')
 		}
 	}
 
@@ -76,6 +78,7 @@ const ChangePasswordPage: FC = () => {
 							<span className={style.bar}></span>
 							{errors.confirmNewPassword && <span>Passwords must match</span>}
 						</div>
+						<span className={style.message}>{message}</span>
 						<button className={style.btn} type='submit'>
 							Change Password
 						</button>

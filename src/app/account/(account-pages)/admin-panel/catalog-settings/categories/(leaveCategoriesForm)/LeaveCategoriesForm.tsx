@@ -91,7 +91,6 @@ const LeaveCategoriesForm: FC<Props> = ({ categories }) => {
 		// POST запрос на сервер для создания нового продукта здесь
 		try {
 			if (selectedFile) {
-				console.log(data)
 				await CategoryService.create(data, selectedFile)
 				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
 				reset()
