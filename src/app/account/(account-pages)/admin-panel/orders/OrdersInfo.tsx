@@ -16,7 +16,7 @@ const OrdersInfo: FC = () => {
 	const { profile } = useProfile()
 	const { user } = useAuth()
 	const { data: orders } = useQuery(
-		['my orders'],
+		['all orders'],
 		() => OrderService.getAllOrders(),
 		{
 			select: ({ data }) => data

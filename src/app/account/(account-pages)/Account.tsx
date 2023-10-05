@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { useAuth } from '@/hooks/useAuth'
 import { FC, useEffect } from 'react'
 import style from './account.module.scss'
 
@@ -21,6 +22,7 @@ const Account: FC<props> = ({ children }) => {
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
+	const { user } = useAuth()
 	const { logout } = useActions()
 	const pathname = usePathname()
 	return (
@@ -55,87 +57,95 @@ const Account: FC<props> = ({ children }) => {
 					>
 						CHANGE PASSWORD
 					</Link>
-					<Link
-						href='/account/admin-panel'
-						className={cn({
-							[style.active]: pathname === '/account/admin-panel'
-						})}
-					>
-						<div className='mt-10'>ADMIN PANEL</div>
-					</Link>
-					<div className={style.submenu}>
-						<Link
-							href='/account/admin-panel/dashboard'
-							className={cn({
-								[style.active]: pathname === '/account/admin-panel/dashboard'
-							})}
-						>
-							<span>Dashboard</span>
-						</Link>
-						<Link
-							href='/account/admin-panel/users'
-							className={cn({
-								[style.active]: pathname === '/account/admin-panel/users'
-							})}
-						>
-							<span>Users</span>
-						</Link>
-						<Link
-							href='/account/admin-panel/catalog-settings'
-							className={cn({
-								[style.active]:
-									pathname === '/account/admin-panel/catalog-settings'
-							})}
-						>
-							<span className={style.catalogSettings}>(Catalog settings)</span>
-						</Link>
-						<div className='pl-5 pb-1 text-greyDark'>
+					{user?.isAdmin && (
+						<div>
 							<Link
-								href='/account/admin-panel/catalog-settings/products'
+								href='/account/admin-panel'
 								className={cn({
-									[style.active]:
-										pathname ===
-										'/account/admin-panel/catalog-settings/products'
+									[style.active]: pathname === '/account/admin-panel'
 								})}
 							>
-								<div className={style.box}>
-									<span className={style.products}> - Products</span>
-								</div>
+								<div className='mt-10'>ADMIN PANEL</div>
 							</Link>
-							<Link
-								href='/account/admin-panel/catalog-settings/categories'
-								className={cn({
-									[style.active]:
-										pathname ===
-										'/account/admin-panel/catalog-settings/categories'
-								})}
-							>
-								<div className={style.box}>
-									<span className={style.category}> - Categories</span>
+							<div className={style.submenu}>
+								<Link
+									href='/account/admin-panel/dashboard'
+									className={cn({
+										[style.active]:
+											pathname === '/account/admin-panel/dashboard'
+									})}
+								>
+									<span>Dashboard</span>
+								</Link>
+								<Link
+									href='/account/admin-panel/users'
+									className={cn({
+										[style.active]: pathname === '/account/admin-panel/users'
+									})}
+								>
+									<span>Users</span>
+								</Link>
+								<Link
+									href='/account/admin-panel/catalog-settings'
+									className={cn({
+										[style.active]:
+											pathname === '/account/admin-panel/catalog-settings'
+									})}
+								>
+									<span className={style.catalogSettings}>
+										(Catalog settings)
+									</span>
+								</Link>
+								<div className='pl-5 pb-1 text-greyDark'>
+									<Link
+										href='/account/admin-panel/catalog-settings/products'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/products'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.products}> - Products</span>
+										</div>
+									</Link>
+									<Link
+										href='/account/admin-panel/catalog-settings/categories'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/categories'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.category}> - Categories</span>
+										</div>
+									</Link>
+									<Link
+										href='/account/admin-panel/catalog-settings/setups'
+										className={cn({
+											[style.active]:
+												pathname ===
+												'/account/admin-panel/catalog-settings/setups'
+										})}
+									>
+										<div className={style.box}>
+											<span className={style.setups}> - Setups</span>
+										</div>
+									</Link>
 								</div>
-							</Link>
-							<Link
-								href='/account/admin-panel/catalog-settings/setups'
-								className={cn({
-									[style.active]:
-										pathname === '/account/admin-panel/catalog-settings/setups'
-								})}
-							>
-								<div className={style.box}>
-									<span className={style.setups}> - Setups</span>
-								</div>
-							</Link>
-						</div>
 
-						<Link
-							href='/account/admin-panel/orders'
-							className={cn({
-								[style.active]: pathname === '/account/admin-panel/orders'
-							})}
-						>
-							<span>Orders</span>
-						</Link>
-					</div>
+								<Link
+									href='/account/admin-panel/orders'
+									className={cn({
+										[style.active]: pathname === '/account/admin-panel/orders'
+									})}
+								>
+									<span>Orders</span>
+								</Link>
+							</div>
+						</div>
+					)}
 					<div className={style.logout}>
 						<a href='/auth' onClick={() => logout()}>
 							LOG OUT
