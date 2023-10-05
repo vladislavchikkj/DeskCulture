@@ -96,6 +96,12 @@
 		font-size: 15px;
 		color: #191b1d6b;
 		background-color: #fff;
+		cursor: default;
+
+		-ms-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-webkit-user-select: none;
 	}
 }
 .active {

@@ -136,12 +136,12 @@ const Account: FC<props> = ({ children }) => {
 							<span>Orders</span>
 						</Link>
 					</div>
-					<Link href='/auth' onClick={() => logout()}>
-						<div className={style.logout}>
+					<div className={style.logout}>
+						<a href='/auth' onClick={() => logout()}>
 							LOG OUT
-							<div className={style.dot}> &#9675;</div>
-						</div>
-					</Link>
+						</a>
+						<div className={style.dot}> &#9675;</div>
+					</div>
 				</aside>
 				<motion.div
 					viewport={{ once: true }}

@@ -12,6 +12,7 @@ import {
 	phoneCodes
 } from '@/constants/checkout.constants'
 import { useActions } from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
 import { useCart } from '@/hooks/useCart'
 import { useProfile } from '@/hooks/useProfile'
 import { OrderService, PlaceOrderData } from '@/services/order.service'
@@ -29,6 +30,7 @@ interface OrderResponse {
 	url: string
 }
 const Checkout: FC = () => {
+	const { user } = useAuth()
 	const { reset } = useActions()
 	const profile = useProfile()
 	const { items, total } = useCart()

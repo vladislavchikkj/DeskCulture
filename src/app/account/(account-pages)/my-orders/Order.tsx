@@ -28,9 +28,16 @@ const Order: FC = () => {
 	)
 
 	const lastOrder = orders && orders[0]
-
-	if (!orders) return <div>The order has not been created</div>
-	console.log(orders)
+	if (!user)
+		return (
+			<div className={style.message}>
+				<Link href={'/auth'}>
+					Register or log in to see the list of orders..
+				</Link>
+			</div>
+		)
+	if (!orders)
+		return <div className={style.message}>The order has not been created.</div>
 	return (
 		<div className={style.orders}>
 			{user && (
