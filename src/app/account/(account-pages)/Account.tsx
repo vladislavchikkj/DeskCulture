@@ -25,6 +25,12 @@ const Account: FC<props> = ({ children }) => {
 	const { user } = useAuth()
 	const { logout } = useActions()
 	const pathname = usePathname()
+	if (!user)
+		return (
+			<div className={style.message}>
+				<Link href={'/auth'}>Register or log in to see account...</Link>
+			</div>
+		)
 	return (
 		<motion.div
 			viewport={{ once: true }}

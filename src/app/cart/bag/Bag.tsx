@@ -72,13 +72,13 @@ const Bag: FC = () => {
 							<Detail
 								title={'SHIPPING FEES & TIMING'}
 								content={
-									'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+									'Arrival within 10-15 business days. Tracking details will be included in the shipping confirmation e-mail.'
 								}
 							/>
 							<Detail
 								title={'RETURNS & EXCHANGES'}
 								content={
-									'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+									'You must notify us within thirty (30) days of the date of receipt of your confirmation email if you believe all or part of your order is missing or damaged. \n\n You may request a refund or exchange if the items in your order are damaged or faulty upon receipt, or if the items you have received are not those you originally ordered. \n\n Items must be returned to us within thirty (30) calendar days from the delivery date in the exact condition in which they were received. \n\n We will dispatch replacement items to you upon confirmation of the issue with your order following a quality assurance inspection. \n\n Refunds can take up to 14 days to process following receipt of your return. \n\n Refunds will be issued to the original method of payment, unless otherwise requested and agreed to.'
 								}
 							/>
 						</div>

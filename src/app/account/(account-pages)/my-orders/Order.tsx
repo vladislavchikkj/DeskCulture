@@ -32,7 +32,7 @@ const Order: FC = () => {
 		return (
 			<div className={style.message}>
 				<Link href={'/auth'}>
-					Register or log in to see the list of orders..
+					Register or log in to see the list of orders...
 				</Link>
 			</div>
 		)

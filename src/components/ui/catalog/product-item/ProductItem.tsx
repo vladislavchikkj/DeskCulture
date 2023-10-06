@@ -9,6 +9,7 @@ import AddToCartButton from './addToCardButton/AddToCartButton'
 import FavoriteButton from './favoriteButton/FavoriteButton'
 import style from './product-item.module.scss'
 import ProductRating from './productRating/ProductRating'
+import { PRODUCTS } from '@/services/product/product.types'
 
 const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 	product,
@@ -41,7 +42,7 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 						</div>
 					</div>
 				</div>
-				{!descr && <div className={style.descr}>{product.description} ...</div>}
+				{!descr && <div className={style.descr}>{product.info} ...</div>}
 
 				<div className={style.infoWrapper}>
 					<div className={style.priceText}>
@@ -54,7 +55,9 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 								{product.category.name}
 							</Link>
 						</div>
-						<div className={style.available}>Available in 3 variants.</div>
+						<div className={style.available}>
+							Only {product.remains} left on stock.
+						</div>
 					</div>
 					<ProductRating product={product} />
 				</div>

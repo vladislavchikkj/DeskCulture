@@ -8,19 +8,9 @@ import Field from '@/ui/common/input/Field'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import ReactSelect, { StylesConfig } from 'react-select'
+import { IProductFields } from '../(leaveProductForm)/LeaveProductForm'
 import UploadSVG from './icon/upload.svg'
 import style from './updateProductForm.module.scss'
-
-export interface IProductFields {
-	id?: number
-	name: string
-	slug: string
-	price: number
-	description: string
-	image: File
-	categoryId: string
-	setupsId: string
-}
 
 interface ProductCategory {
 	label: string
@@ -181,6 +171,16 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 				<div>
 					<textarea
 						className={style.textArea}
+						{...formRegister('info', {
+							required: 'Info is required'
+						})}
+						placeholder='Info *'
+					/>
+					{errors.info && <span>{errors.info.message}</span>}
+				</div>
+				<div>
+					<textarea
+						className={style.textArea}
 						{...formRegister('description', {
 							required: 'Description is required'
 						})}
@@ -188,6 +188,13 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 					/>
 					{errors.description && <span>{errors.description.message}</span>}
 				</div>
+				<Field
+					{...formRegister('remains', {
+						required: 'Remains is required'
+					})}
+					placeholder='Remains *'
+					error={errors.name && errors.name.message}
+				/>
 
 				<input
 					type='file'

@@ -2,7 +2,7 @@
 
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
-import { FC, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
@@ -17,6 +17,7 @@ import {
 	homeAnimation,
 	LowBarAnimation
 } from '@/components/animations/homeAnimation'
+import Notifications from '@/ui/common/notifications/Notifications'
 import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
@@ -38,83 +39,106 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	useEffect(() => {
 		updateLayout(!inViewIntro ? false : true)
 	}, [inViewIntro])
+	const [isNotificationsOpen, setNotificationsOpen] = useState(false)
+
+	useEffect(() => {
+		const isCookieNotificationSaved = localStorage.getItem('cookieNotification')
+		if (!isCookieNotificationSaved) {
+			setNotificationsOpen(true)
+		}
+	}, [])
+
+	const handleCookiesAcceptance = () => {
+		localStorage.setItem('cookieNotification', 'accepted')
+
+		setNotificationsOpen(false)
+	}
 
 	return (
-		<motion.section
-			initial='hidden'
-			whileInView='visible'
-			viewport={{ once: true }}
-			variants={baseAnimation}
-			className={style.home}
-		>
-			<Parallax ref={parallax} pages={4.2} style={{ top: '0', left: '0' }}>
-				<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
-					<motion.div
-						variants={homeAnimation}
-						ref={inViewRef}
-						className={style.intro}
+		<>
+			<motion.section
+				initial='hidden'
+				whileInView='visible'
+				viewport={{ once: true }}
+				variants={baseAnimation}
+				className={style.home}
+			>
+				<Parallax ref={parallax} pages={4.2} style={{ top: '0', left: '0' }}>
+					<ParallaxLayer offset={0} speed={0.2} style={{ zIndex: '5' }}>
+						<motion.div
+							variants={homeAnimation}
+							ref={inViewRef}
+							className={style.intro}
+						>
+							<ParallaxLayer offset={0} speed={0.5}>
+								<HomeIntro />
+							</ParallaxLayer>
+						</motion.div>
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={0.55}
+						speed={0.1}
+						style={{ zIndex: '1', overflow: 'hidden' }}
 					>
-						<ParallaxLayer offset={0} speed={0.5}>
-							<HomeIntro />
-						</ParallaxLayer>
-					</motion.div>
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={0.55}
-					speed={0.1}
-					style={{ zIndex: '1', overflow: 'hidden' }}
-				>
-					<HomePlayer />
-				</ParallaxLayer>
-				<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
-					<span id='homesetup'>
-						<HomeSetup setups={setups} setupsLength={2} />
-					</span>
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={2.2}
-					speed={0.8}
-					style={{ zIndex: '2', top: '-18%' }}
-				>
-					<HomeCategory categories={categories} categoriesLength={2} />
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={2.5}
-					speed={1}
-					factor={1.2}
-					style={{ zIndex: '2' }}
-				>
-					<HomeSocial />
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={3}
-					speed={1.4}
-					style={{
-						zIndex: '2',
-						top: '-5%',
-						height: '20%'
-					}}
-				>
-					<HomeReviews products={products} />
-				</ParallaxLayer>
-				<ParallaxLayer offset={3.2}>
-					<Footer home={true} />
-				</ParallaxLayer>
-				<ParallaxLayer
-					className={!inViewIntro ? `${style.lowbar}` : ''}
-					sticky={{ start: 0, end: 4 }}
-					style={{ ...alignEnd }}
-				>
-					<motion.div
-						custom={1}
-						variants={LowBarAnimation}
-						onClick={() => parallax.current?.scrollTo(1.17)}
+						<HomePlayer />
+					</ParallaxLayer>
+					<ParallaxLayer offset={1.2} speed={0.5} style={{ zIndex: '2' }}>
+						<span id='homesetup'>
+							<HomeSetup setups={setups} setupsLength={2} />
+						</span>
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={2.2}
+						speed={0.8}
+						style={{ zIndex: '2', top: '-18%' }}
 					>
-						<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
-					</motion.div>
-				</ParallaxLayer>
-			</Parallax>
-		</motion.section>
+						<HomeCategory categories={categories} categoriesLength={2} />
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={2.5}
+						speed={1}
+						factor={1.2}
+						style={{ zIndex: '2' }}
+					>
+						<HomeSocial />
+					</ParallaxLayer>
+					<ParallaxLayer
+						offset={3}
+						speed={1.4}
+						style={{
+							zIndex: '2',
+							top: '-5%',
+							height: '20%'
+						}}
+					>
+						<HomeReviews products={products} />
+					</ParallaxLayer>
+					<ParallaxLayer offset={3.2}>
+						<Footer home={true} />
+					</ParallaxLayer>
+					<ParallaxLayer
+						className={!inViewIntro ? `${style.lowbar}` : ''}
+						sticky={{ start: 0, end: 4 }}
+						style={{ ...alignEnd }}
+					>
+						<Notifications
+							isOpen={isNotificationsOpen}
+							closeNotifications={handleCookiesAcceptance}
+						>
+							This website uses{' '}
+							<strong className='text-greySub'>cookies</strong>
+						</Notifications>
+						<motion.div
+							custom={1}
+							variants={LowBarAnimation}
+							onClick={() => parallax.current?.scrollTo(1.17)}
+						>
+							<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
+						</motion.div>
+					</ParallaxLayer>
+				</Parallax>
+			</motion.section>
+		</>
 	)
 }
 

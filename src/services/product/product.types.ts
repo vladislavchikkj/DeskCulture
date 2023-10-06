@@ -4,6 +4,8 @@ export type TypeProductData = {
 	name: string
 	price: number
 	description?: string
+	info?: string
+	remains?: number
 	images: string[]
 	categoryId: number
 }

@@ -25,6 +25,7 @@ module.exports = {
 		extend: {
 			fontSize: {
 				10: '10px',
+				15: '15px',
 				25: '25px'
 			}
 		}

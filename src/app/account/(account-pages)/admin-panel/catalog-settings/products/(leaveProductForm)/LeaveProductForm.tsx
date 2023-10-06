@@ -16,6 +16,8 @@ export interface IProductFields {
 	slug: string
 	price: number
 	description: string
+	info: string
+	remains: number
 	image: File
 	categoryId: string
 	setupsId: string
@@ -119,6 +121,7 @@ const LeaveProductForm: FC<Props> = ({
 	const onSubmit: SubmitHandler<IProductFields> = async (
 		data: IProductFields
 	) => {
+		console.log(data)
 		// POST запрос на сервер для создания нового продукта здесь
 		try {
 			if (selectedFile) {
@@ -166,6 +169,17 @@ const LeaveProductForm: FC<Props> = ({
 					placeholder='Price *'
 					error={errors.price && errors.price.message}
 				/>
+
+				<div>
+					<textarea
+						className={style.textArea}
+						{...formRegister('info', {
+							required: 'Info is required'
+						})}
+						placeholder='Info *'
+					/>
+					{errors.info && <span>{errors.info.message}</span>}
+				</div>
 				<div>
 					<textarea
 						className={style.textArea}
@@ -176,6 +190,14 @@ const LeaveProductForm: FC<Props> = ({
 					/>
 					{errors.description && <span>{errors.description.message}</span>}
 				</div>
+				<Field
+					{...formRegister('remains', {
+						required: 'Remains is required'
+					})}
+					type='number'
+					placeholder='Remains *'
+					error={errors.name && errors.name.message}
+				/>
 
 				<input
 					type='file'

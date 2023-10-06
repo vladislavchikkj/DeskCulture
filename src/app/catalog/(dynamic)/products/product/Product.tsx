@@ -29,6 +29,7 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	console.log(product)
 	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
@@ -114,7 +115,7 @@ const Products: FC<props> = ({ product }) => {
 				<motion.div variants={breadcrumbsAnimation} className={style.info}>
 					<div className={style.name}>{product[0].name}</div>
 					<div className={style.price}>${product[0].price}</div>
-					<div className={style.descr}>{product[0].description}</div>
+					<div className={style.descr}>{product[0].info}</div>
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
@@ -129,18 +130,25 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.details}>
 						<Detail
 							title={'Product Details'}
-							content={product[0].description}
+							content={product[0].description.split('\r\n').map((item, key) => {
+								return (
+									<span key={key}>
+										{item}
+										<br />
+									</span>
+								)
+							})}
 						/>
 						<Detail
 							title={'Shipping Details'}
 							content={
-								'Arrival within 3-5 business days. Tracking details will be included in the shipping confirmation e-mail.'
+								'Arrival within 10-15 business days. Tracking details will be included in the shipping confirmation e-mail.'
 							}
 						/>
 						<Detail
 							title={'Payment'}
 							content={
-								'We accept all major credit cards and debit cards, Paypal and Apple Pay.'
+								'We accept all major credit cards and debit cards, Stripe and GPay.'
 							}
 						/>
 						<Detail

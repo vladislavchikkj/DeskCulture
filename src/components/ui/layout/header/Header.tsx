@@ -86,9 +86,12 @@ const Header: FC<Props> = ({ inView }) => {
 				<div ref={addRef} className={style.logoPlace}>
 					{!isShow ? (
 						<div className={style.mainLogo}>
-							<Link translate='no' href={`/`}>
-								DeskCulture
-							</Link>
+							<div>
+								<Link translate='no' href={`/`}>
+									<span>DeskCulture</span>
+								</Link>
+							</div>
+							<div className={style.simbol}>®</div>
 						</div>
 					) : (
 						<input

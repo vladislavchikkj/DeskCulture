@@ -127,18 +127,19 @@
 }
 
 .message {
+	text-align: center;
 	text-transform: uppercase;
 	transition: 0.2s;
 	color: rgba(0, 0, 0, 0.5);
 	font-family: Inter;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 12px; /* 133.333% */
 	letter-spacing: 0.44px;
-	padding-top: 2vh;
+	padding-top: 15vh;
 	cursor: pointer;
-	min-height: 20vh;
+	min-height: 62vh;
 	&:hover {
 		color: #a08750;
 	}
