@@ -6,25 +6,6 @@ import { Metadata } from 'next'
 
 export const revalidate = 60
 
-export async function generateStaticPaths() {
-	const setups = await SetupsService.getAll()
-
-	const paths = setups.map((setup: { id: { toString: () => any } }) => {
-		return {
-			params: { id: setup.id.toString() }
-		}
-	})
-	return paths
-}
-
-export const getAllSetups = async (excludeId: number) => {
-	const allSetups = await SetupsService.getAll()
-	return allSetups
-		.filter((setup: { id: number }) => setup.id !== excludeId)
-		.sort(() => Math.random() - 0.5)
-		.slice(0, 2)
-}
-
 async function getProducts(params: TypeParamId) {
 	const { data: products } = await SetupsService.getBySetups(String(params?.id))
 	const { data: setups } = await SetupsService.getById(String(params?.id))
@@ -32,26 +13,28 @@ async function getProducts(params: TypeParamId) {
 	return { products, setups, allSetups }
 }
 
+const getAllSetups = async (excludeId: number) => {
+	const allSetups = await SetupsService.getAll()
+	return allSetups
+		.filter((setup: { id: number }) => setup.id !== excludeId)
+		.sort(() => Math.random() - 0.5)
+		.slice(0, 2)
+}
+
 export async function generateMetadata({
 	params
 }: IPageIdParam): Promise<Metadata> {
 	const { setups, products } = await getProducts(params)
-
 	return {
 		title: setups.name,
-
 		description: `Random description about ${setups.name}`,
 		openGraph: {
-			images: products[0].images,
 			description: `Random description about ${setups.name}`
 		}
 	}
 }
 
 export default async function SetupsPage({ params }: IPageIdParam) {
-	// const { updateLayout } = useLayout()
-	// updateLayout(false)
-
 	const data = await getProducts(params)
 	return (
 		<>

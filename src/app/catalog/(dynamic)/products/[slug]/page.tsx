@@ -6,15 +6,6 @@ import { Metadata } from 'next'
 
 export const revalidate = 60
 
-export async function generateStaticParams() {
-	const productsData = await ProductService.getAll()
-	const products = productsData.products || []
-	const paths = products.map((product: { slug: string }) => ({
-		params: { slug: product.slug }
-	}))
-	return paths
-}
-
 async function getProducts(params: TypeParamSlug) {
 	const { data: products } = await ProductService.getBySlug(
 		params?.slug as string
