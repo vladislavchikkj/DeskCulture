@@ -1,8 +1,7 @@
 'use client'
 
-import { IParallax } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import 'react-html5video/dist/styles.css'
 import { useInView } from 'react-intersection-observer'
 
@@ -34,8 +33,6 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 		initialInView: false,
 		threshold: 0.2
 	})
-	const parallax = useRef<IParallax>(null)
-	const alignEnd = { display: 'flex', alignItems: 'flex-end' }
 
 	const { updateLayout } = useLayout()
 	useEffect(() => {
@@ -90,12 +87,10 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
 					<HomeSocial />
 				</ScrollParallax>
-				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
+				<ScrollParallax zIndex={13} strength={-0.15}>
 					<HomeReviews products={products} />
 				</ScrollParallax>
-				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
-					<Footer />
-				</ScrollParallax>
+				<Footer />
 				<Notifications
 					isOpen={isNotificationsOpen}
 					closeNotifications={handleCookiesAcceptance}
