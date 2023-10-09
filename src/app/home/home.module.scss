@@ -34,3 +34,16 @@
 	position: absolute;
 	top: 80%;
 }
+.cursor {
+	// cursor: url('https://megamozg.com/files/users/06/bf/e8/06bfe8f6f83644281d0db5a8ad4fe5e2.jpg') !important;
+	z-index: 9999;
+	width: 25px;
+	height: 25px;
+	background: #ffffff33;
+	border: 1px solid #00000025;
+	position: fixed;
+	border-radius: 100%;
+	top: -12px;
+	left: -12px;
+	z-index: 1;
+}

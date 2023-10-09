@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
+import { motion } from 'framer-motion'
 import style from './homeplayer.module.scss'
 
 const HomePlayer: FC = () => {
@@ -24,7 +25,8 @@ const HomePlayer: FC = () => {
 						height: '110vh',
 						width: '250.66667vh',
 						left: '50%',
-						transform: 'translateX(-50%)'
+						transform: 'translateX(-50%)',
+						zIndex: -1
 					}}
 				></ReactPlayer>
 			</div>
