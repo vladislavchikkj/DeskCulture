@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion'
 import { FC, useEffect } from 'react'
 
-import SetupList from '@/ui/catalog/setupsList/SetupsList'
 import Button from '@/ui/common/buttons/Button'
 
 import { IProduct } from '@/types/product.interface'
@@ -109,7 +108,7 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 							YOU MAY ALSO BE <br /> INTERESTED IN:
 						</div>
 					</div>
-					<SetupList setups={allSetups} />
+					{/* <SetupList setups={allSetups} /> */}
 				</div>
 			</motion.div>
 		</motion.div>
