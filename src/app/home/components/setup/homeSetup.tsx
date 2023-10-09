@@ -13,7 +13,6 @@ type HomeSetupProps = {
 type prop = HomeSetupProps & TypePaginationSetup
 
 const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
-	// Создаем новый массив, содержащий только первые два сетапа
 	const firstTwoSetups = setups.slice(0, setupsLength)
 
 	return (

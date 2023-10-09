@@ -32,6 +32,7 @@ export default function RootLayout({
 				<Providers>{children}</Providers>
 				<div id='modal'></div>
 				<div id='notifications'></div>
+				<div id='lowbar'></div>
 			</body>
 		</html>
 	)

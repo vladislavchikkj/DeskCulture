@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
+import ReactDOM from 'react-dom'
 
 import style from './homelowbar.module.scss'
 import LowbarBtn from './svg/lowbar.svg'
@@ -9,7 +10,14 @@ type Props = {
 }
 
 const LowBar: FC<Props> = ({ children, lowbarState }) => {
-	return (
+	const lowbarRef = useRef<HTMLElement | null>(
+		document.getElementById('lowbar')
+	)
+	if (!lowbarRef.current) {
+		return null
+	}
+
+	return ReactDOM.createPortal(
 		<>
 			<div
 				className={
@@ -23,7 +31,8 @@ const LowBar: FC<Props> = ({ children, lowbarState }) => {
 					<LowbarBtn />
 				</div>
 			</div>
-		</>
+		</>,
+		lowbarRef.current
 	)
 }
 export default LowBar

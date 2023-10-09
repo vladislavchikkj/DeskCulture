@@ -1,6 +1,6 @@
 'use client'
 
-import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { IParallax } from '@react-spring/parallax'
 import { motion } from 'framer-motion'
 import { FC, useEffect, useRef, useState } from 'react'
 import 'react-html5video/dist/styles.css'
@@ -18,6 +18,8 @@ import {
 	LowBarAnimation
 } from '@/components/animations/homeAnimation'
 import Notifications from '@/ui/common/notifications/Notifications'
+import Link from 'next/link'
+import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
@@ -57,6 +59,63 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	return (
 		<>
 			<motion.section
+				initial='hidden'
+				whileInView='visible'
+				viewport={{ once: true }}
+				variants={baseAnimation}
+				className={style.home}
+			>
+				<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
+					<motion.div
+						variants={homeAnimation}
+						ref={inViewRef}
+						className={style.intro}
+					>
+						<HomeIntro />
+					</motion.div>
+				</ScrollParallax>
+				<ScrollParallax lerpEase={1} zIndex={9} strength={0.25}>
+					<HomePlayer />
+				</ScrollParallax>
+				<div id='homesetup'>
+					<ScrollParallax lerpEase={0.05} zIndex={9} strength={-0.15}>
+						<HomeSetup setups={setups} setupsLength={2} />
+					</ScrollParallax>
+				</div>
+				<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
+					<HomeCategory categories={categories} categoriesLength={2} />
+				</ScrollParallax>
+				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
+					<HomeSocial />
+				</ScrollParallax>
+				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
+					<HomeReviews products={products} />
+				</ScrollParallax>
+				<Footer />
+				<Notifications
+					isOpen={isNotificationsOpen}
+					closeNotifications={handleCookiesAcceptance}
+				>
+					This website uses <strong className='text-greySub'>cookies</strong>
+				</Notifications>
+				<Link href='#homesetup'>
+					<motion.div
+						custom={1}
+						variants={LowBarAnimation}
+						onClick={() => console.log(123)}
+					>
+						<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
+					</motion.div>
+				</Link>
+			</motion.section>
+		</>
+	)
+}
+
+export default Home
+
+{
+	/* <motion.section
 				initial='hidden'
 				whileInView='visible'
 				viewport={{ once: true }}
@@ -137,9 +196,5 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 						</motion.div>
 					</ParallaxLayer>
 				</Parallax>
-			</motion.section>
-		</>
-	)
+			</motion.section> */
 }
-
-export default Home

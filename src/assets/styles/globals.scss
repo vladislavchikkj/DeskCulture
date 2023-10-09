@@ -123,3 +123,20 @@ body {
 	padding-right: 1vw;
 	padding-bottom: 1vh;
 }
+
+#notifications {
+	position: sticky;
+	bottom: 6vh;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	z-index: 9999;
+}
+#lowbar {
+	position: sticky;
+	bottom: 0vh;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	z-index: 9998;
+}
