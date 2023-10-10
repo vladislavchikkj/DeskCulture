@@ -20,7 +20,6 @@
 	background: #000;
 	z-index: 10;
 	bottom: 0;
-	color: aqua;
 }
 .lowbar {
 	animation: darkBg 1s forwards;
@@ -35,8 +34,6 @@
 	top: 80%;
 }
 .cursor {
-	// cursor: url('https://megamozg.com/files/users/06/bf/e8/06bfe8f6f83644281d0db5a8ad4fe5e2.jpg') !important;
-	z-index: 9999;
 	width: 25px;
 	height: 25px;
 	background: #ffffff33;
@@ -47,3 +44,5 @@
 	left: -12px;
 	z-index: 1;
 }
+
+@import './home.adapt.scss';

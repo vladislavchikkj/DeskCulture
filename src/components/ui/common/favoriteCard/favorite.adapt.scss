@@ -1,28 +1,18 @@
-.bag {
-	cursor: pointer;
-	padding: 1.05vw 1.5vw 1vw 1.5vw;
-
-	svg {
-		width: 22px;
-		height: 20px;
-	}
-}
-
 @media only screen and (max-width: 1200px) {
-	.bag {
+	.favorites {
+		border-right: 1px solid #b7b7b780;
+		padding: 11px 1.6vw 10px 1.5vw;
 		cursor: pointer;
-		padding: 10px 1.6vw 9px 1.6vw;
-
 		svg {
-			width: 17px;
-			height: 20px;
+			width: 18px;
+			height: 18px;
 		}
 	}
 }
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 567px) {
-	.bag {
+	.favorites {
 		display: none;
 	}
 }

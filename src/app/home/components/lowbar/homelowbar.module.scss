@@ -19,3 +19,22 @@
 	opacity: 0;
 	height: 10vh;
 }
+
+// Adapt
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+	.lowbar {
+		padding-top: 3vw;
+		height: 10vh;
+	}
+}
+@media only screen and (max-width: 567px) {
+	.lowbar {
+		padding-top: 5vw;
+		height: 10vh;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

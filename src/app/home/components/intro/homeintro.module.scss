@@ -1,5 +1,5 @@
 .title {
-	padding-top: 8.18vw;
+	padding-top: 8rem;
 	color: #191b1d;
 	font-family: Inter;
 	font-size: 4.6875vw;
@@ -41,3 +41,5 @@
 	justify-content: space-between;
 	height: 70vh;
 }
+
+@import './homeintro.adapt.scss';

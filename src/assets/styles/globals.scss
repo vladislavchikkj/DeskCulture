@@ -138,3 +138,22 @@ body {
 	margin: 0 auto;
 	z-index: 20;
 }
+
+@media only screen and (max-width: 1200px) {
+	.container-f {
+		padding-left: 10vw;
+		padding-right: 10vw;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.container-f {
+		padding-left: 8vw;
+		padding-right: 8vw;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.container-f {
+		padding-left: 6vw;
+		padding-right: 6vw;
+	}
+}

@@ -9,6 +9,7 @@ import { useOutside } from '@/hooks/useOutside'
 
 import styleHeader from '../header.module.scss'
 
+import { useAuth } from '@/hooks/useAuth'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './menu.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
@@ -19,6 +20,7 @@ type MenuType = {
 	wrapperRef?: MutableRefObject<null | HTMLElement>
 }
 const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
+	const { user } = useAuth()
 	const { isShow, setIsShow, ref, addRef } = useOutside(false)
 	const clickHandler = () => {
 		setIsShow(false)
@@ -52,7 +54,7 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 				</div>
 
 				<div data-hover='menu' className={styleHeader.textBtn}>
-					<div>menu</div>
+					<div className={style.menuName}>menu</div>
 				</div>
 			</div>
 			{headerRef.current &&
@@ -74,7 +76,7 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 											}}
 											href={'/'}
 										>
-											<div className='cursor-pointer'>Home</div>
+											<div className={style.home}>Home</div>
 										</Link>
 									</span>
 									<div className={style.menuLogo}>
@@ -88,15 +90,13 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 									className={style.menuListWrapper}
 								>
 									<div className={style.menuList}>
-										<span className={style.menuListName}>Ready setup</span>
+										<span className={style.menuListName}>Account</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>
 									</div>
 									<div className={style.menuList}>
-										<span className={style.menuListName}>
-											Product categories
-										</span>
+										<span className={style.menuListName}>Contacts</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>
@@ -108,19 +108,26 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 										</Button>
 									</Link>
 									<div className={style.menuList}>
-										<span className={style.menuListName}>For the client</span>
+										<span className={style.menuListName}>Favorites</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>
 									</div>
 									<div className={style.menuList}>
-										<span className={style.menuListName}>Track your order</span>
+										<span className={style.menuListName}>Your Bag</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>
 									</div>
 								</div>
 							</div>
+							{!user && (
+								<div className={`${style.menuBtn} container-f`}>
+									<Button data-hover='Sign in' variant={'grey'}>
+										Sign in
+									</Button>
+								</div>
+							)}
 						</div>
 						<div
 							onClick={() => setIsShow(!isShow)}

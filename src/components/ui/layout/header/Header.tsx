@@ -7,7 +7,6 @@ import { FC, useEffect, useRef, useState } from 'react'
 import Favorite from '@/ui/common/favoriteCard/Favorite'
 import Search from '@/ui/layout/header/search/Search'
 
-import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { useOutside } from '@/hooks/useOutside'
 import { useProfile } from '@/hooks/useProfile'
@@ -25,7 +24,6 @@ type Props = {
 }
 const Header: FC<Props> = ({ inView }) => {
 	const { user } = useAuth()
-	const { logout } = useActions()
 	const { isShow, setIsShow, ref, addRef } = useOutside(false)
 	const headerRef = useRef<HTMLElement>(null)
 	const wrapperRef = useRef<HTMLDivElement | null>(null)
@@ -113,21 +111,23 @@ const Header: FC<Props> = ({ inView }) => {
 						wrapperRef={wrapperRef}
 					/>
 					{!user && (
-						<Link href={`/auth`}>
-							<div className={style.headerButton}>
-								<span className='pl-6 pr-6'>
-									<div data-hover='Register' className={style.textBtn}>
-										<div>Register</div>
-									</div>
-								</span>
-							</div>
-						</Link>
+						<div className={style.logIn}>
+							<Link href={`/auth`}>
+								<div className={style.headerButton}>
+									<span className='pl-6 pr-6'>
+										<div data-hover='Register' className={style.textBtn}>
+											<div>Register</div>
+										</div>
+									</span>
+								</div>
+							</Link>
+						</div>
 					)}
-					<div>
+					<div className={style.logIn}>
 						{!!user ? (
 							<Link href={`/account`}>
 								<button className={style.headerButton}>
-									<span className='pl-6 pr-6'>
+									<span className={style.userName}>
 										<div data-hover={profile?.name} className={style.textBtn}>
 											<div>{profile?.name}</div>
 										</div>

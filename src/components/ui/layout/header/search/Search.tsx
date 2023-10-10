@@ -37,7 +37,6 @@ const Search: FC<SearchType> = ({
 	headerRef,
 	searchData,
 	allProducts,
-	closeSearch,
 	wrapperRef
 }) => {
 	const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])

@@ -99,6 +99,10 @@
 	padding-right: 1.5vw;
 	cursor: pointer;
 }
+.userName {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
 //ANIMATED
 /* Анимация при наведении на headerButton */
 .headerButton:hover .textBtn:before {
@@ -218,3 +222,5 @@
 	background-color: white; /* Измените на желаемый цвет */
 	/* Другие стили для хедера, когда он прокручен вниз */
 }
+
+@import './header.adapt.scss';

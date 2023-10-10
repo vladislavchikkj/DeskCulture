@@ -322,3 +322,16 @@
 .btnArrowMenu span {
 	transition: all 0.4s;
 }
+
+@media only screen and (max-width: 1200px) {
+	.btnArrowMenu:before {
+		width: 2vw;
+		height: 2vw;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
+}

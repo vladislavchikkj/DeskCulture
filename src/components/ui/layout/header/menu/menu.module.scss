@@ -10,7 +10,7 @@
 	padding-top: 6vw;
 	padding-left: 6vw;
 	padding-right: 6vw;
-	padding-bottom: 6vw;
+	padding-bottom: 2vw;
 }
 .popupWrapper {
 	margin: 0 auto;
@@ -35,6 +35,8 @@
 	opacity: 1;
 	transition: 0.4s;
 	animation: on 0.5s forwards;
+	display: flex;
+	flex-direction: column;
 }
 .closeMenu {
 	opacity: 0.8;
@@ -63,7 +65,6 @@
 	}
 }
 .menuWrapper {
-	padding-top: 5vh;
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
@@ -134,10 +135,23 @@
 	font-size: 1.5vw;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 2vw; /* 105.263% */
+	line-height: 5vw; /* 105.263% */
 	letter-spacing: -1.9px;
 	opacity: 0;
 	animation: fade 1s forwards;
+}
+.menuBtn {
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px;
+	padding-top: 5rem;
+	padding-bottom: 1rem;
+	button {
+		width: 10vw;
+	}
+}
+.home {
+	cursor: pointer;
 }
 @keyframes fade {
 	0% {
@@ -183,3 +197,4 @@
 		opacity: 1;
 	}
 }
+@import './menu.adapt.scss';
