@@ -37,16 +37,12 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 		>
 			<div className='container-f'>
 				<>
-					<div className='overflow-hidden'>
-						<motion.div variants={headingAnimation}>
-							{title && <Heading variant='catalog'>{title}</Heading>}
-						</motion.div>
-					</div>
-					<div className='overflow-hidden'>
-						<motion.div custom={1.1} variants={headingAnimation}>
-							<ButtonSwitcher />
-						</motion.div>
-					</div>
+					<motion.div variants={headingAnimation}>
+						{title && <Heading variant='catalog'>{title}</Heading>}
+					</motion.div>
+					<motion.div custom={1.1} variants={headingAnimation}>
+						<ButtonSwitcher />
+					</motion.div>
 				</>
 				<motion.div custom={1.2} variants={headingAnimation}>
 					{selectedButton === 'Categories' && <>{children}</>}

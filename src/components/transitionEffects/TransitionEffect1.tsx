@@ -5,7 +5,7 @@ const variants = {
 	in: {
 		opacity: 1,
 		scale: 1,
-		overflow: 'auto',
+		overflow: 'hidden',
 		transition: {
 			duration: 0.4
 		}
@@ -13,7 +13,6 @@ const variants = {
 	out: {
 		opacity: 0,
 		scale: 1,
-		overflow: 'hidden',
 		transition: {
 			duration: 0.4
 		}

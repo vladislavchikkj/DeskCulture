@@ -21,6 +21,15 @@ const nextConfig = {
 		const fileLoaderRule = config.module.rules.find(rule =>
 			rule.test?.test?.('.svg')
 		)
+		config.module.rules.push({
+			test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+			loader: 'file-loader',
+			options: {
+				name: '[name].[ext]',
+				outputPath: 'static/media/',
+				publicPath: '_next/static/media/'
+			}
+		})
 		config.module.rules.push(
 			{
 				...fileLoaderRule,

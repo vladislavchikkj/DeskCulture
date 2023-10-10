@@ -57,6 +57,28 @@ body {
 	animation: off 0.4s forwards;
 }
 
+//scrollbar
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+//track
+
+::-webkit-scrollbar-track {
+	z-index: -1;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #383838;
+	border-radius: 20px;
+	width: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #7a7a7a;
+}
+
 @keyframes on {
 	from {
 		opacity: 0.8;
@@ -73,30 +95,6 @@ body {
 		opacity: 0.8;
 	}
 }
-
-::-webkit-scrollbar {
-	width: 0;
-	height: 0;
-}
-// Popup scrollbar
-// body::-webkit-scrollbar {
-// 	width: 6px;
-// 	height: 6px;
-// }
-// body::-webkit-scrollbar-track {
-// 	border-radius: 10px;
-// 	background: rgba(0, 0, 0, 0);
-// }
-// body::-webkit-scrollbar-thumb {
-// 	border-radius: 10px;
-// 	background: rgba(0, 0, 0, 0.671);
-// }
-// body::-webkit-scrollbar-thumb:hover {
-// 	background: rgba(0, 0, 0, 0.616);
-// }
-// body::-webkit-scrollbar-thumb:active {
-// 	background: rgb(0, 0, 0);
-// }
 
 .swiper-wrapper {
 	display: flex;
@@ -138,5 +136,5 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 0 auto;
-	z-index: 9998;
+	z-index: 20;
 }

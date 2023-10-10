@@ -3,15 +3,13 @@ import {
 	FLUSH,
 	PAUSE,
 	PERSIST,
+	persistStore,
 	PURGE,
 	REGISTER,
 	REHYDRATE
 } from 'redux-persist'
 import { cartSlice } from './cart/cart.slice'
 import { userSlice } from './user/user.slice'
-
-let store: any
-let persistor: any
 
 const isClient = typeof window !== 'undefined'
 
@@ -23,7 +21,7 @@ const combinedReducers = combineReducers({
 let mainReducer = combinedReducers
 
 if (isClient) {
-	const { persistReducer, persistStore } = require('redux-persist')
+	const { persistReducer } = require('redux-persist')
 	const storage = require('redux-persist/lib/storage').default
 
 	const persistConfig = {
@@ -33,19 +31,17 @@ if (isClient) {
 	}
 
 	mainReducer = persistReducer(persistConfig, combinedReducers)
-
-	store = configureStore({
-		reducer: mainReducer,
-		middleware: getDefaultMiddleware =>
-			getDefaultMiddleware({
-				serializableCheck: {
-					ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-				}
-			})
-	})
-
-	persistor = persistStore(store)
 }
+export const store = configureStore({
+	reducer: mainReducer,
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+			}
+		})
+})
 
-export { persistor, store }
+export const persistor = persistStore(store)
+
 export type TypeRootState = ReturnType<typeof mainReducer>
