@@ -52,7 +52,7 @@
 	.categoryName h2 {
 		font-size: 2.2rem;
 		font-weight: 500;
-		line-height: 1.1vw; /* 105.263% */
+		line-height: 35px; /* 105.263% */
 		letter-spacing: -1.9px;
 	}
 	.categoryName h3 {
@@ -111,6 +111,8 @@
 	}
 	.categoryName h2 {
 		padding-top: 2vh;
+		line-height: 35px; /* 105.263% */
+		letter-spacing: -1.9px;
 	}
 	.categoryName h3 {
 		padding-top: 5vh;

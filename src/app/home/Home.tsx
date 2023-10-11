@@ -75,25 +75,23 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				<ScrollParallax lerpEase={1} zIndex={1} strength={0.25}>
 					<HomePlayer />
 				</ScrollParallax>
-				<div id='homesetup'>
-					<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
-						<HomeSetup
-							setups={setups}
-							setupsLength={2}
-							homeRef={inViewPageRef}
-						/>
+				<div ref={inViewPageRef}>
+					<div id='homesetup'>
+						<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
+							<HomeSetup setups={setups} setupsLength={2} />
+						</ScrollParallax>
+					</div>
+					<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.05}>
+						<HomeCategory categories={categories} categoriesLength={2} />
 					</ScrollParallax>
+					<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
+						<HomeSocial />
+					</ScrollParallax>
+					<ScrollParallax zIndex={13} strength={-0.15}>
+						<HomeReviews products={products} />
+					</ScrollParallax>
+					<Footer />
 				</div>
-				<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
-					<HomeCategory categories={categories} categoriesLength={2} />
-				</ScrollParallax>
-				<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
-					<HomeSocial />
-				</ScrollParallax>
-				<ScrollParallax zIndex={13} strength={-0.15}>
-					<HomeReviews products={products} />
-				</ScrollParallax>
-				<Footer />
 				<Notifications
 					isOpen={isNotificationsOpen}
 					closeNotifications={handleCookiesAcceptance}

@@ -1,4 +1,4 @@
-import { FC, LegacyRef } from 'react'
+import { FC, LegacyRef, useEffect, useState } from 'react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // import required modules
 import Button from '@/ui/common/buttons/Button'
 
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import style from './homesocial.module.scss'
 import FacebookImg from './svg/facebook.svg'
 import InstImg from './svg/instagram.svg'
@@ -17,6 +18,27 @@ type HomeSocialProps = {
 }
 
 const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
+	const device = useCustomMediaQuery()
+	const [slidesPerView, setSlidesPerView] = useState(3)
+
+	useEffect(() => {
+		switch (device) {
+			case 'laptop':
+				setSlidesPerView(2)
+				break
+			case 'tablet':
+				setSlidesPerView(2)
+				break
+			case 'mobile_m':
+				setSlidesPerView(1)
+				break
+			case 'mobile_s':
+				setSlidesPerView(1)
+				break
+			default:
+				setSlidesPerView(3) // default to 3 for desktop and larger devices
+		}
+	}, [device])
 	return (
 		<>
 			<div ref={socialRef} className={`${style.social} container-f`}>
@@ -47,7 +69,8 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 						<div className={style.linksWrapContainer}>
 							<Swiper
 								className={style.swiper}
-								slidesPerView={2.5}
+								// @ts-ignore
+								slidesPerView={slidesPerView}
 								spaceBetween={30}
 								pagination={{
 									clickable: true

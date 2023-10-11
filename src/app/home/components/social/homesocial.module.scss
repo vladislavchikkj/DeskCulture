@@ -1,6 +1,6 @@
 .social {
 	width: 100%;
-	height: 120vh;
+	height: 100vh;
 	background: #cdcecf;
 
 	padding-top: 8vh;
@@ -20,8 +20,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	gap: 2.5vw;
-	height: 50%;
+	gap: 4.5vw;
 }
 
 .sliderBtns {
@@ -29,6 +28,9 @@
 	gap: 0.4vw;
 }
 .linksWrap {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 40%;
 	width: 100%;
 	height: 100%;
 }
@@ -68,7 +70,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 7.5vw 10.5vw 7.5vw 10.5vw;
+	padding: 5vw 8vw 5vw 8vw;
 }
 .linkDescr {
 	width: 100%;
@@ -118,3 +120,5 @@
 	padding-left: 14vw;
 	padding-right: 14vw;
 }
+
+@import './homesocial.adapt.scss';

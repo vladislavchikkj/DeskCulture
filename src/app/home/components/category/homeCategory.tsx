@@ -19,11 +19,13 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 				<div className={`${style.setup} container-f`}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>02</span>
-						<Link href={'/catalog/categories'}>
-							<Button data-hover='categories' variant='grey'>
-								categories
-							</Button>
-						</Link>
+						<div className={style.setupBtn}>
+							<Link href={'/catalog/categories'}>
+								<Button data-hover='categories' variant='grey'>
+									categories
+								</Button>
+							</Link>
+						</div>
 					</div>
 					<div className={style.categoryName}>
 						<h2>Product categories</h2>

@@ -1,17 +1,15 @@
 .category {
 	background: rgb(255, 255, 255);
-	height: 100%;
-	border-top: 1px solid rgba(25, 27, 29, 0.1);
+	height: 100vh;
 }
 .setup {
 	width: 100%;
 	height: 100%;
 	background: rgb(255, 255, 255);
 
-	padding-top: 8vw;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 0.5fr 1fr;
+	align-content: space-around;
 	gap: 2.5vw;
 }
 .btnWrapper {
@@ -107,9 +105,10 @@
 .image:hover {
 	transform: scale(1.1);
 }
-
 .plusBtn {
 	position: absolute;
 	right: 1vw;
 	bottom: 3vh;
 }
+
+@import './homecategory.adapt.scss';
