@@ -20,7 +20,7 @@ import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
 import HomePlayer from './components/player/homePlayer'
-import HomeReviews from './components/reviews/homeReviews'
+import BestSellers from './components/reviews/homeReviews'
 import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
@@ -88,9 +88,11 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 						<HomeSocial />
 					</ScrollParallax>
 					<ScrollParallax zIndex={13} strength={-0.15}>
-						<HomeReviews products={products} />
+						<BestSellers products={products} />
 					</ScrollParallax>
-					<Footer />
+					<ScrollParallax zIndex={14} strength={-0.05}>
+						<Footer />
+					</ScrollParallax>
 				</div>
 				<Notifications
 					isOpen={isNotificationsOpen}

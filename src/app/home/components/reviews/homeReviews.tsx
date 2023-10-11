@@ -7,7 +7,7 @@ import ProductList from '@/ui/catalog/productsList/ProductList'
 import Link from 'next/link'
 import style from './homereviews.module.scss'
 
-const HomeReviews: FC<{ products: IProduct[] }> = products => {
+const BestSellers: FC<{ products: IProduct[] }> = products => {
 	return (
 		<>
 			<div className={`${style.reviews}  container-f`}>
@@ -32,4 +32,4 @@ const HomeReviews: FC<{ products: IProduct[] }> = products => {
 		</>
 	)
 }
-export default HomeReviews
+export default BestSellers
