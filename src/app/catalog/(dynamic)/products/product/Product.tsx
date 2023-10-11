@@ -104,7 +104,7 @@ const Products: FC<props> = ({ product }) => {
 								<motion.img
 									variants={imageAnimation}
 									className={style.image}
-									src={product[0].images[selectedImageIndex]} // Step 3: Use selected image index to update src
+									src={product[0].images[selectedImageIndex]}
 									alt={product[0].name}
 								/>
 							</motion.div>

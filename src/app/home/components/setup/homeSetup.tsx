@@ -4,7 +4,6 @@ import { FC, LegacyRef } from 'react'
 import Button from '@/ui/common/buttons/Button'
 
 import { TypePaginationSetup } from '@/types/product.interface'
-
 import style from './homesetup.module.scss'
 
 type HomeSetupProps = {

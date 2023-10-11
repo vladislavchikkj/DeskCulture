@@ -7,15 +7,6 @@ export const homeAnimation = {
 		transition: { duration: 0.9, delay: custom * 0.1 }
 	})
 }
-export const LowBarAnimation = {
-	hidden: {
-		y: 300
-	},
-	visible: (custom: number) => ({
-		y: 0,
-		transition: { duration: 0.9, delay: custom * 0.2 }
-	})
-}
 
 export const textAnimation = {
 	hidden: {

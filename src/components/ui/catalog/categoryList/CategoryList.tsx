@@ -14,14 +14,12 @@ import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { motion } from 'framer-motion'
 
-// Подключите компонент лоадера
-
 interface CategoryProps {
 	categories: ICategory[]
 }
 
 const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
-	const [isLoading, setIsLoading] = useState(false) // Добавляем стейт для загрузки
+	const [isLoading, setIsLoading] = useState(false)
 	const getStaticPaths: GetStaticPaths = async () => {
 		const categories = await CategoryService.getAll()
 
@@ -55,7 +53,7 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 			variants={baseAnimation}
 			className={setupStyle.itemWrapper}
 		>
-			{isLoading ? ( // Если isLoading === true, показываем лоадер
+			{isLoading ? (
 				<Loader />
 			) : (
 				categories.map(category => (

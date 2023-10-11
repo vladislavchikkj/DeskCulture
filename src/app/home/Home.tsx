@@ -12,10 +12,7 @@ import Footer from '@/ui/layout/footer/Footer'
 import { TypeCombinedPagination } from '@/types/product.interface'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
-import {
-	homeAnimation,
-	LowBarAnimation
-} from '@/components/animations/homeAnimation'
+import { homeAnimation } from '@/components/animations/homeAnimation'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Link from 'next/link'
 import { ScrollParallax } from 'react-just-parallax'
@@ -30,8 +27,10 @@ import style from './home.module.scss'
 
 const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
-		initialInView: false,
-		threshold: 0.2
+		threshold: 0
+	})
+	const { ref: inViewPageRef, inView: inViewPage } = useInView({
+		threshold: 0
 	})
 
 	const { updateLayout } = useLayout()
@@ -78,7 +77,11 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				</ScrollParallax>
 				<div id='homesetup'>
 					<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
-						<HomeSetup setups={setups} setupsLength={2} />
+						<HomeSetup
+							setups={setups}
+							setupsLength={2}
+							homeRef={inViewPageRef}
+						/>
 					</ScrollParallax>
 				</div>
 				<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
@@ -97,12 +100,15 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				>
 					This website uses <strong className='text-greySub'>cookies</strong>
 				</Notifications>
-				<Link href='#homesetup'>
+				{/* <Link href='#homesetup'>
 					<motion.div custom={1} variants={LowBarAnimation}>
-						<LowBar lowbarState={inViewIntro}>Select a ready setup</LowBar>
+					<LowBar lowbarState={inViewCategory}>Select a category</LowBar>
 					</motion.div>
-				</Link>
+				</Link> */}
 			</motion.section>
+			<Link href='#homesetup'>
+				<LowBar lowbarState={inViewPage}>Select a ready setup</LowBar>
+			</Link>
 		</>
 	)
 }

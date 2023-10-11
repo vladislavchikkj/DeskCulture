@@ -1,4 +1,5 @@
 .lowbar {
+	animation: on 1s forwards;
 	position: sticky;
 	display: flex;
 	justify-content: space-between;
@@ -6,18 +7,31 @@
 	background-color: #ffffff;
 	width: 100vw;
 	height: 8vh;
-	border-top: 1px solid rgba(25, 27, 29, 0.1);
-	transition: all 0.4s ease-in-out;
 	z-index: 15;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	animation: on 0.4s forwards;
+	transform-origin: 0%;
+	.lowbarWrapper {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
 }
 .lowbar:hover {
 	height: 10vh;
-	cursor: pointer;
 }
 .off {
-	transition: all 0.5s;
 	opacity: 0;
-	height: 10vh;
+}
+
+@keyframes on {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 // Adapt
@@ -26,7 +40,7 @@
 }
 @media only screen and (max-width: 768px) {
 	.lowbar {
-		padding-top: 3vw;
+		padding-top: 1vw;
 		height: 10vh;
 	}
 }
