@@ -9,7 +9,6 @@ import AddToCartButton from './addToCardButton/AddToCartButton'
 import FavoriteButton from './favoriteButton/FavoriteButton'
 import style from './product-item.module.scss'
 import ProductRating from './productRating/ProductRating'
-import { PRODUCTS } from '@/services/product/product.types'
 
 const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 	product,
@@ -46,8 +45,10 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 
 				<div className={style.infoWrapper}>
 					<div className={style.priceText}>
-						<div className='flex gap-2'>
-							<div className={style.price}>{convertPrice(product.price)}</div>
+						<div className={style.priceTextWrapper}>
+							<div className={style.price}>
+								{convertPrice(product.price)} USD
+							</div>
 							<Link
 								className={style.itemSlug}
 								href={`/catalog/categories/${product.category.slug}`}
@@ -55,11 +56,13 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 								{product.category.name}
 							</Link>
 						</div>
-						<div className={style.available}>
-							Only {product.remains} left on stock.
-						</div>
 					</div>
-					<ProductRating product={product} />
+					<div className={style.rating}>
+						<ProductRating product={product} />
+					</div>
+				</div>
+				<div className={style.available}>
+					Only {product.remains} left on stock.
 				</div>
 			</div>
 		</div>

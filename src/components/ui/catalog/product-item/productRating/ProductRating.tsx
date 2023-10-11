@@ -21,12 +21,11 @@ const ProductRating: FC<{ product: IProduct }> = ({ product }) => {
 							<Rating
 								readonly
 								initialValue={rating}
-								SVGstyle={{
-									display: 'inline-block'
-								}}
+								SVGstyle={{ display: 'inline-block' }}
 								size={15}
 								allowFraction
 								transition
+								fillStyle={{ color: '#191b1d9f' }}
 							/>
 						</span>
 						<span className={style.grade}>{rating}</span>

@@ -1,0 +1,48 @@
+@media only screen and (max-width: 1200px) {
+	.image {
+		height: auto;
+	}
+	.nameWrapper {
+		padding-top: 8px;
+	}
+	.price {
+		color: #000000;
+		padding-bottom: 8px;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.itemTitle {
+		font-size: 1.1rem;
+		font-weight: 400;
+		line-height: 25px;
+		letter-spacing: -1.1px;
+	}
+	.infoWrapper {
+		display: flex;
+		flex-direction: column;
+		border-top: 1px solid #e5e4e1;
+		margin-top: 1vh;
+		padding-top: 1.5vh;
+		padding-bottom: 10px;
+	}
+	.price {
+		color: #000000;
+		padding-bottom: 0;
+		font-weight: 500;
+	}
+	.available {
+		display: none;
+	}
+	// .rating {
+	// 	display: none;
+	// }
+	.priceTextWrapper {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
+}

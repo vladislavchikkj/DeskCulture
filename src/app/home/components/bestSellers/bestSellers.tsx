@@ -5,7 +5,7 @@ import Button from '@/ui/common/buttons/Button'
 import { IProduct } from '@/types/product.interface'
 import ProductList from '@/ui/catalog/productsList/ProductList'
 import Link from 'next/link'
-import style from './homereviews.module.scss'
+import style from './bestSellers.module.scss'
 
 const BestSellers: FC<{ products: IProduct[] }> = products => {
 	return (

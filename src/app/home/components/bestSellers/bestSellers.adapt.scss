@@ -9,6 +9,16 @@
 		letter-spacing: -6.3px;
 		padding-bottom: 6vw;
 	}
+	.reviews__header {
+		button {
+			margin-top: 30px;
+			font-size: 0.9rem;
+			padding: 5px 12px 5px 12px;
+		}
+	}
+	.reviews__items {
+		justify-content: center;
+	}
 }
 @media only screen and (max-width: 768px) {
 }

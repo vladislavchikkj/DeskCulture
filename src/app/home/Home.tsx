@@ -20,7 +20,7 @@ import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
 import HomePlayer from './components/player/homePlayer'
-import BestSellers from './components/reviews/homeReviews'
+import BestSellers from './components/bestSellers/bestSellers'
 import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
@@ -100,11 +100,6 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				>
 					This website uses <strong className='text-greySub'>cookies</strong>
 				</Notifications>
-				{/* <Link href='#homesetup'>
-					<motion.div custom={1} variants={LowBarAnimation}>
-					<LowBar lowbarState={inViewCategory}>Select a category</LowBar>
-					</motion.div>
-				</Link> */}
 			</motion.section>
 			<Link href='#homesetup'>
 				<LowBar lowbarState={inViewPage}>Select a ready setup</LowBar>
