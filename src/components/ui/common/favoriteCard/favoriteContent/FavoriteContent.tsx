@@ -11,9 +11,10 @@ import FavoritesItem from '../favoriteItem/favoriteItem'
 type props = {
 	setIsShow: Dispatch<SetStateAction<boolean>>
 	isShow?: Boolean
+	favRef?: any
 }
 
-const FavoriteContent: FC<props> = (isShow, setIsShow) => {
+const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 	const { profile } = useProfile()
 
 	return (
@@ -57,6 +58,7 @@ const FavoriteContent: FC<props> = (isShow, setIsShow) => {
 				</div>
 			</motion.div>
 			<div
+				ref={favRef}
 				onClick={() => setIsShow(!isShow)}
 				className={cn(
 					`${style.popupWrapper}`,

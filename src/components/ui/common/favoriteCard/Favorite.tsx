@@ -9,12 +9,15 @@ import FavoriteBtn from './svg/Heart.svg.svg'
 const Favorite: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 	return (
-		<div className={style.favoriteWrapper} ref={ref}>
+		<div className={style.favoriteWrapper}>
 			<div className={style.favorites} onClick={() => setIsShow(!isShow)}>
 				<FavoriteBtn />
 			</div>
 			<AsidePanel isOpen={isShow} closeAsidePanel={() => setIsShow(!isShow)}>
-				<FavoriteContent setIsShow={() => setIsShow(!isShow)}></FavoriteContent>
+				<FavoriteContent
+					favRef={ref}
+					setIsShow={() => setIsShow(!isShow)}
+				></FavoriteContent>
 			</AsidePanel>
 		</div>
 	)
