@@ -1,6 +1,5 @@
 'Use client'
 import cn from 'clsx'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 
@@ -39,41 +38,24 @@ const Header: FC<Props> = ({ inView }) => {
 			.then(result => setProducts(result))
 			.catch(err => err)
 	}, [])
-	const headerAnimation = {
-		hidden: {
-			y: -100
-		},
-		visible: {
-			y: 0,
-
-			transition: { duration: 0.6 }
-		}
-	}
 	return (
-		<motion.header
-			initial='hidden'
-			whileInView='visible'
-			viewport={{ once: true }}
-			className={cn(style.header)}
-			ref={headerRef}
-		>
-			<motion.div
+		<header className={cn(style.header)} ref={headerRef}>
+			<div
 				ref={wrapperRef}
-				variants={headerAnimation}
 				className={cn(style.headerWrapper, !inView && `${style.headerWhite}`)}
 			>
 				<div className={style.leftBtnHeader}>
 					<Menu headerRef={headerRef} wrapperRef={wrapperRef} />
-					<div className='grid grid-flow-col'>
+					<div className={`grid grid-flow-col ${style.hideBtn}`}>
 						<Link href={`/contacts`}>
-							<div className={`${style.headerButton} ${style.hideBtn}`}>
+							<div className={`${style.headerButton} `}>
 								<div data-hover='Contacts' className={style.textBtn}>
 									<div className='flex gap-2'>Contacts</div>
 								</div>
 							</div>
 						</Link>
 						<Link href={`/catalog`}>
-							<div className={`${style.headerButton} ${style.hideBtn}`}>
+							<div className={`${style.headerButton} `}>
 								<div data-hover='Catalog' className={style.textBtn}>
 									<div>Catalog</div>
 								</div>
@@ -146,11 +128,13 @@ const Header: FC<Props> = ({ inView }) => {
 							</Link>
 						)}
 					</div>
-					<Favorite />
-					<Cart />
+					<div className={style.favCartBtns}>
+						<Favorite />
+						<Cart />
+					</div>
 				</div>
-			</motion.div>
-		</motion.header>
+			</div>
+		</header>
 	)
 }
 

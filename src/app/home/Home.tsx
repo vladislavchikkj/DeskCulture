@@ -16,11 +16,11 @@ import { homeAnimation } from '@/components/animations/homeAnimation'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Link from 'next/link'
 import { ScrollParallax } from 'react-just-parallax'
+import BestSellers from './components/bestSellers/bestSellers'
 import HomeCategory from './components/category/homeCategory'
 import HomeIntro from './components/intro/homeIntro'
 import LowBar from './components/lowbar/homeLowbar'
 import HomePlayer from './components/player/homePlayer'
-import BestSellers from './components/bestSellers/bestSellers'
 import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
@@ -90,7 +90,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 					<ScrollParallax zIndex={13} strength={-0.15}>
 						<BestSellers products={products} />
 					</ScrollParallax>
-					<ScrollParallax zIndex={14} strength={-0.05}>
+					<ScrollParallax lerpEase={0.05} zIndex={14} strength={-0.05}>
 						<Footer />
 					</ScrollParallax>
 				</div>

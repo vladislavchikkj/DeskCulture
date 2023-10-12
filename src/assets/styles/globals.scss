@@ -33,17 +33,6 @@ body {
 	opacity: 0.2 !important;
 }
 
-.open-menu {
-	opacity: 1;
-	transition: 0.4s;
-	z-index: 100;
-}
-.close-menu {
-	opacity: 0.8;
-	transform: translateX(105%);
-	transition: 0.4s;
-}
-
 // вынести в файл стилей
 
 .dark-bg {

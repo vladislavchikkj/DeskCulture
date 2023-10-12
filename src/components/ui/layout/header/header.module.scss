@@ -1,6 +1,14 @@
 .header {
 	position: relative;
 }
+@keyframes headerAni {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
 .headerWrapper {
 	position: fixed;
 	width: 100%;
@@ -11,6 +19,7 @@
 	background: #cdcecf;
 	z-index: 100;
 	transition: all 0.3s;
+	animation: headerAni 0.4s forwards;
 }
 .headerWhite {
 	background: white;
@@ -154,6 +163,10 @@
 .leftBtn {
 	grid-auto-flow: column;
 }
+.favCartBtns {
+	display: flex;
+	align-items: center;
+}
 
 @media (max-width: 1549px) {
 	.headerButton {
@@ -172,6 +185,7 @@
 @media (max-width: 1349px) {
 	.hideBtn {
 		display: none;
+		pointer-events: none;
 	}
 	.headerButton {
 		font-size: 1.3vw;

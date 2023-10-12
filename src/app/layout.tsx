@@ -31,6 +31,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body>
 				<Providers>{children}</Providers>
+				<div id='asidePanel'></div>
 				<div id='modal'></div>
 				<div id='notifications'></div>
 				<div id='lowbar'></div>

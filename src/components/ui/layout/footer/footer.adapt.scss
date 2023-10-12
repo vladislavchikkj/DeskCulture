@@ -1,0 +1,77 @@
+@media only screen and (max-width: 1200px) {
+	.footer {
+		height: 35vh;
+		padding-bottom: 20px;
+	}
+	.logo {
+		font-size: 1rem;
+	}
+	.links {
+		font-size: 1rem;
+		line-height: 22px;
+	}
+	.buttons {
+		button {
+			font-size: 1rem;
+			&:before {
+				font-size: 1rem;
+			}
+		}
+	}
+	.row {
+		font-size: 0.9rem;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.buttons {
+		button {
+			font-size: 1rem;
+			padding: 4px 10px 5px 10px;
+			&:before {
+				font-size: 1rem;
+				padding: 4px 10px 5px 10px;
+			}
+		}
+	}
+	.links {
+		padding-right: 15vw;
+	}
+}
+@media only screen and (max-width: 567px) {
+	.logo {
+		display: none;
+	}
+	.footer {
+		height: 50vh;
+	}
+	.info {
+		flex-direction: column-reverse;
+	}
+	.buttons {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		button {
+			width: 100%;
+			padding: 6px 10px 6px 10px;
+			&:before {
+				width: 100%;
+				padding: 6px 10px 6px 10px;
+			}
+		}
+	}
+	.links {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding-right: 0;
+		padding-top: 30px;
+		div {
+			padding: 15px 0 15px 0;
+			border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+		}
+	}
+}
+@media only screen and (max-width: 320px) {
+}

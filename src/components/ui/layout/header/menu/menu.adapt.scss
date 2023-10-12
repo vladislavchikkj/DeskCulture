@@ -1,6 +1,7 @@
 @media only screen and (max-width: 1200px) {
 	.menuWrapper {
 		padding-top: 5vh;
+		padding-bottom: 5vh;
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
@@ -11,9 +12,14 @@
 	}
 	.menuList {
 		button {
-			width: 2vw;
-			height: 2vw;
-			font-size: 0.5rem;
+			width: 20px;
+			height: 20px;
+			font-size: 0.7rem;
+			&:before {
+				width: 20px;
+				height: 20px;
+				font-size: 0.7rem;
+			}
 		}
 	}
 	.menuListName {

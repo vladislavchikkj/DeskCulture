@@ -38,7 +38,7 @@
 	align-items: flex-start;
 }
 .itemTitle {
-	color: #191b1d;
+	color: #494a46;
 	font-size: 1.1rem;
 	font-family: Inter;
 	font-style: bold;
@@ -118,6 +118,14 @@
 	line-height: 1rem; /* 130% */
 	letter-spacing: 1px;
 	text-transform: uppercase;
+}
+.btnMobile {
+	position: absolute;
+	right: 0;
+	background-color: #ffffffc5;
+	padding: 5px;
+	border-radius: 0 0 0 5px;
+	z-index: 1;
 }
 
 @import './product-item.adapt.scss';

@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import { FC, MutableRefObject, useEffect } from 'react'
+import { FC, MutableRefObject, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import Button from '@/ui/common/buttons/Button'
@@ -10,6 +10,8 @@ import { useOutside } from '@/hooks/useOutside'
 import styleHeader from '../header.module.scss'
 
 import { useAuth } from '@/hooks/useAuth'
+import AsidePanel from '@/ui/common/asidePanel/asidePanel'
+import FavoriteContent from '@/ui/common/favoriteCard/favoriteContent/FavoriteContent'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
 import style from './menu.module.scss'
 import Dots from './svg/icon_menu.svg.svg'
@@ -21,7 +23,9 @@ type MenuType = {
 }
 const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 	const { user } = useAuth()
+	const [asidePanelIsOpen, setAsidePanelIsOpen] = useState(false)
 	const { isShow, setIsShow, ref, addRef } = useOutside(false)
+	console.log(asidePanelIsOpen)
 	const clickHandler = () => {
 		setIsShow(false)
 	}
@@ -107,11 +111,24 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 											↓
 										</Button>
 									</Link>
-									<div className={style.menuList}>
+									<div
+										className={style.menuList}
+										onClick={() => setAsidePanelIsOpen(!asidePanelIsOpen)}
+									>
 										<span className={style.menuListName}>Favorites</span>
 										<Button data-hover='↓' variant={'btnArrowMenu'}>
 											↓
 										</Button>
+										<AsidePanel
+											isOpen={!asidePanelIsOpen}
+											closeAsidePanel={() =>
+												setAsidePanelIsOpen(!asidePanelIsOpen)
+											}
+										>
+											<FavoriteContent
+												setIsShow={() => setAsidePanelIsOpen(!asidePanelIsOpen)}
+											></FavoriteContent>
+										</AsidePanel>
 									</div>
 									<div className={style.menuList}>
 										<span className={style.menuListName}>Your Bag</span>

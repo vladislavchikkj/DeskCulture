@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { IProduct } from '@/types/product.interface'
 
 import { convertPrice } from '@/utils/convertPrice'
 
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import AddToCartButton from './addToCardButton/AddToCartButton'
 import FavoriteButton from './favoriteButton/FavoriteButton'
 import style from './product-item.module.scss'
@@ -14,10 +15,33 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 	product,
 	descr
 }) => {
+	const device = useCustomMediaQuery()
+	const [isVisible, setIsVisible] = useState(true)
+
+	useEffect(() => {
+		switch (device) {
+			case 'mobile_m':
+				setIsVisible(false)
+				break
+			case 'mobile_s':
+				setIsVisible(false)
+				break
+			default:
+				setIsVisible(true)
+		}
+	}, [device])
 	return (
 		<div className={style.item}>
 			<div>
 				<div className={style.imageBox}>
+					{!isVisible && (
+						<div className={style.btnMobile}>
+							<div className={style.favoriteButton}>
+								<FavoriteButton variant='default' productId={product.id} />
+								<AddToCartButton product={product}> </AddToCartButton>
+							</div>
+						</div>
+					)}
 					<Link href={`/catalog/products/${product.slug}`}>
 						<div className={style.imageWrapper}>
 							<img
@@ -34,12 +58,14 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 					<Link href={`/catalog/products/${product.slug}`}>
 						<h3 className={style.itemTitle}>{product.name}</h3>
 					</Link>
-					<div className={style.btn}>
-						<div className={style.favoriteButton}>
-							<FavoriteButton variant='default' productId={product.id} />
-							<AddToCartButton product={product}> </AddToCartButton>
+					{isVisible && (
+						<div className={style.btn}>
+							<div className={style.favoriteButton}>
+								<FavoriteButton variant='default' productId={product.id} />
+								<AddToCartButton product={product}> </AddToCartButton>
+							</div>
 						</div>
-					</div>
+					)}
 				</div>
 				{!descr && <div className={style.descr}>{product.info} ...</div>}
 

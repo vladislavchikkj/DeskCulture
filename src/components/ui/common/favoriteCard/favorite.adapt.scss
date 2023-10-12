@@ -1,7 +1,8 @@
 @media only screen and (max-width: 1200px) {
 	.favorites {
-		border-right: 1px solid #b7b7b780;
 		padding: 11px 1.6vw 10px 1.5vw;
+		padding-top: auto !important;
+		padding-bottom: auto !important;
 		cursor: pointer;
 		svg {
 			width: 18px;
@@ -13,7 +14,7 @@
 }
 @media only screen and (max-width: 567px) {
 	.favorites {
-		display: none;
+		padding: 15px 15px 14px 15px;
 	}
 }
 @media only screen and (max-width: 320px) {

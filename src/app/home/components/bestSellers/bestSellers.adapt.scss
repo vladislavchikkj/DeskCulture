@@ -23,6 +23,30 @@
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 567px) {
+	.reviews__header {
+		padding-top: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		button {
+			margin-top: 0;
+			font-size: 0.9rem;
+			padding: 5px 12px 5px 12px;
+		}
+		padding-bottom: 25px;
+		margin-bottom: 25px;
+		border-bottom: 1px solid #b7b7b7;
+	}
+	.reviews__title {
+		color: #191b1d;
+		font-family: Inter;
+		font-size: 2.5rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 15px; /* 100% */
+		letter-spacing: -3.3px;
+		padding-bottom: 4vw;
+	}
 }
 @media only screen and (max-width: 320px) {
 }

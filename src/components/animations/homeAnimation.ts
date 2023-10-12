@@ -10,7 +10,7 @@ export const homeAnimation = {
 
 export const textAnimation = {
 	hidden: {
-		y: 300,
+		y: 220,
 		opacity: 0
 	},
 	visible: (custom: number) => ({
