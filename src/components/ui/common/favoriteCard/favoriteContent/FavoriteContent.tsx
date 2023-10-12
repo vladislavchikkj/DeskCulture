@@ -1,7 +1,6 @@
 import AuthButton from '@/app/auth/authButton/authButton'
 import { asidePanelAnimation } from '@/components/animations/asideAnimation'
 import { useProfile } from '@/hooks/useProfile'
-import cn from 'clsx'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Dispatch, FC, SetStateAction } from 'react'
@@ -18,12 +17,13 @@ const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 	const { profile } = useProfile()
 
 	return (
-		<>
+		<div>
 			<motion.div
 				initial='hidden'
 				whileInView='visible'
 				variants={asidePanelAnimation}
 				className={style.popup}
+				ref={favRef}
 			>
 				<div className={style.titleWrapper}>
 					<div className={style.title}>WHISHLIST</div>
@@ -58,16 +58,10 @@ const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 				</div>
 			</motion.div>
 			<div
-				ref={favRef}
 				onClick={() => setIsShow(!isShow)}
-				className={cn(
-					`${style.popupWrapper}`,
-					isShow ? 'dark-bg' : 'off-dark-bg '
-				)}
-			>
-				123
-			</div>
-		</>
+				className={style.popupWrapper}
+			></div>
+		</div>
 	)
 }
 

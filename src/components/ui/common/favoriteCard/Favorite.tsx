@@ -1,7 +1,7 @@
 import { useOutside } from '@/hooks/useOutside'
 
 import { FC } from 'react'
-import AsidePanel from '../asidePanel/asidePanel'
+import AsidePanel from '../asidePanel/PopUp'
 import style from './favorite.module.scss'
 import FavoriteContent from './favoriteContent/FavoriteContent'
 import FavoriteBtn from './svg/Heart.svg.svg'

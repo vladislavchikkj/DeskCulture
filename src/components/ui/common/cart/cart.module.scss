@@ -1,7 +1,7 @@
 .popup {
 	padding: 4vw;
 	padding-top: 2.5vw;
-	position: absolute;
+	position: fixed;
 	right: 0;
 	top: 0;
 	display: flex;
@@ -12,9 +12,10 @@
 	overflow: scroll;
 	overflow-x: hidden;
 	scroll-behavior: smooth;
+	z-index: 9999;
 }
 .popupWrapper {
-	position: absolute;
+	position: fixed;
 	right: 0;
 	top: 0;
 	display: flex;
@@ -22,6 +23,7 @@
 	height: 100vh;
 	width: 100vw;
 	background-color: rgba(0, 0, 0, 0.808);
+	z-index: 9998;
 }
 
 .cart {
@@ -103,3 +105,17 @@
 .totalBtn {
 	padding-top: 2vw;
 }
+
+.dark-bg {
+	opacity: 1;
+	transform: scale(1);
+	animation: on 1s forwards;
+}
+.off-dark-bg {
+	opacity: 0.8;
+	transform: translateX(125%);
+	animation: off 0.4s forwards;
+	transform: translateX();
+}
+
+@import './cart.adapt.scss';

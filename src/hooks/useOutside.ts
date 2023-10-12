@@ -21,7 +21,12 @@ export const useOutside = (
 		if (addRef.current && addRef.current.contains(event.target)) {
 			return
 		}
-		if (ref.current && !ref.current.contains(event.target)) {
+
+		if (
+			ref.current &&
+			event.target !== ref.current &&
+			!ref.current.contains(event.target)
+		) {
 			setIsShow(false)
 		}
 	}
