@@ -14,11 +14,10 @@ import { IProduct } from '@/types/product.interface'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import {
 	breadcrumbsAnimation,
-	imageAnimation,
-	sliderAnimation,
-	sliderItemsAnimation
+	imageAnimation
 } from '@/components/animations/productAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
 import Detail from './details/Detail'
 import style from './product.module.scss'
@@ -41,10 +40,29 @@ const Products: FC<props> = ({ product }) => {
 	const toggleVisibility = () => {
 		setIsVisible(!isVisible)
 	}
-	const [selectedImageIndex, setSelectedImageIndex] = useState(0) // Step 1: State variable for selected image index
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
 	const handleImageClick = (index: number) => {
 		setSelectedImageIndex(index)
+	}
+	const device = useCustomMediaQuery()
+	const sliderAnimation = {
+		hidden: {
+			height: 0
+		},
+		visible: (custom: number) => ({
+			height: device === 'laptop' || 'tablet' ? '40vh' : '60vw',
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
+	}
+	const sliderItemsAnimation = {
+		hidden: {
+			height: 0
+		},
+		visible: (custom: number) => ({
+			height: device === 'laptop' || 'tablet' ? '40vh' : '60vw',
+			transition: { duration: 0.8, delay: custom * 0.2 }
+		})
 	}
 
 	return (
@@ -78,27 +96,25 @@ const Products: FC<props> = ({ product }) => {
 						</motion.div>
 					</div>
 					<div className={style.slider}>
-						<div className={style.sliderItemsWr}>
-							<motion.div
-								custom={2}
-								variants={sliderItemsAnimation}
-								className='overflow-scroll'
-							>
-								<div className={style.sliderItems}>
-									{product[0].images.map((image, index) => (
-										<img
-											key={index}
-											className={`${style.image} ${
-												selectedImageIndex === index ? style.selectedImage : ''
-											}`}
-											src={image}
-											alt={product[0].name}
-											onClick={() => handleImageClick(index)} // Step 2: Add click handler
-										/>
-									))}
-								</div>
-							</motion.div>
-						</div>
+						<motion.div
+							custom={2}
+							variants={sliderItemsAnimation}
+							className={style.sliderItemsWr}
+						>
+							<div className={style.sliderItems}>
+								{product[0].images.map((image, index) => (
+									<img
+										key={index}
+										className={`${style.image} ${
+											selectedImageIndex === index ? style.selectedImage : ''
+										}`}
+										src={image}
+										alt={product[0].name}
+										onClick={() => handleImageClick(index)}
+									/>
+								))}
+							</div>
+						</motion.div>
 						<div className={style.imgHeight}>
 							<motion.div variants={sliderAnimation} className={style.imgWr}>
 								<motion.img

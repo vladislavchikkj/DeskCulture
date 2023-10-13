@@ -52,7 +52,7 @@
 	img {
 		width: 100%;
 		object-fit: cover;
-		height: 60vh;
+		height: 40vh;
 		padding-bottom: 1.5vw;
 	}
 }
@@ -65,8 +65,18 @@
 .imgWr {
 	overflow: hidden;
 }
+
 .sliderItemsWr {
 	height: 60vh;
+	padding-right: 15px;
+	overflow: auto;
+}
+.sliderItemsWr::-webkit-scrollbar {
+	width: 1px;
+}
+.sliderItemsWr::-webkit-scrollbar-thumb {
+	background-color: #99999985;
+	border-radius: 50%;
 }
 .sliderItems {
 	display: flex;
@@ -208,3 +218,4 @@
 	line-height: 40px; /* 105.263% */
 	letter-spacing: -1.9px;
 }
+@import './product.adapt.scss';
