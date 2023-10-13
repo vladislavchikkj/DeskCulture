@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Dispatch, FC, SetStateAction } from 'react'
 import style from '../favorite.module.scss'
 import FavoritesItem from '../favoriteItem/favoriteItem'
+import CloseBtnSVG from './svg/close.svg'
+
 type props = {
 	setIsShow: Dispatch<SetStateAction<boolean>>
 	isShow?: Boolean
@@ -33,7 +35,7 @@ const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 								{profile?.favorites.length} items
 							</div>
 							<div onClick={() => setIsShow(!isShow)} className={style.close}>
-								𐄂
+								<CloseBtnSVG />
 							</div>
 						</div>
 						<div className={style.cart}>

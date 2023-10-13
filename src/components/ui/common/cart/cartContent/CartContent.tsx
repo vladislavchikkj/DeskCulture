@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Dispatch, FC, SetStateAction } from 'react'
 import CartItem from '../cart-item/CartItem'
 import style from '../cart.module.scss'
+import CloseBtnSVG from './svg/close.svg'
 
 type props = {
 	setIsShow: Dispatch<SetStateAction<boolean>>
@@ -29,6 +30,9 @@ const CartContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 				<div className={style.titleWrapper}>
 					<div className={style.title}>SHOPPING BAG</div>
 					<div className={style.itemsNum}>{items.length} items</div>
+					<div onClick={() => setIsShow(!isShow)} className={style.close}>
+						<CloseBtnSVG />
+					</div>
 				</div>
 				<div className={style.cart}>
 					{items.length ? (

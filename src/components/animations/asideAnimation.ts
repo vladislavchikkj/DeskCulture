@@ -3,14 +3,14 @@ export const asidePanelAnimation = {
 		x: '0%',
 		transition: {
 			delay: 0.1,
-			duration: 0.6
+			duration: 0.4
 		}
 	},
 	hidden: {
 		x: '100%',
 		transition: {
 			delay: 0.1,
-			duration: 0.5
+			duration: 0.4
 		}
 	}
 }

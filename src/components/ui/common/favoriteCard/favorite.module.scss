@@ -150,5 +150,8 @@
 	animation: off 0.4s forwards;
 	transform: translateX();
 }
+.close {
+	display: none;
+}
 
 @import './favorite.adapt.scss';

@@ -75,12 +75,14 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 							}}
 							className={style.menuListWrapper}
 						>
-							<div className={style.menuList}>
-								<span className={style.menuListName}>Account</span>
-								<Button data-hover='↓' variant={'btnArrowMenu'}>
-									↓
-								</Button>
-							</div>
+							<Link href={`/account`}>
+								<div className={style.menuList}>
+									<span className={style.menuListName}>Account</span>
+									<Button data-hover='↓' variant={'btnArrowMenu'}>
+										↓
+									</Button>
+								</div>
+							</Link>
 							<div className={style.menuList}>
 								<span className={style.menuListName}>Contacts</span>
 								<Button data-hover='↓' variant={'btnArrowMenu'}>
@@ -109,9 +111,11 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 					</div>
 					{!user && (
 						<div className={`${style.menuBtn} container-f`}>
-							<Button data-hover='Sign in' variant={'grey'}>
-								Sign in
-							</Button>
+							<Link href={'/auth'}>
+								<Button data-hover='Sign in' variant={'grey'}>
+									Sign in
+								</Button>
+							</Link>
 						</div>
 					)}
 				</motion.div>

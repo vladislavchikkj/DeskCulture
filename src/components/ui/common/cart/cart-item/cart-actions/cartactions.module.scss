@@ -18,3 +18,16 @@
 	display: flex;
 	gap: 1vw;
 }
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.counter {
+		display: flex;
+		gap: 5vw;
+	}
+}
+@media only screen and (max-width: 320px) {
+}
