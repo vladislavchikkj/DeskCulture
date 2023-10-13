@@ -7,13 +7,14 @@ import { TypePaginationСatalog } from '@/types/product.interface'
 
 import catalogStyle from '../catalog.module.scss'
 
+import { baseAnimation } from '@/components/animations/baseAnimation'
 import { ProductService } from '@/services/product/product.service'
 import { EnumProductSort } from '@/services/product/product.types'
 import Loader from '@/ui/common/loader/Loader'
 import { motion } from 'framer-motion'
 import ProductItem from '../product-item/ProductItem'
 import SortDropdown from '../product-item/sortDropdown/SortDropdown'
-import { baseAnimation } from '@/components/animations/baseAnimation'
+import style from './products.module.scss'
 
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
@@ -105,7 +106,7 @@ const ProductList: FC<ProductListProps> = ({
 						))}
 					</div>
 					{!allProductsLoaded ? (
-						<div className='flex justify-end pt-12 pb-10'>
+						<div className={style.seeMore}>
 							{!loadMoreBtnOff && (
 								<Button
 									data-hover='See more'
