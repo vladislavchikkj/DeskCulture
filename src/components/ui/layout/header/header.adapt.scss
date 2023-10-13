@@ -63,6 +63,24 @@
 		width: 100%;
 		border-right: 1px solid #b7b7b780;
 	}
+	.menu {
+		padding-left: 2vw;
+		padding-right: 2vw;
+		gap: 7px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-right: 1px solid #b7b7b7;
+
+		color: #000;
+		font-size: 14px;
+		font-family: Inter;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 19px;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
 }
 @media only screen and (max-width: 320px) {
 }

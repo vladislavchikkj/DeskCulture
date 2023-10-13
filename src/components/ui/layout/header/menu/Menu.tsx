@@ -101,12 +101,14 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 									↓
 								</Button>
 							</div>
-							<div className={style.menuList}>
-								<span className={style.menuListName}>Your Bag</span>
-								<Button data-hover='↓' variant={'btnArrowMenu'}>
-									↓
-								</Button>
-							</div>
+							<Link href={'/cart'}>
+								<div className={style.menuList}>
+									<span className={style.menuListName}>Your Bag</span>
+									<Button data-hover='↓' variant={'btnArrowMenu'}>
+										↓
+									</Button>
+								</div>
+							</Link>
 						</div>
 					</div>
 					{!user && (

@@ -8,6 +8,7 @@ import { ICategory } from '@/types/category.interface'
 import { IProduct } from '@/types/product.interface'
 
 import { useLayout } from '@/components/context/LayoutContext'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import style from './category.module.scss'
 
 type props = {
@@ -21,12 +22,13 @@ const Category: FC<props> = ({ products, category }) => {
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
+	const device = useCustomMediaQuery()
 	const introAnimation = {
 		hidden: {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: '35vw',
+			height: device === 'mobile_m' ? '40vh' : '35vw',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}

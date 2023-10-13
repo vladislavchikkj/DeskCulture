@@ -98,6 +98,7 @@
 	line-height: 2.1vw; /* 105.263% */
 	letter-spacing: -1.9px;
 }
+
 .title {
 	color: #191b1d;
 	font-family: Inter;
@@ -111,8 +112,16 @@
 .buttons {
 	display: flex;
 	justify-content: flex-end;
-	gap: 0.5vw;
+	gap: 10px;
 	padding-bottom: 10vh;
+	button {
+		font-size: 0.8rem;
+		padding: 5px 10px 5px 10px;
+		&:before {
+			padding: 5px 10px 5px 10px;
+			font-size: 0.8rem;
+		}
+	}
 }
 .intrested {
 	display: flex;
@@ -121,3 +130,5 @@
 	margin-top: 5vh;
 	border-top: 1px solid rgba(25, 27, 29, 0.1);
 }
+
+@import './setup.adapt.scss';

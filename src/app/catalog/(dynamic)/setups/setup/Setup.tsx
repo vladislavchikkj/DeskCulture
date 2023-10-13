@@ -8,6 +8,8 @@ import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
 import { useLayout } from '@/components/context/LayoutContext'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
+import SetupList from '@/ui/catalog/setupsList/SetupsList'
 import style from './setup.module.scss'
 import SetupProductItem from './setupProductItem/SetupProductItem'
 
@@ -23,13 +25,13 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 	useEffect(() => {
 		updateLayout(false)
 	}, [])
-
+	const device = useCustomMediaQuery()
 	const introAnimation = {
 		hidden: {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: '35vw',
+			height: device === 'mobile_m' || 'mobile_s' ? '40vh' : '35vw',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
@@ -99,16 +101,16 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 				<div>
 					<div className={style.intrested}>
 						<div className={style.btnWrapper}>
-							<span className={style.numdot}>01</span>
-							<Button data-hover='ready setup' variant='grey'>
-								ready setup
+							<span className={style.numdot}>02</span>
+							<Button data-hover='intrested' variant='grey'>
+								intrested
 							</Button>
 						</div>
 						<div className={style.title}>
 							YOU MAY ALSO BE <br /> INTERESTED IN:
 						</div>
 					</div>
-					{/* <SetupList setups={allSetups} /> */}
+					<SetupList setups={allSetups} />
 				</div>
 			</motion.div>
 		</motion.div>
