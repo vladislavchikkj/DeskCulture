@@ -115,6 +115,13 @@ body {
 	z-index: 20;
 }
 
+.swiper .swiper-pagination {
+	bottom: -5px !important;
+}
+.swiper-pagination-bullet-active {
+	background: #a08750 !important;
+}
+
 @media only screen and (max-width: 1200px) {
 	.container-f {
 		padding-left: 10vw;
@@ -125,6 +132,9 @@ body {
 	.container-f {
 		padding-left: 8vw;
 		padding-right: 8vw;
+	}
+	.swiper .swiper-pagination {
+		bottom: 10px !important;
 	}
 }
 @media only screen and (max-width: 320px) {

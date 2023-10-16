@@ -20,14 +20,10 @@
 		display: flex;
 		justify-content: center;
 		width: 100%;
-		height: 40vh;
 	}
 
 	.imgWr {
 		overflow: hidden;
-		img {
-			height: 40vh;
-		}
 	}
 	.descr {
 		font-size: 0.8rem;
@@ -79,6 +75,62 @@
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 567px) {
+	.breadcrumbs {
+		flex-wrap: wrap;
+	}
+	.content {
+		display: grid;
+		gap: 5vw;
+		grid-template-columns: 1fr;
+		padding-top: 12vh;
+	}
+	.imgWr {
+		overflow: hidden;
+		width: 83vw;
+	}
+	.slider {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.sliderItemsWr {
+		display: none;
+	}
+	.imgHeight {
+		height: 100%;
+	}
+	.imgWr {
+		overflow: hidden;
+		img {
+			height: 100%;
+		}
+	}
+	.price {
+		color: #bda05f;
+		font-family: Inter;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 600;
+		letter-spacing: 1.32px;
+		text-transform: uppercase;
+		padding-bottom: 2vh;
+	}
+	.buttons {
+		gap: 3vw;
+		padding-top: 2vh;
+		padding-bottom: 5vh;
+	}
+	.btnWrapper {
+		display: none;
+	}
+	.title {
+		font-size: 1.1rem;
+		line-height: 25px;
+		padding-bottom: 10px;
+	}
+	.intrested {
+		padding-bottom: 25px;
+		margin-top: 0;
+	}
 }
 @media only screen and (max-width: 320px) {
 }

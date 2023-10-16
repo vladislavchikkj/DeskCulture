@@ -32,10 +32,82 @@
 		line-height: 16px; /* 114.286% */
 		letter-spacing: -0.56px;
 	}
+	.reviewWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1vh;
+
+		width: 35vw;
+		cursor: pointer;
+	}
+	.leaveBtn {
+		button {
+			font-size: 0.8rem;
+			padding: 5px 10px 5px 10px;
+			&:before {
+				padding: 5px 10px 5px 10px;
+				font-size: 0.8rem;
+			}
+		}
+	}
+	.reviewText {
+		border-top: 1px solid #e5e4e1;
+		margin-top: 10px;
+		padding-top: 20px;
+	}
 }
 @media only screen and (max-width: 768px) {
+	.reviewWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1vh;
+
+		width: 45vw;
+		cursor: pointer;
+	}
+	.reviews {
+		padding: 8vw;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.reviewImg {
+		height: 15vh;
+	}
+	.reviewWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1vh;
+
+		width: 50vw;
+		cursor: pointer;
+	}
+	.userName {
+		display: flex;
+		flex-direction: column;
+	}
 }
 @media only screen and (max-width: 567px) {
+	.reviews {
+		padding: 8vw;
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: 0;
+	}
+	.reviewImg {
+		height: 15vh;
+	}
+	.reviewWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1vh;
+
+		width: 50vw;
+		cursor: pointer;
+	}
+	.userName {
+		display: flex;
+		flex-direction: column;
+	}
 }
 @media only screen and (max-width: 320px) {
 }

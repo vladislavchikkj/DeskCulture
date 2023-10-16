@@ -1,8 +1,9 @@
 import { useAuth } from '@/hooks/useAuth'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import { IReview } from '@/types/review.interface'
 import Button from '@/ui/common/buttons/Button'
 import Modal from '@/ui/common/modal/Modal'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import LeaveReviewForm from './LeaveReviewForm'
 import ReviewItem from './ReviewItem'
@@ -17,6 +18,9 @@ export default function ProductReviews({
 	reviews,
 	productId
 }: IProductReviews) {
+	const device = useCustomMediaQuery()
+	const [slidesPerView, setSlidesPerView] = useState(3)
+	const [spaceBetween, setSpaceBetween] = useState(30)
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { user } = useAuth()
 	const [reviewsList, setReviewsList] = useState(reviews)
@@ -24,6 +28,29 @@ export default function ProductReviews({
 	const handleNewReview = (review: IReview) => {
 		setReviewsList([review, ...reviewsList])
 	}
+
+	useEffect(() => {
+		switch (device) {
+			case 'laptop':
+				setSlidesPerView(2)
+				break
+			case 'tablet':
+				setSlidesPerView(2)
+				setSpaceBetween(150)
+				break
+			case 'mobile_m':
+				setSlidesPerView(2)
+				setSpaceBetween(100)
+				break
+			case 'mobile_s':
+				setSlidesPerView(2)
+				setSpaceBetween(100)
+				break
+			default:
+				setSpaceBetween(30)
+				setSlidesPerView(3) // default to 3 for desktop and larger devices
+		}
+	}, [device])
 	return (
 		<section id='reviews' className=''>
 			{user && (
@@ -37,12 +64,15 @@ export default function ProductReviews({
 					<Swiper
 						key={reviewsList.length}
 						// @ts-ignore
-						slidesPerView={3}
-						spaceBetween={30}
+						slidesPerView={slidesPerView}
+						spaceBetween={spaceBetween}
+						pagination={{
+							clickable: true
+						}}
 						className={style.swiper}
 					>
 						{reviewsList.map(review => (
-							<SwiperSlide className='flex' key={review.id}>
+							<SwiperSlide key={review.id}>
 								<ReviewItem review={review} />
 							</SwiperSlide>
 						))}

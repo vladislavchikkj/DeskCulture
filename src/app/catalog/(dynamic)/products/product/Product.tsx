@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import ProductList from '@/ui/catalog/productsList/ProductList'
@@ -19,6 +19,12 @@ import {
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
+import SwiperCore from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
 import Detail from './details/Detail'
 import style from './product.module.scss'
 import ProductReviews from './reviews/ProductReviews'
@@ -37,21 +43,14 @@ const Products: FC<props> = ({ product }) => {
 	const { profile } = useProfile()
 	const [isVisible, setIsVisible] = useState(false)
 
-	const toggleVisibility = () => {
-		setIsVisible(!isVisible)
-	}
-	const [selectedImageIndex, setSelectedImageIndex] = useState(0)
-
-	const handleImageClick = (index: number) => {
-		setSelectedImageIndex(index)
-	}
 	const device = useCustomMediaQuery()
+
 	const sliderAnimation = {
 		hidden: {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: device === 'laptop' || 'tablet' ? '40vh' : '60vw',
+			height: 'auto',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
@@ -60,11 +59,39 @@ const Products: FC<props> = ({ product }) => {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: device === 'laptop' || 'tablet' ? '40vh' : '60vw',
+			height:
+				device === 'laptop' || device === 'tablet' || device === 'mobile_m'
+					? '40vh'
+					: '60vh',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
 
+	const toggleVisibility = () => {
+		setIsVisible(!isVisible)
+	}
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+	const swiperRef = useRef<SwiperCore>(null) // <-- Используйте useRef вместо useState
+
+	const handleImageClick = (index: number) => {
+		setSelectedImageIndex(index)
+		if (swiperRef.current) {
+			swiperRef?.current.slideTo(index)
+		}
+	}
+
+	useEffect(() => {
+		if (swiperRef.current) {
+			swiperRef.current.on('slideChange', () => {
+				setSelectedImageIndex(swiperRef.current.activeIndex)
+			})
+		}
+		return () => {
+			if (swiperRef.current) {
+				swiperRef.current.off('slideChange')
+			}
+		}
+	})
 	return (
 		<motion.div
 			initial='hidden'
@@ -117,12 +144,27 @@ const Products: FC<props> = ({ product }) => {
 						</motion.div>
 						<div className={style.imgHeight}>
 							<motion.div variants={sliderAnimation} className={style.imgWr}>
-								<motion.img
-									variants={imageAnimation}
-									className={style.image}
-									src={product[0].images[selectedImageIndex]}
-									alt={product[0].name}
-								/>
+								<Swiper
+									className='mySwiper'
+									// @ts-ignore
+									pagination={true}
+									modules={[Pagination]}
+									onSwiper={swiper => {
+										swiperRef.current = swiper
+									}}
+								>
+									{product[0].images.map((image, i) => (
+										<SwiperSlide key={i}>
+											<motion.img
+												variants={imageAnimation}
+												key={i}
+												className={style.image}
+												src={image}
+												alt={product[0].name}
+											/>
+										</SwiperSlide>
+									))}
+								</Swiper>
 							</motion.div>
 						</div>
 					</div>

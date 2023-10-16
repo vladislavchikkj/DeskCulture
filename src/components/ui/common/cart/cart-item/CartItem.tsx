@@ -18,7 +18,7 @@ const CartItem: FC<props> = ({ item, isShowCard, setIsShow }) => {
 		<div className={style.wrapper}>
 			<Link
 				onClick={() => {
-					isShowCard && setIsShow(!isShowCard)
+					setIsShow(!isShowCard)
 				}}
 				href={`/catalog/products/${item.product.slug}`}
 			>

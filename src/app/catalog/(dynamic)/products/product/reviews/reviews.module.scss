@@ -6,7 +6,7 @@
 .reviews {
 	display: flex;
 	gap: 2vh;
-	padding: 4vw;
+	padding: 3vw;
 }
 .reviewText {
 	color: #616161;
@@ -31,6 +31,10 @@
 
 	width: 20vw;
 	cursor: pointer;
+}
+.swiperFlex {
+	display: flex;
+	gap: 50px;
 }
 .reviewImg {
 	width: 100%;
@@ -132,5 +136,9 @@
 	img {
 		height: 100%;
 	}
+}
+.data {
+	display: flex;
+	width: 100%;
 }
 @import './reviews.adapt.scss';
