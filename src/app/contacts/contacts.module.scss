@@ -157,7 +157,7 @@ $width: 40vw;
 
 .label {
 	color: $muted-color;
-	font-size: 0.8vw;
+	font-size: 0.8rem;
 	font-weight: normal;
 	pointer-events: none;
 	left: 5px;
@@ -190,14 +190,14 @@ $width: 40vw;
 	color: #fff;
 	text-align: center;
 	font-family: Inter;
-	font-size: 0.5vw;
+	font-size: 0.5rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 18px; /* 180% */
 	letter-spacing: 1.32px;
 	text-transform: uppercase;
-	width: 15vw;
-	height: 2.5vw;
+	width: 180px;
+	height: 40px;
 	background: #000;
 	margin-top: 5vh;
 	transition: all 0.5s;
@@ -216,7 +216,7 @@ $width: 40vw;
 
 .policy {
 	color: $muted-color;
-	font-size: 0.7vw;
+	font-size: 0.7rem;
 	font-weight: normal;
 	pointer-events: none;
 	left: 5px;

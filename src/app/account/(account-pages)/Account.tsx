@@ -17,7 +17,6 @@ type props = {
 }
 
 const Account: FC<props> = ({ children }) => {
-	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(false)

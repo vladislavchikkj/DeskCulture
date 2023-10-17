@@ -75,21 +75,20 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 							}}
 							className={style.menuListWrapper}
 						>
-							<Link href={`/account`}>
-								<div className={style.menuList}>
-									<span className={style.menuListName}>Account</span>
-									<Button data-hover='↓' variant={'btnArrowMenu'}>
-										↓
-									</Button>
-								</div>
+							<Link
+								href={user ? `/account` : '/auth'}
+								className={style.menuList}
+							>
+								<span className={style.menuListName}>Account</span>
+								<Button data-hover='↓' variant={'btnArrowMenu'}>
+									↓
+								</Button>
 							</Link>
-							<Link href={`/contacts`}>
-								<div className={style.menuList}>
-									<span className={style.menuListName}>Contacts</span>
-									<Button data-hover='↓' variant={'btnArrowMenu'}>
-										↓
-									</Button>
-								</div>
+							<Link href={`/contacts`} className={style.menuList}>
+								<span className={style.menuListName}>Contacts</span>
+								<Button data-hover='↓' variant={'btnArrowMenu'}>
+									↓
+								</Button>
 							</Link>
 							<Link href={`/catalog`} className={style.menuList}>
 								<span className={style.menuListName}>Catalog</span>
@@ -103,13 +102,11 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 									↓
 								</Button>
 							</div>
-							<Link href={'/cart'}>
-								<div className={style.menuList}>
-									<span className={style.menuListName}>Your Bag</span>
-									<Button data-hover='↓' variant={'btnArrowMenu'}>
-										↓
-									</Button>
-								</div>
+							<Link href={'/cart'} className={style.menuList}>
+								<span className={style.menuListName}>Your Bag</span>
+								<Button data-hover='↓' variant={'btnArrowMenu'}>
+									↓
+								</Button>
 							</Link>
 						</div>
 					</div>

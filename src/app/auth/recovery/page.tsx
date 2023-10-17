@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 export default function RecoveryPage() {
 	return (
 		<>
-			<Heading variant='auth' className='mt-40'>
-				Recovery Password Page
-			</Heading>
+			
 			<Recovery />
 			<Footer />
 		</>

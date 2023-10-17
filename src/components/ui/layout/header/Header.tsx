@@ -66,9 +66,11 @@ const Header: FC<Props> = ({ inView }) => {
 				<div ref={addRef} className={style.logoPlace}>
 					{!isShow ? (
 						<div className={style.mainLogo}>
-							<div>
+							<div className={style.blink_me}>
 								<Link translate='no' href={`/`}>
-									<span>DeskCulture</span>
+									<div>
+										DeskCulture<span className={style.flare}></span>
+									</div>
 								</Link>
 							</div>
 							<div className={style.simbol}>®</div>

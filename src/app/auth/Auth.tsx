@@ -70,81 +70,83 @@ const Auth: FC = () => {
 	}
 
 	return (
-		<motion.section
-			initial='hidden'
-			whileInView='visible'
-			viewport={{ once: true }}
-			variants={baseAnimation}
-			className='flex h-screen container-f relative justify-center align-middle'
-		>
-			<form
-				onSubmit={handleSubmit(onSubmit)}
-				className={`'rounded-lg bg-white  m-auto w-full', ${style.form}`}
+		<>
+			<motion.section
+				initial='hidden'
+				whileInView='visible'
+				viewport={{ once: true }}
+				variants={baseAnimation}
+				className='flex h-screen container-f relative justify-center align-middle'
 			>
-				<>
-					{!isLoading && error && (
-						<div className={style.error}>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className={`'rounded-lg bg-white  m-auto w-full', ${style.form}`}
+				>
+					<>
+						{!isLoading && error && (
+							<div className={style.error}>
+								{type === welcomeLogin
+									? 'Invalid email or password.'
+									: `User with this name or email already exists`}
+							</div>
+						)}
+						{showUsername && (
+							<>
+								<Field
+									className='pb-4'
+									{...formRegister('name', {
+										required: 'Username is required'
+									})}
+									placeholder='your name'
+									error={errors.name?.message}
+								/>
+							</>
+						)}
+						<Field
+							{...formRegister('email', {
+								required: 'Email is required',
+								pattern: {
+									value: validEmail,
+									message: 'Please enter a valid email address'
+								}
+							})}
+							placeholder='E-mail'
+							error={errors.email?.message}
+						/>
+						<Field
+							{...formRegister('password', {
+								required: 'Password is required',
+								minLength: {
+									value: 6,
+									message: 'Min length should be at least 6 symbols'
+								}
+							})}
+							type='password'
+							placeholder='Password'
+							error={errors.password?.message}
+						/>
+						<AuthButton variant='grey' className={style.authBtn}>
+							{type === welcomeLogin ? 'Sign In' : 'Register'}
+						</AuthButton>
+						<AuthButton
+							type='button'
+							variant='authChanger'
+							className={style.authBtn}
+							onClick={switchRegisterLogin}
+						>
 							{type === welcomeLogin
-								? 'Invalid email or password.'
-								: `User with this name or email already exists`}
-						</div>
-					)}
-					{showUsername && (
-						<>
-							<Field
-								className='pb-4'
-								{...formRegister('name', {
-									required: 'Username is required'
-								})}
-								placeholder='your name'
-								error={errors.name?.message}
-							/>
-						</>
-					)}
-					<Field
-						{...formRegister('email', {
-							required: 'Email is required',
-							pattern: {
-								value: validEmail,
-								message: 'Please enter a valid email address'
-							}
-						})}
-						placeholder='E-mail'
-						error={errors.email?.message}
-					/>
-					<Field
-						{...formRegister('password', {
-							required: 'Password is required',
-							minLength: {
-								value: 6,
-								message: 'Min length should be at least 6 symbols'
-							}
-						})}
-						type='password'
-						placeholder='Password'
-						error={errors.password?.message}
-					/>
-					<AuthButton variant='grey'>
-						{type === welcomeLogin ? 'Sign In' : 'Register'}
-					</AuthButton>
-					<AuthButton
-						type='button'
-						variant='authChanger'
-						className='block mt-3 text-center mx-auto'
-						onClick={switchRegisterLogin}
-					>
-						{type === welcomeLogin
-							? 'Create an account'
-							: 'Already have an account? Sign In'}
-					</AuthButton>
-					<Link className={style.text} href={'/auth/recovery'}>
-						forgot your password?
-					</Link>
-				</>
-			</form>
+								? 'Create an account'
+								: 'Already have an account? Sign In'}
+						</AuthButton>
+						<Link className={style.text} href={'/auth/recovery'}>
+							forgot your password?
+						</Link>
+					</>
+				</form>
 
-			{isLoading && <Loader />}
-		</motion.section>
+				{isLoading && <Loader />}
+			</motion.section>
+		</>
 	)
 }
 
