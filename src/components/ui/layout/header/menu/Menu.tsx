@@ -96,12 +96,6 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 									↓
 								</Button>
 							</Link>
-							<div className={style.menuList}>
-								<span className={style.menuListName}>Favorites</span>
-								<Button data-hover='↓' variant={'btnArrowMenu'}>
-									↓
-								</Button>
-							</div>
 							<Link href={'/cart'} className={style.menuList}>
 								<span className={style.menuListName}>Your Bag</span>
 								<Button data-hover='↓' variant={'btnArrowMenu'}>
