@@ -1,0 +1,42 @@
+@media only screen and (max-width: 1200px) {
+	.title {
+		font-size: 1rem;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.wrapper {
+		position: relative;
+		padding-top: 10vh;
+		display: block;
+		min-height: 62vh;
+	}
+	.asideMenu {
+		transform: translateX(-150%);
+		position: absolute;
+		z-index: 100;
+		background-color: rgb(255, 255, 255);
+		width: 88%;
+		height: 100vh;
+		transition: all 0.5s;
+	}
+	.close {
+		display: block;
+		position: absolute;
+	}
+
+	.menuBtn {
+		display: block;
+		padding-bottom: 5px;
+		border-bottom: 1px solid rgba(25, 27, 29, 0.1019607843);
+	}
+	.leading {
+		padding-top: 10px;
+	}
+	.open {
+		transform: translateX(-1%);
+	}
+}
+@media only screen and (max-width: 320px) {
+}

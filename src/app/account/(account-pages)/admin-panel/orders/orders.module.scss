@@ -125,3 +125,8 @@
 	padding-bottom: 2vh;
 	border-bottom: 1px solid #a08750;
 }
+@media only screen and (max-width: 567px) {
+	.orders {
+		width: 100%;
+	}
+}

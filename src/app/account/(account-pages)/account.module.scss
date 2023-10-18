@@ -5,6 +5,9 @@
 	gap: 6vw;
 	min-height: 62vh;
 }
+.asideMenuWrapper {
+	position: relative;
+}
 .asideMenu {
 	padding-top: 4vh;
 	display: flex;
@@ -157,15 +160,13 @@
 		color: #a08750;
 	}
 }
+.close {
+	display: none;
+	position: absolute;
+	right: 20px;
+}
 
-@media only screen and (max-width: 1200px) {
-	.title {
-		font-size: 1rem;
-	}
+.menuBtn {
+	display: none;
 }
-@media only screen and (max-width: 768px) {
-}
-@media only screen and (max-width: 567px) {
-}
-@media only screen and (max-width: 320px) {
-}
+@import './account.adapt.scss';

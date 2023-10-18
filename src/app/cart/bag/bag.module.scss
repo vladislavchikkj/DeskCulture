@@ -5,7 +5,7 @@
 .title {
 	color: #a08750;
 	font-family: Inter;
-	font-size: 1.5vw;
+	font-size: 1.5rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 40px; /* 153.846% */
@@ -35,7 +35,7 @@
 
 	color: #000;
 	font-family: Inter;
-	font-size: 0.6vw;
+	font-size: 0.7rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 18px; /* 200% */
@@ -58,7 +58,7 @@
 .totalPrice {
 	color: #a08750;
 	font-family: Inter;
-	font-size: 0.9vw;
+	font-size: 0.9rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 30px; /* 176.471% */
@@ -92,3 +92,8 @@
 	transform: rotate(90deg);
 	font-size: 0.9vw;
 }
+.checkout {
+	font-size: 0.6rem;
+}
+
+@import './bag.adapt.scss';

@@ -66,7 +66,9 @@ const Bag: FC = () => {
 							<div className={style.totalPrice}>{convertPrice(total + 10)}</div>
 						</div>
 						<Link href={'./checkout'}>
-							<AuthButton variant={'black'}>checkout</AuthButton>
+							<AuthButton className={style.checkout} variant={'black'}>
+								checkout
+							</AuthButton>
 						</Link>
 						<div className={style.otherInfo}>
 							<Detail

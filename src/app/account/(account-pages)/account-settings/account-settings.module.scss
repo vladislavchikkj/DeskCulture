@@ -21,7 +21,7 @@ $width: 320px;
 .textarea {
 	background: none;
 	color: $muted-color;
-	font-size: 0.9vw;
+	font-size: 0.9rem;
 	padding: 10px 10px 10px 5px;
 	display: block;
 	width: $width;
@@ -64,7 +64,7 @@ $width: 320px;
 
 .label {
 	color: $muted-color;
-	font-size: 0.8vw;
+	font-size: 0.8rem;
 	font-weight: normal;
 	pointer-events: none;
 	left: 5px;
@@ -97,14 +97,14 @@ $width: 320px;
 	color: #fff;
 	text-align: center;
 	font-family: Inter;
-	font-size: 0.5vw;
+	font-size: 0.5rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 18px; /* 180% */
 	letter-spacing: 1.32px;
 	text-transform: uppercase;
-	width: 10vw;
-	height: 2.5vw;
+	width: 180px;
+	height: 40px;
 	background: #000;
 	margin-top: 5vh;
 	transition: all 0.5s;
@@ -123,4 +123,13 @@ $width: 320px;
 
 .message {
 	color: $hl-color;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
 }

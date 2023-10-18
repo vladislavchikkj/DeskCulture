@@ -1,0 +1,30 @@
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.wrapper {
+		padding-top: 10vh;
+		padding-bottom: 15vh;
+	}
+	.cartLayout {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.cart {
+		padding-right: 2.5vw;
+		border-right: none;
+	}
+	.checkout {
+		height: 40px;
+	}
+	.otherInfo > div:first-child {
+		padding-bottom: 1.7vh;
+	}
+
+	.otherInfo > div:last-child {
+		padding-top: 1.7vh;
+	}
+}
+@media only screen and (max-width: 320px) {
+}
