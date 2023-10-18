@@ -2,7 +2,6 @@
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
-import { useActions } from '@/hooks/useActions'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

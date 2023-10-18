@@ -31,7 +31,7 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 			height: 0
 		},
 		visible: (custom: number) => ({
-			height: device === 'mobile_m' || 'mobile_s' ? '40vh' : '35vw',
+			height: device === 'mobile_m' ? '40vh' : '35vw',
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}

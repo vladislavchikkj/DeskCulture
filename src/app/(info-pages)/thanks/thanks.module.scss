@@ -18,5 +18,21 @@
 .btn {
 	display: flex;
 	justify-content: flex-end;
-	width: 30vw;
+	button {
+		font-size: 0.9rem;
+		padding: 8px 12px 8px 12px;
+		&:before {
+			font-size: 0.9rem;
+			padding: 8px 12px 8px 12px;
+		}
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
 }

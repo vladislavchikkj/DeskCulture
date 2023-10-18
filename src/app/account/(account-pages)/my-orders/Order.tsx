@@ -93,7 +93,7 @@ const Order: FC = () => {
 							{lastOrder.status === 'PENDING' && (
 								<Link href={lastOrder.paymentUrl}>
 									<span className='text-darkBlue cursor-pointer'>
-										Продолжить оплату
+										Continue payment
 									</span>
 								</Link>
 							)}

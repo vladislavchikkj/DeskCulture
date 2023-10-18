@@ -79,11 +79,13 @@ const Products: FC<props> = ({ product }) => {
 			swiperRef?.current.slideTo(index)
 		}
 	}
-
+	// @ts-ignore
 	useEffect(() => {
 		if (swiperRef.current) {
 			swiperRef.current.on('slideChange', () => {
-				setSelectedImageIndex(swiperRef.current.activeIndex)
+				if (swiperRef.current) {
+					setSelectedImageIndex(swiperRef.current.activeIndex)
+				}
 			})
 		}
 		return () => {
@@ -150,6 +152,7 @@ const Products: FC<props> = ({ product }) => {
 									pagination={true}
 									modules={[Pagination]}
 									onSwiper={swiper => {
+										// @ts-ignore
 										swiperRef.current = swiper
 									}}
 								>

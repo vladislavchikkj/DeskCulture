@@ -54,6 +54,9 @@
 	align-items: center;
 	padding-top: 2.5vh;
 	padding-bottom: 2.5vh;
+	button {
+		font-size: 0.8rem;
+	}
 }
 .totalPrice {
 	color: #a08750;
@@ -93,7 +96,16 @@
 	font-size: 0.9vw;
 }
 .checkout {
-	font-size: 0.6rem;
+	button {
+		height: 40px;
+		font-size: 0.6rem;
+		padding: 0;
+		&:before {
+			height: 40px;
+			font-size: 0.6rem;
+			padding: 0;
+		}
+	}
 }
 
 @import './bag.adapt.scss';

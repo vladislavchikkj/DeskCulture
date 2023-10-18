@@ -1,12 +1,12 @@
 .wrapper {
-	padding-top: 15vh;
+	padding-top: 10vh;
 	padding-bottom: 25vh;
 	padding-left: 7vw;
 }
 .title {
 	color: #a08750;
 	font-family: Inter;
-	font-size: 1.5vw;
+	font-size: 1.5rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 40px; /* 153.846% */
@@ -48,8 +48,13 @@
 	letter-spacing: 0.26px;
 }
 .formBtn {
-	width: 20vw;
+	width: 150px;
 	padding-top: 4vh;
+	button {
+		height: 40px;
+		font-size: 0.7rem;
+		padding: 0;
+	}
 }
 .item {
 	padding-bottom: 2vh;
@@ -80,10 +85,12 @@
 }
 .itemImageWrapper {
 	overflow: hidden;
+	img {
+		width: 120px !important;
+	}
 }
 .itemImage {
 	border-radius: 5px;
-	width: 15vw;
 }
 .itemInfo {
 	display: flex;
@@ -117,7 +124,7 @@
 
 	color: #000;
 	font-family: Inter;
-	font-size: 0.6vw;
+	font-size: 0.6rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 18px; /* 200% */
@@ -141,7 +148,7 @@
 .totalPrice {
 	color: #a08750;
 	font-family: Inter;
-	font-size: 0.9vw;
+	font-size: 0.9rem;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 30px; /* 176.471% */
@@ -175,3 +182,5 @@
 	transform: rotate(90deg);
 	font-size: 0.9vw;
 }
+
+@import './checkout.adapt.scss';

@@ -37,10 +37,10 @@ const Footer: FC<PageProps> = ({ home }) => {
 					<div>
 						<div className={style.buttons}>
 							<Button data-hover='About us' variant={'grey'}>
-								About us
+								<Link href={'/contacts'}>About us</Link>
 							</Button>
 							<Button data-hover='Get in touch' variant={'black'}>
-								Get in touch
+								<Link href={'/contacts'}>Get in touch</Link>
 							</Button>
 						</div>
 					</div>

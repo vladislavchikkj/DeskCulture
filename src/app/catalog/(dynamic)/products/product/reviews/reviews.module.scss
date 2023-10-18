@@ -104,6 +104,9 @@
 	display: flex;
 	justify-content: space-between;
 	padding-top: 2vh;
+	button {
+		padding: 2px 12px;
+	}
 }
 .upload {
 	display: flex;

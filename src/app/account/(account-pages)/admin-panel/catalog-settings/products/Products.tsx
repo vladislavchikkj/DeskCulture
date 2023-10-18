@@ -84,7 +84,7 @@ const ProductsSettings: FC<TypeCombinedPagination> = ({
 					isOpen={isModalOpenUpdate}
 					closeModal={() => {
 						setModalOpenUpdate(false)
-						setSelectedProduct(null) // сбрасываем выбранный продукт при закрытии модального окна
+						setSelectedProduct(null)
 					}}
 				>
 					<UpdateProductForm

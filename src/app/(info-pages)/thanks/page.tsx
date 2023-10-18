@@ -3,6 +3,7 @@ import Order from '@/app/account/(account-pages)/my-orders/Order'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import { NO_INDEX_PAGE } from '@/constants/app.constants'
+import { useActions } from '@/hooks/useActions'
 import Button from '@/ui/common/buttons/Button'
 import Footer from '@/ui/layout/footer/Footer'
 import { motion } from 'framer-motion'
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 }
 
 export default function ThanksPage() {
+	const { reset } = useActions()
 	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
@@ -35,7 +37,11 @@ export default function ThanksPage() {
 					<Order />
 					<div className={style.btn}>
 						<Link href={'/'}>
-							<Button data-hover='Go to shop' variant={'grey'}>
+							<Button
+								data-hover='Go to shop'
+								variant={'grey'}
+								onClick={() => reset()}
+							>
 								Go to shop
 							</Button>
 						</Link>
