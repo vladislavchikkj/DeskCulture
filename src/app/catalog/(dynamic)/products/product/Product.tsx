@@ -34,7 +34,6 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
-	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(false)
@@ -94,6 +93,14 @@ const Products: FC<props> = ({ product }) => {
 			}
 		}
 	})
+
+	// Здесь объединяются изображения товаров и все ColorVariant изображения
+	const allImages = [
+		...product[0].images,
+		...(product[0].ColorVariant?.flatMap(variant => variant.images) || [])
+	]
+	const [activeVariant, setActiveVariant] = useState<null | number>(null)
+
 	return (
 		<motion.div
 			initial='hidden'
@@ -131,7 +138,7 @@ const Products: FC<props> = ({ product }) => {
 							className={style.sliderItemsWr}
 						>
 							<div className={style.sliderItems}>
-								{product[0].images.map((image, index) => (
+								{allImages.map((image, index) => (
 									<img
 										key={index}
 										className={`${style.image} ${
@@ -156,7 +163,7 @@ const Products: FC<props> = ({ product }) => {
 										swiperRef.current = swiper
 									}}
 								>
-									{product[0].images.map((image, i) => (
+									{allImages.map((image, i) => (
 										<SwiperSlide key={i}>
 											<motion.img
 												variants={imageAnimation}
@@ -177,6 +184,23 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.price}>${product[0].price}</div>
 					<div className={style.descr}>{product[0].info}</div>
 					<div className={style.rating}>Rating: 5 star</div>
+					<div className={style.variantSelect}>
+						<div className={style.color}>Color</div>
+						<div className={style.variantWrapper}>
+							{product[0].ColorVariant &&
+								product[0].ColorVariant.map((variant, index) => (
+									<button
+										key={index}
+										className={`${style.variant} ${
+											activeVariant === index ? style.activeVariant : ''
+										}`}
+										onClick={() => setActiveVariant(index)}
+									>
+										{variant.color}
+									</button>
+								))}
+						</div>
+					</div>
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
 							<AddToCartButton product={product[0]}>Buy now</AddToCartButton>

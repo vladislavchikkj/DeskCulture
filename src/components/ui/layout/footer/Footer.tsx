@@ -35,14 +35,16 @@ const Footer: FC<PageProps> = ({ home }) => {
 						<div className={style.link}>Dribbble</div>
 					</div>
 					<div>
-						<div className={style.buttons}>
-							<Button data-hover='About us' variant={'grey'}>
-								<Link href={'/contacts'}>About us</Link>
-							</Button>
-							<Button data-hover='Get in touch' variant={'black'}>
-								<Link href={'/contacts'}>Get in touch</Link>
-							</Button>
-						</div>
+						<Link href={'/contacts'}>
+							<div className={style.buttons}>
+								<Button data-hover='About us' variant={'grey'}>
+									About us
+								</Button>
+								<Button data-hover='Get in touch' variant={'black'}>
+									Get in touch
+								</Button>
+							</div>
+						</Link>
 					</div>
 				</div>
 				<div className={style.row}>

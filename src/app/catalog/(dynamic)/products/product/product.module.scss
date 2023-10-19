@@ -217,4 +217,28 @@
 	line-height: 40px; /* 105.263% */
 	letter-spacing: -1.9px;
 }
+.color {
+	font-weight: 500;
+	font-size: 0.9rem;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.variantWrapper {
+	display: flex;
+	gap: 10px;
+}
+.variant {
+	font-size: 0.9rem;
+	padding: 8px 12px;
+	border: 1px solid black;
+	transition: 0.5s;
+	cursor: pointer;
+	&:hover {
+		border: 1px solid #bda05f;
+	}
+}
+.activeVariant {
+	border: 1px solid #bda05f;
+}
+
 @import './product.adapt.scss';
