@@ -1,5 +1,6 @@
 import AuthButton from '@/app/auth/authButton/authButton'
 import { asidePanelAnimation } from '@/components/animations/asideAnimation'
+import { useCheckout } from '@/components/context/CheckoutContext'
 import { useCart } from '@/hooks/useCart'
 import { convertPrice } from '@/utils/convertPrice'
 import { motion } from 'framer-motion'
@@ -17,7 +18,7 @@ type props = {
 
 const CartContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 	const { items, total } = useCart()
-
+	const { setItem } = useCheckout()
 	return (
 		<>
 			<motion.div
@@ -59,7 +60,9 @@ const CartContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 						}}
 						href={'/cart'}
 					>
-						<AuthButton variant='black'>View my Shopping Bag</AuthButton>
+						<AuthButton onClick={() => setItem(null)} variant='black'>
+							View my Shopping Bag
+						</AuthButton>
 					</Link>
 				</div>
 			</motion.div>

@@ -3,6 +3,14 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 
+import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
+import ProductList from '@/ui/catalog/productsList/ProductList'
+import Button from '@/ui/common/buttons/Button'
+
+import { useProfile } from '@/hooks/useProfile'
+
+import { IProduct } from '@/types/product.interface'
+
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import {
 	breadcrumbsAnimation,
@@ -10,17 +18,16 @@ import {
 } from '@/components/animations/productAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
-import { useProfile } from '@/hooks/useProfile'
-import { IProduct } from '@/types/product.interface'
-import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteButton'
-import ProductList from '@/ui/catalog/productsList/ProductList'
-import Button from '@/ui/common/buttons/Button'
 import SwiperCore from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { useCheckout } from '@/components/context/CheckoutContext'
+import { ICartItem } from '@/types/cart.interface'
+import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import Detail from './details/Detail'
 import style from './product.module.scss'
 import ProductReviews from './reviews/ProductReviews'
@@ -30,6 +37,7 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	const router = useRouter()
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(false)
@@ -96,6 +104,19 @@ const Products: FC<props> = ({ product }) => {
 		...(product[0].ColorVariant?.flatMap(variant => variant.images) || [])
 	]
 	const [activeVariant, setActiveVariant] = useState<null | number>(null)
+
+	const { setItem } = useCheckout()
+
+	const handleBuyNowClick = () => {
+		const itemToBuy: ICartItem = {
+			id: product[0].id,
+			product: product[0],
+			quantity: 1,
+			price: product[0].price
+		}
+		setItem(itemToBuy)
+		router.push('/checkout')
+	}
 
 	return (
 		<motion.div
@@ -209,9 +230,9 @@ const Products: FC<props> = ({ product }) => {
 							</div>
 						)}
 					</div>
-					<Link href={'/checkout'}>
-						<button className={style.btnForm}>Buy now</button>
-					</Link>
+					<button onClick={() => handleBuyNowClick()} className={style.btnForm}>
+						Buy now
+					</button>
 					<div className={style.details}>
 						<Detail
 							title={'Product Details'}

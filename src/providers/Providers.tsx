@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import Layout from '@/ui/layout/Layout'
 
+import { CheckoutProvider } from '@/components/context/CheckoutContext'
 import { LayoutProvider } from '@/components/context/LayoutContext'
 import { persistor, store } from '@/store/store'
 import { Provider } from 'react-redux'
@@ -23,11 +24,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 			<Provider store={store}>
 				{/* @ts-ignore */}
 				<PersistGate loading={null} persistor={persistor}>
-					<AuthProvider>
-						<LayoutProvider>
-							<Layout>{children}</Layout>
-						</LayoutProvider>
-					</AuthProvider>
+					<CheckoutProvider>
+						<AuthProvider>
+							<LayoutProvider>
+								<Layout>{children}</Layout>
+							</LayoutProvider>
+						</AuthProvider>
+					</CheckoutProvider>
 				</PersistGate>
 			</Provider>
 		</QueryClientProvider>

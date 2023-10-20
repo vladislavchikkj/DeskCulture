@@ -6,6 +6,7 @@ import { baseAnimation } from '@/components/animations/baseAnimation'
 import { motion } from 'framer-motion'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
+import { useCheckout } from '@/components/context/CheckoutContext'
 import {
 	customStyles,
 	options,
@@ -27,7 +28,10 @@ interface OrderResponse {
 }
 const Checkout: FC = () => {
 	const profile = useProfile()
-	const { items, total } = useCart()
+	const { item } = useCheckout()
+	const { items: itemsToUse, total: totalToUse } = useCart()
+	const total = item ? item.price : totalToUse
+	const items = item ? [item] : itemsToUse
 	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
 	const [noProductsWarning, setNoProductsWarning] = useState(false)
 
