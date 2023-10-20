@@ -5,5 +5,5 @@ export interface ICartItem {
 	product: IProduct
 	quantity: number
 	price: number
-	ColorVariant?: String
+	colorVariantName?: String
 }

@@ -109,12 +109,13 @@
 .itemPrice {
 	color: #a08750;
 	font-family: Inter;
-	font-size: 0.7rem;
+	font-size: 0.8rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 18px; /* 171.684% */
 	letter-spacing: 1.32px;
 	text-transform: uppercase;
+	padding-top: 0.5vh;
 }
 .productsPrice,
 .salesTax,
@@ -181,6 +182,11 @@
 .otherInfoList > span:last-child {
 	transform: rotate(90deg);
 	font-size: 0.9vw;
+}
+.colorVariantName {
+	font-size: 0.7rem;
+	color: grey;
+	text-transform: uppercase;
 }
 
 @import './checkout.adapt.scss';

@@ -117,8 +117,9 @@ const Products: FC<props> = ({ product }) => {
 			product: product[0],
 			quantity: 1,
 			price: product[0].price,
-			ColorVariant: setColorVariant || undefined
+			colorVariantName: setColorVariant || undefined
 		}
+		localStorage.setItem('directBuy', JSON.stringify(itemToBuy))
 		setItem(itemToBuy)
 		router.push('/checkout')
 	}

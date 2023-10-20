@@ -28,10 +28,16 @@ interface OrderResponse {
 }
 const Checkout: FC = () => {
 	const profile = useProfile()
-	const { item } = useCheckout()
+	const { item, setItem } = useCheckout()
 	const { items: itemsToUse, total: totalToUse } = useCart()
+
+	if (!item && localStorage.getItem('directBuy')) {
+		const itemFromStorage = JSON.parse(localStorage.getItem('directBuy')!)
+		setItem(itemFromStorage)
+	}
 	const total = item ? item.price : totalToUse
 	const items = item ? [item] : itemsToUse
+	console.log(itemsToUse)
 	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
 	const [noProductsWarning, setNoProductsWarning] = useState(false)
 
@@ -318,6 +324,11 @@ const Checkout: FC = () => {
 											<span className={style.itemName}>
 												{item.product.name}
 											</span>
+											{item.colorVariantName && (
+												<span className={style.colorVariantName}>
+													Color: {item.colorVariantName}
+												</span>
+											)}
 											<span className={style.itemPrice}>
 												${item.product.price}
 											</span>

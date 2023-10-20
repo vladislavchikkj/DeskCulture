@@ -75,6 +75,14 @@ const Order: FC = () => {
 										src={item.product.images[0]}
 										alt={item.product.name}
 									></Image>
+									<div className={style.prodName}>
+										<div>{item.product.name}</div>
+										{item.colorVariantName ? (
+											<div className={style.orderItemsLength}>
+												Color: {item.colorVariantName}
+											</div>
+										) : null}
+									</div>
 								</div>
 							</Link>
 						))}

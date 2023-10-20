@@ -144,6 +144,15 @@
 		color: #a08750;
 	}
 }
+.prodName {
+	display: flex;
+	flex-direction: column;
+	font-size: 0.9rem;
+	font-weight: 500;
+	.color {
+		font-size: 0.8rem;
+	}
+}
 
 @media only screen and (max-width: 1200px) {
 	.orders {

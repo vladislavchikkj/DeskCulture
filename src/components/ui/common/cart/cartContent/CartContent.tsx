@@ -60,7 +60,13 @@ const CartContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 						}}
 						href={'/cart'}
 					>
-						<AuthButton onClick={() => setItem(null)} variant='black'>
+						<AuthButton
+							onClick={() => {
+								setItem(null)
+								localStorage.removeItem('directBuy')
+							}}
+							variant='black'
+						>
 							View my Shopping Bag
 						</AuthButton>
 					</Link>
