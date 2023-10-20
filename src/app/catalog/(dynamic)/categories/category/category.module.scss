@@ -38,7 +38,12 @@
 	font-weight: 500;
 	line-height: 5vw; /* 101.124% */
 	letter-spacing: -0.3vw;
-	padding-top: 5vh;
+	padding-top: 2vh;
 }
-
+.allProd {
+	position: relative;
+	background: rgb(255, 255, 255);
+	transform: translateY(-40px);
+	z-index: 10;
+}
 @import './category.adapt.scss';

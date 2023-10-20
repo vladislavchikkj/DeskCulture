@@ -103,16 +103,21 @@ const Products: FC<props> = ({ product }) => {
 		...product[0].images,
 		...(product[0].ColorVariant?.flatMap(variant => variant.images) || [])
 	]
-	const [activeVariant, setActiveVariant] = useState<null | number>(null)
+	const [activeVariant, setActiveVariant] = useState<undefined | string>(
+		product[0].ColorVariant && product[0].ColorVariant.length > 0
+			? product[0].ColorVariant[0].color
+			: 'default'
+	)
 
 	const { setItem } = useCheckout()
 
-	const handleBuyNowClick = () => {
+	const handleBuyNowClick = (setColorVariant?: string) => {
 		const itemToBuy: ICartItem = {
 			id: product[0].id,
 			product: product[0],
 			quantity: 1,
-			price: product[0].price
+			price: product[0].price,
+			ColorVariant: setColorVariant || undefined
 		}
 		setItem(itemToBuy)
 		router.push('/checkout')
@@ -202,16 +207,18 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.descr}>{product[0].info}</div>
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.variantSelect}>
-						<div className={style.color}>Color</div>
+						{product[0].ColorVariant && product[0].ColorVariant.length > 0 ? (
+							<div className={style.color}>Color</div>
+						) : null}
 						<div className={style.variantWrapper}>
 							{product[0].ColorVariant &&
 								product[0].ColorVariant.map((variant, index) => (
 									<button
-										key={index}
 										className={`${style.variant} ${
-											activeVariant === index ? style.activeVariant : ''
+											activeVariant === variant.color ? style.activeVariant : ''
 										}`}
-										onClick={() => setActiveVariant(index)}
+										onClick={() => setActiveVariant(variant.color)}
+										key={index}
 									>
 										{variant.color}
 									</button>
@@ -230,7 +237,10 @@ const Products: FC<props> = ({ product }) => {
 							</div>
 						)}
 					</div>
-					<button onClick={() => handleBuyNowClick()} className={style.btnForm}>
+					<button
+						onClick={() => handleBuyNowClick(activeVariant)}
+						className={style.btnForm}
+					>
 						Buy now
 					</button>
 					<div className={style.details}>

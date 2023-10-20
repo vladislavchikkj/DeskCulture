@@ -9,6 +9,7 @@ import { IProduct } from '@/types/product.interface'
 
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
+import { ScrollParallax } from 'react-just-parallax'
 import style from './category.module.scss'
 
 type props = {
@@ -60,29 +61,38 @@ const Category: FC<props> = ({ products, category }) => {
 			className={style.category}
 		>
 			<div className={style.introWrapper}>
-				<motion.div variants={introAnimation} className={style.intro}>
-					<motion.img
-						variants={imageAnimation}
-						className={style.image}
-						src={category.image}
-						alt={category.name}
-					/>
-					<div className={`${style.name} container-f`}>{category.name}</div>
-				</motion.div>
+				<ScrollParallax lerpEase={0.05} zIndex={9} strength={0.05}>
+					<motion.div variants={introAnimation} className={style.intro}>
+						<motion.img
+							variants={imageAnimation}
+							className={style.image}
+							src={category.image}
+							alt={category.name}
+						/>
+						<div className={`${style.name} container-f`}>{category.name}</div>
+					</motion.div>
+				</ScrollParallax>
 			</div>
-
-			<motion.div custom={2} variants={prodAnimation}>
-				<div className={`${style.title} container-f`}>All Products</div>
-				<div className='container-f'>
-					<ProductList
-						initialProducts={products}
-						slug={category.slug}
-						DropdownOff={true}
-						loadMoreBtnOff={true}
-						needToUpdate={false}
-					/>
-				</div>
-			</motion.div>
+			<div className={style.allProd}>
+				<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
+					<motion.div
+						custom={2}
+						variants={prodAnimation}
+						className={style.allProd}
+					>
+						<div className={`${style.title} container-f`}>All Products</div>
+						<div className='container-f'>
+							<ProductList
+								initialProducts={products}
+								slug={category.slug}
+								DropdownOff={true}
+								loadMoreBtnOff={true}
+								needToUpdate={false}
+							/>
+						</div>
+					</motion.div>
+				</ScrollParallax>
+			</div>
 		</motion.div>
 	)
 }

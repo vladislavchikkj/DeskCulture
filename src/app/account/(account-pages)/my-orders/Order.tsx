@@ -28,6 +28,7 @@ const Order: FC = () => {
 	)
 
 	const lastOrder = orders && orders[0]
+
 	if (!user)
 		return (
 			<div className={style.message}>
