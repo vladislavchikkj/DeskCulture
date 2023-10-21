@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FC, useEffect, useRef, useState } from 'react'
 
-import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import ProductList from '@/ui/catalog/productsList/ProductList'
 import Button from '@/ui/common/buttons/Button'
 
@@ -23,7 +22,10 @@ import SwiperCore from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { useCheckout } from '@/components/context/CheckoutContext'
+import { useActions } from '@/hooks/useActions'
+import { useCart } from '@/hooks/useCart'
 import { ICartItem } from '@/types/cart.interface'
+import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -37,6 +39,13 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
+	const [currProduct] = product
+	const { addToCart, removeFromCart } = useActions()
+	const { items } = useCart()
+
+	const currentElement = items.find(
+		cartItem => cartItem.product.id === currProduct.id
+	)
 	const router = useRouter()
 	const { updateLayout } = useLayout()
 	useEffect(() => {
@@ -98,26 +107,32 @@ const Products: FC<props> = ({ product }) => {
 		}
 	})
 
-	// Здесь объединяются изображения товаров и все ColorVariant изображения
+	// Здесь объединяются изображения товаров и все productType изображения
 	const allImages = [
 		...product[0].images,
-		...(product[0].ColorVariant?.flatMap(variant => variant.images) || [])
+		...(product[0].productType?.flatMap(variant => variant.images) || [])
 	]
-	const [activeVariant, setActiveVariant] = useState<undefined | string>(
-		product[0].ColorVariant && product[0].ColorVariant.length > 0
-			? product[0].ColorVariant[0].color
+	const [color, setColor] = useState<undefined | string>(
+		product[0].productType && product[0].productType.length > 0
+			? product[0].productType[0].color
+			: 'default'
+	)
+	const [type, setType] = useState<undefined | string>(
+		product[0].productType && product[0].productType.length > 0
+			? product[0].productType[0].type
 			: 'default'
 	)
 
 	const { setItem } = useCheckout()
 
-	const handleBuyNowClick = (setColorVariant?: string) => {
+	const handleBuyNowClick = (setColor?: string, setType?: string) => {
 		const itemToBuy: ICartItem = {
 			id: product[0].id,
 			product: product[0],
 			quantity: 1,
 			price: product[0].price,
-			colorVariantName: setColorVariant || undefined
+			color: setColor || undefined,
+			type: setType || undefined
 		}
 		localStorage.setItem('directBuy', JSON.stringify(itemToBuy))
 		setItem(itemToBuy)
@@ -208,17 +223,18 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.descr}>{product[0].info}</div>
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.variantSelect}>
-						{product[0].ColorVariant && product[0].ColorVariant.length > 0 ? (
+						{product[0].productType && product[0].productType[0].color && (
 							<div className={style.color}>Color</div>
-						) : null}
+						)}
 						<div className={style.variantWrapper}>
-							{product[0].ColorVariant &&
-								product[0].ColorVariant.map((variant, index) => (
+							{product[0].productType &&
+								product[0].productType[0].color &&
+								product[0].productType.map((variant, index) => (
 									<button
 										className={`${style.variant} ${
-											activeVariant === variant.color ? style.activeVariant : ''
+											color === variant.color ? style.activeVariant : ''
 										}`}
-										onClick={() => setActiveVariant(variant.color)}
+										onClick={() => setColor(variant.color)}
 										key={index}
 									>
 										{variant.color}
@@ -226,9 +242,50 @@ const Products: FC<props> = ({ product }) => {
 								))}
 						</div>
 					</div>
+					<div className={style.variantSelect}>
+						{product[0].productType && product[0].productType[0].type && (
+							<div className={style.color}>Types</div>
+						)}
+						<div className={style.variantWrapper}>
+							{product[0].productType &&
+								product[0].productType[0].type &&
+								product[0].productType.map((variant, index) => (
+									<button
+										className={`${style.variant} ${
+											type === variant.type ? style.activeVariant : ''
+										}`}
+										onClick={() => setType(variant.type)}
+										key={index}
+									>
+										{variant.type}
+									</button>
+								))}
+						</div>
+					</div>
+					<button
+						onClick={() => {
+							return currentElement
+								? removeFromCart({
+										id: currentElement.id
+								  })
+								: addToCart({
+										product: currProduct,
+										quantity: 1,
+										price: product[0].price,
+										color: color,
+										type: type
+								  })
+						}}
+					>
+						Add to cart 1
+					</button>
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
-							<AddToCartButton product={product[0]}>
+							<AddToCartButton
+								product={product[0]}
+								currentColor={`${color}`}
+								currentType={`${type}`}
+							>
 								Add to cart
 							</AddToCartButton>
 						</div>
@@ -239,7 +296,7 @@ const Products: FC<props> = ({ product }) => {
 						)}
 					</div>
 					<button
-						onClick={() => handleBuyNowClick(activeVariant)}
+						onClick={() => handleBuyNowClick(color, type)}
 						className={style.btnForm}
 					>
 						Buy now

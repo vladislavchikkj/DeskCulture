@@ -1,5 +1,5 @@
 import { ICategory } from './category.interface'
-import { IColorVariants } from './colorVariant.interface'
+import { IProductType } from './productType.interface'
 import { IReview } from './review.interface'
 import { ISetups } from './setups.interface'
 
@@ -16,7 +16,7 @@ export interface IProduct {
 	createdAt: string
 	category: ICategory
 	setups?: ISetups
-	ColorVariant?: IColorVariants[]
+	productType: IProductType[]
 }
 
 export interface IProductDetails {

@@ -37,7 +37,7 @@ const Checkout: FC = () => {
 	}
 	const total = item ? item.price : totalToUse
 	const items = item ? [item] : itemsToUse
-	console.log(itemsToUse)
+
 	const [responseData, setResponseData] = useState<OrderResponse | null>(null)
 	const [noProductsWarning, setNoProductsWarning] = useState(false)
 
@@ -78,7 +78,9 @@ const Checkout: FC = () => {
 				items: items.map(item => ({
 					price: item.price,
 					quantity: item.quantity,
-					productId: item.product.id
+					productId: item.product.id,
+					color: item.color as string | undefined,
+					type: item.type as string | undefined
 				})),
 				firstName: data.firstName,
 				lastName: data.lastName,
@@ -324,9 +326,14 @@ const Checkout: FC = () => {
 											<span className={style.itemName}>
 												{item.product.name}
 											</span>
-											{item.colorVariantName && (
+											{item.color && (
 												<span className={style.colorVariantName}>
-													Color: {item.colorVariantName}
+													Color: {item.color}
+												</span>
+											)}
+											{item.type && (
+												<span className={style.colorVariantName}>
+													Type: {item.type}
 												</span>
 											)}
 											<span className={style.itemPrice}>

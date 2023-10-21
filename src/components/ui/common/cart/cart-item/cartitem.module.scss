@@ -46,4 +46,15 @@
 	text-transform: uppercase;
 	padding-bottom: 2vw;
 }
+.type {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12.65px; /* 126.5% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 3px;
+}
 @import './cartItem.adapt.scss';

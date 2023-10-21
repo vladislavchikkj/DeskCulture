@@ -17,6 +17,8 @@ export type PlaceOrderData = {
 		quantity: number
 		price: number
 		productId: number
+		productColor?: string
+		productType?: string
 	}[]
 	firstName: string
 	lastName: string

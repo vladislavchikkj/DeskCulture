@@ -30,7 +30,6 @@ const MyOrdersPage: FC = () => {
 	)
 
 	if (!orders) return <div className={style.message}>no active orders</div>
-	console.log(orders)
 	return (
 		<Account>
 			<section>
@@ -77,11 +76,16 @@ const MyOrdersPage: FC = () => {
 												></Image>
 												<div className={style.prodName}>
 													<div>{item.product.name}</div>
-													{item.colorVariantName ? (
+													{item.color && (
 														<div className={style.orderItemsLength}>
-															Color: {item.colorVariantName}
+															Color: {item.color}
 														</div>
-													) : null}
+													)}
+													{item.type && (
+														<div className={style.orderItemsLength}>
+															Type: {item.type}
+														</div>
+													)}
 												</div>
 											</div>
 										</Link>

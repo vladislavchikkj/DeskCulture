@@ -12,6 +12,8 @@ type props = {
 	product: IProduct
 	children?: React.ReactNode
 	variatn?: boolean
+	currentColor?: string
+	currentType?: string
 }
 
 const AddToCartButton: FC<props> = ({ product, children, variatn }) => {
@@ -33,7 +35,9 @@ const AddToCartButton: FC<props> = ({ product, children, variatn }) => {
 						: addToCart({
 								product,
 								quantity: 1,
-								price: product.price
+								price: product.price,
+								color: product.productType[0].color,
+								type: product.productType[0].type
 						  })
 				}
 			>

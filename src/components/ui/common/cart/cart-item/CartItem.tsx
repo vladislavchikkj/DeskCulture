@@ -32,6 +32,8 @@ const CartItem: FC<props> = ({ item, isShowCard, setIsShow }) => {
 			<div className={style.info}>
 				<div>
 					<div className={style.name}>{item.product.name}</div>
+					<div className={style.type}>Color: {item.color}</div>
+					<div className={style.type}>Type: {item.type}</div>
 					<div className={style.price}>{convertPrice(item.product.price)}</div>
 				</div>
 

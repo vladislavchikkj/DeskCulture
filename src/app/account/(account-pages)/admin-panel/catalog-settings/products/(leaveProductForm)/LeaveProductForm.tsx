@@ -121,7 +121,6 @@ const LeaveProductForm: FC<Props> = ({
 	const onSubmit: SubmitHandler<IProductFields> = async (
 		data: IProductFields
 	) => {
-		console.log(data)
 		// POST запрос на сервер для создания нового продукта здесь
 		try {
 			if (selectedFile) {
@@ -133,7 +132,7 @@ const LeaveProductForm: FC<Props> = ({
 				console.log('No file selected')
 			}
 		} catch (err: any) {
-			console.log(err.message) // Обработка ошибок
+			console.log(err.message)
 		}
 	}
 	if (isSubmitted) return <div>Product successfully create!</div>
