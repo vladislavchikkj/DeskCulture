@@ -25,7 +25,6 @@ import { useCheckout } from '@/components/context/CheckoutContext'
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
 import { ICartItem } from '@/types/cart.interface'
-import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -262,32 +261,22 @@ const Products: FC<props> = ({ product }) => {
 								))}
 						</div>
 					</div>
-					<button
-						onClick={() => {
-							return currentElement
-								? removeFromCart({
-										id: currentElement.id
-								  })
-								: addToCart({
+
+					<div className={style.buttons}>
+						<div className={style.addToCart}>
+							<button
+								onClick={() => {
+									return addToCart({
 										product: currProduct,
 										quantity: 1,
 										price: product[0].price,
 										color: color,
 										type: type
-								  })
-						}}
-					>
-						Add to cart 1
-					</button>
-					<div className={style.buttons}>
-						<div className={style.addToCart}>
-							<AddToCartButton
-								product={product[0]}
-								currentColor={`${color}`}
-								currentType={`${type}`}
+									})
+								}}
 							>
 								Add to cart
-							</AddToCartButton>
+							</button>
 						</div>
 						{!!profile && (
 							<div className={style.favoriteButton}>
