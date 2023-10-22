@@ -12,10 +12,10 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import style from './thanks.module.scss'
 
-export const metadata: Metadata = {
-	title: 'Thanks',
-	...NO_INDEX_PAGE
-}
+// export const metadata: Metadata = {
+// 	title: 'Thanks',
+// 	...NO_INDEX_PAGE
+// }
 
 export default function ThanksPage() {
 	const { reset } = useActions()
