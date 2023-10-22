@@ -1,0 +1,83 @@
+.footer {
+	position: relative;
+	width: 100%;
+	height: 38vh;
+	background: rgb(255, 255, 255);
+	z-index: 9;
+	bottom: 0;
+	color: #191b1d;
+	border-top: 1px solid rgba(25, 27, 29, 0.1);
+	padding-top: 2vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-bottom: 20px;
+}
+.footerHome {
+	position: absolute;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.links {
+	padding-right: 25vw;
+
+	color: #000000;
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.2vw; /* 133.333% */
+	letter-spacing: -0.64px;
+}
+.link,
+.logo span {
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.link:hover,
+.logo span:hover {
+	color: #191b1d77;
+}
+
+.logo {
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 16px; /* 66.667% */
+	letter-spacing: -0.64px;
+	transition: all 0.3s;
+}
+.buttons {
+	display: flex;
+	gap: 0.5vw;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 2.5vh;
+
+	color: rgba(25, 27, 29, 0.5);
+	font-family: Inter;
+	font-size: 0.9rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1vw; /* 123.077% */
+	letter-spacing: -0.56px;
+	transition: all 0.3s;
+}
+.policy {
+	transition: all 0.3s;
+}
+.policy:hover {
+	color: rgba(25, 27, 29, 0.884);
+	cursor: pointer;
+}
+@import './footer.adapt.scss';

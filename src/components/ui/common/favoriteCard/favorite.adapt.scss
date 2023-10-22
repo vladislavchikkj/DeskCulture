@@ -1,0 +1,65 @@
+@media only screen and (max-width: 1200px) {
+	.favorites {
+		padding: 11px 1.6vw 10px 1.5vw;
+		padding-top: auto !important;
+		padding-bottom: auto !important;
+		cursor: pointer;
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.favorites {
+		padding: 17px 15px 18px 15px;
+	}
+	.popup {
+		width: 100vw;
+	}
+	.title {
+		color: #000;
+		font-family: Inter;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 36px;
+		letter-spacing: 3.24px;
+		text-transform: uppercase;
+	}
+	.titleWrapper {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+	.totalBtn {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+		a {
+			width: 100%;
+		}
+		button {
+			width: 100%;
+			font-size: 0.5rem;
+
+			padding-left: 2vw;
+			padding-right: 2vw;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+	.cart {
+		padding-top: 10px;
+	}
+	.itemsNum {
+		font-size: 0.5rem;
+	}
+	.close {
+		display: block;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

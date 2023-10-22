@@ -1,0 +1,38 @@
+.title {
+	padding-top: 25vh;
+	color: #a08750;
+	font-family: Inter;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 36px; /* 150% */
+	letter-spacing: 3.24px;
+	text-transform: uppercase;
+}
+.content {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 10vh;
+}
+.btn {
+	display: flex;
+	justify-content: flex-end;
+	button {
+		font-size: 0.9rem;
+		padding: 8px 12px 8px 12px;
+		&:before {
+			font-size: 0.9rem;
+			padding: 8px 12px 8px 12px;
+		}
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
+}

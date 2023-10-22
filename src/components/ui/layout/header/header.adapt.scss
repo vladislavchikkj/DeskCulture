@@ -1,0 +1,89 @@
+@media only screen and (max-width: 1200px) {
+	.search {
+		display: flex;
+		align-items: center;
+		gap: 2vw;
+		padding-left: 2rem;
+		padding-top: 2px;
+		color: rgba(25, 27, 29, 0.5);
+		font-size: 0;
+		font-family: Inter;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 15px;
+		letter-spacing: -0.56px;
+		border-right: 1px solid #b7b7b7;
+		padding-right: 1.5vw;
+		cursor: pointer;
+	}
+	.userName {
+		font-size: 0.78rem;
+		padding-left: 0.7rem;
+		padding-right: 0.7rem;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.headerWrapper {
+		grid-template-columns: 1fr 2fr 1fr;
+	}
+	.logoPlace {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding-top: 0.1vw;
+		padding-left: 1vw;
+	}
+	.mainLogo {
+		position: relative;
+		padding: 0.7rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 1.2rem;
+		line-height: 30px;
+		letter-spacing: -1.1px;
+
+		.simbol {
+			position: absolute;
+			top: 0;
+			right: 5px;
+			font-size: 0.8rem;
+		}
+	}
+	.logIn {
+		display: none;
+	}
+	.search {
+		display: none;
+	}
+	.textBtn:before {
+		font-size: 0.6rem;
+	}
+	.favCartBtns {
+		height: 100%;
+		width: 100%;
+		border-right: 1px solid #b7b7b780;
+	}
+	.menu {
+		padding-left: 2vw;
+		padding-right: 2vw;
+		gap: 7px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-right: 1px solid #b7b7b7;
+
+		color: #000;
+		font-size: 14px;
+		font-family: Inter;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 19px;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

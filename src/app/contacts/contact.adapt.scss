@@ -1,0 +1,27 @@
+@media only screen and (max-width: 1200px) {
+	.title {
+		font-size: 6vw;
+		line-height: 7.3vw;
+		letter-spacing: -6.3px;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.input {
+		width: 100%;
+	}
+	.contactForm {
+		width: 100%;
+	}
+	.formContent {
+		flex-direction: column;
+	}
+	.title {
+		font-size: 6vw;
+		line-height: 7.3vw;
+		letter-spacing: -1.3px;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

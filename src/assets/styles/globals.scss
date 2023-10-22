@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+#player {
+	max-width: auto;
+	height: auto;
+}
+body {
+	@apply text-base text-black;
+	font-family: 'Inter', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	opacity: 0.2 !important;
+}
+
+.container-f {
+	padding-left: 14vw;
+	padding-right: 14vw;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	opacity: 0.2 !important;
+}
+
+//scrollbar
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+//track
+
+::-webkit-scrollbar-track {
+	z-index: -1;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #383838;
+	border-radius: 20px;
+	width: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #7a7a7a;
+}
+
+@keyframes on {
+	from {
+		opacity: 0.8;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes off {
+	to {
+		opacity: 1;
+	}
+	from {
+		opacity: 0.8;
+	}
+}
+
+.swiper-wrapper {
+	display: flex;
+}
+.title {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 1.3vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 36px; /* 150% */
+	letter-spacing: 3.24px;
+	text-transform: uppercase;
+	padding-bottom: 2vh;
+}
+.l-logo {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12px; /* 133.333% */
+	letter-spacing: 0.44px;
+	padding-right: 1vw;
+	padding-bottom: 1vh;
+}
+
+#notifications {
+	position: sticky;
+	bottom: 6vh;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	z-index: 9999;
+}
+#lowbar {
+	position: sticky;
+	bottom: 0vh;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	z-index: 20;
+}
+
+.swiper .swiper-pagination {
+	bottom: -5px !important;
+}
+.swiper-pagination-bullet-active {
+	background: #a08750 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+	.container-f {
+		padding-left: 10vw;
+		padding-right: 10vw;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.container-f {
+		padding-left: 8vw;
+		padding-right: 8vw;
+	}
+	.swiper .swiper-pagination {
+		bottom: 10px !important;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.container-f {
+		padding-left: 6vw;
+		padding-right: 6vw;
+	}
+}

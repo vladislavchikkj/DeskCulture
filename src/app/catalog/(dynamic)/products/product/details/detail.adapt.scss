@@ -1,0 +1,20 @@
+@media only screen and (max-width: 1200px) {
+	.detail {
+		font-size: 0.6rem;
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+	.detaiInfo {
+		font-size: 0.6rem;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.detail {
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

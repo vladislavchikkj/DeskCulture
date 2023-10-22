@@ -1,0 +1,271 @@
+.header {
+	position: relative;
+}
+@keyframes headerAni {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+.headerWrapper {
+	position: fixed;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	justify-content: space-between;
+	border-bottom: 1px solid #b7b7b7;
+	background: #cdcecf;
+	z-index: 100;
+	transition: all 0.3s;
+	animation: headerAni 0.4s forwards;
+}
+.headerWhite {
+	background: white;
+}
+
+.headerButton {
+	position: relative;
+	padding-left: 0.1vw;
+	padding-right: 0.1vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 1px solid #b7b7b7;
+
+	color: #000;
+	font-size: 0.8vw;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 19px;
+	height: 100%;
+	cursor: pointer;
+}
+.leftBtnHeader {
+	display: grid;
+	grid-auto-flow: column;
+}
+.menu {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	gap: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 1px solid #b7b7b7;
+
+	color: #000;
+	font-size: 14px;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 19px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.logoPlace {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 0.1vw;
+}
+.mainLogo {
+	position: relative;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	display: flex;
+	gap: 0.1vw;
+	color: #191b1d;
+	font-size: 2rem; /* 38px / 16px = 2.375em */
+	font-weight: 500;
+	line-height: 35px;
+	letter-spacing: -1.2px;
+	cursor: pointer;
+	.simbol {
+		position: absolute;
+		top: -10px;
+		right: 5px;
+		font-size: 1rem;
+	}
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	gap: 2vw;
+	padding-left: 2rem;
+	padding-top: 2px;
+	color: rgba(25, 27, 29, 0.5);
+	font-size: 0.7vw;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 15px;
+	letter-spacing: -0.56px;
+	border-right: 1px solid #b7b7b7;
+	padding-right: 1.5vw;
+	cursor: pointer;
+}
+.userName {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+//ANIMATED
+/* Анимация при наведении на headerButton */
+.headerButton:hover .textBtn:before {
+	transform: translate(0, 0);
+}
+.headerButton:hover .textBtn div {
+	transform: translate(0, -170%);
+}
+.menu:hover .textBtn:before {
+	transform: translate(0, 0);
+}
+.menu:hover .textBtn div {
+	transform: translate(0, -170%);
+}
+
+.textBtn {
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+}
+
+.textBtn:hover {
+	cursor: pointer;
+}
+
+.textBtn:hover:before {
+	transform: translate(0, 0);
+}
+
+.textBtn:before {
+	content: attr(data-hover);
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transform: translate(0, 170%);
+	transition: all 0.3s;
+	color: rgb(0, 0, 0);
+}
+
+.textBtn:hover div {
+	transform: translate(0, -170%);
+}
+
+.textBtn div {
+	transition: all 0.3s;
+}
+
+.leftBtn {
+	grid-auto-flow: column;
+}
+.favCartBtns {
+	display: flex;
+	align-items: center;
+}
+
+@media (max-width: 1549px) {
+	.headerButton {
+		font-size: 1vw;
+	}
+	.mainLogo {
+		font-size: 1.6rem;
+	}
+	.menu {
+		font-size: 1vw;
+	}
+	.search {
+		font-size: 0.8vw;
+	}
+}
+@media (max-width: 1349px) {
+	.hideBtn {
+		display: none;
+		pointer-events: none;
+	}
+	.headerButton {
+		font-size: 1.3vw;
+	}
+	.mainLogo {
+		font-size: 1.5rem;
+	}
+	.menu {
+		font-size: 1.5vw;
+	}
+	.search {
+		font-size: 1.3vw;
+	}
+}
+
+.openSearch {
+	background: #ffffff00;
+}
+
+.searchInput {
+	width: 100%;
+	text-decoration: none;
+	border: none;
+	border-radius: 0.4rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	background: rgba(0, 0, 0, 0);
+	padding-left: 1.5vw;
+
+	color: rgb(0, 0, 0);
+	font-family: Inter;
+	font-size: 1vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 40px; /* 166.666% */
+	letter-spacing: -0.09vw;
+}
+.searchInput::placeholder {
+	font-size: 1.2vw;
+}
+.searchInput:focus {
+	outline: none;
+	box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+}
+
+.whiteBackground {
+	background-color: white;
+}
+
+.blink_me {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.blink_me .flare {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 45px;
+	transform: skewX(-45deg);
+	animation: flareAnimation;
+	left: -150%;
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0.1),
+		rgba(255, 255, 255, 0.219)
+	);
+	animation: flareAnimation 5s infinite linear;
+}
+
+@keyframes flareAnimation {
+	0% {
+		left: -150%;
+	}
+	100% {
+		left: 150%;
+	}
+}
+
+@import './header.adapt.scss';

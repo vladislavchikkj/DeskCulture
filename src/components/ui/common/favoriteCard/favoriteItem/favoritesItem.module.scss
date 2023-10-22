@@ -1,0 +1,61 @@
+.wrapper {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 1fr 2fr;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+	padding-bottom: 1.5vw;
+	padding-top: 0.5vw;
+	padding-right: 1vw;
+}
+
+.image {
+	width: 8vw;
+	height: 10vw;
+	flex-shrink: 0;
+	object-fit: cover;
+	background: rgb(161, 161, 161);
+}
+
+.info {
+	padding: 0.2vw;
+	padding-left: 1vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.name {
+	color: #000;
+	font-family: Inter;
+	font-size: 0.8vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 180% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 0.4vw;
+}
+.price {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 0.7vw;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 180% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 2vw;
+}
+.remove {
+	display: flex;
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12.65px; /* 126.5% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+
+@import './favoritesItem.adapt.scss';

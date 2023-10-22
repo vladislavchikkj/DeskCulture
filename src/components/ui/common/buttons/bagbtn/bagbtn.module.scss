@@ -1,0 +1,30 @@
+.bag {
+	cursor: pointer;
+	padding: 1.05vw 1.5vw 1vw 1.5vw;
+
+	svg {
+		width: 22px;
+		height: 20px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.bag {
+		cursor: pointer;
+		padding: 10px 1.6vw 9px 1.6vw;
+
+		svg {
+			width: 17px;
+			height: 20px;
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.bag {
+		padding: 11px 15px 10px 15px;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

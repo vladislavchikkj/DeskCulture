@@ -1,0 +1,78 @@
+.modalName {
+	color: rgb(39, 39, 39);
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 30px; /* 187.5% */
+	letter-spacing: 2.16px;
+	text-transform: uppercase;
+}
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2vw;
+	padding-top: 1vh;
+	padding-bottom: 4vh;
+}
+.info {
+	display: flex;
+	justify-content: space-between;
+	gap: 5vw;
+	padding-top: 0.2vh;
+	padding-bottom: 0.2vh;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.274);
+}
+.subName {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 12px; /* 133.333% */
+	letter-spacing: 0.44px;
+	padding-bottom: 2vh;
+}
+.infoName {
+	color: rgb(0, 0, 0);
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.infoValue {
+	display: flex;
+	align-items: center;
+	color: #000;
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: 1.32px;
+	cursor: pointer;
+	transition: all 0.5s;
+	&:hover {
+		color: #a08750;
+	}
+}
+.orderInfo {
+	position: relative;
+}
+.logo {
+	position: absolute;
+	bottom: 1vh;
+	right: 0;
+}
+.copyMessage {
+	color: #a08750;
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 500;
+	letter-spacing: 0.44px;
+	cursor: pointer;
+	padding-right: 2vw;
+}

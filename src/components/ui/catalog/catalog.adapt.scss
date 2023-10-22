@@ -1,0 +1,51 @@
+@media only screen and (max-width: 1200px) {
+	.items {
+		grid-template-columns: 1fr 1fr;
+		column-gap: 5vw;
+	}
+	.btnWrapper {
+		padding-top: 5vw;
+		button {
+			width: 100%;
+			font-size: 1rem;
+			padding: 5px 10px 5px 10px;
+			&:before {
+				padding: 5px 10px 5px 10px;
+				width: 100%;
+				font-size: 1rem;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+	.items {
+		grid-template-columns: 1fr 1fr;
+		column-gap: 3vw;
+	}
+}
+@media only screen and (max-width: 567px) {
+	.items {
+		padding-top: 0;
+		min-height: 37vh;
+	}
+	.btnWrapper {
+		padding-top: 5vw;
+		width: 100%;
+		justify-content: space-between;
+		a {
+			width: 100%;
+		}
+		button {
+			width: 100%;
+			font-size: 1rem;
+			padding: 5px 10px 5px 10px;
+			&:before {
+				padding: 5px 10px 5px 10px;
+				width: 100%;
+				font-size: 1rem;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 320px) {
+}

@@ -1,0 +1,46 @@
+.window {
+	position: sticky;
+	top: 0;
+	bottom: 5vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	.content {
+		display: flex;
+		align-items: center;
+		gap: 5vw;
+		background-color: rgb(255, 255, 255);
+		padding: 1.2vh;
+		padding-left: 1.2vw;
+		padding-right: 1.2vw;
+		border-radius: 5vh;
+
+		color: rgba(25, 27, 29, 0.5);
+		font-family: Inter;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 400;
+		letter-spacing: -0.56px;
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateY(-50%) scale(0.1);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+}

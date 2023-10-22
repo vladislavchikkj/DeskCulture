@@ -1,0 +1,25 @@
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+	.wrapper {
+		padding-top: 10vh;
+		padding-bottom: 25vh;
+		padding-left: 0;
+	}
+	.cartLayout {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.cartInfo {
+		padding-left: 0;
+	}
+	.cart {
+		width: 100%;
+		padding-right: 5vw;
+		border-right: none;
+	}
+}
+@media only screen and (max-width: 567px) {
+}
+@media only screen and (max-width: 320px) {
+}

@@ -1,0 +1,33 @@
+.counterWr {
+	display: flex;
+	justify-content: space-between;
+	gap: 1vw;
+}
+.remove {
+	color: rgba(0, 0, 0, 0.5);
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 12.65px; /* 126.5% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+}
+
+.counter {
+	display: flex;
+	gap: 1vw;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.counter {
+		display: flex;
+		gap: 5vw;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

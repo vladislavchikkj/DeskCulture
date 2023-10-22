@@ -1,0 +1,20 @@
+.menu {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 2vh;
+}
+.box {
+	padding: 1vh 3vh 1vh 3vh;
+	cursor: pointer;
+	transition: all 0.5s;
+	border-bottom: 1px solid #000000;
+	&:hover {
+		border-bottom: 1px solid #a08750;
+		color: #a08750;
+	}
+}
+
+.content {
+	padding-top: 2vh;
+	padding-bottom: 15vh;
+}

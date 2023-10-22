@@ -1,0 +1,22 @@
+.sortDropdown {
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: 2vh;
+	border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.sortDropdown {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 2vh;
+		padding-bottom: 5vh;
+		border-bottom: 1px solid rgba(25, 27, 29, 0.1);
+	}
+}
+@media only screen and (max-width: 320px) {
+}

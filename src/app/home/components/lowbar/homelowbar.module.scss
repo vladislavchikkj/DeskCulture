@@ -1,0 +1,53 @@
+.lowbar {
+	position: sticky;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 1vw;
+	background-color: #ffffff;
+	width: 100vw;
+	height: 8vh;
+	z-index: 15;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	animation: on 1s forwards;
+	transform-origin: 0%;
+	.lowbarWrapper {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+}
+.lowbar:hover {
+	height: 10vh !important;
+}
+.off {
+	opacity: 0;
+}
+
+@keyframes on {
+	from {
+		transform: translateY(100px);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+// Adapt
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+	.lowbar {
+		padding-top: 1vw;
+		height: 10vh;
+	}
+}
+@media only screen and (max-width: 567px) {
+	.lowbar {
+		padding-top: 5vw;
+		height: 10vh;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

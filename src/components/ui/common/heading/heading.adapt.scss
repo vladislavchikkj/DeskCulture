@@ -1,0 +1,21 @@
+@media only screen and (max-width: 1200px) {
+	.heading {
+		color: #191b1d;
+		font-size: 9vw;
+		font-family: Inter;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 6.25rem;
+		letter-spacing: -0.8vw;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.heading {
+		font-size: 3rem;
+		line-height: 9.25rem;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

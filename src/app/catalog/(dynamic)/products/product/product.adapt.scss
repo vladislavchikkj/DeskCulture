@@ -1,0 +1,136 @@
+@media only screen and (max-width: 1200px) {
+	.content {
+		display: grid;
+		gap: 5vw;
+		grid-template-columns: 1fr 0.7fr;
+		padding-top: 15vh;
+	}
+	.breadcrumbs {
+		font-size: 0.5rem;
+		font-weight: 600;
+	}
+	.slesh {
+		font-size: 0.6rem;
+	}
+	.name {
+		font-size: 1rem;
+		padding-bottom: 0.5vh;
+	}
+	.imgHeight {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.imgWr {
+		overflow: hidden;
+	}
+	.descr {
+		font-size: 0.8rem;
+		font-weight: 400;
+		padding-bottom: 5px;
+	}
+	.rating {
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 0.6rem;
+	}
+	.buttons {
+		padding-top: 4vh;
+		padding-bottom: 1.5vh;
+	}
+	.btnWrapper {
+		display: flex;
+		align-items: flex-start;
+		gap: 1vw;
+
+		color: #191b1d;
+		font-family: Inter;
+		font-size: 1vw;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1vw; /* 100% */
+		letter-spacing: -0.64px;
+		button {
+			font-size: 0.8rem;
+			padding: 5px 10px 5px 10px;
+			&:before {
+				padding: 5px 10px 5px 10px;
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	.numdot {
+		width: 23px;
+		height: 23px;
+		font-size: 0.6rem;
+		padding-right: 1px;
+		margin-top: 1px;
+	}
+	.title {
+		font-size: 1.5rem;
+		line-height: 25px;
+	}
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.breadcrumbs {
+		flex-wrap: wrap;
+	}
+	.content {
+		display: grid;
+		gap: 5vw;
+		grid-template-columns: 1fr;
+		padding-top: 12vh;
+	}
+	.imgWr {
+		overflow: hidden;
+		width: 83vw;
+	}
+	.slider {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.sliderItemsWr {
+		display: none;
+	}
+	.imgHeight {
+		height: 100%;
+	}
+	.imgWr {
+		overflow: hidden;
+		img {
+			height: 100%;
+		}
+	}
+	.price {
+		color: #bda05f;
+		font-family: Inter;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 600;
+		letter-spacing: 1.32px;
+		text-transform: uppercase;
+		padding-bottom: 2vh;
+	}
+	.buttons {
+		gap: 3vw;
+		padding-top: 2vh;
+		padding-bottom: 1.5vh;
+	}
+	.btnWrapper {
+		display: none;
+	}
+	.title {
+		font-size: 1.1rem;
+		line-height: 25px;
+		padding-bottom: 10px;
+	}
+	.intrested {
+		padding-bottom: 25px;
+		margin-top: 0;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

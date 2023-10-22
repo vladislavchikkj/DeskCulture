@@ -1,0 +1,141 @@
+@media only screen and (max-width: 1200px) {
+	.setup {
+		padding-top: 8vw;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2.5vw;
+	}
+	.categoryName h2 {
+		font-size: 2.2rem;
+		font-weight: 500;
+		line-height: 1.1vw; /* 105.263% */
+		letter-spacing: -1.9px;
+	}
+	.categoryName h3 {
+		padding-top: 4vh;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 2.2vw; /* 129.545% */
+		letter-spacing: -0.8px;
+		padding-bottom: 1.5vw;
+	}
+	.numdot {
+		width: 21px;
+		height: 21px;
+		font-size: 0.6rem;
+	}
+	.btnWrapper {
+		gap: 2vw;
+		a {
+			button {
+				span {
+					font-size: 0.8rem;
+				}
+			}
+		}
+	}
+	.descr h3 {
+		font-size: 1rem;
+	}
+	.descr h4 {
+		font-size: 0.8rem;
+		line-height: 15px; /* 129.545% */
+	}
+}
+@media only screen and (max-width: 768px) {
+	.setup {
+		padding-top: 8vw;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2.5vw;
+	}
+	.categoryName h2 {
+		font-size: 2.2rem;
+		font-weight: 500;
+		line-height: 1.1vw; /* 105.263% */
+		letter-spacing: -1.9px;
+	}
+	.categoryName h3 {
+		padding-top: 4vh;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 17px; /* 129.545% */
+		letter-spacing: -0.5px;
+		padding-bottom: 1.5vw;
+	}
+	.numdot {
+		width: 21px;
+		height: 21px;
+		font-size: 0.6rem;
+	}
+	.btnWrapper {
+		gap: 2vw;
+		a {
+			button {
+				span {
+					font-size: 0.8rem;
+				}
+			}
+		}
+	}
+	.descr h3 {
+		font-size: 1rem;
+	}
+	.descr h4 {
+		font-size: 0.8rem;
+		line-height: 15px; /* 129.545% */
+	}
+}
+@media only screen and (max-width: 567px) {
+	.category {
+		background: rgb(255, 255, 255);
+		height: 120vh;
+	}
+	.setupBtn {
+		display: none;
+	}
+	.numdot {
+		width: 31px;
+		height: 31px;
+		font-size: 0.8rem;
+	}
+	.setup {
+		width: 100%;
+		height: 100%;
+		background: rgb(255, 255, 255);
+
+		display: grid;
+		grid-template-columns: 1fr;
+		align-content: space-around;
+		gap: 2vh;
+	}
+	.categoryName h2 {
+		padding-top: 2vh;
+	}
+	.categoryName h3 {
+		padding-top: 5vh;
+		font-size: 1.1rem;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: 0.5px;
+		padding-bottom: 50px;
+	}
+	.imageWrapper {
+		position: relative;
+		width: 100%;
+		height: 150px;
+		object-fit: cover;
+		overflow: hidden;
+	}
+	.descr h3 {
+		padding-top: 20px;
+		font-size: 1rem;
+	}
+	.descr h4 {
+		padding-top: 10px;
+		font-size: 0.8rem;
+		line-height: 15px; /* 129.545% */
+	}
+}
+@media only screen and (max-width: 320px) {
+}

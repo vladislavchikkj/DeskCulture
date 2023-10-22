@@ -1,0 +1,13 @@
+.seeMore {
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 5px;
+	padding-bottom: 20px;
+}
+@media only screen and (max-width: 1200px) {
+	.seeMore {
+		button {
+			padding: 5px 15px;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.wrapper {
+		grid-template-columns: 1fr 2.5fr;
+		padding-bottom: 20px;
+		margin-bottom: 10px;
+	}
+	.image {
+		width: 35vw;
+		height: 35vw;
+		flex-shrink: 0;
+		object-fit: cover;
+		background: rgb(161, 161, 161);
+	}
+	.info {
+		padding-left: 20px;
+	}
+	.name {
+		font-size: 0.7rem;
+	}
+	.price {
+		font-size: 0.6rem;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

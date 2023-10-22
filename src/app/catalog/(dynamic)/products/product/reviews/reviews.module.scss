@@ -1,0 +1,147 @@
+.leaveBtn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.reviews {
+	display: flex;
+	gap: 2vh;
+	padding: 3vw;
+}
+.reviewText {
+	color: #616161;
+	font-family: Inter;
+	font-size: 0.8vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22.5px; /* 150% */
+
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	padding-top: 1vh;
+}
+.reviewWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 1vh;
+
+	width: 20vw;
+	cursor: pointer;
+}
+.swiperFlex {
+	display: flex;
+	gap: 50px;
+}
+.reviewImg {
+	width: 100%;
+	height: 12vh;
+	overflow: hidden;
+	transition: all 0.5s;
+	filter: brightness(0.9);
+
+	img {
+		width: 100%;
+		transition: all 0.5s;
+		&:hover {
+			scale: 1.1;
+		}
+	}
+}
+.data {
+	color: rgba(25, 27, 29, 0.5);
+	font-family: Inter;
+	font-size: 0.8rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px; /* 114.286% */
+	letter-spacing: -0.56px;
+}
+.reviewInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 1vh;
+	border: 1px solid #e5e4e1;
+}
+.swiper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+.modalName {
+	color: #000;
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 200% */
+	letter-spacing: 1.32px;
+	text-transform: uppercase;
+	padding-bottom: 2vh;
+}
+.modalTextArea {
+	width: 100%;
+	height: 30vh;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	padding: 1vh;
+}
+.userName {
+	display: flex;
+	justify-content: space-between;
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 1.1em;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 25px; /* 113.636% */
+	letter-spacing: -1.1px;
+}
+.leaveModalBtn {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 2vh;
+	button {
+		padding: 2px 12px;
+	}
+}
+.upload {
+	display: flex;
+	color: #191b1d;
+	font-family: Inter;
+	font-size: 0.8em;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 25px; /* 113.636% */
+	letter-spacing: -1.1px;
+	gap: 0.5vw;
+}
+.uploadText {
+	transition: all 0.5s;
+	&:hover {
+		color: #a08750;
+	}
+}
+.uploadImg {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.2vw;
+	height: 15vh;
+	padding: 2vh;
+
+	font-family: Inter;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 600;
+	img {
+		height: 100%;
+	}
+}
+.data {
+	display: flex;
+	width: 100%;
+}
+@import './reviews.adapt.scss';
