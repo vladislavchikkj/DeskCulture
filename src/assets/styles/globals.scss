@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 #player {
 	max-width: auto;
 	height: auto;
+}
+* {
+	font-family: 'Inter', sans-serif;
 }
 body {
 	@apply text-base text-black;
@@ -77,7 +77,7 @@ body {
 }
 .title {
 	color: #a08750;
-	font-family: Inter;
+
 	font-size: 1.3vw;
 	font-style: normal;
 	font-weight: 500;
@@ -88,7 +88,7 @@ body {
 }
 .l-logo {
 	color: rgba(0, 0, 0, 0.5);
-	font-family: Inter;
+
 	font-size: 0.7rem;
 	font-style: normal;
 	font-weight: 500;
@@ -143,3 +143,7 @@ body {
 		padding-right: 6vw;
 	}
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
