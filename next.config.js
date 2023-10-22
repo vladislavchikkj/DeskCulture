@@ -17,7 +17,8 @@ const nextConfig = {
 			'i.ytimg.com',
 			'blog-imgs-110.fc2.com',
 			'localhost',
-			's.alicdn.com'
+			's.alicdn.com',
+			'deskculture-server.onrender.com'
 		]
 	},
 	webpack(config) {
