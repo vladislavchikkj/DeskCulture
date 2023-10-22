@@ -30,6 +30,12 @@ const Contacts: FC = () => {
 		setValue,
 		formState: { errors }
 	} = useForm<FormData>({})
+	const handleEmailClick = (email: string) => {
+		navigator.clipboard
+			.writeText(email)
+			.then(() => alert('Email copied to clipboard'))
+			.catch(() => alert('Failed to copy email to clipboard'))
+	}
 	return (
 		<motion.section
 			initial='hidden'
@@ -50,7 +56,13 @@ const Contacts: FC = () => {
 								</div>
 								<div className='overflow-hidden'>
 									<motion.div variants={textAnimation}>
-										<span translate='no' className={style.email}>
+										<span
+											translate='no'
+											className={style.email}
+											onClick={() =>
+												handleEmailClick('desk.culture.official@gmail.com')
+											}
+										>
 											desk.culture.official@gmail.com
 										</span>
 									</motion.div>
@@ -72,10 +84,18 @@ const Contacts: FC = () => {
 							>
 								<span>Social links : </span>
 								<div className={style.links}>
-									<span className='text-black'>Facebook</span>
-									<span>Instagram</span>
-									<span>Behance</span>
-									<span>Dribbble</span>
+									<Link href={'https://www.facebook.com/'}>
+										<span className='text-black'>Facebook</span>
+									</Link>
+									<Link href={'https://www.instagram.com/'}>
+										<span>Instagram</span>
+									</Link>
+									<Link href={'https://www.tiktok.com/'}>
+										<span>TikTok</span>
+									</Link>
+									<Link href={'https://www.pinterest.com/'}>
+										<span>Pinterest</span>
+									</Link>
 								</div>
 							</motion.div>
 						</div>
