@@ -128,7 +128,7 @@ const Search: FC<SearchType> = ({
 															onClick={() => {
 																setIsShow(!isShow)
 															}}
-															href={`/products/${product.slug}`}
+															href={`/catalog/products/${product.slug}`}
 														>
 															<span className={style.addToFav}>More info</span>
 														</Link>

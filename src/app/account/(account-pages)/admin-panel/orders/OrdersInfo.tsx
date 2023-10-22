@@ -73,6 +73,19 @@ const OrdersInfo: FC = () => {
 												src={item.product.images[0]}
 												alt={item.product.name}
 											></Image>
+											<div className={style.prodName}>
+												<div>{item.product.name}</div>
+												{item.color && (
+													<div className={style.orderItemsLength}>
+														Color: {item.color}
+													</div>
+												)}
+												{item.type && (
+													<div className={style.orderItemsLength}>
+														Type: {item.type}
+													</div>
+												)}
+											</div>
 										</div>
 									</Link>
 								))}

@@ -8,20 +8,30 @@ import { IProduct } from '@/types/product.interface'
 import { default as style } from './addToCartButton.module.scss'
 import BagSvgEmpty from './svg/bag-empty.svg'
 import BagSvgFilled from './svg/bag-filled.svg'
+
 type props = {
 	product: IProduct
 	children?: React.ReactNode
-	variatn?: boolean
-	currentColor?: string
-	currentType?: string
+	variant?: boolean
+	color?: string
+	type?: string
 }
 
-const AddToCartButton: FC<props> = ({ product, children, variatn }) => {
+const AddToCartButton: FC<props> = ({
+	product,
+	children,
+	variant,
+	color,
+	type
+}) => {
 	const { addToCart, removeFromCart } = useActions()
 	const { items } = useCart()
 
 	const currentElement = items.find(
-		cartItem => cartItem.product.id === product.id
+		cartItem =>
+			cartItem.product.id === product.id &&
+			cartItem.color === color &&
+			cartItem.type === type
 	)
 	return (
 		<>
@@ -36,8 +46,8 @@ const AddToCartButton: FC<props> = ({ product, children, variatn }) => {
 								product,
 								quantity: 1,
 								price: product.price,
-								color: product.productType[0].color,
-								type: product.productType[0].type
+								color: color,
+								type: type
 						  })
 				}
 			>

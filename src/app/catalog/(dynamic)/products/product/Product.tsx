@@ -22,9 +22,8 @@ import SwiperCore from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { useCheckout } from '@/components/context/CheckoutContext'
-import { useActions } from '@/hooks/useActions'
-import { useCart } from '@/hooks/useCart'
 import { ICartItem } from '@/types/cart.interface'
+import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
 import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -38,13 +37,6 @@ type props = {
 }
 
 const Products: FC<props> = ({ product }) => {
-	const [currProduct] = product
-	const { addToCart, removeFromCart } = useActions()
-	const { items } = useCart()
-
-	const currentElement = items.find(
-		cartItem => cartItem.product.id === currProduct.id
-	)
 	const router = useRouter()
 	const { updateLayout } = useLayout()
 	useEffect(() => {
@@ -222,11 +214,14 @@ const Products: FC<props> = ({ product }) => {
 					<div className={style.descr}>{product[0].info}</div>
 					<div className={style.rating}>Rating: 5 star</div>
 					<div className={style.variantSelect}>
-						{product[0].productType && product[0].productType[0].color && (
-							<div className={style.color}>Color</div>
-						)}
+						{product[0].productType &&
+							product[0].productType.length > 0 &&
+							product[0].productType[0].color && (
+								<div className={style.color}>Color</div>
+							)}
 						<div className={style.variantWrapper}>
 							{product[0].productType &&
+								product[0].productType.length > 0 &&
 								product[0].productType[0].color &&
 								product[0].productType.map((variant, index) => (
 									<button
@@ -242,11 +237,14 @@ const Products: FC<props> = ({ product }) => {
 						</div>
 					</div>
 					<div className={style.variantSelect}>
-						{product[0].productType && product[0].productType[0].type && (
-							<div className={style.color}>Types</div>
-						)}
+						{product[0].productType &&
+							product[0].productType.length > 0 &&
+							product[0].productType[0].type && (
+								<div className={style.color}>Types</div>
+							)}
 						<div className={style.variantWrapper}>
 							{product[0].productType &&
+								product[0].productType.length > 0 &&
 								product[0].productType[0].type &&
 								product[0].productType.map((variant, index) => (
 									<button
@@ -264,19 +262,9 @@ const Products: FC<props> = ({ product }) => {
 
 					<div className={style.buttons}>
 						<div className={style.addToCart}>
-							<button
-								onClick={() => {
-									return addToCart({
-										product: currProduct,
-										quantity: 1,
-										price: product[0].price,
-										color: color,
-										type: type
-									})
-								}}
-							>
+							<AddToCartButton product={product[0]} color={color} type={type}>
 								Add to cart
-							</button>
+							</AddToCartButton>
 						</div>
 						{!!profile && (
 							<div className={style.favoriteButton}>

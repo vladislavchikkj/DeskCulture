@@ -125,6 +125,15 @@
 	padding-bottom: 2vh;
 	border-bottom: 1px solid #a08750;
 }
+.prodName {
+	display: flex;
+	flex-direction: column;
+	font-size: 0.8rem;
+	font-weight: 500;
+	.color {
+		font-size: 0.8rem;
+	}
+}
 @media only screen and (max-width: 567px) {
 	.orders {
 		width: 100%;

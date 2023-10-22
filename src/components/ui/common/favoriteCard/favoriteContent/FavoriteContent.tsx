@@ -50,7 +50,7 @@ const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 							) : (
 								<>
 									{profile ? (
-										<div>YOUR BAG IS EMPTY</div>
+										<div>YOUR FAVORITE LIST IS EMPTY</div>
 									) : (
 										<div>Register to add to favorites</div>
 									)}
@@ -64,7 +64,9 @@ const FavoriteContent: FC<props> = ({ isShow, setIsShow, favRef }) => {
 									<AuthButton variant='black'>SIGN IN</AuthButton>
 								</Link>
 							) : (
-								<AuthButton variant='black'>View my WHISHLIST</AuthButton>
+								<AuthButton onClick={() => setIsShow(!isShow)} variant='black'>
+									GO TO SHOP
+								</AuthButton>
 							)}
 						</div>
 					</motion.div>

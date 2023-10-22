@@ -8,9 +8,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Button from '@/ui/common/buttons/Button'
 
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
+import Link from 'next/link'
 import style from './homesocial.module.scss'
 import FacebookImg from './svg/facebook.svg'
 import InstImg from './svg/instagram.svg'
+import Pinterest from './svg/pinterest.svg'
 import TiktokImg from './svg/tiktok.svg'
 
 type HomeSocialProps = {
@@ -50,9 +52,11 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 							Our Social Media Platforms.
 						</div>
 						<div className={style.moreBtn}>
-							<Button data-hover='More About Us' variant='grey'>
-								More About Us
-							</Button>
+							<Link href={'/contacts'}>
+								<Button data-hover='More About Us' variant='grey'>
+									More About Us
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -77,56 +81,64 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 								}}
 							>
 								<SwiperSlide>
-									<div className={style.link}>
-										<div className={style.linkImg}>
-											<InstImg />
+									<Link href={'https://www.instagram.com/'} target='_blank'>
+										<div className={style.link}>
+											<div className={style.linkImg}>
+												<InstImg />
+											</div>
+											<div className={style.linkDescr}>
+												<span className={style.linkName}>Instagram</span>
+												<Button data-hover='+' variant='btnPlus'>
+													+
+												</Button>
+											</div>
 										</div>
-										<div className={style.linkDescr}>
-											<span className={style.linkName}>Instagram</span>
-											<Button data-hover='+' variant='btnPlus'>
-												+
-											</Button>
-										</div>
-									</div>
+									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<div className={style.link}>
-										<div className={style.linkImg}>
-											<FacebookImg />
+									<Link href={'https://www.facebook.com/'} target='_blank'>
+										<div className={style.link}>
+											<div className={style.linkImg}>
+												<FacebookImg />
+											</div>
+											<div className={style.linkDescr}>
+												<span className={style.linkName}>Facebook</span>
+												<Button data-hover='+' variant='btnPlus'>
+													+
+												</Button>
+											</div>
 										</div>
-										<div className={style.linkDescr}>
-											<span className={style.linkName}>Facebook</span>
-											<Button data-hover='+' variant='btnPlus'>
-												+
-											</Button>
-										</div>
-									</div>
+									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<div className={style.link}>
-										<div className={style.linkImg}>
-											<TiktokImg />
+									<Link href={'https://www.tiktok.com/'} target='_blank'>
+										<div className={style.link}>
+											<div className={style.linkImg}>
+												<TiktokImg />
+											</div>
+											<div className={style.linkDescr}>
+												<span className={style.linkName}>Tiktok</span>
+												<Button data-hover='+' variant='btnPlus'>
+													+
+												</Button>
+											</div>
 										</div>
-										<div className={style.linkDescr}>
-											<span className={style.linkName}>Tiktok</span>
-											<Button data-hover='+' variant='btnPlus'>
-												+
-											</Button>
-										</div>
-									</div>
+									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<div className={style.link}>
-										<div className={style.linkImg}>
-											<TiktokImg />
+									<Link href={'https://www.pinterest.com/'} target='_blank'>
+										<div className={style.link}>
+											<div className={style.linkImg}>
+												<Pinterest />
+											</div>
+											<div className={style.linkDescr}>
+												<span className={style.linkName}>Pinterest</span>
+												<Button data-hover='+' variant='btnPlus'>
+													+
+												</Button>
+											</div>
 										</div>
-										<div className={style.linkDescr}>
-											<span className={style.linkName}>Another</span>
-											<Button data-hover='+' variant='btnPlus'>
-												+
-											</Button>
-										</div>
-									</div>
+									</Link>
 								</SwiperSlide>
 							</Swiper>
 						</div>

@@ -12,6 +12,7 @@ import { useLayout } from '@/components/context/LayoutContext'
 import Button from '@/ui/common/buttons/Button'
 import Footer from '@/ui/layout/footer/Footer'
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import style from './contacts.module.scss'
 
@@ -148,7 +149,9 @@ const Contacts: FC = () => {
 									</div>
 									<span className={style.policy}>
 										By clicking the Submit button you agree to our{' '}
-										<b className='cursor-pointer'>Privacy Policy </b>
+										<Link href={'/policy'} className={style.btnPolicy}>
+											<b>Privacy Policy </b>
+										</Link>
 										terms
 									</span>
 									<button className={style.btnForm} type='submit'>

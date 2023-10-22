@@ -89,16 +89,6 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 					<SetupProductItem products={products} />
 				</div>
 				<div>
-					<div className={style.buttons}>
-						<Button data-hover='See more' variant={'grey'}>
-							See more
-						</Button>
-						<Button data-hover='ready setup' variant={'black'}>
-							ready setup
-						</Button>
-					</div>
-				</div>
-				<div>
 					<div className={style.intrested}>
 						<div className={style.btnWrapper}>
 							<span className={style.numdot}>02</span>

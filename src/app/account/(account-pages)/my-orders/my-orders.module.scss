@@ -38,14 +38,15 @@
 }
 .products {
 	display: flex;
-	gap: 2vh;
+	flex-wrap: wrap;
+	gap: 20px;
 	padding-bottom: 2vh;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .product {
 	display: flex;
-	gap: 1vw;
+	gap: 10px;
 	overflow: hidden;
 }
 .orderDate {
@@ -147,7 +148,7 @@
 .prodName {
 	display: flex;
 	flex-direction: column;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	font-weight: 500;
 	.color {
 		font-size: 0.8rem;

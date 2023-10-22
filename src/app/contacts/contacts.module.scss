@@ -224,4 +224,7 @@ $width: 40vw;
 	transition: $trans-time ease all;
 	color: #858585;
 }
+.btnPolicy {
+	cursor: pointer;
+}
 @import './contact.adapt.scss';

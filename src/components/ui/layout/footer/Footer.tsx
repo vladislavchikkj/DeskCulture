@@ -29,10 +29,18 @@ const Footer: FC<PageProps> = ({ home }) => {
 						</span>
 					</div>
 					<div translate='no' className={style.links}>
-						<div className={style.link}>Facebook</div>
-						<div className={style.link}>Instagram</div>
-						<div className={style.link}>Behance</div>
-						<div className={style.link}>Dribbble</div>
+						<Link href={'https://www.instagram.com/'} target='_blank'>
+							<div className={style.link}>Instagram</div>
+						</Link>
+						<Link href={'https://www.facebook.com/'} target='_blank'>
+							<div className={style.link}>Facebook</div>
+						</Link>
+						<Link href={'https://www.tiktok.com/'} target='_blank'>
+							<div className={style.link}>TikTok</div>
+						</Link>
+						<Link href={'https://www.pinterest.com/'} target='_blank'>
+							<div className={style.link}>Pinterest</div>
+						</Link>
 					</div>
 					<div>
 						<Link href={'/contacts'}>
@@ -49,7 +57,9 @@ const Footer: FC<PageProps> = ({ home }) => {
 				</div>
 				<div className={style.row}>
 					<div className={style.data}>© 2018–2023</div>
-					<div className={style.policy}>Privacy Policy</div>
+					<Link href={'/policy'}>
+						<div className={style.policy}>Privacy Policy</div>
+					</Link>
 				</div>
 			</div>
 		</>

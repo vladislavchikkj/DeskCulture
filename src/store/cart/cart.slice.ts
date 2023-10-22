@@ -23,8 +23,7 @@ export const cartSlice = createSlice({
 			)
 
 			if (!isExist) {
-				globalIndex += 1 // Увеличиваем глобальный счетчик
-				state.items.push({ ...action.payload, id: globalIndex }) // Используем глобальный счетчик в качестве ID
+				state.items.push({ ...action.payload, id: globalIndex++ })
 			}
 		},
 
