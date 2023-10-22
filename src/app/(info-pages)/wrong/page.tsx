@@ -1,14 +1,12 @@
 'use client'
 import { useLayout } from '@/components/context/LayoutContext'
-import { NO_INDEX_PAGE } from '@/constants/app.constants'
-import { Metadata } from 'next'
 import { useEffect } from 'react'
 import style from './wrong.module.scss'
 
-export const metadata: Metadata = {
-	title: 'Wrong',
-	...NO_INDEX_PAGE
-}
+// export const metadata: Metadata = {
+// 	title: 'Wrong',
+// 	...NO_INDEX_PAGE
+// }
 
 export default function ThanksPage() {
 	//решить проблему с дублирование

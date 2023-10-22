@@ -5,10 +5,10 @@ import { Metadata } from 'next'
 import { useEffect } from 'react'
 import style from './policy.module.scss'
 
-export const metadata: Metadata = {
-	title: 'Policy',
-	...NO_INDEX_PAGE
-}
+// export const metadata: Metadata = {
+// 	title: 'Policy',
+// 	...NO_INDEX_PAGE
+// }
 
 export default function ThanksPage() {
 	//решить проблему с дублирование
