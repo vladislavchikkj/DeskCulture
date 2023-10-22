@@ -1,3 +1,4 @@
+'use client'
 import Order from '@/app/account/(account-pages)/my-orders/Order'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
