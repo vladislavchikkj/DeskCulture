@@ -20,10 +20,6 @@ export default function ProductReviews({
 }: IProductReviews) {
 	const device = useCustomMediaQuery()
 
-	if (device === null) {
-		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
-		return <div>Loading...</div>
-	}
 	const [slidesPerView, setSlidesPerView] = useState(3)
 	const [spaceBetween, setSpaceBetween] = useState(30)
 	const [isModalOpen, setModalOpen] = useState(false)
@@ -56,6 +52,10 @@ export default function ProductReviews({
 				setSlidesPerView(3) // default to 3 for desktop and larger devices
 		}
 	}, [device])
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	return (
 		<section id='reviews' className=''>
 			{user && (
