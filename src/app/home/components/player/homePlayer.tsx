@@ -6,7 +6,7 @@ import Video from './video/test.mp4'
 const HomePlayer: FC = () => {
 	return (
 		<>
-			<div className={style.video}>
+			<div>
 				<video src={Video} autoPlay muted loop className={style.video}></video>
 			</div>
 		</>
