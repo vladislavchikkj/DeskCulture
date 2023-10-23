@@ -16,6 +16,7 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 	descr
 }) => {
 	const device = useCustomMediaQuery()
+
 	const [isVisible, setIsVisible] = useState(true)
 
 	useEffect(() => {
@@ -30,6 +31,10 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 				setIsVisible(true)
 		}
 	}, [device])
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	return (
 		<div className={style.item}>
 			<div>

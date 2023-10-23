@@ -22,6 +22,11 @@
 		font-weight: 400;
 		letter-spacing: -0.56px;
 		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		button {
+			span {
+				font-size: 15px;
+			}
+		}
 	}
 }
 
@@ -43,4 +48,27 @@
 		transform: translateY(0) scale(1);
 		opacity: 1;
 	}
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 567px) {
+	.window {
+		.content {
+			padding: 0.4rem 1rem !important;
+			border-radius: 5vh;
+			color: rgba(25, 27, 29, 0.5);
+			font-size: 0.8rem;
+			button {
+				span {
+					font-size: 0.8rem;
+				}
+				padding: 0.3rem 0.6rem 0.2rem 0.6rem;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 320px) {
 }

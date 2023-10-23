@@ -32,6 +32,7 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 			wrapperRef.current.style.backgroundColor = ''
 		}
 	}
+
 	return (
 		<>
 			<div className={styleHeader.menu} onClick={() => setIsShow(!isShow)}>
