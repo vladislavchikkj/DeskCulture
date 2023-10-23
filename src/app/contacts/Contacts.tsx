@@ -7,7 +7,6 @@ import 'react-html5video/dist/styles.css'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 
 import { headingAnimation } from '@/components/animations/headingAnimation'
-import { textAnimation } from '@/components/animations/homeAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import Button from '@/ui/common/buttons/Button'
 import Footer from '@/ui/layout/footer/Footer'
@@ -40,7 +39,6 @@ const Contacts: FC = () => {
 		<motion.section
 			initial='hidden'
 			whileInView='visible'
-			viewport={{ once: true }}
 			variants={baseAnimation}
 			className={style.contacts}
 		>
@@ -50,22 +48,22 @@ const Contacts: FC = () => {
 						<div className={style.title}>
 							<h1 translate='no'>
 								<div className='overflow-hidden'>
-									<motion.div variants={textAnimation}>
-										<span className='text-white block'>Get In Touch</span>
-									</motion.div>
+									{/* <motion.div variants={textAnimation}> */}
+									<span className='text-white block'>Get In Touch</span>
+									{/* </motion.div> */}
 								</div>
 								<div className='overflow-hidden'>
-									<motion.div variants={textAnimation}>
-										<span
-											translate='no'
-											className={style.email}
-											onClick={() =>
-												handleEmailClick('desk.culture.official@gmail.com')
-											}
-										>
-											desk.culture.official@gmail.com
-										</span>
-									</motion.div>
+									{/* <motion.div variants={textAnimation}> */}
+									<span
+										translate='no'
+										className={style.email}
+										onClick={() =>
+											handleEmailClick('desk.culture.official@gmail.com')
+										}
+									>
+										desk.culture.official@gmail.com
+									</span>
+									{/* </motion.div> */}
 								</div>
 							</h1>
 							<div className={style.btn}>
