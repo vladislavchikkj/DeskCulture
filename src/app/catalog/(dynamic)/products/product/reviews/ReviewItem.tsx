@@ -7,15 +7,14 @@ import style from './reviews.module.scss'
 const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	const device = useCustomMediaQuery()
 
-	if (device === null) {
-		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
-		return <div>Loading...</div>
-	}
 	const createdAt = review.createdAt
 	const dateObject = new Date(createdAt)
 	const formattedDate = dateObject.toISOString().split('T')[0]
 	const formattedTime = dateObject.toISOString().split('T')[1].slice(0, 8)
-
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	return (
 		<div className={style.reviewWrapper}>
 			<div className={style.reviewInfo}>
