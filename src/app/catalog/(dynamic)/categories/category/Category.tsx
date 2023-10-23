@@ -24,6 +24,11 @@ const Category: FC<props> = ({ products, category }) => {
 		updateLayout(false)
 	}, [])
 	const device = useCustomMediaQuery()
+
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	const introAnimation = {
 		hidden: {
 			height: 0
@@ -53,6 +58,7 @@ const Category: FC<props> = ({ products, category }) => {
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
+
 	return (
 		<motion.div
 			initial='hidden'

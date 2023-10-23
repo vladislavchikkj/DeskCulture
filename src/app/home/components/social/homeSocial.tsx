@@ -21,6 +21,7 @@ type HomeSocialProps = {
 
 const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 	const device = useCustomMediaQuery()
+
 	const [slidesPerView, setSlidesPerView] = useState(3)
 
 	useEffect(() => {
@@ -41,6 +42,11 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 				setSlidesPerView(3) // default to 3 for desktop and larger devices
 		}
 	}, [device])
+
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	return (
 		<>
 			<div ref={socialRef} className={`${style.social} container-f`}>

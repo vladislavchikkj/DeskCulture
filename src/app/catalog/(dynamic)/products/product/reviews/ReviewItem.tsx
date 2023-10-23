@@ -6,6 +6,11 @@ import { Rating } from 'react-simple-star-rating'
 import style from './reviews.module.scss'
 const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 	const device = useCustomMediaQuery()
+
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	const createdAt = review.createdAt
 	const dateObject = new Date(createdAt)
 	const formattedDate = dateObject.toISOString().split('T')[0]

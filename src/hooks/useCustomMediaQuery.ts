@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const useCustomMediaQuery = () => {
-	const [device, setDevice] = useState('desktop')
+	const [device, setDevice] = useState<string | null>(null)
 
 	useEffect(() => {
 		const checkDevice = () => {
@@ -17,10 +17,10 @@ const useCustomMediaQuery = () => {
 				setDevice('desktop')
 			}
 		}
-		// Check on mount (optional).
+		// Check on mount
 		checkDevice()
 
-		// Attach the listeners to each of the media queries
+		// then listen for resize events.
 		const listeners = [
 			window.matchMedia('(max-width: 320px)'),
 			window.matchMedia('(max-width: 567px)'),
