@@ -7,7 +7,15 @@ const HomePlayer: FC = () => {
 	return (
 		<>
 			<div>
-				<video src={Video} autoPlay muted loop className={style.video}></video>
+				<video
+					src={Video}
+					autoPlay
+					muted
+					loop
+					controls={false}
+					playsInline
+					className={style.video}
+				></video>
 			</div>
 		</>
 	)
