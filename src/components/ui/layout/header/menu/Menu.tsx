@@ -105,7 +105,12 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 						</div>
 					</div>
 					{!user && (
-						<div className={`${style.menuBtn} container-f`}>
+						<div
+							className={`${style.menuBtn} container-f`}
+							onClick={() => {
+								setIsShow(!isShow)
+							}}
+						>
 							<Link href={'/auth'}>
 								<Button data-hover='Sign in' variant={'grey'}>
 									Sign in
