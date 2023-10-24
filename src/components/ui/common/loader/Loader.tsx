@@ -22,7 +22,7 @@ const Loader: FC = () => {
 					points='16,1 32,32 1,32'
 				/>
 				<text className={style.loading} x='0' y='45' fill='#000'>
-					Loading...
+					DeskCulture
 				</text>
 			</svg>
 		</motion.div>

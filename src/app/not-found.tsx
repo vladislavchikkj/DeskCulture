@@ -1,19 +1,17 @@
+import Button from '@/ui/common/buttons/Button'
 import Heading from '@/ui/common/heading/Heading'
 import Link from 'next/link'
 
-import Layout from './layout'
-
 export default function NotFound() {
 	return (
-		<Layout>
-			<Heading>Not Found</Heading>
-			<p>Could not find requested resource</p>
-			<p>
-				View
-				<Link href='/explorer' className=' Mltext-primary'>
-					all products
-				</Link>
-			</p>
-		</Layout>
+		<div className='container-f h-screen flex items-center justify-center flex-col'>
+			<Heading variant='auth'>Not Found</Heading>
+			<div>Could not find requested resource</div>
+			<Link href='/'>
+				<Button data-hover='Go home' variant='grey' className='mt-5'>
+					Go home
+				</Button>
+			</Link>
+		</div>
 	)
 }

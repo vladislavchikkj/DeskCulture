@@ -1,5 +1,5 @@
 'use client'
-import { FC, useEffect, useState } from 'react'
+import { FC, Suspense, useEffect, useState } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
@@ -102,7 +102,9 @@ const ProductList: FC<ProductListProps> = ({
 					<div className={catalogStyle.items}>
 						{isLoading && <Loader />}
 						{products.map(product => (
-							<ProductItem key={product.id} product={product} descr={descr} />
+							<Suspense fallback={<div>Loading...</div>}>
+								<ProductItem key={product.id} product={product} descr={descr} />
+							</Suspense>
 						))}
 					</div>
 					{!allProductsLoaded ? (

@@ -5,6 +5,9 @@
 	height: 100vh;
 	overflow: auto !important;
 }
+.content {
+	min-height: 50vh;
+}
 .items {
 	position: relative;
 	display: grid;
