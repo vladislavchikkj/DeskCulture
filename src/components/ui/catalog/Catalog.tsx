@@ -35,7 +35,7 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 			className={`${catalogStyle.catalog}`}
 			variants={baseAnimation}
 		>
-			<div className='container-f'>
+			<div className={`container-f ${catalogStyle.content}`}>
 				<>
 					<motion.div variants={headingAnimation}>
 						{title && <Heading variant='catalog'>{title}</Heading>}
@@ -44,7 +44,11 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 						<ButtonSwitcher />
 					</motion.div>
 				</>
-				<motion.div custom={1.2} variants={headingAnimation}>
+				<motion.div
+					custom={1.2}
+					variants={headingAnimation}
+					className={catalogStyle.content}
+				>
 					{selectedButton === 'Categories' && <>{children}</>}
 					{selectedButton === 'Setup' && <>{children}</>}
 					{selectedButton === 'Products' && <>{children}</>}

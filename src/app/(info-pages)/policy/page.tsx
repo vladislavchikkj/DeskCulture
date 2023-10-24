@@ -1,8 +1,6 @@
 'use client'
 import { useLayout } from '@/components/context/LayoutContext'
-import { NO_INDEX_PAGE } from '@/constants/app.constants'
-import { Metadata } from 'next'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import style from './policy.module.scss'
 
 // export const metadata: Metadata = {
@@ -18,7 +16,9 @@ export default function ThanksPage() {
 	}, [])
 	return (
 		<div className='container-f'>
-			<div className={style.title}>Private policy</div>
+			<Suspense fallback={<div>Loading...</div>}>
+				<div className={style.title}>Private policy</div>
+			</Suspense>
 			<div className={style.text}>
 				<br />
 				<div className={style.data}>

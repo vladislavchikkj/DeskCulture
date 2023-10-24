@@ -1,5 +1,6 @@
 .itemWrapper {
 	display: grid;
+	min-height: 20vh;
 	grid-template-columns: 1fr 1fr;
 	gap: 2.5vw;
 	justify-content: center;
