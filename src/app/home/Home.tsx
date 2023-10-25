@@ -72,7 +72,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 						</ScrollParallax>
 					</motion.div>
 				</ScrollParallax>
-				<ScrollParallax lerpEase={0} zIndex={1} strength={0}>
+				<ScrollParallax lerpEase={0.05} zIndex={1} strength={-0.15}>
 					<HomePlayer />
 				</ScrollParallax>
 				<div ref={inViewPageRef}>

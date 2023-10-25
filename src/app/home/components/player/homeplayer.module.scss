@@ -1,11 +1,30 @@
 .video {
-	position: relative;
-	top: -35px;
-	width: 110vw;
-	height: 110vh;
 	overflow: hidden;
 	object-fit: cover;
 	transition: all 1s;
 	background-image: url(https://i.vimeocdn.com/video/1462853576-58d2ad679949feb5e4322dd1203463d90d2580e3e6030fd8834b420868422949-d_640);
 	background-size: cover;
+	position: absolute;
+	top: -18vh;
+	left: 0;
+	z-index: 12;
+}
+.wrapper {
+	position: relative;
+	padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (max-width: 567px) {
+	.video {
+		min-height: 50vh;
+		top: -12vh;
+		width: 200.66667vh !important;
+		left: 50%;
+		transform: translateX(-50%) !important;
+	}
+	.wrapper {
+		min-height: 30vh;
+	}
 }
