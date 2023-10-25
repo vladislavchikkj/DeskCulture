@@ -15,7 +15,7 @@ export default function ThanksPage() {
 		updateLayout(false)
 	}, [])
 	return (
-		<div className='container-f'>
+		<div className={`${style.content} container-f`}>
 			<Suspense fallback={<div>Loading...</div>}>
 				<div className={style.title}>Private policy</div>
 			</Suspense>

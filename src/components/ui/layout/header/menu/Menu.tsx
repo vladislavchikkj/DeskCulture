@@ -76,6 +76,19 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 							}}
 							className={style.menuListWrapper}
 						>
+							<Link href={`/catalog`} className={style.menuList}>
+								<span className={style.menuListName}>Catalog</span>
+								<Button data-hover='↓' variant={'btnArrowMenu'}>
+									↓
+								</Button>
+							</Link>
+
+							<Link href={'/cart'} className={style.menuList}>
+								<span className={style.menuListName}>Your Bag</span>
+								<Button data-hover='↓' variant={'btnArrowMenu'}>
+									↓
+								</Button>
+							</Link>
 							<Link
 								href={user ? `/account` : '/auth'}
 								className={style.menuList}
@@ -91,14 +104,8 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 									↓
 								</Button>
 							</Link>
-							<Link href={`/catalog`} className={style.menuList}>
-								<span className={style.menuListName}>Catalog</span>
-								<Button data-hover='↓' variant={'btnArrowMenu'}>
-									↓
-								</Button>
-							</Link>
-							<Link href={'/cart'} className={style.menuList}>
-								<span className={style.menuListName}>Your Bag</span>
+							<Link href={`/policy`} className={style.menuList}>
+								<span className={style.menuListName}>Privacy Policy</span>
 								<Button data-hover='↓' variant={'btnArrowMenu'}>
 									↓
 								</Button>

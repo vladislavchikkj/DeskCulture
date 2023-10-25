@@ -7,6 +7,7 @@ import VideoContent from './video/test.mp4'
 const HomePlayer: FC = () => {
 	return (
 		<div className={style.wrapper}>
+			{/* @ts-ignore */}
 			<ReactPlayer
 				url={VideoContent}
 				playing

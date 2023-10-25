@@ -4,11 +4,21 @@
 	max-width: auto;
 	height: auto;
 }
+html {
+	--black: rgb(255, 255, 255);
+	--cursor-color: rgb(255, 255, 255);
+	--cursor-color-dark: rgb(180, 180, 180);
+}
+
+html.dark-mode {
+	--cursor-color: #fff;
+}
 body {
 	@apply text-base text-black;
 	font-family: 'Inter', sans-serif;
 	padding: 0;
 	margin: 0;
+	background: white;
 }
 
 .disabled {

@@ -42,7 +42,11 @@ const Contacts: FC = () => {
 			variants={baseAnimation}
 			className={style.contacts}
 		>
-			<Parallax ref={parallax} pages={2.2} style={{ top: '0', left: '0' }}>
+			<Parallax
+				ref={parallax}
+				pages={2.2}
+				style={{ top: '0', left: '0', background: '#fff' }}
+			>
 				<ParallaxLayer speed={0.2} style={{ background: '#cdcecf' }}>
 					<div className={`container-f ${style.preview}`}>
 						<div className={style.title}>
