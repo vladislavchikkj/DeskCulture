@@ -1,23 +1,24 @@
 import { FC } from 'react'
+import ReactPlayer from 'react-player'
 import style from './homeplayer.module.scss'
 //@ts-ignore
-import Video from './video/test.mp4'
+import VideoContent from './video/test.mp4'
 
 const HomePlayer: FC = () => {
 	return (
-		<>
-			<div>
-				<video
-					src={Video}
-					autoPlay
-					muted
-					loop
-					controls={false}
-					playsInline
-					className={style.video}
-				></video>
-			</div>
-		</>
+		<div className={style.wrapper}>
+			<ReactPlayer
+				url={VideoContent}
+				playing
+				muted
+				loop
+				controls={false}
+				playsinline
+				className={style.video}
+				width={'120%'}
+				height={'120%'}
+			></ReactPlayer>
+		</div>
 	)
 }
 export default HomePlayer
