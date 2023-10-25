@@ -110,7 +110,7 @@ const Checkout: FC = () => {
 				initial='hidden'
 				whileInView='visible'
 				variants={baseAnimation}
-				className='container-f'
+				className={`${style.container} container-f`}
 			>
 				<div className={style.wrapper}>
 					<div className={style.title}>Checkout</div>

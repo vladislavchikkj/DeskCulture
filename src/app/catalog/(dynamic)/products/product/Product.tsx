@@ -135,7 +135,7 @@ const Products: FC<props> = ({ product }) => {
 			initial='hidden'
 			whileInView='visible'
 			viewport={{ once: true }}
-			className='container-f'
+			className={`${style.wrapper} container-f`}
 			variants={baseAnimation}
 		>
 			<div className={style.content}>
