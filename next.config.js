@@ -4,6 +4,7 @@ const nextConfig = {
 	sassOptions: {
 		fiber: false
 	},
+	target: 'serverless',
 	env: {
 		SERVER_URL: process.env.SERVER_URL,
 		APP_URL: process.env.APP_URL

@@ -52,8 +52,8 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 					<Link href={`/catalog/products/${product.slug}`}>
 						<div className={style.imageWrapper}>
 							<Image
-								width={1000}
-								height={1000}
+								width={500}
+								height={500}
 								className={style.image}
 								src={product.images[0]}
 								alt={product.name}
