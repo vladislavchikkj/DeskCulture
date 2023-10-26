@@ -18,7 +18,12 @@ const nextConfig = {
 			'blog-imgs-110.fc2.com',
 			'localhost',
 			's.alicdn.com',
-			'deskculture-server.onrender.com'
+			'deskculture-server.onrender.com',
+			'ae01.alicdn.com',
+			'pbs.twimg.com',
+			'd3iy0wirzdn0f1.cloudfront.net',
+			'9to5mac.com',
+			'cdn.homedit.com'
 		]
 	},
 	webpack(config) {

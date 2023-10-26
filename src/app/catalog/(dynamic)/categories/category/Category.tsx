@@ -7,8 +7,10 @@ import ProductList from '@/ui/catalog/productsList/ProductList'
 import { ICategory } from '@/types/category.interface'
 import { IProduct } from '@/types/product.interface'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
+import Image from 'next/image'
 import { ScrollParallax } from 'react-just-parallax'
 import style from './category.module.scss'
 
@@ -68,12 +70,22 @@ const Category: FC<props> = ({ products, category }) => {
 			<div className={style.introWrapper}>
 				<ScrollParallax lerpEase={0.05} zIndex={9} strength={0.05}>
 					<motion.div variants={introAnimation} className={style.intro}>
-						<motion.img
-							variants={imageAnimation}
-							className={style.image}
-							src={category.image}
-							alt={category.name}
-						/>
+						<motion.div variants={imageAnimation}>
+							<Image
+								width={1000}
+								height={1000}
+								className={style.image}
+								src={category.image}
+								alt={category.name}
+								placeholder={`data:image/svg+xml;base64,${toBase64(
+									shimmer(700, 475)
+								)}`}
+								style={{
+									maxWidth: '100%',
+									height: 'auto'
+								}}
+							/>
+						</motion.div>
 						<div className={`${style.name} container-f`}>{category.name}</div>
 					</motion.div>
 				</ScrollParallax>

@@ -24,7 +24,7 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 	}, [])
 
 	const [selectedButton, setSelectedButton] = useState<
-		'Categories' | 'Setup' | 'Products'
+		'Categories' | 'Setups' | 'Products'
 	>('Categories')
 
 	return (
@@ -50,7 +50,7 @@ const Catalog: FC<ICatalog> = ({ title, children }) => {
 					className={catalogStyle.content}
 				>
 					{selectedButton === 'Categories' && <>{children}</>}
-					{selectedButton === 'Setup' && <>{children}</>}
+					{selectedButton === 'Setups' && <>{children}</>}
 					{selectedButton === 'Products' && <>{children}</>}
 				</motion.div>
 			</div>

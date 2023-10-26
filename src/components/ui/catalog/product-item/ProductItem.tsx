@@ -5,7 +5,9 @@ import { IProduct } from '@/types/product.interface'
 
 import { convertPrice } from '@/utils/convertPrice'
 
+import { shimmer, toBase64 } from '@/components/common'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
+import Image from 'next/image'
 import AddToCartButton from './addToCardButton/AddToCartButton'
 import FavoriteButton from './favoriteButton/FavoriteButton'
 import style from './product-item.module.scss'
@@ -49,10 +51,19 @@ const ProductItem: FC<{ product: IProduct; descr?: boolean }> = ({
 					)}
 					<Link href={`/catalog/products/${product.slug}`}>
 						<div className={style.imageWrapper}>
-							<img
+							<Image
+								width={1000}
+								height={1000}
 								className={style.image}
 								src={product.images[0]}
 								alt={product.name}
+								placeholder={`data:image/svg+xml;base64,${toBase64(
+									shimmer(700, 475)
+								)}`}
+								style={{
+									maxWidth: '100%',
+									height: 'auto'
+								}}
 							/>
 						</div>
 					</Link>

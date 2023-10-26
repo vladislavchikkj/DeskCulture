@@ -1,8 +1,10 @@
+import { shimmer, toBase64 } from '@/components/common'
 import { CategoryService } from '@/services/category.service'
 import { ICategory } from '@/types/category.interface'
 import { IOptions } from '@/types/checkout.interface'
 import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
+import Image from 'next/image'
 import { FC, useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { StylesConfig } from 'react-select'
@@ -175,7 +177,19 @@ const UpdateCategoriesForm: FC<Props> = ({
 					{previewUrl &&
 						previewUrl.map((url, index) => (
 							<div className={style.uploadImg} key={index}>
-								<img src={url} alt='preview' />
+								<Image
+									width={500}
+									height={500}
+									src={url}
+									alt='preview'
+									placeholder={`data:image/svg+xml;base64,${toBase64(
+										shimmer(700, 475)
+									)}`}
+									style={{
+										maxWidth: '100%',
+										height: 'auto'
+									}}
+								/>
 								<button
 									onClick={() => {
 										setPreviewUrl(

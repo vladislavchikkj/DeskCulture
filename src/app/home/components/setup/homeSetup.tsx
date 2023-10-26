@@ -3,7 +3,9 @@ import { FC, LegacyRef } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { TypePaginationSetup } from '@/types/product.interface'
+import Image from 'next/image'
 import style from './homesetup.module.scss'
 
 type HomeSetupProps = {
@@ -41,10 +43,19 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 						<div key={setup.id} className={style.item}>
 							<div className={style.imageWrapper}>
 								<Link href={`/catalog/setups/${setup.id}`}>
-									<img
+									<Image
+										width={1000}
+										height={1000}
 										src={setup.image}
 										alt={setup.name}
 										className={style.image}
+										placeholder={`data:image/svg+xml;base64,${toBase64(
+											shimmer(700, 475)
+										)}`}
+										style={{
+											maxWidth: '100%',
+											height: 'auto'
+										}}
 									/>
 								</Link>
 

@@ -10,9 +10,11 @@ import { ICategory } from '@/types/category.interface'
 import setupStyle from '../catalogSetups.module.scss'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
+import { shimmer, toBase64 } from '@/components/common'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 interface CategoryProps {
 	categories: ICategory[]
@@ -45,6 +47,7 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 			}
 		}
 	}
+
 	return (
 		<motion.div
 			initial='hidden'
@@ -60,10 +63,19 @@ const CategoryList: React.FC<CategoryProps> = ({ categories }) => {
 					<div key={category.id} className={setupStyle.item}>
 						<div className={setupStyle.imageWrapper}>
 							<Link href={`/catalog/categories/${category.slug}`}>
-								<img
+								<Image
+									width={1000}
+									height={1000}
 									src={category.image}
 									alt={category.name}
 									className={setupStyle.image}
+									placeholder={`data:image/svg+xml;base64,${toBase64(
+										shimmer(700, 475)
+									)}`}
+									style={{
+										maxWidth: '100%',
+										height: 'auto'
+									}}
 								/>
 							</Link>
 						</div>

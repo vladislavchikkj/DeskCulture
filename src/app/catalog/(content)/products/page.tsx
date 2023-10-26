@@ -1,11 +1,24 @@
-import { NO_INDEX_PAGE } from '@/constants/app.constants'
+import { getSiteUrl } from '@/config/url.config'
+import { SITE_NAME } from '@/constants/app.constants'
+import { ICON_PATH } from '@/constants/favicon.constant'
 import { ProductService } from '@/services/product/product.service'
 import ProductList from '@/ui/catalog/productsList/ProductList'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Products',
-	...NO_INDEX_PAGE
+	icons: {
+		icon: ICON_PATH
+	},
+	title: {
+		absolute: `Products | Catalog`,
+		template: `%s | Catalog`
+	},
+	metadataBase: new URL(getSiteUrl()),
+	openGraph: {
+		type: 'website',
+		siteName: SITE_NAME,
+		emails: ['desk.culture.official@gmail.com']
+	}
 }
 
 async function getStaticProps() {

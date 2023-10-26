@@ -1,6 +1,7 @@
-import { serverAddress } from '@/components/common'
+import { serverAddress, shimmer, toBase64 } from '@/components/common'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import { IReview } from '@/types/review.interface'
+import Image from 'next/image'
 import { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import style from './reviews.module.scss'
@@ -20,9 +21,18 @@ const ReviewItem: FC<{ review: IReview }> = ({ review }) => {
 			<div className={style.reviewInfo}>
 				{review.imageUrl && (
 					<div className={style.reviewImg}>
-						<img
+						<Image
+							width={500}
+							height={500}
 							src={`${serverAddress}/${review.imageUrl}`}
 							alt={String(review.productId)}
+							placeholder={`data:image/svg+xml;base64,${toBase64(
+								shimmer(700, 475)
+							)}`}
+							style={{
+								maxWidth: '100%',
+								height: 'auto'
+							}}
 						/>
 					</div>
 				)}
