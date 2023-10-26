@@ -333,6 +333,83 @@ const Products: FC<props> = ({ product }) => {
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
+						<Button data-hover='Details Images' variant='grey'>
+							Details Images
+						</Button>
+					</div>
+					<div className={style.title}>Details Images</div>
+				</div>
+				<div className={style.imgWrapper}>
+					{/* <Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H469713175af6417ebecfa9d94b79e291L/250871120/H469713175af6417ebecfa9d94b79e291L.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H221c124506f74b589899127cf2bebd42O/250871120/H221c124506f74b589899127cf2bebd42O.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H6ae2060fbc54402bae182478bac9e2683/250871120/H6ae2060fbc54402bae182478bac9e2683.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H7e1076d75cfc44d5aae063182018d83e8/250871120/H7e1076d75cfc44d5aae063182018d83e8.jpg'
+						}
+						alt={''}
+					/> */}
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H58a4d9c86a924935954d92f68a004246B/250871120/H58a4d9c86a924935954d92f68a004246B.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H59c7d244f2254d13b9d066d4df99fb07r/250871120/H59c7d244f2254d13b9d066d4df99fb07r.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/Hf5a74b32971d4befac6a637e628e5cacn/250871120/Hf5a74b32971d4befac6a637e628e5cacn.jpg'
+						}
+						alt={''}
+					/>
+					<Image
+						width={1500}
+						height={1500}
+						src={
+							'https://sc04.alicdn.com/kf/H2de5f748575f485592ca22af5febeafdM/250871120/H2de5f748575f485592ca22af5febeafdM.jpg'
+						}
+						alt={''}
+					/>
+				</div>
+			</div>
+			<div className={style.intrestedWrap}>
+				<div className={style.intrested}>
+					<div className={style.btnWrapper}>
+						<span className={style.numdot}>02</span>
 						<Button data-hover='Reviews' variant='grey'>
 							Reviews
 						</Button>
@@ -347,7 +424,7 @@ const Products: FC<props> = ({ product }) => {
 			<div className={style.intrestedWrap}>
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
-						<span className={style.numdot}>02</span>
+						<span className={style.numdot}>03</span>
 						<Button data-hover='Learn More' variant='grey'>
 							Learn More
 						</Button>
