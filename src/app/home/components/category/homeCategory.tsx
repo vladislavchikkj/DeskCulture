@@ -5,6 +5,8 @@ import Button from '@/ui/common/buttons/Button'
 
 import { TypePaginationCategories } from '@/types/product.interface'
 
+import { shimmer, toBase64 } from '@/components/common'
+import Image from 'next/image'
 import style from './homecategory.module.scss'
 
 const HomeCategory: FC<TypePaginationCategories> = ({
@@ -40,10 +42,19 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 						<div key={categories.id} className={style.item}>
 							<div className={style.imageWrapper}>
 								<Link href={`/catalog/categories/${categories.slug}`}>
-									<img
+									<Image
+										width={1000}
+										height={1000}
 										src={categories.image}
 										alt={categories.name}
 										className={style.image}
+										placeholder={`data:image/svg+xml;base64,${toBase64(
+											shimmer(700, 475)
+										)}`}
+										style={{
+											maxWidth: '100%',
+											height: 'auto'
+										}}
 									/>
 								</Link>
 

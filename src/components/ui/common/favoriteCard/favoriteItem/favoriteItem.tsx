@@ -8,7 +8,9 @@ import { IProduct } from '@/types/product.interface'
 
 import { convertPrice } from '@/utils/convertPrice'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { UserService } from '@/services/user.service'
+import Image from 'next/image'
 import style from './favoritesItem.module.scss'
 
 type props = {
@@ -41,7 +43,20 @@ const FavoritesItem: FC<props> = ({ item, setIsShow, isShow }) => {
 				}}
 				href={`/catalog/products/${item.slug}`}
 			>
-				<img className={style.image} src={item.images[0]} alt={item.name} />
+				<Image
+					width={500}
+					height={500}
+					className={style.image}
+					src={item.images[0]}
+					alt={item.name}
+					placeholder={`data:image/svg+xml;base64,${toBase64(
+						shimmer(700, 475)
+					)}`}
+					style={{
+						maxWidth: '100%',
+						height: 'auto'
+					}}
+				/>
 			</Link>
 
 			<div className={style.info}>

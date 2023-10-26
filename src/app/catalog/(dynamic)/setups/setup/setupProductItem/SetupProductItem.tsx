@@ -3,6 +3,8 @@ import { FC } from 'react'
 
 import { IProduct } from '@/types/product.interface'
 
+import { shimmer, toBase64 } from '@/components/common'
+import Image from 'next/image'
 import style from './setupProductItem.module.scss'
 
 type props = {
@@ -17,7 +19,20 @@ const SetupProductItem: FC<props> = ({ products }) => {
 						<div className={style.setupItem}>
 							<div className={style.setupItemWrapper}>
 								<div className={style.prodImg}>
-									<img src={product.images[0]} alt={product.name} />
+									<Image
+										width={1000}
+										height={1000}
+										className={style.image}
+										src={product.images[0]}
+										alt={product.name}
+										placeholder={`data:image/svg+xml;base64,${toBase64(
+											shimmer(700, 475)
+										)}`}
+										style={{
+											maxWidth: '100%',
+											height: 'auto'
+										}}
+									/>
 								</div>
 								<div>
 									<div className={style.prodName}>{product.name}</div>

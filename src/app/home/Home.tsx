@@ -1,12 +1,5 @@
 'use client' // indicates Client Component
 
-// Import with next's dynamic import
-import dynamic from 'next/dynamic'
-
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-	ssr: false
-})
-
 import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import 'react-html5video/dist/styles.css'
@@ -20,6 +13,7 @@ import { TypeCombinedPagination } from '@/types/product.interface'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { homeAnimation } from '@/components/animations/homeAnimation'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Link from 'next/link'
 import { ScrollParallax } from 'react-just-parallax'

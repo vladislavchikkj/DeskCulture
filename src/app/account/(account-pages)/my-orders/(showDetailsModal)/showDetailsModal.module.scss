@@ -76,3 +76,12 @@
 	cursor: pointer;
 	padding-right: 2vw;
 }
+@media only screen and (max-width: 768px) {
+	.wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2vw;
+		padding-top: 1vh;
+		padding-bottom: 4vh;
+	}
+}

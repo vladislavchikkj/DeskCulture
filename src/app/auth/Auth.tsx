@@ -76,7 +76,7 @@ const Auth: FC = () => {
 				whileInView='visible'
 				viewport={{ once: true }}
 				variants={baseAnimation}
-				className='flex h-screen container-f relative justify-center align-middle'
+				className='flex h-screen container-f relative justify-center align-middle bg-white'
 			>
 				<form
 					onSubmit={handleSubmit(onSubmit)}

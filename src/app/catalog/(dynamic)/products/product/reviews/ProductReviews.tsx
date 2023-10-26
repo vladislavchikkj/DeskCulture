@@ -88,7 +88,11 @@ export default function ProductReviews({
 			</div>
 			<div className={style.leaveBtn}>
 				{user && (
-					<Button onClick={() => setModalOpen(true)} variant={'black'}>
+					<Button
+						onClick={() => setModalOpen(true)}
+						variant={'black'}
+						data-hover='Leave a review'
+					>
 						Leave a review
 					</Button>
 				)}

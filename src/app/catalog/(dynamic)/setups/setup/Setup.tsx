@@ -7,9 +7,11 @@ import Button from '@/ui/common/buttons/Button'
 import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import SetupList from '@/ui/catalog/setupsList/SetupsList'
+import Image from 'next/image'
 import style from './setup.module.scss'
 import SetupProductItem from './setupProductItem/SetupProductItem'
 
@@ -70,12 +72,22 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 		>
 			<div className={style.introWrapper}>
 				<motion.div variants={introAnimation} className={style.intro}>
-					<motion.img
-						variants={imageAnimation}
-						className={style.image}
-						src={setups.image}
-						alt={setups.name}
-					/>
+					<motion.div variants={imageAnimation}>
+						<Image
+							width={1000}
+							height={1000}
+							className={style.image}
+							src={setups.image}
+							alt={setups.name}
+							placeholder={`data:image/svg+xml;base64,${toBase64(
+								shimmer(700, 475)
+							)}`}
+							style={{
+								maxWidth: '100%',
+								height: 'auto'
+							}}
+						/>
+					</motion.div>
 					<div className={`${style.name} container-f`}>{setups.name}</div>
 				</motion.div>
 			</div>

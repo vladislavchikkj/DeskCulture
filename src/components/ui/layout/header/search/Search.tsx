@@ -17,7 +17,9 @@ import { IProduct } from '@/types/product.interface'
 
 import styleHeader from '../header.module.scss'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { emitCustomEvent } from '@/utils/emitCustomEvent'
+import Image from 'next/image'
 import style from './search.module.scss'
 import SearchIcon from './svg/search.svg'
 
@@ -108,10 +110,19 @@ const Search: FC<SearchType> = ({
 														}}
 														href={`/catalog/products/${product.slug}`}
 													>
-														<img
+														<Image
+															width={1000}
+															height={1000}
 															className={style.searchItemImage}
 															src={product.images[0]}
 															alt={product.name}
+															placeholder={`data:image/svg+xml;base64,${toBase64(
+																shimmer(700, 475)
+															)}`}
+															style={{
+																maxWidth: '100%',
+																height: 'auto'
+															}}
 														/>
 													</Link>
 												</div>

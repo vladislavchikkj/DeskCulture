@@ -18,26 +18,26 @@ const HomeIntro: FC = () => {
 					<h1 translate='no'>
 						<div className='overflow-hidden'>
 							<motion.div variants={textAnimation}>
-								<span>Create. Your.</span>
+								<a>Create. Your.</a>
 							</motion.div>
 						</div>
 						<div className='overflow-hidden'>
 							<motion.div variants={textAnimation}>
-								<span translate='no' className='text-white block'>
+								<a translate='no' className='text-white block'>
 									Workspace.
-								</span>
+								</a>
 							</motion.div>
 						</div>
 					</h1>
 				</div>
 				<div className={style.lowSide}>
-					<motion.div variants={textAnimation} className={style.logo}>
+					<motion.a variants={textAnimation} className={style.logo}>
 						<Logo />
-					</motion.div>
-					<motion.div variants={textAnimation} className={style.info}>
+					</motion.a>
+					<motion.a variants={textAnimation} className={style.info}>
 						Create a workspace that epitomizes your refined preferences while
 						igniting your drive for productivity.
-					</motion.div>
+					</motion.a>
 				</div>
 			</motion.div>
 		</>

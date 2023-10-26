@@ -53,12 +53,12 @@ const Contacts: FC = () => {
 							<h1 translate='no'>
 								<div className='overflow-hidden'>
 									{/* <motion.div variants={textAnimation}> */}
-									<span className='text-white block'>Get In Touch</span>
+									<a className='text-white block'>Get In Touch</a>
 									{/* </motion.div> */}
 								</div>
 								<div className='overflow-hidden'>
 									{/* <motion.div variants={textAnimation}> */}
-									<span
+									<a
 										translate='no'
 										className={style.email}
 										onClick={() =>
@@ -66,7 +66,7 @@ const Contacts: FC = () => {
 										}
 									>
 										desk.culture.official@gmail.com
-									</span>
+									</a>
 									{/* </motion.div> */}
 								</div>
 							</h1>

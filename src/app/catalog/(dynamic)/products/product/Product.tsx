@@ -21,9 +21,11 @@ import FavoriteButton from '@/ui/catalog/product-item/favoriteButton/FavoriteBut
 import SwiperCore from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { useCheckout } from '@/components/context/CheckoutContext'
 import { ICartItem } from '@/types/cart.interface'
 import AddToCartButton from '@/ui/catalog/product-item/addToCardButton/AddToCartButton'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -194,13 +196,23 @@ const Products: FC<props> = ({ product }) => {
 								>
 									{allImages.map((image, i) => (
 										<SwiperSlide key={i}>
-											<motion.img
-												variants={imageAnimation}
-												key={i}
-												className={style.image}
-												src={image}
-												alt={product[0].name}
-											/>
+											<motion.div variants={imageAnimation} key={i}>
+												<Image
+													width={1000}
+													height={1000}
+													key={i}
+													className={style.image}
+													src={image}
+													alt={product[0].name}
+													placeholder={`data:image/svg+xml;base64,${toBase64(
+														shimmer(700, 475)
+													)}`}
+													style={{
+														maxWidth: '100%',
+														height: 'auto'
+													}}
+												/>
+											</motion.div>
 										</SwiperSlide>
 									))}
 								</Swiper>

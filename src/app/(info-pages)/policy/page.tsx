@@ -1,19 +1,26 @@
-'use client'
-import { useLayout } from '@/components/context/LayoutContext'
-import { Suspense, useEffect } from 'react'
+import { getSiteUrl } from '@/config/url.config'
+import { SITE_NAME } from '@/constants/app.constants'
+import { ICON_PATH } from '@/constants/favicon.constant'
+import { Metadata } from 'next'
+import { Suspense } from 'react'
 import style from './policy.module.scss'
 
-// export const metadata: Metadata = {
-// 	title: 'Policy',
-// 	...NO_INDEX_PAGE
-// }
+export const metadata: Metadata = {
+	icons: {
+		icon: ICON_PATH
+	},
+	title: {
+		absolute: `Information | Private policy`
+	},
+	metadataBase: new URL(getSiteUrl()),
+	openGraph: {
+		type: 'website',
+		siteName: SITE_NAME,
+		emails: ['desk.culture.official@gmail.com']
+	}
+}
 
 export default function ThanksPage() {
-	//решить проблему с дублирование
-	const { updateLayout } = useLayout()
-	useEffect(() => {
-		updateLayout(false)
-	}, [])
 	return (
 		<div className={`${style.content} container-f`}>
 			<Suspense fallback={<div>Loading...</div>}>

@@ -20,10 +20,10 @@ const ButtonSwitcher: FC = () => {
 			</Link>
 			<Link href='/catalog/setups'>
 				<Button
-					data-hover='Setup'
+					data-hover='Setups'
 					variant={pathname === '/catalog/setups' ? 'black' : 'grey'}
 				>
-					Setup
+					Setups
 				</Button>
 			</Link>
 			<Link href='/catalog/products'>

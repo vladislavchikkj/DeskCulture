@@ -6,6 +6,7 @@ import { baseAnimation } from '@/components/animations/baseAnimation'
 import { motion } from 'framer-motion'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
+import { shimmer, toBase64 } from '@/components/common'
 import { useCheckout } from '@/components/context/CheckoutContext'
 import {
 	customStyles,
@@ -19,6 +20,7 @@ import { IOptions, IShippingField } from '@/types/checkout.interface'
 import Field from '@/ui/common/input/Field'
 import { convertPrice } from '@/utils/convertPrice'
 import { useMutation } from '@tanstack/react-query'
+import Image from 'next/image'
 import Link from 'next/link'
 import ReactSelect from 'react-select'
 import AuthButton from '../auth/authButton/authButton'
@@ -316,10 +318,19 @@ const Checkout: FC = () => {
 								{items.map(item => (
 									<div key={item.id} className={style.items}>
 										<div className={style.itemImageWrapper}>
-											<img
+											<Image
+												width={500}
+												height={500}
 												src={item.product.images[0]}
 												alt={item.product.name}
 												className={style.itemImage}
+												placeholder={`data:image/svg+xml;base64,${toBase64(
+													shimmer(700, 475)
+												)}`}
+												style={{
+													maxWidth: '100%',
+													height: 'auto'
+												}}
 											/>
 										</div>
 										<div className={style.itemInfo}>

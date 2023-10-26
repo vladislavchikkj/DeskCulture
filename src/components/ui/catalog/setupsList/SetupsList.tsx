@@ -1,13 +1,15 @@
 'use client'
 import Link from 'next/link'
-import React, { Suspense, useState } from 'react'
+import React, { useState } from 'react'
 
 import Loader from '@/ui/common/loader/Loader'
 
 import { ISetups } from '@/types/setups.interface'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
+import { shimmer, toBase64 } from '@/components/common'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import setupStyle from '../catalogSetups.module.scss'
 
 interface SetupProps {
@@ -31,10 +33,19 @@ const SetupList: React.FC<SetupProps> = ({ setups }) => {
 					<div key={setup.id} className={setupStyle.item}>
 						<div className={setupStyle.imageWrapper}>
 							<Link href={`/catalog/setups/${setup.id}`}>
-								<img
+								<Image
+									width={500}
+									height={500}
 									src={setup.image}
 									alt={setup.name}
 									className={setupStyle.image}
+									placeholder={`data:image/svg+xml;base64,${toBase64(
+										shimmer(700, 475)
+									)}`}
+									style={{
+										maxWidth: '100%',
+										height: 'auto'
+									}}
 								/>
 							</Link>
 						</div>
