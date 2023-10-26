@@ -4,7 +4,6 @@ const nextConfig = {
 	sassOptions: {
 		fiber: false
 	},
-	target: 'serverless',
 	env: {
 		SERVER_URL: process.env.SERVER_URL,
 		APP_URL: process.env.APP_URL
@@ -25,6 +24,12 @@ const nextConfig = {
 			'd3iy0wirzdn0f1.cloudfront.net',
 			'9to5mac.com',
 			'cdn.homedit.com'
+		],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'desk-culture.com'
+			}
 		]
 	},
 	webpack(config) {
