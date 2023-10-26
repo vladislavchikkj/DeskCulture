@@ -7,14 +7,14 @@ import { CheckoutProvider } from '@/components/context/CheckoutContext'
 import { LayoutProvider } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import { persistor, store } from '@/store/store'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import AuthProvider from './auth-provider/AuthProvider'
 
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-	ssr: false
-})
+// const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
+// 	ssr: false
+// })
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -35,32 +35,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 						<AuthProvider>
 							<LayoutProvider>
 								<Layout>{children}</Layout>
-								{device != 'mobile_m' && device != 'mobile_s' && (
-									<>
-										{/* @ts-ignore */}
-										<AnimatedCursor
-											showSystemCursor={true}
-											innerSize={0}
-											outerSize={4}
-											innerScale={1}
-											outerScale={30}
-											outerAlpha={10}
-											// @ts-ignore
-											hasBlendMode={true}
-											innerStyle={{
-												backgroundColor: 'var(--cursor-color)',
-												mixBlendMode: 'exclusion',
-												zIndex: '9999'
-											}}
-											outerStyle={{
-												border: '3px solid var(--black)',
-												backgroundColor: 'var(--black)',
-												mixBlendMode: 'exclusion',
-												zIndex: '9999'
-											}}
-										/>
-									</>
-								)}
 							</LayoutProvider>
 						</AuthProvider>
 					</CheckoutProvider>
@@ -69,3 +43,32 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 		</QueryClientProvider>
 	)
 }
+
+// mb future
+
+// {device != 'mobile_m' && device != 'mobile_s' && (
+// 	<>
+// 		{/* @ts-ignore */}
+// 		<AnimatedCursor
+// 			showSystemCursor={true}
+// 			innerSize={0}
+// 			outerSize={4}
+// 			innerScale={1}
+// 			outerScale={30}
+// 			outerAlpha={10}
+// 			// @ts-ignore
+// 			hasBlendMode={true}
+// 			innerStyle={{
+// 				backgroundColor: 'var(--cursor-color)',
+// 				mixBlendMode: 'exclusion',
+// 				zIndex: '9999'
+// 			}}
+// 			outerStyle={{
+// 				border: '3px solid var(--black)',
+// 				backgroundColor: 'var(--black)',
+// 				mixBlendMode: 'exclusion',
+// 				zIndex: '9999'
+// 			}}
+// 		/>
+// 	</>
+// )}
