@@ -10,8 +10,8 @@ import Image from 'next/image'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import ReactSelect, { StylesConfig } from 'react-select'
+import style from '../(leaveProductForm)/leaveProductForm.module.scss'
 import UploadSVG from './icon/upload.svg'
-import style from './leaveProductForm.module.scss'
 
 export interface IProductFields {
 	name: string
