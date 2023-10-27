@@ -66,7 +66,7 @@ type Props = {
 	updateProducts: () => Promise<void>
 }
 
-const LeaveProductForm: FC<Props> = ({
+const UpdateProductForm: FC<Props> = ({
 	categories,
 	setups,
 	products,
@@ -409,4 +409,4 @@ const LeaveProductForm: FC<Props> = ({
 	)
 }
 
-export default LeaveProductForm
+export default UpdateProductForm
