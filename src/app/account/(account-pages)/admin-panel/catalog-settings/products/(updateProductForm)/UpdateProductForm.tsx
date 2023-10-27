@@ -2,7 +2,7 @@ import { shimmer, toBase64 } from '@/components/common'
 import { ProductService } from '@/services/product/product.service'
 import { ICategory } from '@/types/category.interface'
 import { IOptions } from '@/types/checkout.interface'
-import { IProduct, TypeCombinedPagination } from '@/types/product.interface'
+import { IProduct } from '@/types/product.interface'
 import { ISetups } from '@/types/setups.interface'
 import Button from '@/ui/common/buttons/Button'
 import Field from '@/ui/common/input/Field'
@@ -10,9 +10,20 @@ import Image from 'next/image'
 import { FC, useRef, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import ReactSelect, { StylesConfig } from 'react-select'
-import { IProductFields } from '../(leaveProductForm)/LeaveProductForm'
 import UploadSVG from './icon/upload.svg'
-import style from './updateProductForm.module.scss'
+import style from './leaveProductForm.module.scss'
+
+export interface IProductFields {
+	name: string
+	slug: string
+	price: number
+	description: string
+	info: string
+	remains: number
+	image: File
+	categoryId: string
+	setupsId: string
+}
 
 interface ProductCategory {
 	label: string
@@ -47,6 +58,7 @@ export const customStyles: StylesConfig<IOptions | string, false> = {
 		textTransform: 'uppercase'
 	})
 }
+
 type Props = {
 	categories: ICategory[]
 	setups: ISetups[]
@@ -54,16 +66,19 @@ type Props = {
 	updateProducts: () => Promise<void>
 }
 
-const UpdateProductForm: FC<TypeCombinedPagination> = ({
+const LeaveProductForm: FC<Props> = ({
 	categories,
 	setups,
 	products,
-	product
+	updateProducts
 }) => {
 	const [isSubmitted, setIsSubmitted] = useState(false)
 	const [selectedFile, setSelectedFile] = useState<File[] | null>(null)
 	const [previewUrl, setPreviewUrl] = useState<string[] | null>(null)
 	const fileInputRef = useRef<HTMLInputElement>(null)
+	const [selectedInfoFile, setSelectedInfoFile] = useState<File[] | null>(null)
+	const [previewInfoUrl, setPreviewInfoUrl] = useState<string[] | null>(null)
+	const fileInputInfoRef = useRef<HTMLInputElement>(null)
 
 	const productCategories: ProductCategory[] = categories.map(category => ({
 		label: category.name,
@@ -91,6 +106,28 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 			prevUrls ? [...prevUrls, ...fileUrlArray] : fileUrlArray
 		) // добавляем новые URL к существующим
 	}
+	const handleFileInfoInputChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const files = event.target.files
+		if (!files) return
+
+		const fileArray = Array.from(files)
+		setSelectedInfoFile(prevFiles =>
+			prevFiles ? [...prevFiles, ...fileArray] : fileArray
+		) // добавляем новые файлы к существующим
+
+		const fileUrlArray = fileArray.map(file => URL.createObjectURL(file))
+		setPreviewInfoUrl(prevUrls =>
+			prevUrls ? [...prevUrls, ...fileUrlArray] : fileUrlArray
+		) // добавляем новые URL к существующим
+	}
+
+	const onFileInfoInputClick = () => {
+		if (fileInputInfoRef.current) {
+			fileInputInfoRef.current.click()
+		}
+	}
 
 	const onFileInputClick = () => {
 		if (fileInputRef.current) {
@@ -111,38 +148,25 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 	const onSubmit: SubmitHandler<IProductFields> = async (
 		data: IProductFields
 	) => {
+		// POST запрос на сервер для создания нового продукта здесь
 		try {
-			let updatedProduct: any // Here we will store the updated product
-			if (selectedFile) {
-				let updatedProduct: any
-				if (product) {
-					updatedProduct = await ProductService.update(
-						product.id,
-						data,
-						selectedFile
-					)
-				} else {
-					updatedProduct = await ProductService.create(data, selectedFile)
-				}
-				setIsSubmitted(true)
-				updatedProduct() // вызываем функцию обратного вызова
+			if (selectedFile && selectedInfoFile) {
+				await ProductService.create(data, selectedFile, selectedInfoFile)
+				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
+				updateProducts() // вызываем функцию обратного вызова
 				reset()
 			} else {
 				console.log('No file selected')
 			}
 		} catch (err: any) {
-			console.log(err.message) // Обработка ошибок
+			console.log(err.message)
 		}
 	}
-	if (!product) {
-		throw new Error('Product is undefined') // или обработать эту ситуацию любым другим способом
-	}
-	if (isSubmitted) return <div>Product successfully update!</div>
+	if (isSubmitted) return <div>Product successfully create!</div>
 	return (
 		<div>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={style.formName}>Update a product</div>
-
+			<div className={style.formName}>Create a product</div>
+			<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 				<Field
 					{...formRegister('name', {
 						required: 'Name is required'
@@ -170,6 +194,7 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 					placeholder='Price *'
 					error={errors.price && errors.price.message}
 				/>
+
 				<div>
 					<textarea
 						className={style.textArea}
@@ -194,6 +219,7 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 					{...formRegister('remains', {
 						required: 'Remains is required'
 					})}
+					type='number'
 					placeholder='Remains *'
 					error={errors.name && errors.name.message}
 				/>
@@ -216,9 +242,7 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 							<div className={style.controller}>
 								<ReactSelect
 									options={productCategories}
-									placeholder={`Category : ${
-										product.category?.name || 'Not selected'
-									}`}
+									placeholder='Category'
 									value={productCategories.find(
 										option => option.value === value
 									)}
@@ -253,9 +277,7 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 							<div className={style.controller}>
 								<ReactSelect
 									options={productSetups}
-									placeholder={`Setup : ${
-										product.setups?.name || 'Not selected'
-									} `}
+									placeholder='Setup'
 									value={productSetups.find(option => option.value === value)}
 									onChange={newValue => onChange((newValue as Setup).value)}
 									styles={customStyles}
@@ -278,6 +300,25 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 						)}
 					/>
 				</div>
+				<input
+					type='file'
+					accept='image/*'
+					style={{ display: 'none' }}
+					ref={fileInputInfoRef}
+					onChange={handleFileInfoInputChange}
+					multiple
+				/>
+
+				<button
+					type='button'
+					onClick={onFileInfoInputClick}
+					className={style.upload}
+				>
+					<div className={style.uploadBtn}>
+						<div>upload info images</div>
+						<UploadSVG />
+					</div>
+				</button>
 				<button
 					type='button'
 					onClick={onFileInputClick}
@@ -289,6 +330,11 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 					</div>
 				</button>
 				<div className={style.previewImg}>
+					{previewUrl && (
+						<div className='w-full'>
+							<strong>Product image</strong>
+						</div>
+					)}
 					{previewUrl &&
 						previewUrl.map((url, index) => (
 							<div className={style.uploadImg} key={index}>
@@ -318,7 +364,42 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 							</div>
 						))}
 				</div>
-				<div>
+				<div className={style.previewImg}>
+					{previewInfoUrl && (
+						<div className='w-full'>
+							<strong>Image info preview</strong>
+						</div>
+					)}
+					{previewInfoUrl &&
+						previewInfoUrl.map((url, index) => (
+							<div className={style.uploadImg} key={index}>
+								<Image
+									width={500}
+									height={500}
+									src={url}
+									alt='preview'
+									placeholder={`data:image/svg+xml;base64,${toBase64(
+										shimmer(700, 475)
+									)}`}
+									style={{
+										maxWidth: '100%',
+										height: 'auto'
+									}}
+								/>
+								<button
+									onClick={() => {
+										setPreviewInfoUrl(
+											prevUrls =>
+												prevUrls?.filter((_, i) => i !== index) ?? null
+										)
+									}}
+								>
+									<div className={style.closeImg}>✕</div>
+								</button>
+							</div>
+						))}
+				</div>
+				<div className={style.createBtn}>
 					<Button type='submit' variant={'black'}>
 						Create
 					</Button>
@@ -328,4 +409,4 @@ const UpdateProductForm: FC<TypeCombinedPagination> = ({
 	)
 }
 
-export default UpdateProductForm
+export default LeaveProductForm
