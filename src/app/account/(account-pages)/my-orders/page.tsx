@@ -29,7 +29,12 @@ const MyOrdersPage: FC = () => {
 		null
 	)
 
-	if (!orders) return <div className={style.message}>no active orders</div>
+	// if (!orders)
+	// 	return (
+	// 		<div className={style.message}>
+	// 			<Loader />
+	// 		</div>
+	// 	)
 	return (
 		<Account>
 			<section>

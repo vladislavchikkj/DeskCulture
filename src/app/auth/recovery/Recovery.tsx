@@ -43,7 +43,7 @@ const Recovery: FC = () => {
 	}
 
 	return (
-		<>
+		<div className='bg-white'>
 			<Heading variant='auth' className={style.heading}>
 				Recovery Password Page
 			</Heading>
@@ -91,7 +91,7 @@ const Recovery: FC = () => {
 					</form>
 				)}
 			</motion.section>
-		</>
+		</div>
 	)
 }
 

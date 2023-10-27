@@ -10,6 +10,7 @@ import {
 import { useLayout } from '@/components/context/LayoutContext'
 import { useActions } from '@/hooks/useActions'
 import { IEmailPassword } from '@/store/user/user.interface'
+import Heading from '@/ui/common/heading/Heading'
 import Field from '@/ui/common/input/Field'
 import Loader from '@/ui/common/loader/Loader'
 import { motion } from 'framer-motion'
@@ -76,12 +77,15 @@ const Auth: FC = () => {
 				whileInView='visible'
 				viewport={{ once: true }}
 				variants={baseAnimation}
-				className='flex h-screen container-f relative justify-center align-middle bg-white'
+				className='flex h-screen container-f relative justify-center items-center bg-white flex-col'
 			>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className={`'rounded-lg bg-white  m-auto w-full', ${style.form}`}
 				>
+					<Heading variant='auth' className={style.heading}>
+						Log In
+					</Heading>
 					<>
 						{!isLoading && error && (
 							<div className={style.error}>

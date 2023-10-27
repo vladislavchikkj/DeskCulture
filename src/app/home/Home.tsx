@@ -13,7 +13,6 @@ import { TypeCombinedPagination } from '@/types/product.interface'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { homeAnimation } from '@/components/animations/homeAnimation'
-import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Link from 'next/link'
 import { ScrollParallax } from 'react-just-parallax'
@@ -82,7 +81,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 							<HomeSetup setups={setups} setupsLength={2} />
 						</ScrollParallax>
 					</div>
-					<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.1}>
+					<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
 						<HomeCategory categories={categories} categoriesLength={2} />
 					</ScrollParallax>
 					<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>

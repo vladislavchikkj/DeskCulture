@@ -13,6 +13,7 @@ export interface IProduct {
 	price: number
 	reviews: IReview[]
 	images: string[]
+	imagesInfo: string[]
 	createdAt: string
 	category: ICategory
 	setups?: ISetups

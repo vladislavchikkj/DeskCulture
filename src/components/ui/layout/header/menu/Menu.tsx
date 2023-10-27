@@ -113,18 +113,25 @@ const Menu: FC<MenuType> = ({ headerRef, wrapperRef }) => {
 						</div>
 					</div>
 					{!user && (
-						<div
-							className={`${style.menuBtn} container-f`}
-							onClick={() => {
-								setIsShow(!isShow)
-							}}
-						>
-							<Link href={'/auth'}>
-								<Button data-hover='Sign in' variant={'grey'}>
-									Sign in
-								</Button>
-							</Link>
-						</div>
+						<>
+							<div
+								className={`${style.menuBtn} container-f`}
+								onClick={() => {
+									setIsShow(!isShow)
+								}}
+							>
+								<Link href={'/auth/login'}>
+									<Button data-hover='Log In' variant={'grey'}>
+										Log In
+									</Button>
+								</Link>
+								<Link href={'/auth/register'}>
+									<Button data-hover='Sign In' variant={'black'}>
+										Sign In
+									</Button>
+								</Link>
+							</div>
+						</>
 					)}
 				</motion.div>
 				<div

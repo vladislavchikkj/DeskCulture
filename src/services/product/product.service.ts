@@ -43,13 +43,16 @@ export const ProductService = {
 			method: 'GET'
 		})
 	},
-	async create(productData: any, images: File[]) {
+	async create(productData: any, images: File[], imagesInfo: File[]) {
 		const formData = new FormData()
 		Object.keys(productData).forEach(key => {
 			formData.append(key, productData[key])
 		})
 		images.forEach(image => {
-			formData.append('image', image)
+			formData.append('images', image)
+		})
+		imagesInfo.forEach(image => {
+			formData.append('imagesInfo', image)
 		})
 		return await instance({
 			url: PRODUCTS,

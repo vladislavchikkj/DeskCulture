@@ -7,10 +7,10 @@ import { CheckoutProvider } from '@/components/context/CheckoutContext'
 import { LayoutProvider } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import { persistor, store } from '@/store/store'
-// import dynamic from 'next/dynamic'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import AuthProvider from './auth-provider/AuthProvider'
+// import dynamic from 'next/dynamic'
 
 // const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 // 	ssr: false

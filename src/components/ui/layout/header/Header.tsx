@@ -96,11 +96,11 @@ const Header: FC<Props> = ({ inView }) => {
 					/>
 					{!user && (
 						<div className={style.logIn}>
-							<Link href={`/auth`}>
+							<Link href={`/auth/register`}>
 								<div className={style.headerButton}>
 									<span className='pl-6 pr-6'>
-										<div data-hover='Register' className={style.textBtn}>
-											<div>Register</div>
+										<div data-hover='Sign Up' className={style.textBtn}>
+											<div>Sign Up</div>
 										</div>
 									</span>
 								</div>
@@ -119,7 +119,7 @@ const Header: FC<Props> = ({ inView }) => {
 								</button>
 							</Link>
 						) : (
-							<Link href={`/auth`}>
+							<Link href={`/auth/login`}>
 								<span className={style.headerButton}>
 									<span className='pl-6 pr-6'>
 										<div data-hover='Log In' className={style.textBtn}>

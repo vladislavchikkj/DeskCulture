@@ -76,6 +76,9 @@ const LeaveProductForm: FC<Props> = ({
 	const [selectedFile, setSelectedFile] = useState<File[] | null>(null)
 	const [previewUrl, setPreviewUrl] = useState<string[] | null>(null)
 	const fileInputRef = useRef<HTMLInputElement>(null)
+	const [selectedInfoFile, setSelectedInfoFile] = useState<File[] | null>(null)
+	const [previewInfoUrl, setPreviewInfoUrl] = useState<string[] | null>(null)
+	const fileInputInfoRef = useRef<HTMLInputElement>(null)
 
 	const productCategories: ProductCategory[] = categories.map(category => ({
 		label: category.name,
@@ -103,6 +106,28 @@ const LeaveProductForm: FC<Props> = ({
 			prevUrls ? [...prevUrls, ...fileUrlArray] : fileUrlArray
 		) // добавляем новые URL к существующим
 	}
+	const handleFileInfoInputChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const files = event.target.files
+		if (!files) return
+
+		const fileArray = Array.from(files)
+		setSelectedInfoFile(prevFiles =>
+			prevFiles ? [...prevFiles, ...fileArray] : fileArray
+		) // добавляем новые файлы к существующим
+
+		const fileUrlArray = fileArray.map(file => URL.createObjectURL(file))
+		setPreviewInfoUrl(prevUrls =>
+			prevUrls ? [...prevUrls, ...fileUrlArray] : fileUrlArray
+		) // добавляем новые URL к существующим
+	}
+
+	const onFileInfoInputClick = () => {
+		if (fileInputInfoRef.current) {
+			fileInputInfoRef.current.click()
+		}
+	}
 
 	const onFileInputClick = () => {
 		if (fileInputRef.current) {
@@ -125,8 +150,8 @@ const LeaveProductForm: FC<Props> = ({
 	) => {
 		// POST запрос на сервер для создания нового продукта здесь
 		try {
-			if (selectedFile) {
-				await ProductService.create(data, selectedFile)
+			if (selectedFile && selectedInfoFile) {
+				await ProductService.create(data, selectedFile, selectedInfoFile)
 				setIsSubmitted(true) // обновляем состояние после успешной отправки формы
 				updateProducts() // вызываем функцию обратного вызова
 				reset()
@@ -140,9 +165,8 @@ const LeaveProductForm: FC<Props> = ({
 	if (isSubmitted) return <div>Product successfully create!</div>
 	return (
 		<div>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={style.formName}>Create a product</div>
-
+			<div className={style.formName}>Create a product</div>
+			<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 				<Field
 					{...formRegister('name', {
 						required: 'Name is required'
@@ -276,6 +300,25 @@ const LeaveProductForm: FC<Props> = ({
 						)}
 					/>
 				</div>
+				<input
+					type='file'
+					accept='image/*'
+					style={{ display: 'none' }}
+					ref={fileInputInfoRef}
+					onChange={handleFileInfoInputChange}
+					multiple
+				/>
+
+				<button
+					type='button'
+					onClick={onFileInfoInputClick}
+					className={style.upload}
+				>
+					<div className={style.uploadBtn}>
+						<div>upload info images</div>
+						<UploadSVG />
+					</div>
+				</button>
 				<button
 					type='button'
 					onClick={onFileInputClick}
@@ -287,6 +330,11 @@ const LeaveProductForm: FC<Props> = ({
 					</div>
 				</button>
 				<div className={style.previewImg}>
+					{previewUrl && (
+						<div className='w-full'>
+							<strong>Product image</strong>
+						</div>
+					)}
 					{previewUrl &&
 						previewUrl.map((url, index) => (
 							<div className={style.uploadImg} key={index}>
@@ -316,7 +364,42 @@ const LeaveProductForm: FC<Props> = ({
 							</div>
 						))}
 				</div>
-				<div>
+				<div className={style.previewImg}>
+					{previewInfoUrl && (
+						<div className='w-full'>
+							<strong>Image info preview</strong>
+						</div>
+					)}
+					{previewInfoUrl &&
+						previewInfoUrl.map((url, index) => (
+							<div className={style.uploadImg} key={index}>
+								<Image
+									width={500}
+									height={500}
+									src={url}
+									alt='preview'
+									placeholder={`data:image/svg+xml;base64,${toBase64(
+										shimmer(700, 475)
+									)}`}
+									style={{
+										maxWidth: '100%',
+										height: 'auto'
+									}}
+								/>
+								<button
+									onClick={() => {
+										setPreviewInfoUrl(
+											prevUrls =>
+												prevUrls?.filter((_, i) => i !== index) ?? null
+										)
+									}}
+								>
+									<div className={style.closeImg}>✕</div>
+								</button>
+							</div>
+						))}
+				</div>
+				<div className={style.createBtn}>
 					<Button type='submit' variant={'black'}>
 						Create
 					</Button>

@@ -333,6 +333,28 @@ const Products: FC<props> = ({ product }) => {
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
 						<span className={style.numdot}>01</span>
+						<Button data-hover='Details Images' variant='grey'>
+							Details Images
+						</Button>
+					</div>
+					<div className={style.title}>Details Images</div>
+				</div>
+				<div className={style.imgWrapper}>
+					{product[0]?.imagesInfo?.map((image, i) => (
+						<Image
+							key={i}
+							width={1500}
+							height={1500}
+							src={image}
+							alt={`Product image ${i + 1}`}
+						/>
+					))}
+				</div>
+			</div>
+			<div className={style.intrestedWrap}>
+				<div className={style.intrested}>
+					<div className={style.btnWrapper}>
+						<span className={style.numdot}>02</span>
 						<Button data-hover='Reviews' variant='grey'>
 							Reviews
 						</Button>
@@ -347,7 +369,7 @@ const Products: FC<props> = ({ product }) => {
 			<div className={style.intrestedWrap}>
 				<div className={style.intrested}>
 					<div className={style.btnWrapper}>
-						<span className={style.numdot}>02</span>
+						<span className={style.numdot}>03</span>
 						<Button data-hover='Learn More' variant='grey'>
 							Learn More
 						</Button>
