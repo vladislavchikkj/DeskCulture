@@ -60,13 +60,21 @@ export const ProductService = {
 			data: formData
 		})
 	},
-	async update(id: number, productData: any, images: File[]) {
+	async update(
+		id: number,
+		productData: any,
+		images: File[],
+		imagesInfo: File[]
+	) {
 		const formData = new FormData()
 		Object.keys(productData).forEach(key => {
 			formData.append(key, productData[key])
 		})
 		images.forEach(image => {
-			formData.append('image', image)
+			formData.append('images', image)
+		})
+		imagesInfo.forEach(image => {
+			formData.append('imagesInfo', image)
 		})
 		return await instance({
 			url: `${PRODUCTS}/${id}`,
