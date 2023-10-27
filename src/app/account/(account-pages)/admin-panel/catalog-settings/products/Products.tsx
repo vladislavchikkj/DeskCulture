@@ -91,7 +91,6 @@ const ProductsSettings: FC<TypeCombinedPagination> = ({
 						categories={categories}
 						setups={setups}
 						products={products}
-						product={selectedProduct || undefined}
 						updateProducts={updateProducts}
 					/>
 				</Modal>
