@@ -22,7 +22,6 @@ const BestSellers: FC<{ products: IProduct[] }> = products => {
 				<div className={style.reviews__items}>
 					<ProductList
 						initialProducts={products.products}
-						needToUpdate={false}
 						loadMoreBtnOff
 						DropdownOff
 						descr

@@ -7,6 +7,7 @@ import ProductList from '@/ui/catalog/productsList/ProductList'
 import { ICategory } from '@/types/category.interface'
 import { IProduct } from '@/types/product.interface'
 
+import { textAnimation } from '@/components/animations/homeAnimation'
 import { shimmer, toBase64 } from '@/components/common'
 import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
@@ -86,7 +87,25 @@ const Category: FC<props> = ({ products, category }) => {
 								}}
 							/>
 						</motion.div>
-						<div className={`${style.name} container-f`}>{category.name}</div>
+						<h1 translate='no'>
+							<div className='overflow-hidden'>
+								<motion.div
+									variants={textAnimation}
+									className={`${style.name} container-f`}
+								>
+									{category.name}
+								</motion.div>
+							</div>
+							<div className='overflow-hidden'>
+								<motion.div
+									custom={1}
+									variants={textAnimation}
+									className={`${style.descr} container-f`}
+								>
+									{category.description}
+								</motion.div>
+							</div>
+						</h1>
 					</motion.div>
 				</ScrollParallax>
 			</div>

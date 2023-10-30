@@ -30,8 +30,31 @@
 	line-height: 4vw; /* 140.625% */
 	letter-spacing: -0.1vw;
 }
+.descr {
+	position: absolute;
+	top: 17vh;
+
+	color: #fff;
+	padding-top: 70px;
+	font-size: 1.2rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 2vw; /* 140.625% */
+	letter-spacing: 0vw;
+}
 
 .title {
+	padding-top: 8rem;
+	color: #191b1d;
+
+	font-size: 4.6875vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 4.6875vw; /* 100% */
+	letter-spacing: -6.3px;
+}
+
+.subtitle {
 	color: #191b1d;
 
 	font-size: 5vw;
