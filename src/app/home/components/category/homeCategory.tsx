@@ -32,10 +32,11 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 					<div className={style.categoryName}>
 						<h2>Product categories</h2>
 						<h3>
-							Upgrade your workspace with our collection of desk accessories! We
-							offer a wide range of stylish and functional products, including
-							organizers, pen holders, phone stands, desk lamps, portable
-							chargers, and much more.
+							Elevate your workspace with our handpicked selection of desk
+							accessories. Whether you're looking to boost productivity or add a
+							touch of style to your desk, we've got you covered. Discover a
+							wide range of categories, including ergonomic mice, premium
+							keyboards, desk mats, innovative lighting solutions, and more.
 						</h3>
 					</div>
 					{firstTwoSetups.map(categories => (

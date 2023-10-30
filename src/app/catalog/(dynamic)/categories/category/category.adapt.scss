@@ -1,4 +1,10 @@
 @media only screen and (max-width: 1200px) {
+	.descr {
+		top: 4vh;
+	}
+	.name {
+		top: 6vh;
+	}
 }
 @media only screen and (max-width: 768px) {
 }
@@ -32,6 +38,21 @@
 		letter-spacing: -0.3vw;
 		padding-top: 5vh;
 		padding-bottom: 5vh;
+	}
+	.descr {
+		position: absolute;
+		top: 15vh;
+
+		color: #fff;
+		padding-top: 20px;
+		font-size: 0.9rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 3.5vw; /* 140.625% */
+		letter-spacing: 0.2vw;
+	}
+	.name {
+		top: 12vh;
 	}
 }
 @media only screen and (max-width: 320px) {

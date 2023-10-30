@@ -7,6 +7,7 @@ import 'react-html5video/dist/styles.css'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 
 import { headingAnimation } from '@/components/animations/headingAnimation'
+import { textAnimation } from '@/components/animations/homeAnimation'
 import { useLayout } from '@/components/context/LayoutContext'
 import Button from '@/ui/common/buttons/Button'
 import Footer from '@/ui/layout/footer/Footer'
@@ -51,12 +52,18 @@ const Contacts: FC = () => {
 					<div className={`container-f ${style.preview}`}>
 						<div className={style.title}>
 							<h1 translate='no'>
-								<div className='overflow-hidden'>
+								<motion.div
+									variants={textAnimation}
+									className='overflow-hidden'
+								>
 									{/* <motion.div variants={textAnimation}> */}
 									<a className='text-white block'>Get In Touch</a>
 									{/* </motion.div> */}
-								</div>
-								<div className='overflow-hidden'>
+								</motion.div>
+								<motion.div
+									variants={textAnimation}
+									className='overflow-hidden'
+								>
 									{/* <motion.div variants={textAnimation}> */}
 									<a
 										translate='no'
@@ -68,7 +75,7 @@ const Contacts: FC = () => {
 										desk.culture.official@gmail.com
 									</a>
 									{/* </motion.div> */}
-								</div>
+								</motion.div>
 							</h1>
 							<div className={style.btn}>
 								<Button
