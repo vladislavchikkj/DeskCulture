@@ -170,13 +170,22 @@ const Products: FC<props> = ({ product }) => {
 						>
 							<div className={style.sliderItems}>
 								{allImages.map((image, index) => (
-									<img
+									<Image
+										width={100}
+										height={100}
 										key={index}
 										className={`${style.image} ${
 											selectedImageIndex === index ? style.selectedImage : ''
 										}`}
 										src={image}
 										alt={product[0].name}
+										placeholder={`data:image/svg+xml;base64,${toBase64(
+											shimmer(700, 475)
+										)}`}
+										style={{
+											maxWidth: '100%',
+											height: 'auto'
+										}}
 										onClick={() => handleImageClick(index)}
 									/>
 								))}
