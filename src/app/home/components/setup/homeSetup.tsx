@@ -58,12 +58,6 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 										}}
 									/>
 								</Link>
-
-								<div className={style.plusBtn}>
-									<Button data-hover='+' variant='btnPlusWhite'>
-										+
-									</Button>
-								</div>
 							</div>
 							<div className={style.descr}>
 								<h3>{setup.name}</h3>

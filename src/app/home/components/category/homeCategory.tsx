@@ -58,12 +58,6 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 										}}
 									/>
 								</Link>
-
-								<div className={style.plusBtn}>
-									<Button data-hover='+' variant='btnPlusWhite'>
-										+
-									</Button>
-								</div>
 							</div>
 							<div className={style.descr}>
 								<h3>{categories.name}</h3>

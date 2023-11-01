@@ -356,8 +356,6 @@ const Products: FC<props> = ({ product }) => {
 							height={1500}
 							src={image}
 							alt={`Product image ${i + 1}`}
-							className={expandedImage === i ? `${style.expanded}` : ''}
-							onClick={() => setExpandedImage(expandedImage === i ? null : i)}
 						/>
 					))}
 				</div>

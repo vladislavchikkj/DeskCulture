@@ -107,8 +107,18 @@
 }
 .plusBtn {
 	position: absolute;
-	right: 1vw;
-	bottom: 3vh;
+	right: 25px;
+	bottom: 20px;
+	button {
+		width: 30px;
+		height: 30px;
+		font-size: 1.2rem;
+		&:before {
+			width: 30px;
+			height: 30px;
+			font-size: 1.2rem;
+		}
+	}
 }
 
 @import './homesetup.adapt.scss';
