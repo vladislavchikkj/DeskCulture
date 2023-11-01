@@ -84,13 +84,13 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 					<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
 						<HomeCategory categories={categories} categoriesLength={2} />
 					</ScrollParallax>
-					<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.15}>
+					<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.18}>
 						<HomeSocial />
 					</ScrollParallax>
-					<ScrollParallax zIndex={13} strength={-0.15}>
+					<ScrollParallax zIndex={14} strength={-0.2}>
 						<BestSellers products={products} />
 					</ScrollParallax>
-					<ScrollParallax lerpEase={0.05} zIndex={14} strength={-0.05}>
+					<ScrollParallax lerpEase={0.05} zIndex={15} strength={-0.05}>
 						<Footer />
 					</ScrollParallax>
 				</div>
