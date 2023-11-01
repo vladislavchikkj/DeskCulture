@@ -89,15 +89,21 @@
 @media only screen and (max-width: 567px) {
 	.category {
 		background: rgb(255, 255, 255);
-		height: 120vh;
+		height: 100%;
 	}
 	.setupBtn {
+		display: none;
+	}
+	.btnWrapper {
 		display: none;
 	}
 	.numdot {
 		width: 31px;
 		height: 31px;
 		font-size: 0.8rem;
+	}
+	.item {
+		padding-top: 20px;
 	}
 	.setup {
 		width: 100%;

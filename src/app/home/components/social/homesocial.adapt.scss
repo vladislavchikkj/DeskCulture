@@ -81,6 +81,9 @@
 		grid-auto-flow: row;
 		grid-template-columns: 1fr;
 	}
+	.socialTitle {
+		padding-bottom: 10px !important;
+	}
 	.btnWrapper {
 		font-size: 1rem;
 		line-height: 1vw; /* 100% */

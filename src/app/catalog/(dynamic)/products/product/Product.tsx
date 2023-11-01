@@ -131,7 +131,7 @@ const Products: FC<props> = ({ product }) => {
 		setItem(itemToBuy)
 		router.push('/checkout')
 	}
-
+	const [expandedImage, setExpandedImage] = useState<null | number>(null)
 	return (
 		<motion.div
 			initial='hidden'
@@ -356,6 +356,8 @@ const Products: FC<props> = ({ product }) => {
 							height={1500}
 							src={image}
 							alt={`Product image ${i + 1}`}
+							className={expandedImage === i ? `${style.expanded}` : ''}
+							onClick={() => setExpandedImage(expandedImage === i ? null : i)}
 						/>
 					))}
 				</div>

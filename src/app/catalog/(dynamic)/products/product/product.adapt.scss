@@ -76,7 +76,10 @@
 }
 @media only screen and (max-width: 567px) {
 	.addToCart {
-		padding: 20px;
+		padding: 18px;
+	}
+	.favoriteButton {
+		padding: 8px;
 	}
 	.breadcrumbs {
 		flex-wrap: wrap;
@@ -133,6 +136,27 @@
 	.intrested {
 		padding-bottom: 25px;
 		margin-top: 0;
+	}
+	.imgWrapper {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 5px;
+		justify-content: center;
+		align-items: center;
+		padding-top: 80px;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.expanded {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
 	}
 }
 @media only screen and (max-width: 320px) {
