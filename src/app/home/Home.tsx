@@ -57,7 +57,6 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 			<motion.section
 				initial='hidden'
 				whileInView='visible'
-				viewport={{ once: true }}
 				variants={baseAnimation}
 				className={style.home}
 			>

@@ -49,7 +49,7 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 	}
 	return (
 		<>
-			<div ref={socialRef} className={`${style.social} container-f`}>
+			<div ref={socialRef} className={`container-f ${style.social} `}>
 				<div className={style.socialInfo}>
 					<div className={style.btnWrapper}>Follow Us</div>
 					<div className={style.categoryName}>
