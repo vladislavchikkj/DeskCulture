@@ -42,7 +42,10 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 					{firstTwoSetups.map(setup => (
 						<div key={setup.id} className={style.item}>
 							<div className={style.imageWrapper}>
-								<Link href={`/catalog/setups/${setup.id}`}>
+								<Link
+									href={`/catalog/setups/${setup.id}`}
+									className='h-full block'
+								>
 									<Image
 										width={1000}
 										height={1000}
