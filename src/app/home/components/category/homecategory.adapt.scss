@@ -107,16 +107,15 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		align-content: space-around;
-		gap: 2vh;
+		gap: 0;
 	}
 	.categoryName h2 {
-		padding-top: 2vh;
-		line-height: 35px; /* 105.263% */
-		letter-spacing: -1.9px;
+		padding-top: 1vh;
+		line-height: 100%;
 	}
 	.categoryName h3 {
-		padding-top: 5vh;
-		font-size: 1.1rem;
+		padding-top: 2vh;
+		font-size: 1rem;
 		font-weight: 400;
 		line-height: 20px;
 		letter-spacing: 0.5px;

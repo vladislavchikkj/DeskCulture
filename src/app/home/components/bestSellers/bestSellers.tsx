@@ -9,26 +9,24 @@ import style from './bestSellers.module.scss'
 
 const BestSellers: FC<{ products: IProduct[] }> = products => {
 	return (
-		<>
-			<div className={`${style.reviews}  container-f`}>
-				<div className={style.reviews__header}>
-					<span className={style.reviews__title}>Best seller</span>
-					<Link href={'/catalog/products'}>
-						<Button data-hover='See More' variant='grey'>
-							See More
-						</Button>
-					</Link>
-				</div>
-				<div className={style.reviews__items}>
-					<ProductList
-						initialProducts={products.products}
-						loadMoreBtnOff
-						DropdownOff
-						descr
-					/>
-				</div>
+		<div className={`${style.reviews}  container-f`}>
+			<div className={style.reviews__header}>
+				<span className={style.reviews__title}>Best seller</span>
+				<Link href={'/catalog/products'}>
+					<Button data-hover='See More' variant='grey'>
+						See More
+					</Button>
+				</Link>
 			</div>
-		</>
+			<div className={style.reviews__items}>
+				<ProductList
+					initialProducts={products.products}
+					loadMoreBtnOff
+					DropdownOff
+					descr
+				/>
+			</div>
+		</div>
 	)
 }
 export default BestSellers
