@@ -29,7 +29,7 @@ export default function ThanksPage() {
 			viewport={{ once: true }}
 			variants={baseAnimation}
 		>
-			<div className='container-f'>
+			<div className='container-f bg-white'>
 				<div className={style.content}>
 					<div className={style.title}>Thanks for pay!</div>
 					<Order />
