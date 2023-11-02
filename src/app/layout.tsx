@@ -16,6 +16,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
+			<meta name='yandex-verification' content='377fe05409c5b5dd' />
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
 				<div id='PopUp'></div>
