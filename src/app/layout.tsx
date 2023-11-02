@@ -38,8 +38,16 @@ export const metadata: Metadata = {
 	},
 	keywords: ['DeskCulture', 'deskculture', 'Create Your Workspace'],
 	robots: {
+		index: true,
+		follow: true,
+		nocache: true,
 		googleBot: {
-			index: true
+			index: true,
+			follow: false,
+			noimageindex: true,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1
 		}
 	},
 	twitter: {

@@ -22,7 +22,6 @@ type props = {
 }
 
 const Setup: FC<props> = ({ products, setups, allSetups }) => {
-	//решить проблему с дублирование
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(false)
@@ -30,7 +29,6 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 	const device = useCustomMediaQuery()
 
 	if (device === null) {
-		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
 		return <div>Loading...</div>
 	}
 
