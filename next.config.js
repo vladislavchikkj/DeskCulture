@@ -26,7 +26,12 @@ const nextConfig = {
 			'cdn.homedit.com',
 			'sc04.alicdn.com',
 			'desk-culture.com',
-			'onedrive.live.com'
+			'onedrive.live.com',
+			'photos.onedrive.com',
+			'lh3.googleusercontent.com',
+			'drive.google.com',
+			'img.myipadbox.com',
+			'1drv.ms'
 		],
 		remotePatterns: [
 			{

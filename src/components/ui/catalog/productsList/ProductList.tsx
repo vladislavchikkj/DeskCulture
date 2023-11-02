@@ -102,7 +102,7 @@ const ProductList: FC<ProductListProps> = ({
 					<div className={catalogStyle.items}>
 						{isLoading && <Loader />}
 						{products.map(product => (
-							<Suspense fallback={<div>Loading...</div>}>
+							<Suspense key={product.id} fallback={<div>Loading...</div>}>
 								<ProductItem key={product.id} product={product} descr={descr} />
 							</Suspense>
 						))}
