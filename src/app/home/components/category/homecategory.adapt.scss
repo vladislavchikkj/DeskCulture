@@ -90,17 +90,20 @@
 	.category {
 		background: rgb(255, 255, 255);
 		height: 100%;
+		margin-top: 30px;
+		margin-bottom: 50px;
+		border-top: 1px solid #191b1d1a;
 	}
 	.setupBtn {
 		display: none;
 	}
-	.btnWrapper {
-		display: none;
-	}
 	.numdot {
-		width: 31px;
-		height: 31px;
-		font-size: 0.8rem;
+		display: flex;
+		justify-content: center;
+		padding-right: 1px;
+		width: 27px;
+		height: 27px;
+		font-size: 0.7rem;
 	}
 	.item {
 		padding-top: 20px;
@@ -116,16 +119,16 @@
 		gap: 0;
 	}
 	.categoryName h2 {
-		padding-top: 1vh;
+		padding-top: 20px;
 		line-height: 100%;
 	}
 	.categoryName h3 {
-		padding-top: 2vh;
-		font-size: 1rem;
+		padding-top: 10px;
+		font-size: 0.9rem;
 		font-weight: 400;
 		line-height: 20px;
 		letter-spacing: 0.5px;
-		padding-bottom: 50px;
+		padding-bottom: 40px;
 	}
 	.imageWrapper {
 		position: relative;
