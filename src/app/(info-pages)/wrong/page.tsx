@@ -1,5 +1,7 @@
 'use client'
 import { useLayout } from '@/components/context/LayoutContext'
+import Button from '@/ui/common/buttons/Button'
+import Link from 'next/link'
 import { useEffect } from 'react'
 import style from './wrong.module.scss'
 
@@ -18,6 +20,13 @@ export default function ThanksPage() {
 		<div className='container-f'>
 			<div className={style.title}>
 				Wrong, the product has not been paid for!
+			</div>
+			<div className={style.btn}>
+				<Link href={'/'}>
+					<Button data-hover='Go to shop' variant={'grey'}>
+						Go to shop
+					</Button>
+				</Link>
 			</div>
 		</div>
 	)
