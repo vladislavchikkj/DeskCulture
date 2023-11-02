@@ -25,7 +25,8 @@ const nextConfig = {
 			'9to5mac.com',
 			'cdn.homedit.com',
 			'sc04.alicdn.com',
-			'desk-culture.com'
+			'desk-culture.com',
+			'onedrive.live.com'
 		],
 		remotePatterns: [
 			{

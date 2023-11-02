@@ -27,9 +27,9 @@ export async function generateMetadata({
 	const { setups, products } = await getProducts(params)
 	return {
 		title: setups.name,
-		description: `Random description about ${setups.name}`,
+		description: `${setups.name}`,
 		openGraph: {
-			description: `Random description about ${setups.name}`
+			description: `${setups.name}`
 		}
 	}
 }
