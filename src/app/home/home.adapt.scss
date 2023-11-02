@@ -3,6 +3,12 @@
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 567px) {
+	.intro {
+		width: 100vw;
+		height: 70vh;
+		background: #cdcecf;
+		z-index: 13;
+	}
 }
 @media only screen and (max-width: 320px) {
 }

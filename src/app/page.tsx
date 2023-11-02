@@ -1,4 +1,3 @@
-import Home from '@/app/home/Home'
 import { getSiteUrl } from '@/config/url.config'
 import { SITE_NAME } from '@/constants/app.constants'
 import { ICON_PATH, INTRO_IMG_PATH } from '@/constants/favicon.constant'
@@ -6,6 +5,7 @@ import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
 import type { Metadata } from 'next'
+import Home from './home/Home'
 
 export const metadata: Metadata = {
 	icons: {

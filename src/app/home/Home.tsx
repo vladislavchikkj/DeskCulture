@@ -13,6 +13,7 @@ import { TypeCombinedPagination } from '@/types/product.interface'
 
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { homeAnimation } from '@/components/animations/homeAnimation'
+import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Link from 'next/link'
 import { ScrollParallax } from 'react-just-parallax'
@@ -26,6 +27,7 @@ import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 
 const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
+	const device = useCustomMediaQuery()
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
 		threshold: 0
 	})
@@ -51,58 +53,103 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 
 		setNotificationsOpen(false)
 	}
-
 	return (
 		<>
-			<motion.section
-				initial='hidden'
-				whileInView='visible'
-				variants={baseAnimation}
-				className={style.home}
-			>
-				<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
-					<motion.div
-						variants={homeAnimation}
-						ref={inViewRef}
-						className={style.intro}
+			{device === 'mobile_m' || device === 'mobile_s' ? (
+				<>
+					<motion.section
+						initial='hidden'
+						whileInView='visible'
+						variants={baseAnimation}
+						className={style.home}
 					>
-						<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.25}>
+						<motion.div
+							variants={homeAnimation}
+							ref={inViewRef}
+							className={style.intro}
+						>
 							<HomeIntro />
-						</ScrollParallax>
-					</motion.div>
-				</ScrollParallax>
-				<ScrollParallax lerpEase={0.05} zIndex={1} strength={-0.15}>
-					<HomePlayer />
-				</ScrollParallax>
-				<div ref={inViewPageRef}>
-					<div id='homesetup'>
+						</motion.div>
+						<HomePlayer />
+						<div
+							ref={inViewPageRef}
+							className='relative'
+							style={{ marginTop: 50 }}
+						>
+							<div id='homesetup'>
+								<HomeSetup setups={setups} setupsLength={2} />
+							</div>
+							<HomeCategory categories={categories} categoriesLength={2} />
+							<HomeSocial />
+							<BestSellers products={products} />
+							<Footer />
+						</div>
+						<Notifications
+							isOpen={isNotificationsOpen}
+							closeNotifications={handleCookiesAcceptance}
+						>
+							This website uses{' '}
+							<strong className='text-greySub'>cookies</strong>
+						</Notifications>
+					</motion.section>
+					<Link href='#homesetup'>
+						<LowBar lowbarState={inViewPage}>Select a ready setup</LowBar>
+					</Link>
+				</>
+			) : (
+				<>
+					<motion.section
+						initial='hidden'
+						whileInView='visible'
+						variants={baseAnimation}
+						className={style.home}
+					>
 						<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
-							<HomeSetup setups={setups} setupsLength={2} />
+							<motion.div
+								variants={homeAnimation}
+								ref={inViewRef}
+								className={style.intro}
+							>
+								<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.25}>
+									<HomeIntro />
+								</ScrollParallax>
+							</motion.div>
 						</ScrollParallax>
-					</div>
-					<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
-						<HomeCategory categories={categories} categoriesLength={2} />
-					</ScrollParallax>
-					<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.18}>
-						<HomeSocial />
-					</ScrollParallax>
-					<ScrollParallax zIndex={14} strength={-0.2}>
-						<BestSellers products={products} />
-					</ScrollParallax>
-					<ScrollParallax lerpEase={0.05} zIndex={15} strength={-0.05}>
-						<Footer />
-					</ScrollParallax>
-				</div>
-				<Notifications
-					isOpen={isNotificationsOpen}
-					closeNotifications={handleCookiesAcceptance}
-				>
-					This website uses <strong className='text-greySub'>cookies</strong>
-				</Notifications>
-			</motion.section>
-			<Link href='#homesetup'>
-				<LowBar lowbarState={inViewPage}>Select a ready setup</LowBar>
-			</Link>
+						<ScrollParallax lerpEase={0.05} zIndex={1} strength={-0.15}>
+							<HomePlayer />
+						</ScrollParallax>
+						<div ref={inViewPageRef}>
+							<div id='homesetup'>
+								<ScrollParallax lerpEase={0.05} zIndex={10} strength={-0.15}>
+									<HomeSetup setups={setups} setupsLength={2} />
+								</ScrollParallax>
+							</div>
+							<ScrollParallax lerpEase={0.05} zIndex={11} strength={-0.15}>
+								<HomeCategory categories={categories} categoriesLength={2} />
+							</ScrollParallax>
+							<ScrollParallax lerpEase={0.05} zIndex={13} strength={-0.18}>
+								<HomeSocial />
+							</ScrollParallax>
+							<ScrollParallax zIndex={14} strength={-0.2}>
+								<BestSellers products={products} />
+							</ScrollParallax>
+							<ScrollParallax lerpEase={0.05} zIndex={15} strength={-0.05}>
+								<Footer />
+							</ScrollParallax>
+						</div>
+						<Notifications
+							isOpen={isNotificationsOpen}
+							closeNotifications={handleCookiesAcceptance}
+						>
+							This website uses{' '}
+							<strong className='text-greySub'>cookies</strong>
+						</Notifications>
+					</motion.section>
+					<Link href='#homesetup'>
+						<LowBar lowbarState={inViewPage}>Select a ready setup</LowBar>
+					</Link>
+				</>
+			)}
 		</>
 	)
 }
