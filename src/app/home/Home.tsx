@@ -27,7 +27,6 @@ import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 
 const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
-	const device = useCustomMediaQuery()
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
 		threshold: 0
 	})
@@ -53,6 +52,12 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 
 		setNotificationsOpen(false)
 	}
+	const device = useCustomMediaQuery()
+	console.log(device)
+	if (device === null) {
+		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
+		return <div>Loading...</div>
+	}
 	return (
 		<>
 			{device === 'mobile_m' || device === 'mobile_s' ? (
@@ -60,16 +65,13 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 					<motion.section
 						initial='hidden'
 						whileInView='visible'
+						viewport={{ once: true }}
 						variants={baseAnimation}
 						className={style.home}
 					>
-						<motion.div
-							variants={homeAnimation}
-							ref={inViewRef}
-							className={style.intro}
-						>
+						<div ref={inViewRef} className={style.intro}>
 							<HomeIntro />
-						</motion.div>
+						</div>
 						<HomePlayer />
 						<div
 							ref={inViewPageRef}

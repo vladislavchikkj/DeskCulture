@@ -7,6 +7,15 @@ export const homeAnimation = {
 		transition: { duration: 0.9, delay: custom * 0.1 }
 	})
 }
+export const homeAnimationMobile = {
+	hidden: {
+		height: '100vh'
+	},
+	visible: (custom: number) => ({
+		height: '70vh',
+		transition: { duration: 0.9, delay: custom * 0.1 }
+	})
+}
 
 export const textAnimation = {
 	hidden: {
