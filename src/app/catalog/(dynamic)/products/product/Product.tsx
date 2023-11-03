@@ -301,6 +301,7 @@ const Products: FC<props> = ({ product }) => {
 					</button>
 					<div className={style.details}>
 						<Detail
+							open
 							title={'Product Details'}
 							content={product[0].description.split('\r\n').map((item, key) => {
 								return (

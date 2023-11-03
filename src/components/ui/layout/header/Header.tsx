@@ -17,6 +17,7 @@ import Cart from '../../common/cart/Cart'
 import { ProductService } from '@/services/product/product.service'
 import style from './header.module.scss'
 import Menu from './menu/Menu'
+import CircleLoader from './svg/circle-load.svg'
 
 type Props = {
 	inView?: boolean
@@ -111,11 +112,17 @@ const Header: FC<Props> = ({ inView }) => {
 						{!!user ? (
 							<Link href={`/account`}>
 								<button className={style.headerButton}>
-									<span className={style.userName}>
-										<div data-hover={profile?.name} className={style.textBtn}>
-											<div>{profile?.name}</div>
+									{profile?.name ? (
+										<span className={style.userName}>
+											<div data-hover={profile?.name} className={style.textBtn}>
+												<div>{profile?.name}</div>
+											</div>
+										</span>
+									) : (
+										<div>
+											<CircleLoader />
 										</div>
-									</span>
+									)}
 								</button>
 							</Link>
 						) : (
