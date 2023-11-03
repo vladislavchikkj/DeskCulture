@@ -53,7 +53,6 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 		setNotificationsOpen(false)
 	}
 	const device = useCustomMediaQuery()
-	console.log(device)
 	if (device === null) {
 		// Если тип устройства еще не определен, можно вернуть загрузчик или пустой div.
 		return <div>Loading...</div>
