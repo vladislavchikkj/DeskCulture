@@ -37,19 +37,6 @@ export const metadata: Metadata = {
 		images: INTRO_IMG_PATH
 	},
 	keywords: ['DeskCulture', 'deskculture', 'Create Your Workspace'],
-	robots: {
-		index: true,
-		follow: true,
-		nocache: true,
-		googleBot: {
-			index: true,
-			follow: false,
-			noimageindex: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1
-		}
-	},
 	twitter: {
 		card: 'app',
 		title: `${SITE_NAME}`,
