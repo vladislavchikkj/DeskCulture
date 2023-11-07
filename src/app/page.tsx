@@ -1,6 +1,5 @@
 import { getSiteUrl } from '@/config/url.config'
-import { SITE_NAME } from '@/constants/app.constants'
-import { ICON_PATH, INTRO_IMG_PATH } from '@/constants/favicon.constant'
+import { INTRO_IMG_PATH } from '@/constants/favicon.constant'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
@@ -9,43 +8,38 @@ import Home from './home/Home'
 
 export const metadata: Metadata = {
 	icons: {
-		icon: ICON_PATH,
-		shortcut: ICON_PATH,
-		apple: ICON_PATH,
+		icon: './favicon.ico',
+		shortcut: './favicon.ico',
+		apple: './favicon.ico',
 		other: {
-			rel: ICON_PATH,
-			url: ICON_PATH
+			rel: './favicon.ico',
+			url: './favicon.ico'
 		}
 	},
 	title: {
-		absolute: `Create Your Workspace | ${SITE_NAME}`,
-		template: `%s | ${SITE_NAME}`
+		absolute: `Create Your Workspace | DeskCulture`,
+		template: `%s | DeskCulture`
 	},
 	description: `Create a workspace that epitomizes your refined preferences while
 	igniting your drive for productivity.`,
 	metadataBase: new URL(getSiteUrl()),
 	openGraph: {
 		type: 'website',
-		siteName: SITE_NAME,
+		siteName: 'DeskCulture',
 		emails: ['desk.culture.official@gmail.com'],
 		images: INTRO_IMG_PATH
 	},
-	keywords: ['DeskCulture', 'deskculture', 'Create Your Workspace'],
-	robots: {
-		index: true,
-		follow: true,
-		googleBot: {
-			index: true,
-			follow: false,
-			noimageindex: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1
-		}
-	},
+	keywords: [
+		'desk',
+		'culture',
+		'desk culture',
+		'Desk-Culture',
+		'desk-culture',
+		'Create Your Workspace'
+	],
 	twitter: {
 		card: 'app',
-		title: `${SITE_NAME}`,
+		title: `DeskCulture`,
 		description:
 			'Create a workspace that epitomizes your refined preferences while igniting your drive for productivity.',
 		creator: 'jsCreator',
@@ -89,14 +83,12 @@ export default async function HomePage() {
 	const data = await getStaticProps()
 
 	return (
-		<>
-			<Home
-				categories={data.props.categories}
-				categoriesLength={data.props.categories.length}
-				setups={data.props.setups}
-				setupsLength={data.props.setups.length}
-				products={data.props.products.products}
-			/>
-		</>
+		<Home
+			categories={data.props.categories}
+			categoriesLength={data.props.categories.length}
+			setups={data.props.setups}
+			setupsLength={data.props.setups.length}
+			products={data.props.products.products}
+		/>
 	)
 }
