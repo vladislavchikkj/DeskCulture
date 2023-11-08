@@ -102,7 +102,14 @@ const Search: FC<SearchType> = ({
 								{searchData.trim() !== '' ? (
 									filteredProducts.length > 0 ? (
 										filteredProducts.map(product => (
-											<div key={product.id} className={`${style.searchItem}`}>
+											<Link
+												onClick={() => {
+													setIsShow(!isShow)
+												}}
+												href={`/catalog/products/${product.slug}`}
+												key={product.id}
+												className={`${style.searchItem}`}
+											>
 												<div>
 													<Link
 														onClick={() => {
@@ -153,7 +160,7 @@ const Search: FC<SearchType> = ({
 														</div>
 													</div>
 												</div>
-											</div>
+											</Link>
 										))
 									) : (
 										<div className={style.noResults}>
