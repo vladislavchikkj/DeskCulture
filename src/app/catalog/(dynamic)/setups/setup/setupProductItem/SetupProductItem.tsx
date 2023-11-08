@@ -15,7 +15,7 @@ const SetupProductItem: FC<props> = ({ products }) => {
 		<div className={style.setupItems}>
 			{products.map(product => (
 				<div key={product.id} className={`${style.searchItem}`}>
-					<Link href={`/catalog/products/${product.slug}`}>
+					<Link href={`/catalog/products/${product.name}`}>
 						<div className={style.setupItem}>
 							<div className={style.setupItemWrapper}>
 								<div className={style.prodImg}>
