@@ -5,4 +5,5 @@ export interface ISetups {
 	name: string
 	description: string
 	image: string
+	products?: IProduct[]
 }
