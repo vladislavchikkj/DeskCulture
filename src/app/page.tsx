@@ -1,7 +1,45 @@
+import { INTRO_IMG_PATH } from '@/constants/favicon.constant'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
+import { Metadata } from 'next'
 import Home from './home/Home'
+
+export const metadata: Metadata = {
+	icons: {
+		icon: './favicon.ico',
+		shortcut: './favicon.ico',
+		apple: './favicon.ico',
+		other: {
+			rel: './favicon.ico',
+			url: './favicon.ico'
+		}
+	},
+	title: {
+		absolute: `Create Your Workspace | Desk Culture`,
+		template: `%s | Desk Culture`
+	},
+	description: `Create a workspace that epitomizes your refined preferences while
+	igniting your drive for productivity.`,
+	openGraph: {
+		type: 'website',
+		siteName: 'Desk Culture',
+		emails: ['desk.culture.official@gmail.com'],
+		images: INTRO_IMG_PATH
+	},
+	keywords: [
+		'Desk',
+		'Culture',
+		'desk culture',
+		'Desk Culture',
+		'Desk-Culture',
+		'desk',
+		'culture',
+		'desk-culture',
+		'Create Your Workspace',
+		'shop'
+	]
+}
 
 async function getDataInfo() {
 	const categories = await CategoryService.getAll()

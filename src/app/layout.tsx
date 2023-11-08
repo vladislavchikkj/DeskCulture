@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		}
 	},
 	title: {
-		absolute: `Create Your Workspace | DeskCulture`,
+		absolute: `Create Your Workspace | Desk Culture`,
 		template: `%s | DeskCulture`
 	},
 	description: `Create a workspace that epitomizes your refined preferences while
@@ -36,12 +36,16 @@ export const metadata: Metadata = {
 		images: INTRO_IMG_PATH
 	},
 	keywords: [
+		'Desk',
+		'Culture',
+		'desk culture',
+		'Desk Culture',
+		'Desk-Culture',
 		'desk',
 		'culture',
-		'desk culture',
-		'Desk-Culture',
 		'desk-culture',
-		'Create Your Workspace'
+		'Create Your Workspace',
+		'shop'
 	],
 	twitter: {
 		card: 'app',
