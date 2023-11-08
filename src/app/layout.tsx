@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 		description:
 			'Create a workspace that epitomizes your refined preferences while igniting your drive for productivity.',
 		creator: 'jsCreator',
-		images: INTRO_IMG_PATH,
+		images: './favicon.ico',
 		app: {
 			name: 'DeskCulture',
 			id: {
