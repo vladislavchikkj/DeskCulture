@@ -5,8 +5,6 @@ import { IPageSlugParam, TypeParamSlug } from '@/types/page-params'
 import Footer from '@/ui/layout/footer/Footer'
 import { Metadata } from 'next'
 
-export const revalidate = 60
-
 async function getProducts(params: TypeParamSlug) {
 	const { data: products } = await ProductService.getByCategory(
 		params?.slug as string

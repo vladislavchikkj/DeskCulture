@@ -1,5 +1,5 @@
 'use client'
-import { FC, Suspense, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import Button from '@/ui/common/buttons/Button'
 
@@ -37,7 +37,7 @@ const ProductList: FC<ProductListProps> = ({
 	const [sortType, setSortType] = useState<EnumProductSort>(
 		EnumProductSort.NEWEST
 	)
-	const [products, setProducts] = useState(initialProducts.slice(0, 6))
+	const [products, setProducts] = useState(initialProducts)
 	const [isLoading, setIsLoading] = useState(false)
 	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
 	useEffect(() => {
@@ -46,7 +46,7 @@ const ProductList: FC<ProductListProps> = ({
 			try {
 				const response = await ProductService.getAll({
 					page: 1,
-					perPage: 8,
+					perPage: 10,
 					sort: sortType
 				})
 				setProducts(response.products)
@@ -68,7 +68,7 @@ const ProductList: FC<ProductListProps> = ({
 		try {
 			const response = await ProductService.getAll({
 				page: page + 1,
-				perPage: 6,
+				perPage: 10,
 				sort: sortType
 			})
 			const newProducts = response.products
@@ -97,14 +97,12 @@ const ProductList: FC<ProductListProps> = ({
 			{!DropdownOff && (
 				<SortDropdown sortType={sortType} setSortType={setSortType} />
 			)}
-			{products.length > 0 ? (
+			{initialProducts.length > 0 ? (
 				<>
 					<div className={catalogStyle.items}>
 						{isLoading && <Loader />}
 						{products.map(product => (
-							<Suspense key={product.id} fallback={<div>Loading...</div>}>
-								<ProductItem key={product.id} product={product} descr={descr} />
-							</Suspense>
+							<ProductItem key={product.id} product={product} descr={descr} />
 						))}
 					</div>
 					{!allProductsLoaded ? (

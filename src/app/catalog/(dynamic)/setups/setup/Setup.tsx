@@ -12,7 +12,6 @@ import { useLayout } from '@/components/context/LayoutContext'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import SetupList from '@/ui/catalog/setupsList/SetupsList'
 import Image from 'next/image'
-import NotFound from '../../categories/not-found'
 import style from './setup.module.scss'
 import SetupProductItem from './setupProductItem/SetupProductItem'
 
@@ -62,9 +61,6 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 			transition: { duration: 0.8, delay: custom * 0.2 }
 		})
 	}
-	if (!setups.products) {
-		return <NotFound></NotFound>
-	}
 	return (
 		<motion.div
 			initial='hidden'
@@ -106,7 +102,7 @@ const Setup: FC<props> = ({ products, setups, allSetups }) => {
 						<h3>{setups.description}</h3>
 					</div>
 
-					<SetupProductItem products={setups.products} />
+					<SetupProductItem products={products} />
 				</div>
 				<div>
 					<div className={style.intrested}>
