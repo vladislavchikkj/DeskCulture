@@ -16,8 +16,8 @@ const HomePlayer: FC = () => {
 				controls={false}
 				playsinline
 				className={style.video}
-				width={'120%'}
-				height={'120%'}
+				width={'100%'}
+				height={'100%'}
 			></ReactPlayer>
 		</a>
 	)
