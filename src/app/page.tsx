@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 60
 
-async function getStaticProps() {
+async function getDataInfo() {
 	const categories = await CategoryService.getAll()
 	const setups = await SetupsService.getAll()
 	const products = await ProductService.getAll({
@@ -80,7 +80,7 @@ async function getStaticProps() {
 }
 
 export default async function HomePage() {
-	const data = await getStaticProps()
+	const data = await getDataInfo()
 
 	return (
 		<Home
