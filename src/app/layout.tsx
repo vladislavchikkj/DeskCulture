@@ -86,6 +86,7 @@ export default function RootLayout({
 			/>
 			<link rel='icon' href='/favicon.ico' sizes='any' />
 			<meta property='og:image' content='/public/intro.png' />
+
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
 				<div id='PopUp'></div>

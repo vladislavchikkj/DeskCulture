@@ -19,13 +19,13 @@
 @media only screen and (max-width: 567px) {
 	.video {
 		min-height: 50vh;
-		top: -12vh;
+		top: -0;
 		width: 200.66667vh !important;
 		left: 50%;
 		transform: translateX(-50%) !important;
 	}
 	.wrapper {
-		min-height: 30vh;
+		min-height: 70vh;
 		z-index: 0;
 	}
 }
