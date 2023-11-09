@@ -85,7 +85,7 @@ export default function RootLayout({
 				content='+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34='
 			/>
 			<link rel='icon' href='/favicon.ico' sizes='any' />
-			<meta property='og:image' content='/public/intro.png' />
+			<meta property='og:image' content='/intro.png' />
 
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
