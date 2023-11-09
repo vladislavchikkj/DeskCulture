@@ -76,12 +76,16 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
+			<meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+			<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 			<meta name='yandex-verification' content='377fe05409c5b5dd' />
 			<meta name='p:domain_verify' content='a169cc8e4f65189c7a0f1f2bb9153724' />
 			<meta
 				name='google-site-verification'
 				content='+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34='
 			/>
+			<link rel='icon' href='/favicon.ico' sizes='any' />
+			<meta property='og:image' content='/public/intro.png' />
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
 				<div id='PopUp'></div>
