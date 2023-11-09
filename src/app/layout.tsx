@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 	},
 	title: {
 		absolute: `Create Your Workspace | Desk Culture`,
-		template: `%s | DeskCulture`
+		template: `%s | Desk Culture`
 	},
 	description: `Create a workspace that epitomizes your refined preferences while
 	igniting your drive for productivity.`,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 		creator: 'jsCreator',
 		images: ICON_PATH,
 		app: {
-			name: 'DeskCulture',
+			name: 'Desk Culture',
 			id: {
 				iphone: 'twitter_app://iphone',
 				ipad: 'twitter_app://ipad',
@@ -77,6 +77,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<meta name='yandex-verification' content='377fe05409c5b5dd' />
+			<meta name='p:domain_verify' content='a169cc8e4f65189c7a0f1f2bb9153724' />
+			<meta
+				name='google-site-verification'
+				content='+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34='
+			/>
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
 				<div id='PopUp'></div>
