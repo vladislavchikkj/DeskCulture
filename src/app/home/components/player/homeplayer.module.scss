@@ -2,7 +2,7 @@
 	overflow: hidden;
 	object-fit: cover;
 	transition: all 1s;
-	background-image: url(https://i.vimeocdn.com/video/1462853576-58d2ad679949feb5e4322dd1203463d90d2580e3e6030fd8834b420868422949-d_640);
+	background-color: #a1a1a1;
 	background-size: cover;
 	position: absolute;
 	top: -18vh;
@@ -19,13 +19,13 @@
 @media only screen and (max-width: 567px) {
 	.video {
 		min-height: 50vh;
-		top: -12vh;
+		top: -0;
 		width: 200.66667vh !important;
 		left: 50%;
 		transform: translateX(-50%) !important;
 	}
 	.wrapper {
-		min-height: 30vh;
+		min-height: 70vh;
 		z-index: 0;
 	}
 }
