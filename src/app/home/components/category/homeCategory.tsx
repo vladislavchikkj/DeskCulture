@@ -65,6 +65,11 @@ const HomeCategory: FC<TypePaginationCategories> = ({
 							</div>
 						</div>
 					))}
+					<Link href={'/catalog'} className={style.btnWrapper}>
+						<Button data-hover='See all category' variant='grey'>
+							See all category
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</>

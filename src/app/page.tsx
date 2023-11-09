@@ -1,4 +1,4 @@
-import { INTRO_IMG_PATH } from '@/constants/favicon.constant'
+import { ICON_PATH, INTRO_IMG_PATH } from '@/constants/favicon.constant'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product/product.service'
 import { SetupsService } from '@/services/setups.service'
@@ -7,12 +7,12 @@ import Home from './home/Home'
 
 export const metadata: Metadata = {
 	icons: {
-		icon: './favicon.ico',
-		shortcut: './favicon.ico',
-		apple: './favicon.ico',
+		icon: ICON_PATH,
+		shortcut: ICON_PATH,
+		apple: ICON_PATH,
 		other: {
-			rel: './favicon.ico',
-			url: './favicon.ico'
+			rel: ICON_PATH,
+			url: ICON_PATH
 		}
 	},
 	title: {

@@ -2,7 +2,7 @@
 
 import '@/assets/styles/globals.scss'
 import { getSiteUrl } from '@/config/url.config'
-import { INTRO_IMG_PATH } from '@/constants/favicon.constant'
+import { ICON_PATH, INTRO_IMG_PATH } from '@/constants/favicon.constant'
 import Providers from '@/providers/Providers'
 import { Inter } from '@next/font/google'
 import { Metadata } from 'next'
@@ -14,12 +14,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	icons: {
-		icon: './favicon.ico',
-		shortcut: './favicon.ico',
-		apple: './favicon.ico',
+		icon: ICON_PATH,
+		shortcut: ICON_PATH,
+		apple: ICON_PATH,
 		other: {
-			rel: './favicon.ico',
-			url: './favicon.ico'
+			rel: ICON_PATH,
+			url: ICON_PATH
 		}
 	},
 	title: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 	metadataBase: new URL(getSiteUrl()),
 	openGraph: {
 		type: 'website',
-		siteName: 'DeskCulture',
+		siteName: 'Desk Culture',
 		emails: ['desk.culture.official@gmail.com'],
 		images: INTRO_IMG_PATH
 	},
@@ -49,11 +49,11 @@ export const metadata: Metadata = {
 	],
 	twitter: {
 		card: 'app',
-		title: `DeskCulture`,
+		title: `Desk Culture`,
 		description:
 			'Create a workspace that epitomizes your refined preferences while igniting your drive for productivity.',
 		creator: 'jsCreator',
-		images: './favicon.ico',
+		images: ICON_PATH,
 		app: {
 			name: 'DeskCulture',
 			id: {

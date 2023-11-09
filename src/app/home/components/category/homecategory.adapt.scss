@@ -93,6 +93,21 @@
 		margin-top: 30px;
 		margin-bottom: 50px;
 		border-top: 1px solid #191b1d1a;
+		.btnWrapper {
+			display: flex;
+			justify-content: flex-end;
+			padding-top: 20px;
+		}
+		button {
+			margin-top: 0;
+			font-size: 0.9rem;
+			padding: 5px 12px 5px 12px;
+			&:before {
+				margin-top: 0;
+				font-size: 0.9rem;
+				padding: 5px 12px 5px 12px;
+			}
+		}
 	}
 	.setupBtn {
 		display: none;
