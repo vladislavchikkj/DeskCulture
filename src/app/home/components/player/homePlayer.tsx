@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import style from './homeplayer.module.scss'
 import ReactPlayer from 'react-player'
+import style from './homeplayer.module.scss'
 //@ts-ignore
 
 const HomePlayer: FC = () => {
