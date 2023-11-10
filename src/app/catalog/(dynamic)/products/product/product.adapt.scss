@@ -76,8 +76,9 @@
 }
 @media only screen and (max-width: 567px) {
 	.addToCart {
+		height: 37px;
 		button {
-			height: 37px;
+			padding: 15px;
 		}
 	}
 	.favoriteButton {
