@@ -79,7 +79,10 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 								}}
 							>
 								<SwiperSlide>
-									<Link href={'https://www.instagram.com/'} target='_blank'>
+									<Link
+										href={'https://www.instagram.com/desk.culture.official/'}
+										target='_blank'
+									>
 										<div className={style.link}>
 											<div className={style.linkImg}>
 												<InstImg />
@@ -94,7 +97,12 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<Link href={'https://www.facebook.com/'} target='_blank'>
+									<Link
+										href={
+											'https://www.facebook.com/people/Desk-Culture/pfbid028qg3nCQXbJHpemq3dNQJoFhkCXHkoiPNQrcAFnphEKFEbFMNGTgnwPAWHLRoTLBml/'
+										}
+										target='_blank'
+									>
 										<div className={style.link}>
 											<div className={style.linkImg}>
 												<FacebookImg />
@@ -109,7 +117,10 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<Link href={'https://www.tiktok.com/'} target='_blank'>
+									<Link
+										href={'https://www.tiktok.com/@deskculture'}
+										target='_blank'
+									>
 										<div className={style.link}>
 											<div className={style.linkImg}>
 												<TiktokImg />
@@ -124,7 +135,12 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 									</Link>
 								</SwiperSlide>
 								<SwiperSlide>
-									<Link href={'https://www.pinterest.com/'} target='_blank'>
+									<Link
+										href={
+											'https://www.pinterest.com/deskcultureofficial/?actingBusinessId=925630667071606800'
+										}
+										target='_blank'
+									>
 										<div className={style.link}>
 											<div className={style.linkImg}>
 												<Pinterest />

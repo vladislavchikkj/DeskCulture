@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import style from './homeintro.module.scss'
-import Logo from './svg/newlogo.svg'
+import TLogo from './svg/b-logo.svg'
 
 const HomeIntro: FC = () => {
 	return (
@@ -32,7 +32,7 @@ const HomeIntro: FC = () => {
 				</div>
 				<div className={style.lowSide}>
 					<motion.a variants={textAnimation} className={style.logo}>
-						<Logo />
+						<TLogo />
 					</motion.a>
 					<motion.h1 variants={textAnimation} className={style.info}>
 						Create a workspace that epitomizes your refined preferences while
