@@ -69,9 +69,9 @@ const Header: FC<Props> = ({ inView }) => {
 						<div className={style.mainLogo}>
 							<div className={style.blink_me}>
 								<Link translate='no' href={`/`}>
-									<div>
+									<h1>
 										DeskCulture<span className={style.flare}></span>
-									</div>
+									</h1>
 								</Link>
 							</div>
 							<div className={style.simbol}>®</div>
