@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 import style from './homeintro.module.scss'
-import TLogo from './svg/b-logo.svg'
+import TLogo from './svg/n-logo.svg'
 
 const HomeIntro: FC = () => {
 	return (
