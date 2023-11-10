@@ -360,13 +360,11 @@ const Checkout: FC = () => {
 							</div>
 							<div className={style.salesTax}>
 								<div>Sales Tax</div>
-								<div>$10.00</div>
+								<div>$0.00</div>
 							</div>
 							<div className={style.total}>
 								<div>Total (incl. sales tax)</div>
-								<div className={style.totalPrice}>
-									{convertPrice(total + 10)}
-								</div>
+								<div className={style.totalPrice}>{convertPrice(total)}</div>
 							</div>
 						</div>
 					</div>

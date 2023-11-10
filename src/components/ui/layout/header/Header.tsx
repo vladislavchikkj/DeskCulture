@@ -41,6 +41,7 @@ const Header: FC<Props> = ({ inView }) => {
 	}, [])
 	return (
 		<header className={cn(style.header)} ref={headerRef}>
+			<h1 className='hidden'>Desk Culture</h1>
 			<div
 				ref={wrapperRef}
 				className={cn(style.headerWrapper, !inView && `${style.headerWhite}`)}
@@ -69,9 +70,9 @@ const Header: FC<Props> = ({ inView }) => {
 						<div className={style.mainLogo}>
 							<div className={style.blink_me}>
 								<Link translate='no' href={`/`}>
-									<h1>
-										DeskCulture<span className={style.flare}></span>
-									</h1>
+									<div>
+										DeskCulture <span className={style.flare}></span>
+									</div>
 								</Link>
 							</div>
 							<div className={style.simbol}>®</div>
