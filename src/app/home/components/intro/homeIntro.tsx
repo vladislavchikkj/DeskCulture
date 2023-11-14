@@ -34,10 +34,10 @@ const HomeIntro: FC = () => {
 					<motion.a variants={textAnimation} className={style.logo}>
 						<TLogo />
 					</motion.a>
-					<motion.h1 variants={textAnimation} className={style.info}>
+					<motion.h2 variants={textAnimation} className={style.info}>
 						Create a workspace that epitomizes your refined preferences while
 						igniting your drive for productivity.
-					</motion.h1>
+					</motion.h2>
 				</div>
 			</motion.div>
 		</>
