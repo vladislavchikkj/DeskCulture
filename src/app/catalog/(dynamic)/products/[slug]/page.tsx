@@ -13,7 +13,6 @@ async function getProducts(params: TypeParamSlug) {
 
 	return { products }
 }
-
 export async function generateMetadata({
 	params
 }: IPageSlugParam): Promise<Metadata> {
@@ -23,6 +22,7 @@ export async function generateMetadata({
 		title: data.products[0].name,
 
 		description: data.products[0].description,
+		icons: data.products[0].images,
 		openGraph: {
 			images: data.products[0].images,
 			description: data.products[0].info

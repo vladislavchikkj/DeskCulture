@@ -24,6 +24,7 @@ const BestSellers: FC<{ products: IProduct[] }> = products => {
 					loadMoreBtnOff
 					DropdownOff
 					descr
+					needToUpdate={false}
 				/>
 			</div>
 		</div>
