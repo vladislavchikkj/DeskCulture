@@ -9,8 +9,23 @@
 		transform: translateY(0);
 	}
 }
-.headerWrapper {
+.wrapper {
 	position: fixed;
+	z-index: 100;
+	width: 100%;
+}
+.banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	height: 30px;
+	width: 100%;
+	background: #191b1d;
+	font-size: 0.8rem;
+	color: #ffffff;
+}
+.headerWrapper {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
@@ -18,7 +33,7 @@
 	border-top: 1px solid #b7b7b7;
 	border-bottom: 1px solid #b7b7b7;
 	background: #cdcecf;
-	z-index: 100;
+
 	transition: all 0.3s;
 	animation: headerAni 0.4s forwards;
 }
@@ -40,7 +55,6 @@
 
 	font-style: normal;
 	font-weight: 500;
-	line-height: 19px;
 	height: 100%;
 	cursor: pointer;
 }
