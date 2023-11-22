@@ -84,7 +84,7 @@ export default function RootLayout({
 				name='google-site-verification'
 				content='+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34='
 			/>
-			<link rel='icon' href='/favicon.ico' sizes='any' />
+			<link rel='icon' href='/favicon.svg' sizes='any' />
 			<meta property='og:image' content='/intro.png' />
 
 			<body className={inter.className}>

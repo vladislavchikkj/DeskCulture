@@ -26,7 +26,6 @@
 		}
 	}
 	.name {
-		top: 14vh;
 		font-size: 2rem;
 	}
 	.title {
@@ -41,18 +40,18 @@
 	}
 	.descr {
 		position: absolute;
-		top: 15vh;
+		top: 16vh;
 
 		color: #fff;
 		padding-top: 20px;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		font-style: normal;
-		font-weight: 500;
+		font-weight: 400;
 		line-height: 3.5vw; /* 140.625% */
 		letter-spacing: 0.2vw;
 	}
 	.name {
-		top: 12vh;
+		top: 14vh;
 	}
 }
 @media only screen and (max-width: 320px) {
