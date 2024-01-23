@@ -21,7 +21,7 @@
 		align-items: center;
 	}
 	transition: all 0.5s;
-
+	cursor: pointer;
 	&:hover {
 		filter: brightness(0.9);
 		.btnArr {
@@ -54,6 +54,7 @@
 		font-weight: 900;
 		line-height: 4rem;
 	}
+	cursor: pointer;
 	&:hover {
 		.btnArr {
 			transform: rotate(-45deg);
@@ -92,6 +93,7 @@
 		width: 100%;
 		height: 100%;
 	}
+	cursor: pointer;
 	&:hover {
 		filter: brightness(0.9);
 		.btnArr {
@@ -103,6 +105,7 @@
 	position: relative;
 	border: 2px solid white;
 	transition: 0.5s;
+	cursor: pointer;
 	&:hover {
 		filter: brightness(0.9);
 		.btnArr {
