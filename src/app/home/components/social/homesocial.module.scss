@@ -1,9 +1,10 @@
 .social {
 	width: 100%;
-	height: 100vh;
 	background: #cdcecf;
 
 	padding-top: 8vh;
+	padding-bottom: 50px;
+	z-index: 1;
 }
 
 .socialInfo {
@@ -37,7 +38,7 @@
 .linksWrapContainer {
 	position: absolute;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 }
 .links {
 	width: 100vw;

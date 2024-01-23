@@ -12,6 +12,9 @@ import { TypeCombinedPagination } from '@/types/product.interface'
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import Notifications from '@/ui/common/notifications/Notifications'
+import Footer from '@/ui/layout/footer/Footer'
+import BestSellers from './components/bestSellers/bestSellers'
+import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 import HomeCategories from './new_components/homeCatalog/homeCategories'
 import Intro from './new_components/intro/Intro'
@@ -56,6 +59,9 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 			>
 				<Intro />
 				<HomeCategories categories={categories} />
+				<BestSellers products={products} />
+				<HomeSocial />
+				<Footer />
 				<Notifications
 					isOpen={isNotificationsOpen}
 					closeNotifications={handleCookiesAcceptance}

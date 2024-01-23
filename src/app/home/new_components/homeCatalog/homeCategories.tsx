@@ -81,7 +81,7 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 					src={imageAccURL}
 					alt={'mouse'}
 					width={1000}
-					height={800}
+					height={500}
 					className={style.img}
 				/>
 				<div className={style.info}>
