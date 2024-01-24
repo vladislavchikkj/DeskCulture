@@ -46,7 +46,7 @@ async function getDataInfo() {
 	const setups = await SetupsService.getAll()
 	const products = await ProductService.getAll({
 		page: 2,
-		perPage: 4
+		perPage: 6
 	})
 
 	const data = {

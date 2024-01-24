@@ -18,6 +18,7 @@ import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 import HomeCategories from './new_components/homeCatalog/homeCategories'
 import Intro from './new_components/intro/Intro'
+import Keycaps from './new_components/keycaps/keycaps'
 
 const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	const { ref: inViewRef, inView: inViewIntro } = useInView({
@@ -26,7 +27,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	const { ref: inViewPageRef, inView: inViewPage } = useInView({
 		threshold: 0
 	})
-
+	console.log(products)
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(!inViewIntro ? false : true)
@@ -60,6 +61,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				<Intro />
 				<HomeCategories categories={categories} />
 				<BestSellers products={products} />
+				<Keycaps products={products} />
 				<HomeSocial />
 				<Footer />
 				<Notifications

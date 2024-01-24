@@ -86,8 +86,8 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 				/>
 				<div className={style.info}>
 					<div>
-						<div className={style.subtitle}>/poducts/lights</div>
-						<div className={style.title}>LIGHTS</div>
+						<div className={style.subtitle}>/poducts/chargers</div>
+						<div className={style.title}>CHARGERS</div>
 					</div>
 					<div className={style.icon}>♺</div>
 				</div>

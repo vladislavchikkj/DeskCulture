@@ -27,6 +27,9 @@
 		.btnArr {
 			transform: rotate(-45deg);
 		}
+		svg {
+			stroke: #d66dff;
+		}
 	}
 }
 .outlet {
@@ -58,6 +61,9 @@
 	&:hover {
 		.btnArr {
 			transform: rotate(-45deg);
+		}
+		svg {
+			stroke: #d66dff;
 		}
 	}
 }
@@ -99,6 +105,9 @@
 		.btnArr {
 			transform: rotate(-45deg);
 		}
+		svg {
+			stroke: #d66dff;
+		}
 	}
 }
 .lights {
@@ -115,6 +124,9 @@
 		filter: brightness(0.9);
 		.btnArr {
 			transform: rotate(-45deg);
+		}
+		svg {
+			stroke: #d66dff;
 		}
 	}
 }

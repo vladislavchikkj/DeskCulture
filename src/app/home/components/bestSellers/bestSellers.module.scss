@@ -7,6 +7,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	z-index: 15;
+	padding-top: 50px;
 }
 
 .reviews__header {
@@ -25,12 +26,11 @@
 .reviews__title {
 	color: #191b1d;
 
-	font-size: 5rem;
+	font-size: 3rem;
 	font-style: normal;
-	font-weight: 500;
-	line-height: 90px; /* 100% */
-	letter-spacing: -6.3px;
-	padding-bottom: 6vw;
+	font-weight: 700;
+	line-height: 40px; /* 100% */
+	letter-spacing: 0.4px;
 }
 .reviews__item {
 	display: flex;
