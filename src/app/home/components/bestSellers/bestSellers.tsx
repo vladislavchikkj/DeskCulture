@@ -8,6 +8,7 @@ import Link from 'next/link'
 import style from './bestSellers.module.scss'
 
 const BestSellers: FC<{ products: IProduct[] }> = products => {
+	const firstTenProducts = products.products.slice(0, 6)
 	return (
 		<div className={`${style.reviews}  container-f`}>
 			<div className={style.reviews__header}>
@@ -20,7 +21,7 @@ const BestSellers: FC<{ products: IProduct[] }> = products => {
 			</div>
 			<div className={style.reviews__items}>
 				<ProductList
-					initialProducts={products.products}
+					initialProducts={firstTenProducts}
 					loadMoreBtnOff
 					DropdownOff
 					descr
