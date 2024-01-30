@@ -2,7 +2,6 @@
 	display: grid;
 	grid-template-columns: 1.1fr 1.4fr 0.9fr;
 	grid-template-rows: repeat(2, 2fr);
-	height: 700px; // del
 	z-index: 1;
 	background: #e9e9e9;
 }
@@ -36,7 +35,7 @@
 	position: relative;
 	grid-column-start: 3;
 	grid-row-start: 1;
-	grid-row-end: 4;
+	grid-row-end: 3;
 	border: 2px solid white;
 	border: 2px solid white;
 	background: #000000;

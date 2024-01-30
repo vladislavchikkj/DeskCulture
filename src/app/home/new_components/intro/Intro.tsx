@@ -26,7 +26,7 @@ const Intro: FC = () => {
 							<Wlogo />
 						</div>
 					</div>
-					<div className='flex justify-between items-end'>
+					<div className={style.infos}>
 						<div className={style.info}>
 							<div className={style.article}>table accessories</div>
 							<h1 className={style.title}>

@@ -1,6 +1,64 @@
 @media only screen and (max-width: 1200px) {
+	.items {
+		display: grid;
+		grid-template-columns: 1.1fr 1.4fr;
+		grid-template-rows: repeat(2, 2fr);
+	}
+	.keyboards {
+		grid-column-start: 1;
+		grid-row-start: 1;
+		grid-row-end: 3;
+	}
+	.mouse {
+		height: 30vh;
+		grid-column-start: 1;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	.lights {
+		grid-column-start: 2;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	.outlet {
+		grid-column-start: 2;
+		grid-row-start: 1;
+		grid-row-end: 3;
+	}
+	.info {
+		position: absolute;
+		padding: 20px;
+	}
 }
 @media only screen and (max-width: 768px) {
+	.items {
+		display: flex;
+		flex-direction: column;
+	}
+	.keyboards {
+		height: 30vh;
+	}
+	.mouse {
+		height: 30vh;
+	}
+	.lights {
+		height: 30vh;
+	}
+	.outlet {
+		height: 60vh;
+		order: 4;
+		.img {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			object-fit: cover;
+			height: 100%;
+		}
+	}
+	.info {
+		position: absolute;
+		padding: 20px;
+	}
 }
 @media only screen and (max-width: 567px) {
 }

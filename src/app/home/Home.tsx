@@ -14,6 +14,7 @@ import useCustomMediaQuery from '@/hooks/useCustomMediaQuery'
 import Notifications from '@/ui/common/notifications/Notifications'
 import Footer from '@/ui/layout/footer/Footer'
 import BestSellers from './components/bestSellers/bestSellers'
+import HomeSetup from './components/setup/homeSetup'
 import HomeSocial from './components/social/homeSocial'
 import style from './home.module.scss'
 import HomeCategories from './new_components/homeCatalog/homeCategories'
@@ -27,7 +28,6 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 	const { ref: inViewPageRef, inView: inViewPage } = useInView({
 		threshold: 0
 	})
-	console.log(products)
 	const { updateLayout } = useLayout()
 	useEffect(() => {
 		updateLayout(!inViewIntro ? false : true)
@@ -62,6 +62,7 @@ const Home: FC<TypeCombinedPagination> = ({ categories, setups, products }) => {
 				<HomeCategories categories={categories} />
 				<BestSellers products={products} />
 				<Keycaps products={products} />
+				<HomeSetup setups={setups} />
 				<HomeSocial />
 				<Footer />
 				<Notifications

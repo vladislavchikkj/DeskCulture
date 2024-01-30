@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { FC } from 'react'
 import layout from './img/keycaps.png'
 import style from './keycaps.module.scss'
+import Arr from './svg/arr.svg'
+import DskSVG from './svg/dsk.svg'
 import KeycapsSVG from './svg/keycaps.svg'
 const Keycaps: FC<{ products: IProduct[] }> = products => {
 	return (
@@ -21,24 +23,34 @@ const Keycaps: FC<{ products: IProduct[] }> = products => {
 						<Button
 							data-hover='See all'
 							variant={'black'}
-							className=' h-10 w-40'
+							className='h-10 w-40'
 						>
 							See all
 						</Button>
 					</div>
 				</div>
 			</div>
-			<div className={`${style.items} container-f`}>
-				<ProductList
-					initialProducts={products.products}
-					loadMoreBtnOff
-					DropdownOff
-					descr
-					needToUpdate={false}
-				/>
-			</div>
-			<div className={style.stick}>
-				<div className={style.text}>Some text</div>
+			<div className=' z-10 bg-white'>
+				<div className={`${style.items} container-f`}>
+					<ProductList
+						initialProducts={products.products}
+						loadMoreBtnOff
+						DropdownOff
+						descr
+						needToUpdate={false}
+					/>
+				</div>
+				<div className={style.stick}>
+					<div className={`${style.stickInc} container-f`}>
+						<DskSVG />
+						<div className={style.icon}>♺</div>
+					</div>
+					<div className={`${style.arr} container-f`}>
+						<p>Choose your best setup</p>
+						<Arr />
+					</div>
+					<div className={style.text}>DESKCULTURE</div>
+				</div>
 			</div>
 		</>
 	)

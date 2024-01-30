@@ -23,9 +23,6 @@
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 567px) {
-	.reviews {
-		margin-top: 40px;
-	}
 	.reviews__header {
 		padding-top: 0;
 		display: flex;
@@ -43,11 +40,11 @@
 	.reviews__title {
 		color: #191b1d;
 
-		font-size: 2.5rem;
+		font-size: 2rem;
 		font-style: normal;
-		font-weight: 500;
+		font-weight: 600;
 		line-height: 15px; /* 100% */
-		letter-spacing: -3.3px;
+		letter-spacing: -1.3px;
 		padding-bottom: 4vw;
 	}
 }
