@@ -44,10 +44,7 @@ export const metadata: Metadata = {
 async function getDataInfo() {
 	const categories = await CategoryService.getAll()
 	const setups = await SetupsService.getAll()
-	const products = await ProductService.getAll({
-		page: 2,
-		perPage: 6
-	})
+	const products = await ProductService.getAll()
 
 	const data = {
 		categories: categories,

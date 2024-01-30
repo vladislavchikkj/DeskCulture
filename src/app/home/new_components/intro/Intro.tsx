@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
+import Link from 'next/link'
 import introImg from './img/intro.jpg'
 import style from './intro.module.scss'
 import Dlogo from './svg/data.svg'
@@ -39,7 +40,9 @@ const Intro: FC = () => {
 								Upgrade Your Desk: Stylish Accessories for a Perfect Workspace.
 							</div>
 						</div>
-						<div className={style.btn}>Catalog</div>
+						<Link scroll={false} className={style.btn} href={'/catalog'}>
+							Catalog
+						</Link>
 					</div>
 				</div>
 			</div>

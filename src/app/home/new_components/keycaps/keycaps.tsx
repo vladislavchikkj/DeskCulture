@@ -9,6 +9,9 @@ import Arr from './svg/arr.svg'
 import DskSVG from './svg/dsk.svg'
 import KeycapsSVG from './svg/keycaps.svg'
 const Keycaps: FC<{ products: IProduct[] }> = products => {
+	const mouseProducts = products.products.filter(
+		product => product.category.slug === 'Chargers'
+	)
 	return (
 		<>
 			<div className={style.keycaps}>
@@ -33,7 +36,7 @@ const Keycaps: FC<{ products: IProduct[] }> = products => {
 			<div className=' z-10 bg-white'>
 				<div className={`${style.items} container-f`}>
 					<ProductList
-						initialProducts={products.products}
+						initialProducts={mouseProducts}
 						loadMoreBtnOff
 						DropdownOff
 						descr

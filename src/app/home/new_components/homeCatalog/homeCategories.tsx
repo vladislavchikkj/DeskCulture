@@ -1,5 +1,6 @@
 import { ICategory } from '@/types/category.interface'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
 import style from './homeCategories.module.scss'
 import Arr from './icon/arr.svg'
@@ -19,7 +20,7 @@ const imageSaleURL =
 const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 	return (
 		<div className={style.items}>
-			<div className={style.keyboards}>
+			<Link className={style.keyboards} href={'/catalog/categories/Keyboards'}>
 				<Image
 					src={imageURL}
 					alt={'keyboards'}
@@ -37,8 +38,12 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 				<div className={style.btnArr}>
 					<Arr />
 				</div>
-			</div>
-			<div className={style.mouse}>
+			</Link>
+			<Link
+				scroll={false}
+				className={style.mouse}
+				href={'/catalog/categories/Mouse'}
+			>
 				<Image
 					src={imageMouseURL}
 					alt={'mouse'}
@@ -56,8 +61,8 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 				<div className={style.btnArr}>
 					<Arr />
 				</div>
-			</div>
-			<div className={style.outlet}>
+			</Link>
+			<Link scroll={false} href={'/catalog/products'} className={style.outlet}>
 				<Image
 					src={imageSaleURL}
 					alt={'sale'}
@@ -75,8 +80,12 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 				<div className={style.btnArr}>
 					<Arr />
 				</div>
-			</div>
-			<div className={style.lights}>
+			</Link>
+			<Link
+				scroll={false}
+				href={'/catalog/categories/Chargers'}
+				className={style.lights}
+			>
 				<Image
 					src={imageAccURL}
 					alt={'mouse'}
@@ -94,7 +103,7 @@ const HomeCategories: FC<IHomeCategories> = ({ categories }) => {
 				<div className={style.btnArr}>
 					<Arr />
 				</div>
-			</div>
+			</Link>
 		</div>
 	)
 }
