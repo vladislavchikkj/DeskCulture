@@ -88,9 +88,10 @@ const Header: FC<Props> = ({ inView }) => {
 							<input
 								className={style.searchInput}
 								type='text'
-								placeholder='Search...'
+								placeholder=' Search...'
 								value={searchData}
 								onChange={e => setSearchData(e.target.value)}
+								autoFocus
 							/>
 						)}
 					</div>

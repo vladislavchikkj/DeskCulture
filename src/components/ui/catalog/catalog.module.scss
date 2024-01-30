@@ -12,7 +12,7 @@
 .items {
 	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: repeat(6, 1fr);
 	justify-content: center;
 	padding-top: 6vh;
 	column-gap: 2vw;

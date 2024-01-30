@@ -1,0 +1,131 @@
+.keycaps {
+	z-index: 1;
+	background: #ffffff;
+	position: relative;
+	height: 400px;
+}
+.preview {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.img {
+	filter: brightness(0.65);
+	width: 100%;
+	height: 100%;
+	object-fit: cover !important;
+	border-radius: 50px 50px 0px 0px;
+	z-index: 1;
+}
+.icons {
+	display: flex;
+	justify-content: space-between;
+	color: black;
+	width: 100%;
+	height: 100%;
+	.icon {
+		font-size: 1.5rem;
+	}
+}
+.title {
+	color: rgb(255, 255, 255);
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 3px;
+}
+.items {
+	background: #ffffff;
+	z-index: 1;
+}
+.stick {
+	position: relative;
+
+	border-radius: 50px 50px 0 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 50vh;
+	background-attachment: fixed;
+	z-index: 1;
+
+	// background: url('./img/bgg.png');
+	background: linear-gradient(-45deg, #000000, #777777, #483d4d, #43635b);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+}
+.text {
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	font-weight: 700;
+	line-height: 5rem;
+
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 10vw;
+	background-size: cover;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-moz-text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+	line-height: 10vw;
+	background-size: contain;
+	background-image: url(https://www.yankodesign.com/images/design_news/2020/06/all-black-desk-setups-that-will-inspire-you-to-adapt-this-modern-minimal-trend/10-Black-Desk-Setup_-minimal_modern_Tytydev.jpg);
+	background-attachment: fixed;
+}
+.stickInc {
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	padding-top: 40px;
+	.icon {
+		color: white;
+		font-size: 1.5rem;
+	}
+}
+.arr {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding-bottom: 40px;
+
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: uppercase;
+	color: white;
+	gap: 10px;
+	p {
+		border: 1px solid #6e6e6e86;
+		padding: 5px 20px;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: white;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@import './keycaps.adapt.scss';

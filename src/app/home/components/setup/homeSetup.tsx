@@ -21,23 +21,23 @@ const HomeSetup: FC<prop> = ({ setups, setupsLength, homeRef }) => {
 			<div ref={homeRef} className={style.category}>
 				<div className={`${style.setup} container-f`}>
 					<div className={style.btnWrapper}>
-						<span className={style.numdot}>01</span>
+						{/* <span className={style.numdot}>01</span>
 						<div className={style.setupBtn}>
 							<Link href={'/catalog/setups'}>
 								<Button data-hover='ready setup' variant='grey'>
 									ready setup
 								</Button>
 							</Link>
-						</div>
+						</div> */}
 					</div>
 					<div className={style.categoryName}>
-						<h2>Ready setup</h2>
+						{/* <h2>Ready setup</h2>
 						<h3>
 							Upgrade your workspace with our collection of desk accessories! We
 							offer a wide range of stylish and functional products, including
 							organizers, pen holders, phone stands, desk lamps, portable
 							chargers, and much more.
-						</h3>
+						</h3> */}
 					</div>
 					{firstTwoSetups.map(setup => (
 						<div key={setup.id} className={style.item}>

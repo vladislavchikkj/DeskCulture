@@ -1,0 +1,36 @@
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 768px) {
+	.infos {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		gap: 20px;
+	}
+}
+@media only screen and (max-width: 567px) {
+	.wrapper {
+		padding-bottom: 40px;
+	}
+	.info {
+		.article {
+			font-size: 0.8rem;
+			padding-bottom: 0px;
+		}
+		.title {
+			font-size: 3.5rem;
+		}
+	}
+	.glitch {
+		margin: 0;
+		text-transform: uppercase;
+		color: rgb(255, 255, 255);
+		font-size: 3.5rem;
+		font-weight: 700;
+		line-height: 3rem;
+		position: relative;
+	}
+}
+@media only screen and (max-width: 320px) {
+}

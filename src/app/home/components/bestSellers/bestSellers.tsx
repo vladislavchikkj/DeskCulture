@@ -11,7 +11,7 @@ const BestSellers: FC<{ products: IProduct[] }> = products => {
 	return (
 		<div className={`${style.reviews}  container-f`}>
 			<div className={style.reviews__header}>
-				<span className={style.reviews__title}>Best seller</span>
+				<span className={style.reviews__title}>BEST SELLER</span>
 				<Link href={'/catalog/products'}>
 					<Button data-hover='See More' variant='grey'>
 						See More

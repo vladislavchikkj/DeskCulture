@@ -51,7 +51,7 @@ const HomeSocial: FC<HomeSocialProps> = ({ socialRef }) => {
 		<>
 			<div ref={socialRef} className={`container-f ${style.social} `}>
 				<div className={style.socialInfo}>
-					<div className={style.btnWrapper}>Follow Us</div>
+					<div className={style.btnWrapper}></div>
 					<div className={style.categoryName}>
 						<div className={style.socialTitle}>
 							Connect with Us! Explore the World of Stylish Desk Accessories on
