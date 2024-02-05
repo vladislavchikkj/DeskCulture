@@ -22,7 +22,7 @@
 	transition: all 0.5s;
 	cursor: pointer;
 	&:hover {
-		filter: brightness(0.9);
+		animation: bliker 0.1s ease 2;
 		.btnArr {
 			transform: rotate(-45deg);
 		}
@@ -100,13 +100,13 @@
 	}
 	cursor: pointer;
 	&:hover {
-		filter: brightness(0.9);
 		.btnArr {
 			transform: rotate(-45deg);
 		}
 		svg {
 			stroke: #d66dff;
 		}
+		animation: bliker 0.1s ease 2;
 	}
 }
 .lights {
@@ -120,7 +120,7 @@
 		height: 100%;
 	}
 	&:hover {
-		filter: brightness(0.9);
+		animation: bliker 0.1s ease 2;
 		.btnArr {
 			transform: rotate(-45deg);
 		}
@@ -162,5 +162,13 @@
 	);
 	background-size: 10px 6px;
 	animation: scroll 2s ease-in-out infinite;
+}
+@keyframes bliker {
+	0% {
+		filter: brightness(0.8);
+	}
+	100% {
+		filter: brightness(0.9);
+	}
 }
 @import './homeCategories.adapt.scss';
