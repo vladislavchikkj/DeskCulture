@@ -44,7 +44,7 @@ const Header: FC<Props> = ({ inView }) => {
 			<h1 className='hidden'>Desk Culture</h1>
 
 			<div ref={wrapperRef} className={style.wrapper}>
-				<Link href={`/catalog`}>
+				<Link scroll={false} href={`/catalog`}>
 					<div className={style.banner}>
 						Black Friday Special! All products for 25% off your entire cart!{' '}
 						<u> Shop all »</u>
@@ -56,14 +56,14 @@ const Header: FC<Props> = ({ inView }) => {
 					<div className={style.leftBtnHeader}>
 						<Menu headerRef={headerRef} wrapperRef={wrapperRef} />
 						<div className={`grid grid-flow-col ${style.hideBtn}`}>
-							<Link href={`/contacts`}>
+							<Link scroll={false} href={`/contacts`}>
 								<div className={`${style.headerButton} `}>
 									<div data-hover='Contacts' className={style.textBtn}>
 										<div className='flex gap-2'>Contacts</div>
 									</div>
 								</div>
 							</Link>
-							<Link href={`/catalog`}>
+							<Link scroll={false} href={`/catalog`}>
 								<div className={`${style.headerButton} `}>
 									<div data-hover='Catalog' className={style.textBtn}>
 										<div className='flex gap-2'>Catalog</div>
