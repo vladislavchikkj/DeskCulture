@@ -1,49 +1,44 @@
 import { EnumProductSort } from '@/services/product/product.types'
-import { makeStyles, MenuItem, Select } from '@material-ui/core'
-import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
+import * as React from 'react'
 import style from './sortDropdown.module.scss'
 
-const useStyle = makeStyles({
-	select: {
-		border: 'none',
-		'& .MuiOutlinedInput-input': {
-			padding: '8px 40px 8px 10px'
-		}
-	}
-})
-
-interface ISortDropdown {
-	sortType: EnumProductSort
-	setSortType: Dispatch<SetStateAction<EnumProductSort>>
+interface SelectSmallProps {
+	selectedSortType: EnumProductSort
+	onSortTypeChange: (sortType: EnumProductSort) => void
 }
 
-const SortDropdown: FC<ISortDropdown> = ({ setSortType, sortType }) => {
-	const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
-		setSortType(event.target.value as EnumProductSort)
+const SelectSmall: React.FC<SelectSmallProps> = ({
+	selectedSortType,
+	onSortTypeChange
+}) => {
+	const handleChange = (event: SelectChangeEvent) => {
+		const selectedValue = event.target.value as EnumProductSort
+		onSortTypeChange(selectedValue)
 	}
-
-	const classes = useStyle()
 
 	return (
 		<div className={style.sortDropdown}>
-			<Select
-				className={classes.select}
-				value={sortType}
-				onChange={handleChange}
-			>
-				{(
-					Object.keys(EnumProductSort) as Array<keyof typeof EnumProductSort>
-				).map(key => {
-					return (
-						<MenuItem key={EnumProductSort[key]} value={EnumProductSort[key]}>
-							{EnumProductSort[key].charAt(0).toUpperCase() +
-								EnumProductSort[key].slice(1)}
-						</MenuItem>
-					)
-				})}
-			</Select>
+			<FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+				<InputLabel id='demo-select-small-label'>Sort</InputLabel>
+				<Select
+					labelId='demo-select-small-label'
+					id='demo-select-small'
+					value={selectedSortType}
+					label='Sort'
+					onChange={handleChange}
+				>
+					<MenuItem value={EnumProductSort.NEWEST}>Newest</MenuItem>
+					<MenuItem value={EnumProductSort.OLDEST}>Oldest</MenuItem>
+					<MenuItem value={EnumProductSort.HIGH_PRICE}>High Price</MenuItem>
+					<MenuItem value={EnumProductSort.LOW_PRICE}>Low Price</MenuItem>
+				</Select>
+			</FormControl>
 		</div>
 	)
 }
 
-export default SortDropdown
+export default SelectSmall
