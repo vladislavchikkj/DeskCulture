@@ -1,24 +1,20 @@
 'use client'
-import { FC, useEffect, useState } from 'react'
-
-import Button from '@/ui/common/buttons/Button'
-
-import { TypePaginationСatalog } from '@/types/product.interface'
-
-import catalogStyle from '../catalog.module.scss'
-
 import { baseAnimation } from '@/components/animations/baseAnimation'
 import { ProductService } from '@/services/product/product.service'
 import { EnumProductSort } from '@/services/product/product.types'
+import { TypePaginationСatalog } from '@/types/product.interface'
+import Button from '@/ui/common/buttons/Button'
 import Loader from '@/ui/common/loader/Loader'
 import { motion } from 'framer-motion'
+import { FC, useEffect, useState } from 'react'
+import catalogStyle from '../catalog.module.scss'
 import ProductItem from '../product-item/ProductItem'
-import SortDropdown from '../product-item/sortDropdown/SortDropdown'
+import SelectSmall from '../product-item/sortDropdown/SortDropdown'
 import style from './products.module.scss'
 
 interface ProductListProps {
 	initialProducts: TypePaginationСatalog['products']
-	slug?: string // Add this line
+	slug?: string
 	DropdownOff?: boolean
 	loadMoreBtnOff?: boolean
 	needToUpdate?: boolean
@@ -40,6 +36,7 @@ const ProductList: FC<ProductListProps> = ({
 	const [products, setProducts] = useState(initialProducts)
 	const [isLoading, setIsLoading] = useState(false)
 	const [allProductsLoaded, setAllProductsLoaded] = useState(false)
+
 	useEffect(() => {
 		const updateProducts = async () => {
 			setIsLoading(true)
@@ -60,9 +57,10 @@ const ProductList: FC<ProductListProps> = ({
 		}
 
 		if (needToUpdate) {
-			updateProducts() // edit
+			updateProducts()
 		}
 	}, [sortType])
+
 	const loadMoreProducts = async () => {
 		setIsLoading(true)
 		try {
@@ -87,6 +85,7 @@ const ProductList: FC<ProductListProps> = ({
 			setIsLoading(false)
 		}
 	}
+
 	return (
 		<motion.div
 			initial='hidden'
@@ -95,7 +94,10 @@ const ProductList: FC<ProductListProps> = ({
 			variants={baseAnimation}
 		>
 			{!DropdownOff && (
-				<SortDropdown sortType={sortType} setSortType={setSortType} />
+				<SelectSmall
+					selectedSortType={sortType}
+					onSortTypeChange={setSortType}
+				/>
 			)}
 			{initialProducts.length > 0 ? (
 				<>

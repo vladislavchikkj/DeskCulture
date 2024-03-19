@@ -31,7 +31,8 @@ const nextConfig = {
 			'lh3.googleusercontent.com',
 			'drive.google.com',
 			'img.myipadbox.com',
-			'1drv.ms'
+			'1drv.ms',
+			'www.nettl.com'
 		],
 		remotePatterns: [
 			{
