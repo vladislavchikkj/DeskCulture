@@ -14,7 +14,7 @@ const Keycaps: FC<{ products: IProduct[] }> = products => {
 	)
 	return (
 		<>
-			<div className={style.keycaps}>
+			{/* <div className={style.keycaps}>
 				<Image src={layout} alt={'keykaps'} className={style.img} />
 				<div className={`${style.preview} container-f`}>
 					<div className={style.icons}>
@@ -32,9 +32,9 @@ const Keycaps: FC<{ products: IProduct[] }> = products => {
 						</Button>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			<div className=' z-10 bg-white'>
-				<div className={`${style.items} container-f`}>
+				{/* <div className={`${style.items} container-f`}>
 					<ProductList
 						initialProducts={mouseProducts}
 						loadMoreBtnOff
@@ -42,7 +42,7 @@ const Keycaps: FC<{ products: IProduct[] }> = products => {
 						descr
 						needToUpdate={false}
 					/>
-				</div>
+				</div> */}
 				<div className={style.stick}>
 					<div className={`${style.stickInc} container-f`}>
 						<DskSVG />
